@@ -1,8 +1,6 @@
-"use client";
-
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
 import { RichText } from "@/components/ui/rich-text";
+import { Reveal } from "@/components/ui/reveal";
 import { SaisCurvedPanel } from "@/components/ui/sais-curved-panel";
 import type { HomepageData, PortableTextBlock } from "@/types/sanity";
 
@@ -52,7 +50,6 @@ const fallbackSection: NonNullable<HomepageData["intro"]> = {
 };
 
 export function IntroFeatureSection({ section }: IntroFeatureSectionProps) {
-  const prefersReducedMotion = useReducedMotion();
   const title = section?.heading?.title || fallbackSection.heading.title;
   const description = section?.heading?.description?.length
     ? section.heading.description
@@ -62,20 +59,11 @@ export function IntroFeatureSection({ section }: IntroFeatureSectionProps) {
 
   return (
     <section className="intro-feature" aria-labelledby="intro-feature-title">
-      <motion.div
+      <Reveal
         className="intro-feature__layout"
-        initial={prefersReducedMotion ? false : { y: 28, opacity: 0 }}
-        whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1 }}
-        viewport={{ once: true, amount: 0.18 }}
-        transition={{ duration: 0.86, ease: [0.16, 1, 0.3, 1] }}
+        threshold={0.18}
       >
-        <motion.div
-          className="intro-feature__media"
-          initial={prefersReducedMotion ? false : { x: -28, opacity: 0 }}
-          whileInView={prefersReducedMotion ? undefined : { x: 0, opacity: 1 }}
-          viewport={{ once: true, amount: 0.18 }}
-          transition={{ duration: 0.84, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-        >
+        <div className="intro-feature__media">
           <div className="intro-feature__image-shell">
             <Image
               src={imageUrl || fallbackSection.image?.url || "/sais-building-futures.png"}
@@ -86,7 +74,7 @@ export function IntroFeatureSection({ section }: IntroFeatureSectionProps) {
               className="intro-feature__image"
             />
           </div>
-        </motion.div>
+        </div>
 
         <SaisCurvedPanel
           className="intro-feature__shape"
@@ -97,16 +85,9 @@ export function IntroFeatureSection({ section }: IntroFeatureSectionProps) {
           flipped
         >
           <div className="intro-feature__content">
-            <motion.h2
-              id="intro-feature-title"
-              className="intro-feature__title"
-              initial={prefersReducedMotion ? false : { y: 18, opacity: 0 }}
-              whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1 }}
-              viewport={{ once: true, amount: 0.24 }}
-              transition={{ duration: 0.62, ease: [0.16, 1, 0.3, 1] }}
-            >
+            <h2 id="intro-feature-title" className="intro-feature__title">
               {title}
-            </motion.h2>
+            </h2>
             <RichText blocks={description} className="intro-feature__description" />
           </div>
           <div className="intro-feature__mobile-divider" aria-hidden="true">
@@ -118,7 +99,7 @@ export function IntroFeatureSection({ section }: IntroFeatureSectionProps) {
             </svg>
           </div>
         </SaisCurvedPanel>
-      </motion.div>
+      </Reveal>
     </section>
   );
 }

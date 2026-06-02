@@ -1,10 +1,7 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
-import { memo } from "react";
+import { Reveal } from "@/components/ui/reveal";
 import type { FeatureCard } from "@/types/sanity";
 
 type QuickLinksCardsProps = {
@@ -37,9 +34,7 @@ function QuickLinksCurveMask() {
   );
 }
 
-export const QuickLinksCards = memo(function QuickLinksCards({ cards = [] }: QuickLinksCardsProps) {
-  const prefersReducedMotion = useReducedMotion();
-
+export function QuickLinksCards({ cards = [] }: QuickLinksCardsProps) {
   return (
     <div className="quick-links__grid">
       {cards.map((card, index) => {
@@ -47,17 +42,12 @@ export const QuickLinksCards = memo(function QuickLinksCards({ cards = [] }: Qui
         const href = card.cta?.href || "#";
 
         return (
-          <motion.article
+          <Reveal
+            as="article"
             key={`${card.title}-${index}`}
             className={`quick-links-card quick-links-card--${theme}`}
-            initial={prefersReducedMotion ? false : { y: 22, opacity: 0 }}
-            whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1 }}
-            viewport={{ once: true, amount: 0.18 }}
-            transition={{
-              duration: 0.74,
-              delay: prefersReducedMotion ? 0 : index * 0.08,
-              ease: [0.16, 1, 0.3, 1],
-            }}
+            delay={index * 80}
+            threshold={0.18}
           >
             <div className="quick-links-card__copy">
               <h3 className="quick-links-card__title">{card.title}</h3>
@@ -91,9 +81,9 @@ export const QuickLinksCards = memo(function QuickLinksCards({ cards = [] }: Qui
                 <div className="quick-links-card__fallback">{card.title}</div>
               )}
             </div>
-          </motion.article>
+          </Reveal>
         );
       })}
     </div>
   );
-});
+}

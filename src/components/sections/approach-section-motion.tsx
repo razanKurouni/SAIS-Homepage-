@@ -1,9 +1,7 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
+import { Reveal } from "@/components/ui/reveal";
 import type { Cta, SanityImage } from "@/types/sanity";
 
 type ApproachSectionMotionProps = {
@@ -29,7 +27,6 @@ export function ApproachSectionMotion({
   image,
   cta,
 }: ApproachSectionMotionProps) {
-  const prefersReducedMotion = useReducedMotion();
   const copyItems = [lead, ...paragraphs].filter(Boolean);
 
   if (!copyItems.length && !image?.url) {
@@ -43,12 +40,9 @@ export function ApproachSectionMotion({
       </h2>
 
       {image?.url && (
-        <motion.div
+        <Reveal
           className="approach-section__image-wrap"
-          initial={prefersReducedMotion ? false : { opacity: 0, x: 28 }}
-          whileInView={prefersReducedMotion ? undefined : { opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.18 }}
-          transition={{ duration: 0.88, ease: [0.16, 1, 0.3, 1] }}
+          threshold={0.18}
         >
           <Image
             src={image.url}
@@ -58,15 +52,12 @@ export function ApproachSectionMotion({
             quality={82}
             className="approach-section__image"
           />
-        </motion.div>
+        </Reveal>
       )}
 
-      <motion.div
+      <Reveal
         className="approach-section__panel"
-        initial={prefersReducedMotion ? false : { x: -24, opacity: 0 }}
-        whileInView={prefersReducedMotion ? undefined : { x: 0, opacity: 1 }}
-        viewport={{ once: true, amount: 0.18 }}
-        transition={{ duration: 0.86, ease: [0.16, 1, 0.3, 1] }}
+        threshold={0.18}
       >
         <svg
           className="approach-section__shape"
@@ -90,42 +81,27 @@ export function ApproachSectionMotion({
 
         <div className="approach-section__content">
           {lead && (
-            <motion.p
-              className="approach-section__lead"
-              initial={prefersReducedMotion ? false : { y: 24, opacity: 0 }}
-              whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1 }}
-              viewport={{ once: true, amount: 0.24 }}
-              transition={{ duration: 0.74, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-            >
+            <p className="approach-section__lead">
               {lead}
-            </motion.p>
+            </p>
           )}
 
           <div className="approach-section__paragraphs">
             {paragraphs.map((paragraph, index) => (
-              <motion.p
+              <Reveal
+                as="p"
+                className="approach-section__paragraph"
                 key={paragraph}
-                initial={prefersReducedMotion ? false : { y: 28, opacity: 0 }}
-                whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1 }}
-                viewport={{ once: true, amount: 0.22 }}
-                transition={{
-                  duration: 0.72,
-                  delay: prefersReducedMotion ? 0 : 0.2 + index * 0.1,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
+                delay={160 + index * 70}
+                threshold={0.22}
               >
                 {paragraph}
-              </motion.p>
+              </Reveal>
             ))}
           </div>
 
           {cta && (
-            <motion.div
-              initial={prefersReducedMotion ? false : { y: 20, opacity: 0 }}
-              whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1 }}
-              viewport={{ once: true, amount: 0.22 }}
-              transition={{ duration: 0.7, delay: 0.44, ease: [0.16, 1, 0.3, 1] }}
-            >
+            <Reveal delay={320} threshold={0.22}>
               <Link
                 href={cta.href || "#"}
                 target={cta.openInNewTab ? "_blank" : undefined}
@@ -135,10 +111,10 @@ export function ApproachSectionMotion({
                 <span>{cta.label}</span>
                 <ArrowBadge />
               </Link>
-            </motion.div>
+            </Reveal>
           )}
         </div>
-      </motion.div>
+      </Reveal>
     </section>
   );
 }

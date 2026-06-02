@@ -1,9 +1,6 @@
-"use client";
-
-import { memo } from "react";
 import { Instagram } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
 import { CmsImage } from "@/components/ui/cms-image";
+import { Reveal } from "@/components/ui/reveal";
 import { FacebookBrandIcon, TwitterBrandIcon } from "@/components/ui/social-icons";
 import type { HomepageData } from "@/types/sanity";
 
@@ -13,9 +10,7 @@ type SocialSectionProps = {
 
 const icons = [Instagram, FacebookBrandIcon, TwitterBrandIcon];
 
-export const SocialSection = memo(function SocialSection({ section }: SocialSectionProps) {
-  const prefersReducedMotion = useReducedMotion();
-
+export function SocialSection({ section }: SocialSectionProps) {
   if (!section) {
     return null;
   }
@@ -30,36 +25,27 @@ export const SocialSection = memo(function SocialSection({ section }: SocialSect
 
           <div className="social-feed__links" aria-label="Social media links">
             {icons.map((Icon, index) => (
-              <motion.a
+              <a
                 key={index}
                 href={section.socialLinks?.[index]?.href || "#"}
                 target={section.socialLinks?.[index]?.openInNewTab ? "_blank" : undefined}
                 rel={section.socialLinks?.[index]?.openInNewTab ? "noreferrer" : undefined}
                 aria-label={section.socialLinks?.[index]?.label || "Social link"}
                 className="social-feed__link"
-                whileHover={prefersReducedMotion ? undefined : { y: -3, scale: 1.06 }}
-                whileTap={prefersReducedMotion ? undefined : { scale: 0.96 }}
-                transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
               >
                 <Icon aria-hidden="true" />
-              </motion.a>
+              </a>
             ))}
           </div>
         </div>
 
         <div className="social-feed__grid">
           {(section.images || []).slice(0, 4).map((image, index) => (
-            <motion.div
+            <Reveal
               key={`${image.url || "social"}-${index}`}
               className="social-feed__item"
-              initial={prefersReducedMotion ? false : { y: 20, opacity: 0 }}
-              whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{
-                duration: 0.72,
-                delay: prefersReducedMotion ? 0 : index * 0.08,
-                ease: [0.16, 1, 0.3, 1],
-              }}
+              delay={index * 80}
+              threshold={0.2}
             >
               <CmsImage
                 image={image}
@@ -68,10 +54,10 @@ export const SocialSection = memo(function SocialSection({ section }: SocialSect
                 imageClassName="social-feed__image"
                 sizes="(max-width: 767px) 88vw, (max-width: 1024px) 42vw, 270px"
               />
-            </motion.div>
+            </Reveal>
           ))}
         </div>
       </div>
     </section>
   );
-});
+}

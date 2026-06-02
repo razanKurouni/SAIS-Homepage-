@@ -102,13 +102,11 @@ function linksFromLabels(labels: string[] = []): LinkField[] {
 export function mapLegacySectionsToHomepage(sections: LegacyHomeSection[]): HomepageData {
   const hero = sectionByOrder(sections, 1);
   const intro = sectionByOrder(sections, 2);
-  const approach = sectionByOrder(sections, 3);
   const accreditations = sectionByOrder(sections, 4);
   const why = sectionByOrder(sections, 5);
   const facts = sectionByOrder(sections, 6);
   const quickLinks = sectionByOrder(sections, 7);
   const phases = sectionByOrder(sections, 8);
-  const admissions = sectionByOrder(sections, 9);
   const tour = sectionByOrder(sections, 10);
   const news = sectionByOrder(sections, 11);
   const instagram = sectionByOrder(sections, 12);

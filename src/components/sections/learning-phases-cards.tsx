@@ -1,10 +1,7 @@
-"use client";
-
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
-import { memo } from "react";
 import { CmsImage } from "@/components/ui/cms-image";
+import { Reveal } from "@/components/ui/reveal";
 import type { FeatureCard } from "@/types/sanity";
 
 type LearningPhasesCardsProps = {
@@ -21,9 +18,7 @@ function ArrowBadge() {
   );
 }
 
-export const LearningPhasesCards = memo(function LearningPhasesCards({ cards = [] }: LearningPhasesCardsProps) {
-  const prefersReducedMotion = useReducedMotion();
-
+export function LearningPhasesCards({ cards = [] }: LearningPhasesCardsProps) {
   return (
     <div className="learning-phases__grid">
       {cards.map((card, index) => {
@@ -31,17 +26,12 @@ export const LearningPhasesCards = memo(function LearningPhasesCards({ cards = [
         const href = card.cta?.href || "#";
 
         return (
-          <motion.article
+          <Reveal
+            as="article"
             key={`${card.title}-${index}`}
             className={`learning-phase-card learning-phase-card--${theme}`}
-            initial={prefersReducedMotion ? false : { y: 22, opacity: 0 }}
-            whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1 }}
-            viewport={{ once: true, amount: 0.16 }}
-            transition={{
-              duration: 0.72,
-              delay: prefersReducedMotion ? 0 : index * 0.09,
-              ease: [0.16, 1, 0.3, 1],
-            }}
+            delay={index * 90}
+            threshold={0.16}
           >
             <CmsImage
               image={card.image}
@@ -65,9 +55,9 @@ export const LearningPhasesCards = memo(function LearningPhasesCards({ cards = [
                 <ArrowBadge />
               </Link>
             </div>
-          </motion.article>
+          </Reveal>
         );
       })}
     </div>
   );
-});
+}

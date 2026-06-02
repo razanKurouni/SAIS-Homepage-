@@ -1,10 +1,7 @@
-"use client";
-
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
-import { memo } from "react";
 import { CmsImage } from "@/components/ui/cms-image";
+import { Reveal } from "@/components/ui/reveal";
 import { SaisCurvedPanel } from "@/components/ui/sais-curved-panel";
 import type { FeatureCard } from "@/types/sanity";
 
@@ -31,9 +28,7 @@ function ArrowBadge() {
   );
 }
 
-export const TourActionCards = memo(function TourActionCards({ cards = [] }: TourActionCardsProps) {
-  const prefersReducedMotion = useReducedMotion();
-
+export function TourActionCards({ cards = [] }: TourActionCardsProps) {
   return (
     <div className="tour-actions__grid">
       {cards.map((card, index) => {
@@ -42,17 +37,12 @@ export const TourActionCards = memo(function TourActionCards({ cards = [] }: Tou
         const title = card.title || (index % 2 === 0 ? "Book a Tour" : "Start Your Application");
 
         return (
-          <motion.article
+          <Reveal
+            as="article"
             key={`${title}-${index}`}
             className={`tour-action-card tour-action-card--${tone}`}
-            initial={prefersReducedMotion ? false : { y: 24, opacity: 0 }}
-            whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1 }}
-            viewport={{ once: true, amount: 0.16 }}
-            transition={{
-              duration: 0.82,
-              delay: prefersReducedMotion ? 0 : index * 0.12,
-              ease: [0.16, 1, 0.3, 1],
-            }}
+            delay={index * 120}
+            threshold={0.16}
           >
             <CmsImage
               image={card.image}
@@ -83,9 +73,9 @@ export const TourActionCards = memo(function TourActionCards({ cards = [] }: Tou
                 </Link>
               )}
             </SaisCurvedPanel>
-          </motion.article>
+          </Reveal>
         );
       })}
     </div>
   );
-});
+}

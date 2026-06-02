@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "Local SAIS navigation rebuild preview.",
 };
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 export default async function Page() {
   const data = await getHomepage();

@@ -3,10 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CircleUserRound, Instagram, Search, X } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useMemo, useState, type CSSProperties } from "react";
 import { FacebookBrandIcon, TwitterBrandIcon } from "@/components/ui/social-icons";
 import { SaisWaveMark } from "@/components/ui/sais-wave-mark";
+import { useBodyScrollLock } from "@/hooks/use-body-scroll-lock";
+import { useScrollThreshold } from "@/hooks/use-scroll-threshold";
 import type { Cta, HeaderSettings, LinkField } from "@/types/sanity";
 
 type SiteHeaderProps = {
@@ -46,7 +47,7 @@ function createInitialExpandedSections(): ExpandedSections {
 }
 
 export function SiteHeader({ settings, links = [] }: SiteHeaderProps) {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const isScrolled = useScrollThreshold(18);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [expandedSections, setExpandedSections] = useState<ExpandedSections>(createInitialExpandedSections);
@@ -71,6 +72,7 @@ export function SiteHeader({ settings, links = [] }: SiteHeaderProps) {
     [baseMenuSections, searchQuery],
   );
   const hasSearchQuery = searchQuery.trim().length > 0;
+  useBodyScrollLock(isMenuOpen);
 
   const closeMenu = () => {
     setIsMenuOpen(false);
@@ -97,28 +99,6 @@ export function SiteHeader({ settings, links = [] }: SiteHeaderProps) {
       [sectionTitle]: !current[sectionTitle],
     }));
   };
-
-  useEffect(() => {
-    document.body.style.overflow = isMenuOpen ? "hidden" : "";
-
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isMenuOpen]);
-
-  useEffect(() => {
-    const updateHeaderState = () => {
-      const nextIsScrolled = window.scrollY > 18;
-      setIsScrolled((current) => (current === nextIsScrolled ? current : nextIsScrolled));
-    };
-
-    updateHeaderState();
-    window.addEventListener("scroll", updateHeaderState, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", updateHeaderState);
-    };
-  }, []);
 
   return (
     <header className={`site-header ${isScrolled ? "is-scrolled" : ""}`}>
@@ -150,96 +130,85 @@ export function SiteHeader({ settings, links = [] }: SiteHeaderProps) {
         </div>
       </div>
 
-      <AnimatePresence>
-        {isMenuOpen ? (
-          <motion.div
-            className="sais-menu-panel is-open"
-            aria-hidden={false}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <button
-              type="button"
-              aria-label="Close menu"
-              className="sais-menu-panel__scrim"
-              onClick={closeMenu}
-            />
+      <div
+        className={`sais-menu-panel ${isMenuOpen ? "is-open" : ""}`}
+        aria-hidden={!isMenuOpen}
+        inert={!isMenuOpen}
+      >
+        <button
+          type="button"
+          aria-label="Close menu"
+          className="sais-menu-panel__scrim"
+          onClick={closeMenu}
+        />
 
-            <motion.aside
-              className="sais-menu-drawer"
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ duration: 0.48, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="sais-menu-drawer__inner">
-                <div className="sais-menu-drawer__top">
-                  <div className="sais-menu-drawer__actions">
-                    <HeaderAction cta={bookTourButton} fallbackLabel="Book a Tour" fallbackHref="#tour" />
-                    <HeaderAction cta={applyNowButton} fallbackLabel="Apply Now" fallbackHref="#apply" />
-                    
-                    <IconLink href="#portal" label="Parent portal" />
-                    <MenuButton
-                      icon={menuIcon}
-                      isOpen={isMenuOpen}
-                      onClick={closeMenu}
-                    />
-                  </div>
+        <aside className="sais-menu-drawer">
+          <div className="sais-menu-drawer__inner">
+            <div className="sais-menu-drawer__top">
+              <div className="sais-menu-drawer__actions">
+                <HeaderAction cta={bookTourButton} fallbackLabel="Book a Tour" fallbackHref="#tour" />
+                <HeaderAction cta={applyNowButton} fallbackLabel="Apply Now" fallbackHref="#apply" />
 
-                  <form
-                    className="sais-menu-search"
-                    aria-label="Search site"
-                    onSubmit={(event) => {
-                      event.preventDefault();
-                    }}
+                <IconLink href="#portal" label="Parent portal" />
+                <MenuButton
+                  icon={menuIcon}
+                  isOpen={isMenuOpen}
+                  onClick={closeMenu}
+                />
+              </div>
+
+              <form
+                className="sais-menu-search"
+                aria-label="Search site"
+                onSubmit={(event) => {
+                  event.preventDefault();
+                }}
+              >
+                <span className="sr-only">Search</span>
+                <input
+                  type="search"
+                  value={searchQuery}
+                  onChange={(event) => setSearchQuery(event.target.value)}
+                  placeholder="Search"
+                />
+                <button type="submit" className="sais-menu-search__icon" aria-label="Search menu">
+                  <Search size={20} strokeWidth={2.2} />
+                </button>
+              </form>
+            </div>
+
+            <div className="sais-menu-drawer__sections">
+              {menuSections.map((section, sectionIndex) => {
+                const sectionIsExpanded =
+                  hasSearchQuery || (expandedSections[section.title] ?? false);
+                const sectionStyle = {
+                  "--sais-menu-section-delay": `${60 + sectionIndex * 50}ms`,
+                } as CSSProperties;
+
+                return (
+                  <div
+                    key={section.title}
+                    className="sais-menu-section"
+                    style={sectionStyle}
                   >
-                    <span className="sr-only">Search</span>
-                    <input
-                      type="search"
-                      value={searchQuery}
-                      onChange={(event) => setSearchQuery(event.target.value)}
-                      placeholder="Search"
-                    />
-                    <button type="submit" className="sais-menu-search__icon" aria-label="Search menu">
-                      <Search size={20} strokeWidth={2.2} />
-                    </button>
-                  </form>
-                </div>
-
-                <div className="sais-menu-drawer__sections">
-                  {menuSections.map((section, sectionIndex) => (
-                    <motion.div
-                      key={section.title}
-                      className="sais-menu-section"
-                      initial={{ opacity: 0, x: 28 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: 20 }}
-                      transition={{
-                        duration: 0.42,
-                        delay: 0.06 + sectionIndex * 0.05,
-                        ease: [0.16, 1, 0.3, 1],
-                      }}
-                    >
-                      {section.items?.length ? (
-                        <button
-                          type="button"
-                          className="sais-menu-section__head sais-menu-section__head--button"
-                          onClick={() => !hasSearchQuery && toggleExpandedSection(section.title)}
-                          aria-expanded={hasSearchQuery ? true : (expandedSections[section.title] ?? false)}
+                    {section.items?.length ? (
+                      <button
+                        type="button"
+                        className="sais-menu-section__head sais-menu-section__head--button"
+                        onClick={() => !hasSearchQuery && toggleExpandedSection(section.title)}
+                        aria-expanded={sectionIsExpanded}
+                      >
+                        <span className="sais-menu-section__title">{section.title}</span>
+                        <span
+                          className={`sais-menu-section__toggle ${
+                            sectionIsExpanded ? "is-open" : ""
+                          }`}
+                          aria-hidden="true"
                         >
-                          <span className="sais-menu-section__title">{section.title}</span>
-                          <span
-                            className={`sais-menu-section__toggle ${
-                              hasSearchQuery || (expandedSections[section.title] ?? false) ? "is-open" : ""
-                            }`}
-                            aria-hidden="true"
-                          >
-                            <DrawerWaveAccent />
-                          </span>
-                        </button>
-                      ) : (
+                          <DrawerWaveAccent />
+                        </span>
+                      </button>
+                    ) : (
                       <div className="sais-menu-section__head">
                         <Link
                           href={section.href || "#"}
@@ -249,51 +218,47 @@ export function SiteHeader({ settings, links = [] }: SiteHeaderProps) {
                           {section.title}
                         </Link>
                       </div>
-                      )}
+                    )}
 
-                      <AnimatePresence initial={false}>
-                        {section.items?.length && (hasSearchQuery || (expandedSections[section.title] ?? false)) ? (
-                          <motion.div
-                            className="sais-menu-section__items"
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-                          >
-                            <div className="sais-menu-section__items-inner">
-                              {section.items.map((item) => (
-                                <Link
-                                  key={`${section.title}-${item.label}`}
-                                  href={item.href || "#"}
-                                  className="sais-menu-subitem"
-                                  onClick={closeMenu}
-                                >
-                                  <MenuSubitemAccent />
-                                  <span>{item.label}</span>
-                                </Link>
-                              ))}
-                            </div>
-                          </motion.div>
-                        ) : null}
-                      </AnimatePresence>
-                    </motion.div>
-                  ))}
-                </div>
-
-                <div className="sais-menu-drawer__footer">
-                  <div className="sais-menu-drawer__socials">
-                    {socialLinks.map(({ label, href, icon: Icon }) => (
-                      <Link key={label} href={href} aria-label={label} className="sais-menu-social">
-                        <Icon size={20} strokeWidth={2.15} />
-                      </Link>
-                    ))}
+                    {section.items?.length ? (
+                      <div
+                        className={`sais-menu-section__items ${
+                          sectionIsExpanded ? "is-open" : ""
+                        }`}
+                        aria-hidden={!sectionIsExpanded}
+                      >
+                        <div className="sais-menu-section__items-inner">
+                          {section.items.map((item) => (
+                            <Link
+                              key={`${section.title}-${item.label}`}
+                              href={item.href || "#"}
+                              className="sais-menu-subitem"
+                              onClick={closeMenu}
+                            >
+                              <MenuSubitemAccent />
+                              <span>{item.label}</span>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    ) : null}
                   </div>
-                </div>
+                );
+              })}
+            </div>
+
+            <div className="sais-menu-drawer__footer">
+              <div className="sais-menu-drawer__socials">
+                {socialLinks.map(({ label, href, icon: Icon }) => (
+                  <Link key={label} href={href} aria-label={label} className="sais-menu-social">
+                    <Icon size={20} strokeWidth={2.15} />
+                  </Link>
+                ))}
               </div>
-            </motion.aside>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
+            </div>
+          </div>
+        </aside>
+      </div>
     </header>
   );
 }

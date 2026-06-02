@@ -1,10 +1,7 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
-import { memo } from "react";
+import { Reveal } from "@/components/ui/reveal";
 import type { FeatureCard } from "@/types/sanity";
 
 type LatestNewsCardsProps = {
@@ -19,26 +16,19 @@ function NewsArrow() {
   );
 }
 
-export const LatestNewsCards = memo(function LatestNewsCards({ posts = [] }: LatestNewsCardsProps) {
-  const prefersReducedMotion = useReducedMotion();
-
+export function LatestNewsCards({ posts = [] }: LatestNewsCardsProps) {
   return (
     <div className="latest-news__grid">
       {posts.map((post, index) => {
         const href = post.cta?.href || "#";
 
         return (
-          <motion.article
+          <Reveal
+            as="article"
             key={`${post.title}-${index}`}
             className="latest-news-card"
-            initial={prefersReducedMotion ? false : { y: 20, opacity: 0 }}
-            whileInView={prefersReducedMotion ? undefined : { y: 0, opacity: 1 }}
-            viewport={{ once: true, amount: 0.16 }}
-            transition={{
-              duration: 0.72,
-              delay: prefersReducedMotion ? 0 : index * 0.09,
-              ease: [0.16, 1, 0.3, 1],
-            }}
+            delay={index * 90}
+            threshold={0.16}
           >
             <div className="latest-news-card__image-wrap">
               {post.image?.url ? (
@@ -69,9 +59,9 @@ export const LatestNewsCards = memo(function LatestNewsCards({ posts = [] }: Lat
                 <NewsArrow />
               </Link>
             </div>
-          </motion.article>
+          </Reveal>
         );
       })}
     </div>
   );
-});
+}
