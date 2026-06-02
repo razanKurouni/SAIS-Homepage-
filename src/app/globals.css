@@ -450,67 +450,85 @@ button[aria-label="Open Next.js Dev Tools"] {
 }
 
 .about-hero {
-  background: #ffffff;
-  color: var(--sais-primary);
-  padding: clamp(54px, 6vw, 86px) 0 clamp(48px, 6vw, 78px);
+  --about-hero-height: clamp(350px, 34vw, 520px);
+  position: relative;
+  overflow: hidden;
+  min-height: var(--about-hero-height);
+  border-top: 6px solid #d97252;
+  background: var(--sais-primary);
+  color: #ffffff;
+  padding: 0;
 }
 
 .about-hero__inner {
+  position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.82fr);
-  align-items: center;
-  gap: clamp(34px, 5vw, 76px);
-  width: 80%;
-  max-width: 1180px;
+  grid-template-columns: minmax(320px, 42%) minmax(0, 58%);
+  width: 100%;
+  min-height: var(--about-hero-height);
   margin: 0 auto;
 }
 
 .about-hero__copy {
-  max-width: 640px;
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: none;
+  background: var(--sais-primary);
+  padding: clamp(48px, 6vw, 88px) clamp(32px, 6vw, 108px);
 }
 
 .about-hero__eyebrow {
-  margin: 0 0 18px;
-  color: var(--sais-accent);
-  font-size: 0.86rem;
+  margin: 0 0 16px;
+  color: #ffffff;
+  font-size: 0.92rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.02em;
   line-height: 1;
-  text-transform: uppercase;
 }
 
 .about-hero__title {
+  max-width: 560px;
   margin: 0;
-  color: var(--sais-primary);
-  font-size: clamp(2rem, 4.2vw, 4.4rem);
-  font-weight: 500;
-  letter-spacing: -0.035em;
-  line-height: 1.04;
+  color: #ffffff;
+  font-size: clamp(2rem, 3.05vw, 3.25rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.34;
 }
 
-.about-hero__description {
-  margin-top: 26px;
-  color: #5f686f;
-  font-size: clamp(0.98rem, 1.25vw, 1.08rem);
-  line-height: 1.7;
-  letter-spacing: 0.01em;
-}
-
-.about-hero__description p {
-  margin: 0;
-}
-
-.about-hero__description p + p {
-  margin-top: 1.15rem;
+.about-hero__curve-mask,
+.about-hero__wave {
+  pointer-events: none;
+  position: absolute;
+  top: -12%;
+  left: calc(42% - 62px);
+  width: 142px;
+  height: 124%;
+  display: block;
 }
 
 .about-hero__media {
-  position: relative;
-  min-height: clamp(360px, 42vw, 560px);
+  position: absolute;
+  inset: 0 0 0 40%;
   overflow: hidden;
-  border-radius: 20px;
   background: #d8e7ef;
-  box-shadow: 0 24px 60px rgba(11, 47, 70, 0.14);
+  clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%, 7% 80%, 0 55%, 7% 22%);
+}
+
+.about-hero__curve-mask {
+  z-index: 3;
+  fill: var(--sais-primary);
+}
+
+.about-hero__wave {
+  z-index: 4;
+  fill: none;
+  stroke: var(--sais-accent);
+  stroke-linecap: round;
+  stroke-width: 34px;
 }
 
 .about-hero__image {
@@ -4395,12 +4413,30 @@ button[aria-label="Open Next.js Dev Tools"] {
 }
 
 @media (max-width: 920px) {
+  .about-hero {
+    min-height: 0;
+  }
+
   .about-hero__inner {
     grid-template-columns: 1fr;
+    min-height: 0;
   }
 
   .about-hero__copy {
+    min-height: 300px;
     max-width: none;
+  }
+
+  .about-hero__curve-mask,
+  .about-hero__wave {
+    display: none;
+  }
+
+  .about-hero__media {
+    position: relative;
+    inset: auto;
+    min-height: clamp(300px, 54vw, 460px);
+    clip-path: none;
   }
 
   .about-highlights__inner {
@@ -4432,21 +4468,30 @@ button[aria-label="Open Next.js Dev Tools"] {
   }
 
   .about-hero {
-    padding: 36px 0 42px;
+    padding: 0;
   }
 
-  .about-hero__inner,
   .about-highlights__inner {
     width: calc(100% - 32px);
   }
 
+  .about-hero__inner {
+    width: 100%;
+  }
+
+  .about-hero__copy {
+    min-height: 260px;
+    padding: 38px 24px 42px;
+  }
+
   .about-hero__title {
-    font-size: clamp(2rem, 10vw, 3rem);
+    max-width: 100%;
+    font-size: clamp(1.8rem, 8vw, 2.6rem);
+    line-height: 1.25;
   }
 
   .about-hero__media {
-    min-height: 340px;
-    border-radius: 16px;
+    min-height: 320px;
   }
 }
 
@@ -4466,10 +4511,18 @@ button[aria-label="Open Next.js Dev Tools"] {
     padding-top: 72px;
   }
 
-  .about-hero__description {
-    margin-top: 20px;
-    font-size: 0.96rem;
-    line-height: 1.62;
+  .about-hero__copy {
+    min-height: 240px;
+    padding: 34px 20px 38px;
+  }
+
+  .about-hero__eyebrow {
+    margin-bottom: 14px;
+    font-size: 0.86rem;
+  }
+
+  .about-hero__media {
+    min-height: 285px;
   }
 
   .about-highlight-card {

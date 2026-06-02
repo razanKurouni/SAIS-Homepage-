@@ -44,6 +44,24 @@ export const homepage = {
         },
       ],
     },
+    {
+      name: "aboutPage",
+      title: "About Us Page",
+      type: "object",
+      description: "Editable content for the About Us page.",
+      fields: [
+        {
+          name: "hero",
+          title: "Hero",
+          type: "object",
+          description: "Change the About Us hero title and building image.",
+          fields: [
+            { name: "heading", title: "Hero Text", type: "sectionHeading" },
+            { name: "image", title: "Hero Image", type: "imageWithAlt" },
+          ],
+        },
+      ],
+    },
     { name: "intro", title: "Intro Section", type: "imageTextSection" },
     {
       name: "whyDubai",

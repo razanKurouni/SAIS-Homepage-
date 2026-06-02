@@ -115,6 +115,12 @@ export type HomepageData = {
     text?: string;
     ctas?: Cta[];
   };
+  aboutPage?: {
+    hero?: {
+      heading?: SectionHeading;
+      image?: SanityImage;
+    };
+  };
   intro?: ImageTextSection;
   whyDubai?: {
     heading: SectionHeading;
