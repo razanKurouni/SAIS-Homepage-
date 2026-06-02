@@ -34,7 +34,7 @@ export function PageHero({
   eyebrow,
   titleId,
   className = "",
-  imageSizes = "(max-width: 767px) 100vw, 62vw",
+  imageSizes = "(max-width: 920px) 100vw, 60vw",
   imagePosition = "center",
   imageWidth = "60%",
   priority = false,
