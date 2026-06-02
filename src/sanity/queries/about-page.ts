@@ -12,7 +12,7 @@ const headingProjection = `{
   description
 }`;
 
-export const aboutPageQuery = `*[_type == "aboutPage"][0] {
+export const aboutPageQuery = `*[_type == "aboutPage" && _id == "about-page"][0] {
   seo {
     title,
     description,
