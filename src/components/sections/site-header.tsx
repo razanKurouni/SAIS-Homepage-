@@ -65,7 +65,12 @@ export function SiteHeader({
   const scrolledLogo = settings?.scrolledLogo;
   const shouldUseScrolledLogo = !isSolid && isScrolled;
   const activeLogo =
-    shouldUseScrolledLogo
+    isSolid
+      ? {
+          url: "/sais-logo-lockup-solid.png",
+          alt: "Sharjah American International School Dubai",
+        }
+      : shouldUseScrolledLogo
       ? scrolledLogo?.url
         ? scrolledLogo
         : {

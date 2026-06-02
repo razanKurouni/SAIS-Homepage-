@@ -403,7 +403,7 @@ button[aria-label="Open Next.js Dev Tools"] {
 
 .site-header--solid .site-header__logo,
 .site-header--solid.is-scrolled .site-header__logo {
-  width: clamp(220px, 23vw, 284px);
+  width: clamp(260px, 24vw, 330px);
 }
 
 .site-header--solid .header-action {
