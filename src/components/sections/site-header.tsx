@@ -285,8 +285,8 @@ function buildMenuSections(links: LinkField[]): MenuSection[] {
   return [
     {
       title: "About",
-      href: mapHref("About", "/about-us"),
-      items: [{ label: "Meet Our Team", href: "/about-us#about-team" }],
+      href: mapHref("About", "/about-us#about"),
+      items: [{ label: "About", href: "/about-us#about" }],
     },
     {
       title: "Academics",

@@ -258,10 +258,25 @@ button[aria-label="Open Next.js Dev Tools"] {
   }
 }
 
+@keyframes page-hero-line-reveal {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .home-hero__scroll-motion,
   .home-hero__entry-motion {
     animation: none;
+  }
+
+  .page-hero::before {
+    animation: none;
+    transform: scaleX(1);
   }
 }
 
@@ -456,21 +471,36 @@ button[aria-label="Open Next.js Dev Tools"] {
   --page-hero-wave-color: var(--sais-accent);
   --page-hero-text-color: #ffffff;
   --page-hero-image-position: center;
+  --page-hero-image-width: 60%;
 
   position: relative;
   isolation: isolate;
   overflow: hidden;
   min-height: var(--page-hero-height);
-  border-top: 6px solid var(--page-hero-top-line-color);
   background: var(--page-hero-panel-bg);
   color: var(--page-hero-text-color);
   padding: 0;
 }
 
+.page-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 5;
+  width: 100%;
+  height: 6px;
+  background: var(--page-hero-top-line-color);
+  transform: scaleX(0);
+  transform-origin: right center;
+  animation: page-hero-line-reveal 900ms cubic-bezier(0.16, 1, 0.3, 1) 120ms forwards;
+}
+
 .page-hero__media {
   position: absolute;
-  inset: 0;
+  inset: 0 0 0 auto;
   z-index: 0;
+  width: var(--page-hero-image-width);
   overflow: hidden;
   background: #d8e7ef;
 }
@@ -532,6 +562,67 @@ button[aria-label="Open Next.js Dev Tools"] {
 .about-highlights {
   background: #f4f6f7;
   padding: clamp(42px, 5vw, 70px) 0 clamp(50px, 6vw, 84px);
+}
+
+.about-intro-section {
+  background: #ffffff;
+  color: var(--sais-primary);
+  padding: clamp(50px, 5vw, 76px) 0 clamp(60px, 6vw, 92px);
+}
+
+.about-intro-section__inner {
+  width: min(80%, 1180px);
+  margin: 0 auto;
+}
+
+.about-intro-section__lead {
+  max-width: 980px;
+  margin: 0 auto;
+  color: var(--sais-primary);
+  text-align: center;
+  font-size: clamp(1.25rem, 1.8vw, 1.78rem);
+  font-weight: 400;
+  line-height: 1.18;
+}
+
+.about-intro-section__lead-accent,
+.about-intro-section__lead-subtitle {
+  color: var(--sais-accent);
+}
+
+.about-intro-section__content {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.92fr) minmax(0, 1.08fr);
+  align-items: center;
+  gap: clamp(36px, 5vw, 70px);
+  margin-top: clamp(46px, 5.4vw, 76px);
+}
+
+.about-intro-section__media {
+  position: relative;
+  min-height: clamp(320px, 28vw, 430px);
+  overflow: hidden;
+  border-radius: 18px;
+  background: #e9eaec;
+}
+
+.about-intro-section__image {
+  object-fit: cover;
+  object-position: var(--about-intro-image-position, center);
+}
+
+.about-intro-section__body {
+  display: grid;
+  gap: 1.7rem;
+  color: #707278;
+  font-size: 0.88rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.72;
+}
+
+.about-intro-section__body p {
+  margin: 0;
 }
 
 .about-highlights__inner {
@@ -4428,10 +4519,15 @@ button[aria-label="Open Next.js Dev Tools"] {
     order: 2;
     position: relative;
     inset: auto;
+    width: 100%;
     min-height: clamp(300px, 54vw, 460px);
   }
 
   .about-highlights__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .about-intro-section__content {
     grid-template-columns: 1fr;
   }
 }
@@ -4465,6 +4561,24 @@ button[aria-label="Open Next.js Dev Tools"] {
 
   .about-highlights__inner {
     width: calc(100% - 32px);
+  }
+
+  .about-intro-section {
+    padding: 42px 0 56px;
+  }
+
+  .about-intro-section__inner {
+    width: calc(100% - 32px);
+  }
+
+  .about-intro-section__lead {
+    font-size: 1.24rem;
+    line-height: 1.24;
+  }
+
+  .about-intro-section__content {
+    gap: 28px;
+    margin-top: 34px;
   }
 
   .page-hero__copy {
@@ -4511,6 +4625,17 @@ button[aria-label="Open Next.js Dev Tools"] {
 
   .page-hero__media {
     min-height: 285px;
+  }
+
+  .about-intro-section__media {
+    min-height: 270px;
+    border-radius: 16px;
+  }
+
+  .about-intro-section__body {
+    gap: 1.25rem;
+    font-size: 0.86rem;
+    line-height: 1.66;
   }
 
   .about-highlight-card {

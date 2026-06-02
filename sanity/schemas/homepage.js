@@ -44,54 +44,6 @@ export const homepage = {
         },
       ],
     },
-    {
-      name: "aboutPage",
-      title: "About Us Page",
-      type: "object",
-      description: "Editable content for the About Us page.",
-      fields: [
-        {
-          name: "hero",
-          title: "Hero",
-          type: "object",
-          description: "Change the About Us hero title and building image.",
-          fields: [
-            { name: "heading", title: "Hero Text", type: "sectionHeading" },
-            { name: "image", title: "Hero Image", type: "imageWithAlt" },
-            {
-              name: "topLineColor",
-              title: "Top Line Color",
-              type: "string",
-              description: "Optional CSS color, for example #d97252.",
-            },
-            {
-              name: "panelColor",
-              title: "Dark Panel Background Color",
-              type: "string",
-              description: "Optional CSS color for the left hero panel, for example #216B97.",
-            },
-            {
-              name: "waveColor",
-              title: "Curved Line Color",
-              type: "string",
-              description: "Optional CSS color for the curved divider, for example #00A5B2.",
-            },
-            {
-              name: "textColor",
-              title: "Text Color",
-              type: "string",
-              description: "Optional CSS color for the eyebrow and title.",
-            },
-            {
-              name: "imagePosition",
-              title: "Image Position",
-              type: "string",
-              description: "Optional CSS object-position value, for example center, right center, or 60% center.",
-            },
-          ],
-        },
-      ],
-    },
     { name: "intro", title: "Intro Section", type: "imageTextSection" },
     {
       name: "whyDubai",

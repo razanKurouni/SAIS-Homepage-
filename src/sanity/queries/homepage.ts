@@ -51,17 +51,6 @@ export const homepageQuery = `*[_type == "homepage" && _id == "homepage-main"][0
     text,
     ctas[] ${ctaProjection}
   },
-  aboutPage {
-    hero {
-      heading ${headingProjection},
-      image ${imageWithAltProjection},
-      topLineColor,
-      panelColor,
-      waveColor,
-      textColor,
-      imagePosition
-    }
-  },
   intro {
     heading ${headingProjection},
     image ${imageWithAltProjection},

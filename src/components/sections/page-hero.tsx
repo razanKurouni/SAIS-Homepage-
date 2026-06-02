@@ -10,6 +10,7 @@ type PageHeroProps = {
   className?: string;
   imageSizes?: string;
   imagePosition?: string;
+  imageWidth?: string;
   priority?: boolean;
   topLineColor?: string;
   panelColor?: string;
@@ -24,6 +25,7 @@ type PageHeroStyle = CSSProperties & {
   "--page-hero-wave-color"?: string;
   "--page-hero-text-color"?: string;
   "--page-hero-image-position"?: string;
+  "--page-hero-image-width"?: string;
 };
 
 export function PageHero({
@@ -34,6 +36,7 @@ export function PageHero({
   className = "",
   imageSizes = "(max-width: 767px) 100vw, 62vw",
   imagePosition = "center",
+  imageWidth = "60%",
   priority = false,
   topLineColor = "#d97252",
   panelColor = "var(--sais-primary)",
@@ -47,6 +50,7 @@ export function PageHero({
     "--page-hero-wave-color": waveColor,
     "--page-hero-text-color": textColor,
     "--page-hero-image-position": imagePosition,
+    "--page-hero-image-width": imageWidth,
   };
 
   return (

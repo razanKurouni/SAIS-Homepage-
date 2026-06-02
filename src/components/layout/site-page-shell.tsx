@@ -21,7 +21,7 @@ function toHomeAnchor(href?: string) {
 function normalizeInnerNavigation(links?: LinkField[]) {
   return links?.map((link) => {
     if (link.label.trim().toLowerCase().includes("about")) {
-      return { ...link, href: "/about-us" };
+      return { ...link, href: "/about-us#about" };
     }
 
     return { ...link, href: toHomeAnchor(link.href) };

@@ -62,6 +62,30 @@ export type ImageTextSection = {
   theme?: "blue" | "teal" | "light";
 };
 
+export type PageHeroContent = {
+  heading?: SectionHeading;
+  image?: SanityImage;
+  topLineColor?: string;
+  panelColor?: string;
+  waveColor?: string;
+  textColor?: string;
+  imagePosition?: string;
+  imageWidth?: string;
+};
+
+export type AboutIntroSection = {
+  heading?: SectionHeading;
+  image?: SanityImage;
+  body?: PortableTextBlock[];
+  imagePosition?: string;
+};
+
+export type AboutPageData = {
+  seo?: Seo;
+  hero?: PageHeroContent;
+  intro?: AboutIntroSection;
+};
+
 export type LogoItem = {
   name: string;
   image?: SanityImage;
@@ -114,17 +138,6 @@ export type HomepageData = {
   heroContactBand?: {
     text?: string;
     ctas?: Cta[];
-  };
-  aboutPage?: {
-    hero?: {
-      heading?: SectionHeading;
-      image?: SanityImage;
-      topLineColor?: string;
-      panelColor?: string;
-      waveColor?: string;
-      textColor?: string;
-      imagePosition?: string;
-    };
   };
   intro?: ImageTextSection;
   whyDubai?: {

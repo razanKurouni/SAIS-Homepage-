@@ -1,4 +1,5 @@
 import { createClient } from "@sanity/client";
+import { aboutPageQuery } from "@/sanity/queries/about-page";
 import {
   homepageQuery,
   legacyHomeSectionsQuery,
@@ -6,7 +7,7 @@ import {
   siteHeaderQuery,
 } from "@/sanity/queries/homepage";
 import { mapLegacySectionsToHomepage } from "@/lib/content";
-import type { HomepageData, LegacyHomeSection, SiteFooter, SiteHeader } from "@/types/sanity";
+import type { AboutPageData, HomepageData, LegacyHomeSection, SiteFooter, SiteHeader } from "@/types/sanity";
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "uwffig4f";
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
@@ -43,5 +44,14 @@ export async function getHomepage(): Promise<HomepageData> {
     return mapLegacySectionsToHomepage(legacySections || []);
   } catch {
     return mapLegacySectionsToHomepage([]);
+  }
+}
+
+export async function getAboutPage(): Promise<AboutPageData | null> {
+  try {
+    const client = getSanityClient();
+    return await client.fetch<AboutPageData | null>(aboutPageQuery);
+  } catch {
+    return null;
   }
 }
