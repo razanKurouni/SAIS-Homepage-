@@ -4649,3 +4649,116 @@ button[aria-label="Open Next.js Dev Tools"] {
     padding: 24px 20px;
   }
 }
+
+.approach-section--governance {
+  min-height: clamp(430px, 41vw, 560px);
+  background: #707174;
+}
+
+.approach-section--governance .approach-section__panel {
+  z-index: 1;
+  width: min(68vw, 920px);
+  min-width: 760px;
+}
+
+.approach-section--governance .approach-section__image-wrap {
+  position: absolute;
+  top: clamp(42px, 4.2vw, 54px);
+  right: clamp(58px, 8.8vw, 120px);
+  bottom: auto;
+  left: auto;
+  z-index: 2;
+  width: min(40vw, 516px);
+  height: clamp(320px, 34vw, 432px);
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.approach-section--governance .approach-section__image {
+  width: 100% !important;
+  height: 100% !important;
+  right: auto !important;
+  left: 0 !important;
+  object-position: center;
+}
+
+.approach-section--governance .approach-section__content {
+  width: min(510px, 55%);
+  margin-left: clamp(54px, 7.3vw, 94px);
+  color: #ffffff;
+}
+
+.approach-section--governance .approach-section__paragraphs {
+  gap: 1.78rem;
+  margin-top: 0;
+}
+
+.approach-section--governance .approach-section__paragraphs p {
+  max-width: 520px;
+  color: #fffffff5;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  letter-spacing: 0;
+}
+
+@media (max-width: 1120px) {
+  .approach-section--governance .approach-section__image-wrap {
+    right: 38px;
+    width: min(42vw, 470px);
+  }
+
+  .approach-section--governance .approach-section__content {
+    width: min(470px, 54%);
+    margin-left: 48px;
+  }
+}
+
+@media (max-width: 920px) {
+  .approach-section--governance {
+    min-height: 0;
+    background: var(--sais-accent);
+  }
+
+  .approach-section--governance .approach-section__image-wrap {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: calc(100% - 48px);
+    height: clamp(300px, 52vw, 430px);
+    margin: 34px auto 0;
+    border-radius: 18px;
+  }
+
+  .approach-section--governance .approach-section__panel {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .approach-section--governance .approach-section__content {
+    width: auto;
+    margin: 0;
+    padding: 36px 24px 44px;
+  }
+}
+
+@media (max-width: 540px) {
+  .approach-section--governance .approach-section__image-wrap {
+    width: calc(100% - 32px);
+    height: 286px;
+    margin-top: 28px;
+    border-radius: 16px;
+  }
+
+  .approach-section--governance .approach-section__content {
+    padding: 30px 20px 38px;
+  }
+
+  .approach-section--governance .approach-section__paragraphs {
+    gap: 1.35rem;
+  }
+
+  .approach-section--governance .approach-section__paragraphs p {
+    font-size: 0.88rem;
+    line-height: 1.58;
+  }
+}

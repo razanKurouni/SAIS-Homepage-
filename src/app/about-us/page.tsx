@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import { SitePageShell } from "@/components/layout/site-page-shell";
+import { AboutGovernanceSection } from "@/components/sections/about-governance-section";
 import { PageHero } from "@/components/sections/page-hero";
 import { richTextToParagraphs } from "@/lib/content";
 import { getAboutPage, getHomepage } from "@/lib/sanity";
@@ -69,6 +70,7 @@ export default async function AboutUsPage() {
   const [data, aboutPage] = await Promise.all([getHomepage(), getAboutPage()]);
   const aboutHero = aboutPage?.hero;
   const aboutIntro = aboutPage?.intro;
+  const aboutGovernance = aboutPage?.governance;
   const heroEyebrow = aboutHero?.heading?.eyebrow || fallbackHero.eyebrow;
   const heroTitle = aboutHero?.heading?.title || fallbackHero.title;
   const heroImage = aboutHero?.image || fallbackHero.image;
@@ -138,6 +140,8 @@ export default async function AboutUsPage() {
           </div>
         </div>
       </section>
+
+      <AboutGovernanceSection section={aboutGovernance} />
 
       <section className="about-highlights" aria-label="SAIS Dubai highlights">
         <div className="about-highlights__inner">

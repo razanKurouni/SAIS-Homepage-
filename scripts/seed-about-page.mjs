@@ -55,6 +55,12 @@ const introImage = await uploadImage(
   "SAIS Dubai students smiling together on the playground"
 );
 
+const governanceImage = await uploadImage(
+  "/Users/razan/Downloads/_DEL4569.jpg",
+  "about-governance-board.jpg",
+  "SAIS Dubai governance meeting with a staff member seated at a table"
+);
+
 await client.createOrReplace({
   _id: "about-page",
   _type: "aboutPage",
@@ -105,6 +111,27 @@ await client.createOrReplace({
       ),
     ],
   },
+  governance: {
+    _type: "imageTextSection",
+    heading: {
+      _type: "sectionHeading",
+      title: "Governance Board",
+      description: [
+        block(
+          "governance-body-1",
+          "The Governance Board regularly convenes to ensure curriculum coordination, protocols, processes, and practices remain consistent and cohesive across all SAIS institutions. In recent years, the Governance Board has formalized the active involvement of parents in the planning and local governance structure of each campus."
+        ),
+        block(
+          "governance-body-2",
+          "The establishment of a Governance Board - evolving from our previous parent committee - incorporates parents, senior students, and faculty members, enabling each campus to operate efficiently at the local level while maintaining alignment with the overarching governance framework. The SAIS Dubai Governance Board meets regularly to monitor improvement initiatives and celebrate the diversity that defines our vibrant community."
+        ),
+      ],
+    },
+    image: governanceImage,
+    imagePosition: "right",
+    theme: "teal",
+    ctas: [],
+  },
 });
 
-console.log("Seeded about-page with editable hero and intro section content.");
+console.log("Seeded about-page with editable hero, intro, and governance content.");

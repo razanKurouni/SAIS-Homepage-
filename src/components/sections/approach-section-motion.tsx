@@ -5,10 +5,14 @@ import { Reveal } from "@/components/ui/reveal";
 import type { Cta, SanityImage } from "@/types/sanity";
 
 type ApproachSectionMotionProps = {
+  id?: string;
   title?: string;
+  titleId?: string;
+  className?: string;
   lead?: string;
   paragraphs?: string[];
   image?: SanityImage;
+  imageSizes?: string;
   cta?: Cta;
 };
 
@@ -21,10 +25,14 @@ function ArrowBadge() {
 }
 
 export function ApproachSectionMotion({
+  id,
   title = "Educational Approach",
+  titleId = "approach-section-title",
+  className = "",
   lead,
   paragraphs = [],
   image,
+  imageSizes = "100vw",
   cta,
 }: ApproachSectionMotionProps) {
   const copyItems = [lead, ...paragraphs].filter(Boolean);
@@ -34,8 +42,8 @@ export function ApproachSectionMotion({
   }
 
   return (
-    <section className="approach-section" aria-labelledby="approach-section-title">
-      <h2 id="approach-section-title" className="sr-only">
+    <section id={id} className={`approach-section ${className}`.trim()} aria-labelledby={titleId}>
+      <h2 id={titleId} className="sr-only">
         {title}
       </h2>
 
@@ -48,7 +56,7 @@ export function ApproachSectionMotion({
             src={image.url}
             alt={image.alt || title}
             fill
-            sizes="100vw"
+            sizes={imageSizes}
             quality={82}
             className="approach-section__image"
           />

@@ -67,6 +67,12 @@ export const aboutPage = {
         },
       ],
     },
+    {
+      name: "governance",
+      title: "Governance Board Section",
+      type: "imageTextSection",
+      description: "The teal text and image section below the About intro.",
+    },
   ],
   preview: {
     select: {

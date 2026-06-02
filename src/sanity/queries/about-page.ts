@@ -4,6 +4,13 @@ const imageWithAltProjection = `{
   "url": image.asset->url
 }`;
 
+const ctaProjection = `{
+  label,
+  href,
+  openInNewTab,
+  variant
+}`;
+
 const headingProjection = `{
   eyebrow,
   title,
@@ -33,5 +40,12 @@ export const aboutPageQuery = `*[_type == "aboutPage" && _id == "about-page"][0]
     image ${imageWithAltProjection},
     body,
     imagePosition
+  },
+  governance {
+    heading ${headingProjection},
+    image ${imageWithAltProjection},
+    ctas[] ${ctaProjection},
+    imagePosition,
+    theme
   }
 }`;
