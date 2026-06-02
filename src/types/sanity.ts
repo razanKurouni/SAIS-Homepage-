@@ -119,6 +119,11 @@ export type HomepageData = {
     hero?: {
       heading?: SectionHeading;
       image?: SanityImage;
+      topLineColor?: string;
+      panelColor?: string;
+      waveColor?: string;
+      textColor?: string;
+      imagePosition?: string;
     };
   };
   intro?: ImageTextSection;

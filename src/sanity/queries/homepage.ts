@@ -54,7 +54,12 @@ export const homepageQuery = `*[_type == "homepage" && _id == "homepage-main"][0
   aboutPage {
     hero {
       heading ${headingProjection},
-      image ${imageWithAltProjection}
+      image ${imageWithAltProjection},
+      topLineColor,
+      panelColor,
+      waveColor,
+      textColor,
+      imagePosition
     }
   },
   intro {
