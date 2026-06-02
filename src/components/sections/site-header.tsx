@@ -11,8 +11,10 @@ import { useScrollThreshold } from "@/hooks/use-scroll-threshold";
 import type { Cta, HeaderSettings, LinkField } from "@/types/sanity";
 
 type SiteHeaderProps = {
+  brandHref?: string;
   settings?: HeaderSettings;
   links?: LinkField[];
+  variant?: "home" | "solid";
 };
 
 const fallbackLinks: LinkField[] = [
@@ -25,7 +27,7 @@ const fallbackLinks: LinkField[] = [
 
 const fallbackHeader: Required<Pick<HeaderSettings, "bookTourButton" | "applyNowButton">> = {
   bookTourButton: { label: "Book a Tour", href: "#tour" },
-  applyNowButton: { label: "Apply Now", href: "#apply" },
+  applyNowButton: { label: "Apply Now", href: "#apply", variant: "secondary" },
 };
 
 type MenuSection = {
@@ -46,16 +48,24 @@ function createInitialExpandedSections(): ExpandedSections {
   return {};
 }
 
-export function SiteHeader({ settings, links = [] }: SiteHeaderProps) {
+export function SiteHeader({
+  brandHref = "#home",
+  settings,
+  links = [],
+  variant = "home",
+}: SiteHeaderProps) {
+  const isSolid = variant === "solid";
   const isScrolled = useScrollThreshold(18);
+  const isScrolledStyleActive = !isSolid && isScrolled;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [expandedSections, setExpandedSections] = useState<ExpandedSections>(createInitialExpandedSections);
   const navLinks = useMemo(() => (links.length > 0 ? links : fallbackLinks), [links]);
   const logo = settings?.logo;
   const scrolledLogo = settings?.scrolledLogo;
+  const shouldUseScrolledLogo = !isSolid && isScrolled;
   const activeLogo =
-    isScrolled
+    shouldUseScrolledLogo
       ? scrolledLogo?.url
         ? scrolledLogo
         : {
@@ -101,10 +111,10 @@ export function SiteHeader({ settings, links = [] }: SiteHeaderProps) {
   };
 
   return (
-    <header className={`site-header ${isScrolled ? "is-scrolled" : ""}`}>
+    <header className={`site-header site-header--${variant} ${isScrolledStyleActive ? "is-scrolled" : ""}`}>
       <div className="site-header__inner">
         <Link
-          href="#home"
+          href={brandHref}
           className="site-header__brand"
           aria-label="Sharjah American International School Dubai home"
         >
@@ -270,8 +280,8 @@ function buildMenuSections(links: LinkField[]): MenuSection[] {
   return [
     {
       title: "About",
-      href: mapHref("About", "#about"),
-      items: [{ label: "Meet Our Team", href: "#about-team" }],
+      href: mapHref("About", "/about-us"),
+      items: [{ label: "Meet Our Team", href: "/about-us#about-team" }],
     },
     {
       title: "Academics",
