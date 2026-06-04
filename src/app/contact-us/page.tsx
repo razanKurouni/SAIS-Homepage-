@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SitePageShell } from "@/components/layout/site-page-shell";
+import { InnerPageNav } from "@/components/sections/inner-page-nav";
 import { PageHero } from "@/components/sections/page-hero";
 import { getContactPage, getHomepage } from "@/lib/sanity";
 
@@ -16,6 +17,12 @@ const fallbackHero = {
   },
   imageWidth: "60%",
 };
+
+const contactInnerNavItems = [
+  { label: "Latest News", href: "/#latest-news" },
+  { label: "Contact Us", href: "/contact-us" },
+  { label: "Careers", href: "/careers" },
+];
 
 export async function generateMetadata(): Promise<Metadata> {
   const contactPage = await getContactPage();
@@ -52,6 +59,17 @@ export default async function ContactUsPage() {
         textColor={contactHero?.textColor}
         imagePosition={contactHero?.imagePosition}
         imageWidth={contactHero?.imageWidth || fallbackHero.imageWidth}
+      />
+
+      <InnerPageNav
+        items={contactInnerNavItems}
+        activeHref="/contact-us"
+        activeColor="var(--sais-accent)"
+        inactiveColor="#707174"
+        textColor="#ffffff"
+        dividerColor="#ffffff"
+        topLineColor="var(--sais-accent)"
+        ariaLabel="Contact page navigation"
       />
     </SitePageShell>
   );
