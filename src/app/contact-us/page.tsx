@@ -27,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export const revalidate = 300;
+export const dynamic = "force-dynamic";
 
 export default async function ContactUsPage() {
   const [data, contactPage] = await Promise.all([getHomepage(), getContactPage()]);

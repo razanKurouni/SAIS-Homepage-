@@ -25,7 +25,7 @@ function getSanityClient() {
     projectId,
     dataset,
     apiVersion: "2023-01-01",
-    useCdn: true,
+    useCdn: false,
     perspective: "published",
   });
 }
