@@ -599,7 +599,7 @@ button[aria-label="Open Next.js Dev Tools"] {
   z-index: 2;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   width: min(42%, 620px);
   min-height: var(--page-hero-height);
   padding: clamp(48px, 6vw, 88px) clamp(32px, 6vw, 108px);
@@ -2051,6 +2051,7 @@ a.contact-info-section__item-text:hover {
   width: min(660px, 58%);
   padding: 40px 0 40px;
   color: #ffffff;
+  margin-left: 10%;
 }
 
 .approach-section__lead {
