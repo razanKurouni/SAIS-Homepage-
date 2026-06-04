@@ -1,6 +1,6 @@
 import { CmsImage } from "@/components/ui/cms-image";
 import { RichText } from "@/components/ui/rich-text";
-import { CtaLink } from "@/components/ui/cta-link";
+import { CtaList } from "@/components/ui/cta-list";
 import type { HomepageData } from "@/types/sanity";
 
 type HeroSectionProps = {
@@ -27,13 +27,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
           {hero.subtitle && <p className="mb-3 text-sm font-semibold text-white/80">{hero.subtitle}</p>}
           <h1 className="text-3xl font-semibold leading-tight md:text-5xl">{hero.heading}</h1>
           <RichText blocks={hero.description} className="mt-5 space-y-3 text-sm leading-7 text-white/90" />
-          {hero.ctas && hero.ctas.length > 0 && (
-            <div className="mt-6 flex flex-wrap gap-3">
-              {hero.ctas.map((cta) => (
-                <CtaLink key={`${cta.label}-${cta.href}`} cta={cta} />
-              ))}
-            </div>
-          )}
+          <CtaList ctas={hero.ctas} />
         </div>
         {hero.valueBar && hero.valueBar.length > 0 && (
           <div className="mt-10 grid rounded-2xl border border-white/35 bg-[#0b4468]/55 p-3 text-center text-[0.68rem] font-bold uppercase tracking-[0.16em] text-white backdrop-blur sm:grid-cols-2 lg:grid-cols-5">

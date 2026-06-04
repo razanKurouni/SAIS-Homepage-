@@ -2,7 +2,6 @@ import Image from "next/image";
 import type { HomepageData } from "@/types/sanity";
 import { richTextToPlainText } from "@/lib/content";
 import { SaisCurvedPanel } from "@/components/ui/sais-curved-panel";
-import { HomeHeroMotionPanel } from "@/components/sections/home-hero-motion-panel";
 
 type HomeHeroProps = {
   hero?: HomepageData["hero"];
@@ -41,7 +40,8 @@ export function HomeHero({ hero }: HomeHeroProps) {
       <div className="home-hero__shade" />
 
       <div className="home-hero__content">
-        <HomeHeroMotionPanel>
+        <div className="home-hero__scroll-motion">
+          <div className="home-hero__entry-motion">
           <SaisCurvedPanel
             className="home-hero__copy"
             fillColor="rgba(var(--sais-primary-rgb), 0.72)"
@@ -53,7 +53,8 @@ export function HomeHero({ hero }: HomeHeroProps) {
             </h1>
             <p className="home-hero__description">{description}</p>
           </SaisCurvedPanel>
-        </HomeHeroMotionPanel>
+          </div>
+        </div>
       </div>
     </section>
   );
