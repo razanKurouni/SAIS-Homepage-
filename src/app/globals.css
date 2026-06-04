@@ -460,7 +460,8 @@ button[aria-label="Open Next.js Dev Tools"] {
   background: #ffffff;
 }
 
-.about-page__main {
+.about-page__main,
+.contact-page__main {
   overflow: hidden;
 }
 

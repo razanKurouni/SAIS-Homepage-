@@ -88,6 +88,11 @@ export type AboutPageData = {
   inspection?: ImageTextSection;
 };
 
+export type ContactPageData = {
+  seo?: Seo;
+  hero?: PageHeroContent;
+};
+
 export type LogoItem = {
   name: string;
   image?: SanityImage;

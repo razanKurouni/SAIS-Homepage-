@@ -131,11 +131,11 @@ const siteHeader = {
     openInNewTab: false,
   },
   navigation: [
-    { _type: "linkField", _key: "about", label: "About", href: "#about", openInNewTab: false },
+    { _type: "linkField", _key: "about", label: "About", href: "/about-us#about", openInNewTab: false },
     { _type: "linkField", _key: "academics", label: "Academics", href: "#academics", openInNewTab: false },
     { _type: "linkField", _key: "admissions", label: "Admissions", href: "#admissions", openInNewTab: false },
     { _type: "linkField", _key: "community", label: "Community", href: "#community", openInNewTab: false },
-    { _type: "linkField", _key: "contact", label: "Contact", href: "#contact", openInNewTab: false },
+    { _type: "linkField", _key: "contact", label: "Contact", href: "/contact-us", openInNewTab: false },
   ],
 };
 

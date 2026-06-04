@@ -18,11 +18,11 @@ type SiteHeaderProps = {
 };
 
 const fallbackLinks: LinkField[] = [
-  { label: "About", href: "#about" },
+  { label: "About", href: "/about-us#about" },
   { label: "Academics", href: "#academics" },
   { label: "Admissions", href: "#admissions" },
   { label: "Community", href: "#community" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "/contact-us" },
 ];
 
 const fallbackHeader: Required<Pick<HeaderSettings, "bookTourButton" | "applyNowButton">> = {
@@ -279,8 +279,19 @@ export function SiteHeader({
 }
 
 function buildMenuSections(links: LinkField[]): MenuSection[] {
-  const mapHref = (label: string, fallback: string) =>
-    links.find((link) => link.label.trim().toLowerCase() === label.trim().toLowerCase())?.href || fallback;
+  const mapHref = (label: string, fallback: string) => {
+    const href = links.find((link) => link.label.trim().toLowerCase() === label.trim().toLowerCase())?.href;
+
+    if (label === "About" && (!href || href === "#about")) {
+      return "/about-us#about";
+    }
+
+    if (label === "Contact" && (!href || href === "#contact")) {
+      return "/contact-us";
+    }
+
+    return href || fallback;
+  };
 
   return [
     {
@@ -324,7 +335,7 @@ function buildMenuSections(links: LinkField[]): MenuSection[] {
       ],
     },
     { title: "News & Events", href: "#news" },
-    { title: "Contact Us", href: mapHref("Contact", "#contact") },
+    { title: "Contact Us", href: mapHref("Contact", "/contact-us") },
     { title: "Careers", href: "#careers" },
   ];
 }
