@@ -88,9 +88,28 @@ export type AboutPageData = {
   inspection?: ImageTextSection;
 };
 
+export type ContactInfoItem = {
+  _key?: string;
+  icon?: "location" | "phone" | "email";
+  label?: string;
+  text?: string;
+  href?: string;
+};
+
+export type ContactInfoSection = {
+  heading?: SectionHeading;
+  image?: SanityImage;
+  imagePosition?: string;
+  panelColor?: string;
+  waveColor?: string;
+  textColor?: string;
+  items?: ContactInfoItem[];
+};
+
 export type ContactPageData = {
   seo?: Seo;
   hero?: PageHeroContent;
+  contactInfo?: ContactInfoSection;
 };
 
 export type LogoItem = {

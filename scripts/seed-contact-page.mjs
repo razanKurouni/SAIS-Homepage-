@@ -32,6 +32,12 @@ const heroImage = await uploadImage(
   "Sharjah American International School Dubai campus building"
 );
 
+const contactInfoImage = await uploadImage(
+  "public/contact-campus-building.jpg",
+  "contact-campus-building.jpg",
+  "Sharjah American International School Dubai campus entrance"
+);
+
 await client.createOrReplace({
   _id: "contact-page",
   _type: "contactPage",
@@ -56,6 +62,43 @@ await client.createOrReplace({
     imagePosition: "center",
     imageWidth: "60%",
   },
+  contactInfo: {
+    _type: "object",
+    heading: {
+      _type: "sectionHeading",
+      title: "Investing in Continuous Professional Growth",
+    },
+    image: contactInfoImage,
+    imagePosition: "center",
+    panelColor: "#216B97",
+    waveColor: "#d97252",
+    textColor: "#ffffff",
+    items: [
+      {
+        _key: "contact-address",
+        _type: "object",
+        icon: "location",
+        label: "Campus Address",
+        text: "Sharjah American International School - Dubai Campus\nP.O. Box 47755 , Al Warqa 1,\nDubai, UAE.",
+      },
+      {
+        _key: "contact-phone",
+        _type: "object",
+        icon: "phone",
+        label: "Phone",
+        text: "+971 4 280 1111",
+        href: "tel:+97142801111",
+      },
+      {
+        _key: "contact-email",
+        _type: "object",
+        icon: "email",
+        label: "Email",
+        text: "sais_dubai@saisdubai.com",
+        href: "mailto:sais_dubai@saisdubai.com",
+      },
+    ],
+  },
 });
 
-console.log("Seeded contact-page with editable hero content.");
+console.log("Seeded contact-page with editable hero and contact information content.");

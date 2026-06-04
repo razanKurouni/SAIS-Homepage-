@@ -46,7 +46,7 @@ export function InnerPageNav({
   inactiveColor = "#707174",
   textColor = "#ffffff",
   dividerColor = "#ffffff",
-  topLineColor = "var(--sais-accent)",
+  topLineColor = "#ffffff",
   className = "",
   ariaLabel = "Section navigation",
 }: InnerPageNavProps) {

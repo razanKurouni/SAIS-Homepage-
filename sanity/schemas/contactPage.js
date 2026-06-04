@@ -50,6 +50,84 @@ export const contactPage = {
         },
       ],
     },
+    {
+      name: "contactInfo",
+      title: "Contact Information Section",
+      type: "object",
+      description: "Editable contact information card shown below the page navigation.",
+      fields: [
+        { name: "heading", title: "Heading", type: "sectionHeading" },
+        { name: "image", title: "Image", type: "imageWithAlt" },
+        {
+          name: "imagePosition",
+          title: "Image Position",
+          type: "string",
+          description: "Optional CSS object-position value, for example center or 50% 45%.",
+        },
+        {
+          name: "panelColor",
+          title: "Panel Background Color",
+          type: "string",
+          description: "Optional CSS color, for example #216B97.",
+        },
+        {
+          name: "waveColor",
+          title: "Curved Line Color",
+          type: "string",
+          description: "Optional CSS color, for example #d97252.",
+        },
+        {
+          name: "textColor",
+          title: "Text Color",
+          type: "string",
+          description: "Optional CSS color, for example #ffffff.",
+        },
+        {
+          name: "items",
+          title: "Contact Items",
+          type: "array",
+          of: [
+            {
+              type: "object",
+              fields: [
+                {
+                  name: "icon",
+                  title: "Icon",
+                  type: "string",
+                  options: {
+                    list: [
+                      { title: "Location", value: "location" },
+                      { title: "Phone", value: "phone" },
+                      { title: "Email", value: "email" },
+                    ],
+                  },
+                },
+                { name: "label", title: "Label", type: "string" },
+                {
+                  name: "text",
+                  title: "Text",
+                  type: "text",
+                  rows: 3,
+                  description: "Use line breaks for multi-line address text.",
+                },
+                {
+                  name: "href",
+                  title: "Optional Link",
+                  type: "string",
+                  description: "Optional href like tel:+97142801111 or mailto:sais_dubai@saisdubai.com.",
+                },
+              ],
+              preview: {
+                select: {
+                  title: "label",
+                  subtitle: "text",
+                },
+              },
+            },
+          ],
+        },
+      ],
+    },
   ],
   preview: {
     select: {

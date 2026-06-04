@@ -27,5 +27,20 @@ export const contactPageQuery = `*[_type == "contactPage" && _id == "contact-pag
     textColor,
     imagePosition,
     imageWidth
+  },
+  contactInfo {
+    heading ${headingProjection},
+    image ${imageWithAltProjection},
+    imagePosition,
+    panelColor,
+    waveColor,
+    textColor,
+    items[] {
+      _key,
+      icon,
+      label,
+      text,
+      href
+    }
   }
 }`;

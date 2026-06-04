@@ -566,7 +566,7 @@ button[aria-label="Open Next.js Dev Tools"] {
   --inner-page-nav-inactive-bg: #707174;
   --inner-page-nav-text-color: #ffffff;
   --inner-page-nav-divider-color: #ffffff;
-  --inner-page-nav-top-line-color: var(--sais-accent);
+  --inner-page-nav-top-line-color: #ffffff;
 
   width: 100%;
   background: var(--inner-page-nav-divider-color);
@@ -608,6 +608,105 @@ button[aria-label="Open Next.js Dev Tools"] {
 
 .inner-page-nav__link:hover {
   background: var(--inner-page-nav-active-bg);
+}
+
+.contact-info-section {
+  background: #ffffff;
+  padding: clamp(58px, 6.4vw, 82px) 0 clamp(62px, 7vw, 86px);
+}
+
+.contact-info-section__inner {
+  position: relative;
+  width: min(80%, 1120px);
+  min-height: clamp(335px, 31vw, 398px);
+  margin: 0 auto;
+}
+
+.contact-info-section__media {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 3;
+  width: clamp(320px, 34vw, 434px);
+  height: clamp(260px, 25vw, 312px);
+  overflow: hidden;
+  border-radius: 12px;
+  background: #e8eef1;
+  transform: translateY(-50%);
+  box-shadow: 0 18px 34px rgba(13, 47, 74, 0.12);
+}
+
+.contact-info-section__image {
+  object-fit: cover;
+  object-position: var(--contact-info-image-position, center);
+}
+
+.contact-info-section__panel {
+  width: calc(100% - clamp(250px, 28vw, 318px));
+  margin-left: auto;
+  color: var(--contact-info-text-color, #ffffff);
+  border-radius: 0 12px 12px 0;
+}
+
+.contact-info-section__panel .sais-curved-panel__svg {
+  border-radius: 0 12px 12px 0;
+}
+
+.contact-info-section__panel-content {
+  display: flex;
+  min-height: clamp(335px, 31vw, 398px);
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(40px, 5.4vw, 64px) clamp(42px, 7vw, 78px)
+    clamp(40px, 5.4vw, 64px) clamp(170px, 17vw, 230px);
+}
+
+.contact-info-section__title {
+  max-width: 360px;
+  margin: 0;
+  color: var(--contact-info-text-color, #ffffff);
+  font-size: clamp(1.22rem, 1.55vw, 1.52rem);
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: 0;
+}
+
+.contact-info-section__items {
+  display: grid;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.contact-info-section__item {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  align-items: start;
+  gap: 12px;
+}
+
+.contact-info-section__item-icon {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 999px;
+  color: var(--contact-info-text-color, #ffffff);
+}
+
+.contact-info-section__item-text {
+  margin: 0;
+  color: var(--contact-info-text-color, #ffffff);
+  font-size: 0.82rem;
+  font-weight: 400;
+  line-height: 1.36;
+  text-decoration: none;
+}
+
+a.contact-info-section__item-text:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .about-highlights {
@@ -4631,6 +4730,47 @@ button[aria-label="Open Next.js Dev Tools"] {
     min-height: clamp(300px, 54vw, 460px);
   }
 
+  .contact-info-section {
+    padding: 48px 0 62px;
+  }
+
+  .contact-info-section__inner {
+    display: flex;
+    width: calc(100% - 48px);
+    min-height: 0;
+    flex-direction: column;
+  }
+
+  .contact-info-section__media {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: calc(100% - 32px);
+    height: clamp(250px, 48vw, 340px);
+    margin: 0 auto -42px;
+    transform: none;
+  }
+
+  .contact-info-section__panel {
+    width: 100%;
+    min-height: 0 !important;
+    margin-left: 0;
+    border-radius: 18px;
+  }
+
+  .contact-info-section__panel .sais-curved-panel__svg {
+    border-radius: 18px;
+  }
+
+  .contact-info-section__panel-content {
+    min-height: 0;
+    padding: 88px 28px 38px;
+  }
+
+  .contact-info-section__title {
+    max-width: 460px;
+  }
+
   .about-highlights__inner {
     grid-template-columns: 1fr;
   }
@@ -4736,6 +4876,42 @@ button[aria-label="Open Next.js Dev Tools"] {
     min-height: 50px;
     padding: 8px 10px;
     font-size: 0.86rem;
+  }
+
+  .contact-info-section {
+    padding: 38px 0 52px;
+  }
+
+  .contact-info-section__inner {
+    width: calc(100% - 32px);
+  }
+
+  .contact-info-section__media {
+    width: calc(100% - 24px);
+    height: 236px;
+    margin-bottom: -36px;
+    border-radius: 14px;
+  }
+
+  .contact-info-section__panel {
+    border-radius: 16px;
+  }
+
+  .contact-info-section__panel .sais-curved-panel__svg {
+    border-radius: 16px;
+  }
+
+  .contact-info-section__panel-content {
+    padding: 76px 22px 32px;
+  }
+
+  .contact-info-section__title {
+    font-size: 1.26rem;
+    line-height: 1.2;
+  }
+
+  .contact-info-section__item-text {
+    font-size: 0.8rem;
   }
 }
 

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SitePageShell } from "@/components/layout/site-page-shell";
+import { ContactInfoSection } from "@/components/sections/contact-info-section";
 import { InnerPageNav } from "@/components/sections/inner-page-nav";
 import { PageHero } from "@/components/sections/page-hero";
 import { getContactPage, getHomepage } from "@/lib/sanity";
@@ -68,9 +69,11 @@ export default async function ContactUsPage() {
         inactiveColor="#707174"
         textColor="#ffffff"
         dividerColor="#ffffff"
-        topLineColor="var(--sais-accent)"
+        topLineColor="#ffffff"
         ariaLabel="Contact page navigation"
       />
+
+      <ContactInfoSection section={contactPage?.contactInfo} />
     </SitePageShell>
   );
 }
