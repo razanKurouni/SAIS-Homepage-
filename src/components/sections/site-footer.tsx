@@ -188,14 +188,15 @@ export function SiteFooter({ footer }: SiteFooterProps) {
                 {link.label}
               </Link>
             ))}
-          </nav>
-
-          <p className="site-footer__credit">
+            <p className="site-footer__credit">
             Site by{" "}
             <a href="https://www.formulatecreative.com/" target="_blank" rel="noreferrer">
               Formulate
             </a>
           </p>
+          </nav>
+
+          
         </div>
       </div>
     </footer>

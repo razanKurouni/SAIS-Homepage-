@@ -437,6 +437,7 @@ button[aria-label="Open Next.js Dev Tools"] {
   z-index: 1;
   color: #ffffff;
   padding: clamp(54px, 6vw, 78px) 10% clamp(54px, 6vw, 78px) 25%;
+  width: 100%;
 }
 
 .intro-feature__title {
@@ -450,7 +451,6 @@ button[aria-label="Open Next.js Dev Tools"] {
 }
 
 .intro-feature__description {
-  max-width: 32rem;
   margin-top: 22px;
   color: var(--sais-body-text-color-on-dark);
   font-size: var(--sais-body-text-size);
@@ -1442,7 +1442,7 @@ button[aria-label="Open Next.js Dev Tools"] {
 .approach-section__image {
   object-fit: cover;
   object-position: center;
-  width: 50% !important;
+  width: 53% !important;
   height: 100% !important;
   left: auto !important;
   right: 0 !important;
@@ -1451,13 +1451,14 @@ button[aria-label="Open Next.js Dev Tools"] {
 }
 
 .approach-section__panel {
-  position: absolute;
+  position: absolute; 
   display: flex;
   align-items: center;
   inset: 0 auto 0 0;
   z-index: 1;
-  width: min(58vw, 1160px);
+  width: 55vw;
   min-width: 760px;
+  left:10%;
 }
 
 .approach-section__shape {
@@ -1482,7 +1483,6 @@ button[aria-label="Open Next.js Dev Tools"] {
   z-index: 2;
   width: min(660px, 58%);
   padding: 40px 0 40px;
-  margin-left: clamp(72px, 8.3vw, 160px);
   color: #ffffff;
 }
 
@@ -1668,7 +1668,7 @@ button[aria-label="Open Next.js Dev Tools"] {
   width: 100%;
   aspect-ratio: 360 / 272;
   overflow: hidden;
-  border-radius: 26px;
+  border-radius: 36px;
   background: var(--sais-primary);
 }
 
@@ -1887,7 +1887,7 @@ button[aria-label="Open Next.js Dev Tools"] {
 .site-footer__shape {
   position: absolute;
   inset: 0 auto 0 0;
-  width: min(59vw, 730px);
+  width: min(49vw, 930px);
   height: 100%;
   pointer-events: none;
 }
@@ -2012,10 +2012,8 @@ button[aria-label="Open Next.js Dev Tools"] {
 }
 
 .site-footer__social-link:hover {
-  border-color: transparent;
   color: #ffffff;
   box-shadow: none;
-  transform: translateY(-3px) scale(1.08);
 }
 
 .site-footer__social-link:hover::before,
@@ -2091,23 +2089,21 @@ button[aria-label="Open Next.js Dev Tools"] {
   gap: 10px 24px;
   width: 100%;
   min-height: 56px;
-  margin: 0 auto;
-  padding: 16px clamp(24px, 4.8vw, 64px) 16px clamp(24px, 7vw, 100px);
+  padding: 0 10%;
   font-size: .86rem;
   line-height: 1.45;
   display: flex;
 }
 
-.site-footer__bottom p {
-  margin: 0;
-}
 
 .site-footer__credit {
-  flex: 0 0 100%;
   color: #ffffff;
   text-align: left;
   white-space: nowrap;
-}
+  border-left: 1px solid #ffffff94;
+  margin-left: 26px;
+  padding-left: 26px;
+} 
 
 .site-footer__credit a {
   color: #ffffff;
@@ -3130,7 +3126,7 @@ button[aria-label="Open Next.js Dev Tools"] {
   }
 
   .intro-feature__layout {
-    width: calc(100% - 14px);
+    width: calc(100% - 50px);
     flex-direction: column-reverse;
     align-items: stretch;
     overflow: hidden;
@@ -3804,7 +3800,7 @@ button[aria-label="Open Next.js Dev Tools"] {
   .tour-actions__inner,
   .latest-news__inner,
   .social-feed__inner {
-    width: calc(100% - 16px);
+    width: calc(100% - 50px);
   }
 
   .intro-feature__image-shell {
@@ -3899,7 +3895,7 @@ button[aria-label="Open Next.js Dev Tools"] {
   }
 
   .intro-feature {
-    padding: 22px 0 18px;
+    padding: 25px 0 18px;
   }
 
   .intro-feature__shape {
@@ -3907,7 +3903,7 @@ button[aria-label="Open Next.js Dev Tools"] {
   }
 
   .intro-feature__content {
-    padding: 42px 44px 72px;
+    padding: 30px 30px 72px;
   }
 
   .intro-feature__title {
@@ -3926,7 +3922,7 @@ button[aria-label="Open Next.js Dev Tools"] {
 
   .hero-contact-band__inner {
     min-height: auto;
-    padding: 28px 14px;
+    padding: 30px;
     border-radius: 10px;
   }
 
