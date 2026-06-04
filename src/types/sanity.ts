@@ -85,6 +85,7 @@ export type AboutPageData = {
   hero?: PageHeroContent;
   intro?: AboutIntroSection;
   governance?: ImageTextSection;
+  inspection?: ImageTextSection;
 };
 
 export type LogoItem = {

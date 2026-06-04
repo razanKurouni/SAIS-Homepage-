@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import { SitePageShell } from "@/components/layout/site-page-shell";
 import { AboutGovernanceSection } from "@/components/sections/about-governance-section";
+import { AboutInspectionSection } from "@/components/sections/about-inspection-section";
 import { PageHero } from "@/components/sections/page-hero";
 import { richTextToParagraphs } from "@/lib/content";
 import { getAboutPage, getHomepage } from "@/lib/sanity";
@@ -71,6 +72,7 @@ export default async function AboutUsPage() {
   const aboutHero = aboutPage?.hero;
   const aboutIntro = aboutPage?.intro;
   const aboutGovernance = aboutPage?.governance;
+  const aboutInspection = aboutPage?.inspection;
   const heroEyebrow = aboutHero?.heading?.eyebrow || fallbackHero.eyebrow;
   const heroTitle = aboutHero?.heading?.title || fallbackHero.title;
   const heroImage = aboutHero?.image || fallbackHero.image;
@@ -142,6 +144,7 @@ export default async function AboutUsPage() {
       </section>
 
       <AboutGovernanceSection section={aboutGovernance} />
+      <AboutInspectionSection section={aboutInspection} />
 
       <section className="about-highlights" aria-label="SAIS Dubai highlights">
         <div className="about-highlights__inner">

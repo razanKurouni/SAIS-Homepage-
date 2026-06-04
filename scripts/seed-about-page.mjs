@@ -61,6 +61,12 @@ const governanceImage = await uploadImage(
   "SAIS Dubai governance meeting with a staff member seated at a table"
 );
 
+const inspectionImage = await uploadImage(
+  "/Users/razan/Downloads/_NEC6334.jpg",
+  "about-inspection-review.jpg",
+  "SAIS Dubai teacher reading with students in the library"
+);
+
 await client.createOrReplace({
   _id: "about-page",
   _type: "aboutPage",
@@ -132,6 +138,23 @@ await client.createOrReplace({
     theme: "teal",
     ctas: [],
   },
+  inspection: {
+    _type: "imageTextSection",
+    heading: {
+      _type: "sectionHeading",
+      title: "Dubai Schools Inspection Bureau Review",
+      description: [
+        block(
+          "inspection-body-1",
+          "As part of Dubai's educational regulatory framework, all private schools undergo an annual review and inspection process directed by the Dubai Schools Inspection Bureau (DSIB), a division of the Knowledge and Human Development Authority (KHDA). Our school engages in comprehensive self-assessment of student learning outcomes and other relevant metrics to inform our continuous improvement planning prior to the external DSIB review. The insights gained through internal evaluation, combined with the DSIB report and recommendations, form the foundation of our improvement cycle: reflection, planning, action, and monitoring - all directed toward achieving educational excellence."
+        ),
+      ],
+    },
+    image: inspectionImage,
+    imagePosition: "left",
+    theme: "light",
+    ctas: [],
+  },
 });
 
-console.log("Seeded about-page with editable hero, intro, and governance content.");
+console.log("Seeded about-page with editable hero, intro, governance, and inspection content.");

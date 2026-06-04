@@ -47,5 +47,12 @@ export const aboutPageQuery = `*[_type == "aboutPage" && _id == "about-page"][0]
     ctas[] ${ctaProjection},
     imagePosition,
     theme
+  },
+  inspection {
+    heading ${headingProjection},
+    image ${imageWithAltProjection},
+    ctas[] ${ctaProjection},
+    imagePosition,
+    theme
   }
 }`;

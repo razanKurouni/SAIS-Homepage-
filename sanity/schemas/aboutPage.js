@@ -73,6 +73,12 @@ export const aboutPage = {
       type: "imageTextSection",
       description: "The teal text and image section below the About intro.",
     },
+    {
+      name: "inspection",
+      title: "DSIB Review Section",
+      type: "imageTextSection",
+      description: "The white image and text section below the Governance Board section.",
+    },
   ],
   preview: {
     select: {
