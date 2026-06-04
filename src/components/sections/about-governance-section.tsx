@@ -1,4 +1,4 @@
-import { ApproachSectionMotion } from "@/components/sections/approach-section-motion";
+import { ApproachSectionBase } from "@/components/sections/approach-section";
 import { richTextToParagraphs } from "@/lib/content";
 import type { ImageTextSection } from "@/types/sanity";
 
@@ -21,7 +21,7 @@ export function AboutGovernanceSection({ section }: AboutGovernanceSectionProps)
   const paragraphs = richTextToParagraphs(section?.heading?.description);
 
   return (
-    <ApproachSectionMotion
+    <ApproachSectionBase
       id="about-governance"
       title={title}
       titleId="about-governance-title"
