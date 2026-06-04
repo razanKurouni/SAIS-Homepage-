@@ -1,5 +1,5 @@
 import { CmsImage } from "@/components/ui/cms-image";
-import { CtaLink } from "@/components/ui/cta-link";
+import { CtaList } from "@/components/ui/cta-list";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { WavePanel } from "@/components/ui/wave-panel";
 import type { ImageTextSection as ImageTextSectionData } from "@/types/sanity";
@@ -33,13 +33,7 @@ export function ImageTextSection({ section, id }: ImageTextSectionProps) {
             titleClassName={section.theme === "light" ? "text-[color:var(--sais-primary)]" : "text-white"}
             descriptionClassName={section.theme === "light" ? "text-[#557189]" : "text-white/90"}
           />
-          {section.ctas && section.ctas.length > 0 && (
-            <div className="mt-6 flex flex-wrap gap-3">
-              {section.ctas.map((cta) => (
-                <CtaLink key={`${cta.label}-${cta.href}`} cta={cta} />
-              ))}
-            </div>
-          )}
+          <CtaList ctas={section.ctas} />
         </div>
         {!imageFirst && (
           <CmsImage

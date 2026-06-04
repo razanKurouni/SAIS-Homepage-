@@ -62,6 +62,56 @@ export type ImageTextSection = {
   theme?: "blue" | "teal" | "light";
 };
 
+export type PageHeroContent = {
+  heading?: SectionHeading;
+  image?: SanityImage;
+  topLineColor?: string;
+  panelColor?: string;
+  waveColor?: string;
+  textColor?: string;
+  imagePosition?: string;
+  imageWidth?: string;
+};
+
+export type AboutIntroSection = {
+  heading?: SectionHeading;
+  image?: SanityImage;
+  body?: PortableTextBlock[];
+  imagePosition?: string;
+};
+
+export type AboutPageData = {
+  seo?: Seo;
+  hero?: PageHeroContent;
+  intro?: AboutIntroSection;
+  governance?: ImageTextSection;
+  inspection?: ImageTextSection;
+};
+
+export type ContactInfoItem = {
+  _key?: string;
+  icon?: "location" | "phone" | "email";
+  label?: string;
+  text?: string;
+  href?: string;
+};
+
+export type ContactInfoSection = {
+  heading?: SectionHeading;
+  image?: SanityImage;
+  imagePosition?: string;
+  panelColor?: string;
+  waveColor?: string;
+  textColor?: string;
+  items?: ContactInfoItem[];
+};
+
+export type ContactPageData = {
+  seo?: Seo;
+  hero?: PageHeroContent;
+  contactInfo?: ContactInfoSection;
+};
+
 export type LogoItem = {
   name: string;
   image?: SanityImage;

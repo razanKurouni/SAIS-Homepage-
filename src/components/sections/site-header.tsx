@@ -11,21 +11,23 @@ import { useScrollThreshold } from "@/hooks/use-scroll-threshold";
 import type { Cta, HeaderSettings, LinkField } from "@/types/sanity";
 
 type SiteHeaderProps = {
+  brandHref?: string;
   settings?: HeaderSettings;
   links?: LinkField[];
+  variant?: "home" | "solid";
 };
 
 const fallbackLinks: LinkField[] = [
-  { label: "About", href: "#about" },
+  { label: "About", href: "/about-us#about" },
   { label: "Academics", href: "#academics" },
   { label: "Admissions", href: "#admissions" },
   { label: "Community", href: "#community" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "/contact-us" },
 ];
 
 const fallbackHeader: Required<Pick<HeaderSettings, "bookTourButton" | "applyNowButton">> = {
   bookTourButton: { label: "Book a Tour", href: "#tour" },
-  applyNowButton: { label: "Apply Now", href: "#apply" },
+  applyNowButton: { label: "Apply Now", href: "#apply", variant: "secondary" },
 };
 
 type MenuSection = {
@@ -46,16 +48,29 @@ function createInitialExpandedSections(): ExpandedSections {
   return {};
 }
 
-export function SiteHeader({ settings, links = [] }: SiteHeaderProps) {
+export function SiteHeader({
+  brandHref = "#home",
+  settings,
+  links = [],
+  variant = "home",
+}: SiteHeaderProps) {
+  const isSolid = variant === "solid";
   const isScrolled = useScrollThreshold(18);
+  const isScrolledStyleActive = !isSolid && isScrolled;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [expandedSections, setExpandedSections] = useState<ExpandedSections>(createInitialExpandedSections);
   const navLinks = useMemo(() => (links.length > 0 ? links : fallbackLinks), [links]);
   const logo = settings?.logo;
   const scrolledLogo = settings?.scrolledLogo;
+  const shouldUseScrolledLogo = !isSolid && isScrolled;
   const activeLogo =
-    isScrolled
+    isSolid
+      ? {
+          url: "/sais-logo-lockup-solid.png",
+          alt: "Sharjah American International School Dubai",
+        }
+      : shouldUseScrolledLogo
       ? scrolledLogo?.url
         ? scrolledLogo
         : {
@@ -101,10 +116,10 @@ export function SiteHeader({ settings, links = [] }: SiteHeaderProps) {
   };
 
   return (
-    <header className={`site-header ${isScrolled ? "is-scrolled" : ""}`}>
+    <header className={`site-header site-header--${variant} ${isScrolledStyleActive ? "is-scrolled" : ""}`}>
       <div className="site-header__inner">
         <Link
-          href="#home"
+          href={brandHref}
           className="site-header__brand"
           aria-label="Sharjah American International School Dubai home"
         >
@@ -264,14 +279,25 @@ export function SiteHeader({ settings, links = [] }: SiteHeaderProps) {
 }
 
 function buildMenuSections(links: LinkField[]): MenuSection[] {
-  const mapHref = (label: string, fallback: string) =>
-    links.find((link) => link.label.trim().toLowerCase() === label.trim().toLowerCase())?.href || fallback;
+  const mapHref = (label: string, fallback: string) => {
+    const href = links.find((link) => link.label.trim().toLowerCase() === label.trim().toLowerCase())?.href;
+
+    if (label === "About" && (!href || href === "#about")) {
+      return "/about-us#about";
+    }
+
+    if (label === "Contact" && (!href || href === "#contact")) {
+      return "/contact-us";
+    }
+
+    return href || fallback;
+  };
 
   return [
     {
       title: "About",
-      href: mapHref("About", "#about"),
-      items: [{ label: "Meet Our Team", href: "#about-team" }],
+      href: mapHref("About", "/about-us#about"),
+      items: [{ label: "About", href: "/about-us#about" }],
     },
     {
       title: "Academics",
@@ -309,7 +335,7 @@ function buildMenuSections(links: LinkField[]): MenuSection[] {
       ],
     },
     { title: "News & Events", href: "#news" },
-    { title: "Contact Us", href: mapHref("Contact", "#contact") },
+    { title: "Contact Us", href: mapHref("Contact", "/contact-us") },
     { title: "Careers", href: "#careers" },
   ];
 }

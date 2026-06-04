@@ -28,7 +28,7 @@ const defaultColumns: FooterColumn[] = [
   {
     links: [
       { label: "News & Events", href: "#news" },
-      { label: "Contact Us", href: "#contact" },
+      { label: "Contact Us", href: "/contact-us" },
       { label: "Careers", href: "#careers" },
     ],
   },
@@ -72,10 +72,18 @@ function findSocialLink(links: LinkField[], label: string, fallback: LinkField) 
   return links.find((link) => link.label?.toLowerCase().includes(label.toLowerCase())) || fallback;
 }
 
+function normalizeFooterHref(link: LinkField) {
+  if (link.label?.trim().toLowerCase().includes("contact")) {
+    return "/contact-us";
+  }
+
+  return link.href || "#";
+}
+
 function FooterLink({ link }: { link: LinkField }) {
   return (
     <Link
-      href={link.href || "#"}
+      href={normalizeFooterHref(link)}
       target={link.openInNewTab ? "_blank" : undefined}
       rel={link.openInNewTab ? "noreferrer" : undefined}
       className="site-footer__link"

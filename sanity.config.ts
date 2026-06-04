@@ -5,6 +5,7 @@ import { schemaTypes } from "./sanity/schemas";
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "uwffig4f";
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
+const singletonTypes = ["siteHeader", "homepage", "aboutPage", "contactPage", "siteFooter"];
 
 export default defineConfig({
   name: "saisDubai",
@@ -27,9 +28,22 @@ export default defineConfig({
               .schemaType("homepage")
               .child(S.document().schemaType("homepage").documentId("homepage-main")),
             S.listItem()
+              .title("About Us")
+              .schemaType("aboutPage")
+              .child(S.document().schemaType("aboutPage").documentId("about-page")),
+            S.listItem()
+              .title("Contact Us")
+              .schemaType("contactPage")
+              .child(S.document().schemaType("contactPage").documentId("contact-page")),
+            S.listItem()
               .title("Footer")
               .schemaType("siteFooter")
               .child(S.document().schemaType("siteFooter").documentId("site-footer")),
+            S.divider(),
+            ...S.documentTypeListItems().filter((listItem) => {
+              const id = listItem.getId();
+              return id ? !singletonTypes.includes(id) : true;
+            }),
           ]),
     }),
   ],
@@ -37,7 +51,7 @@ export default defineConfig({
     types: schemaTypes as unknown as SchemaTypeDefinition[],
     templates: (templates) =>
       templates.filter(
-        (template) => !["siteHeader", "siteFooter", "homepage"].includes(template.id)
+        (template) => !singletonTypes.includes(template.id)
       ),
   },
 });

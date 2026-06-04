@@ -1,4 +1,6 @@
 import { createClient } from "@sanity/client";
+import { aboutPageQuery } from "@/sanity/queries/about-page";
+import { contactPageQuery } from "@/sanity/queries/contact-page";
 import {
   homepageQuery,
   legacyHomeSectionsQuery,
@@ -6,7 +8,14 @@ import {
   siteHeaderQuery,
 } from "@/sanity/queries/homepage";
 import { mapLegacySectionsToHomepage } from "@/lib/content";
-import type { HomepageData, LegacyHomeSection, SiteFooter, SiteHeader } from "@/types/sanity";
+import type {
+  AboutPageData,
+  ContactPageData,
+  HomepageData,
+  LegacyHomeSection,
+  SiteFooter,
+  SiteHeader,
+} from "@/types/sanity";
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "uwffig4f";
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
@@ -16,7 +25,7 @@ function getSanityClient() {
     projectId,
     dataset,
     apiVersion: "2023-01-01",
-    useCdn: true,
+    useCdn: false,
     perspective: "published",
   });
 }
@@ -43,5 +52,23 @@ export async function getHomepage(): Promise<HomepageData> {
     return mapLegacySectionsToHomepage(legacySections || []);
   } catch {
     return mapLegacySectionsToHomepage([]);
+  }
+}
+
+export async function getAboutPage(): Promise<AboutPageData | null> {
+  try {
+    const client = getSanityClient();
+    return await client.fetch<AboutPageData | null>(aboutPageQuery);
+  } catch {
+    return null;
+  }
+}
+
+export async function getContactPage(): Promise<ContactPageData | null> {
+  try {
+    const client = getSanityClient();
+    return await client.fetch<ContactPageData | null>(contactPageQuery);
+  } catch {
+    return null;
   }
 }

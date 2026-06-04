@@ -3,11 +3,11 @@ import { getCliClient } from "sanity/cli";
 const client = getCliClient({ apiVersion: "2023-01-01" });
 
 const fallbackNavigation = [
-  { _type: "linkField", _key: "about", label: "About", href: "#about", openInNewTab: false },
+  { _type: "linkField", _key: "about", label: "About", href: "/about-us#about", openInNewTab: false },
   { _type: "linkField", _key: "academics", label: "Academics", href: "#academics", openInNewTab: false },
   { _type: "linkField", _key: "admissions", label: "Admissions", href: "#admissions", openInNewTab: false },
   { _type: "linkField", _key: "community", label: "Community", href: "#community", openInNewTab: false },
-  { _type: "linkField", _key: "contact", label: "Contact", href: "#contact", openInNewTab: false },
+  { _type: "linkField", _key: "contact", label: "Contact", href: "/contact-us", openInNewTab: false },
 ];
 
 const fallbackHeaderButtons = {
