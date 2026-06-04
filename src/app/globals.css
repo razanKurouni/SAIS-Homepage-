@@ -1004,6 +1004,7 @@ a.contact-info-section__item-text:hover {
   z-index: 1;
   color: #ffffff;
   padding: clamp(54px, 6vw, 78px) 10% clamp(54px, 6vw, 78px) 25%;
+  width: 100%;
 }
 
 .intro-feature__title {
@@ -1017,7 +1018,6 @@ a.contact-info-section__item-text:hover {
 }
 
 .intro-feature__description {
-  max-width: 32rem;
   margin-top: 22px;
   color: var(--sais-body-text-color-on-dark);
   font-size: var(--sais-body-text-size);
@@ -2009,7 +2009,7 @@ a.contact-info-section__item-text:hover {
 .approach-section__image {
   object-fit: cover;
   object-position: center;
-  width: 50% !important;
+  width: 53% !important;
   height: 100% !important;
   left: auto !important;
   right: 0 !important;
@@ -2018,13 +2018,14 @@ a.contact-info-section__item-text:hover {
 }
 
 .approach-section__panel {
-  position: absolute;
+  position: absolute; 
   display: flex;
   align-items: center;
   inset: 0 auto 0 0;
   z-index: 1;
-  width: min(58vw, 1160px);
+  width: 55vw;
   min-width: 760px;
+  left:10%;
 }
 
 .approach-section__shape {
@@ -2049,7 +2050,6 @@ a.contact-info-section__item-text:hover {
   z-index: 2;
   width: min(660px, 58%);
   padding: 40px 0 40px;
-  margin-left: clamp(72px, 8.3vw, 160px);
   color: #ffffff;
 }
 
@@ -2235,7 +2235,7 @@ a.contact-info-section__item-text:hover {
   width: 100%;
   aspect-ratio: 360 / 272;
   overflow: hidden;
-  border-radius: 26px;
+  border-radius: 36px;
   background: var(--sais-primary);
 }
 
@@ -2454,7 +2454,7 @@ a.contact-info-section__item-text:hover {
 .site-footer__shape {
   position: absolute;
   inset: 0 auto 0 0;
-  width: min(59vw, 730px);
+  width: min(49vw, 930px);
   height: 100%;
   pointer-events: none;
 }
@@ -2579,10 +2579,8 @@ a.contact-info-section__item-text:hover {
 }
 
 .site-footer__social-link:hover {
-  border-color: transparent;
   color: #ffffff;
   box-shadow: none;
-  transform: translateY(-3px) scale(1.08);
 }
 
 .site-footer__social-link:hover::before,
@@ -2658,23 +2656,21 @@ a.contact-info-section__item-text:hover {
   gap: 10px 24px;
   width: 100%;
   min-height: 56px;
-  margin: 0 auto;
-  padding: 16px clamp(24px, 4.8vw, 64px) 16px clamp(24px, 7vw, 100px);
+  padding: 0 10%;
   font-size: .86rem;
   line-height: 1.45;
   display: flex;
 }
 
-.site-footer__bottom p {
-  margin: 0;
-}
 
 .site-footer__credit {
-  flex: 0 0 100%;
   color: #ffffff;
   text-align: left;
   white-space: nowrap;
-}
+  border-left: 1px solid #ffffff94;
+  margin-left: 26px;
+  padding-left: 26px;
+} 
 
 .site-footer__credit a {
   color: #ffffff;
@@ -3697,7 +3693,7 @@ a.contact-info-section__item-text:hover {
   }
 
   .intro-feature__layout {
-    width: calc(100% - 14px);
+    width: calc(100% - 50px);
     flex-direction: column-reverse;
     align-items: stretch;
     overflow: hidden;
@@ -3845,7 +3841,7 @@ a.contact-info-section__item-text:hover {
   }
 
   .why-dubai__inner {
-    width: calc(100% - 32px);
+    width: calc(100% - 50px);
   }
 
   .why-dubai__title {
@@ -4314,9 +4310,11 @@ a.contact-info-section__item-text:hover {
 
   .site-footer__nav {
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 0px;
   }
-
+  .site-footer__link:last-child {
+    border-bottom: 0px solid #646c7170;
+  }
   .site-footer__link {
     min-height: 46px;
   }
@@ -4329,7 +4327,7 @@ a.contact-info-section__item-text:hover {
     width: calc(100% - 48px);
     min-height: auto;
     padding: 22px 0;
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
     justify-content: center;
     gap: 8px;
@@ -4339,10 +4337,14 @@ a.contact-info-section__item-text:hover {
     flex-wrap: wrap;
     gap: 12px 0;
   }
-
+  .site-footer__credit{
+    margin-left: 12px;
+    padding-left: 12px;
+  }
+  
   .site-footer__legal a + a {
-    margin-left: 18px;
-    padding-left: 18px;
+    margin-left: 12px;
+    padding-left: 12px;
   }
 
   .accreditations-section,
@@ -4371,7 +4373,7 @@ a.contact-info-section__item-text:hover {
   .tour-actions__inner,
   .latest-news__inner,
   .social-feed__inner {
-    width: calc(100% - 16px);
+    width: calc(100% - 50px);
   }
 
   .intro-feature__image-shell {
@@ -4466,7 +4468,7 @@ a.contact-info-section__item-text:hover {
   }
 
   .intro-feature {
-    padding: 22px 0 18px;
+    padding: 25px 0 18px;
   }
 
   .intro-feature__shape {
@@ -4474,7 +4476,7 @@ a.contact-info-section__item-text:hover {
   }
 
   .intro-feature__content {
-    padding: 42px 44px 72px;
+    padding: 30px 30px 72px;
   }
 
   .intro-feature__title {
@@ -4493,7 +4495,7 @@ a.contact-info-section__item-text:hover {
 
   .hero-contact-band__inner {
     min-height: auto;
-    padding: 28px 14px;
+    padding: 30px;
     border-radius: 10px;
   }
 
@@ -4624,9 +4626,6 @@ a.contact-info-section__item-text:hover {
     line-height: var(--sais-body-text-line-height);
   }
 
-  .tour-intro {
-    padding: 0 20px;
-  }
 
   .tour-actions__grid {
     gap: 5px;
@@ -4679,7 +4678,7 @@ a.contact-info-section__item-text:hover {
   }
 
   .approach-section__content {
-    padding: 32px 20px 32px;
+    padding: 40px 25px 40px;
   }
 
   .approach-section__lead {
@@ -4730,7 +4729,7 @@ a.contact-info-section__item-text:hover {
   .site-footer__brand-area {
     height: auto;
     min-height: 0;
-    padding: 38px 20px 82px;
+    padding: 38px 25px 82px;
   }
 
   .site-footer__curve-mask,
@@ -4752,34 +4751,31 @@ a.contact-info-section__item-text:hover {
 
   .site-footer__right {
     gap: 24px;
-    padding: 28px 18px 32px;
+    padding: 28px 25px 32px;
   }
 
   .site-footer__bottom-inner {
-    width: calc(100% - 48px);
+    width: 100%;
     min-height: auto;
-    padding: 22px 0;
+    padding: 22px 25px;
+    text-align: center;
   }
 
   .site-footer__bottom-inner p,
-  .site-footer__credit {
-    width: 100%;
-    padding: 0;
+  .site-footer__credit,
+  .site-footer__legal a {
     text-align: center;
+    font-size: 0.65rem;
   }
 
   .site-footer__legal {
     width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: center;
   }
 
-  .site-footer__legal a + a {
-    border: 0;
-    margin-left: 0;
-    padding-left: 0;
-  }
 }
 
 @media (max-width: 920px) {
