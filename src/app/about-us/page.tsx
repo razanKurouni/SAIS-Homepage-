@@ -25,7 +25,6 @@ export async function generateMetadata(): Promise<Metadata> {
 export const dynamic = "force-dynamic";
 
 const fallbackHero = {
-  eyebrow: "About Us",
   title: "About Sharjah American International School, Dubai",
   image: {
     url: "/about-hero-building.jpg",
@@ -73,7 +72,6 @@ export default async function AboutUsPage() {
   const aboutIntro = aboutPage?.intro;
   const aboutGovernance = aboutPage?.governance;
   const aboutInspection = aboutPage?.inspection;
-  const heroEyebrow = aboutHero?.heading?.eyebrow || fallbackHero.eyebrow;
   const heroTitle = aboutHero?.heading?.title || fallbackHero.title;
   const heroImage = aboutHero?.image || fallbackHero.image;
   const introHeading = {
@@ -90,7 +88,6 @@ export default async function AboutUsPage() {
       <PageHero
         className="about-hero"
         title={heroTitle}
-        eyebrow={heroEyebrow}
         image={heroImage}
         titleId="about-hero-title"
         priority

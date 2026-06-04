@@ -9,7 +9,6 @@ const fallbackMetadata: Metadata = {
 };
 
 const fallbackHero = {
-  eyebrow: "Contact Us",
   title: "Contact Sharjah American International School, Dubai",
   image: {
     url: "/about-hero-building.jpg",
@@ -32,7 +31,6 @@ export const dynamic = "force-dynamic";
 export default async function ContactUsPage() {
   const [data, contactPage] = await Promise.all([getHomepage(), getContactPage()]);
   const contactHero = contactPage?.hero;
-  const heroEyebrow = contactHero?.heading?.eyebrow || fallbackHero.eyebrow;
   const heroTitle = contactHero?.heading?.title || fallbackHero.title;
   const heroImage = contactHero?.image || fallbackHero.image;
 
@@ -45,7 +43,6 @@ export default async function ContactUsPage() {
       <PageHero
         className="contact-hero"
         title={heroTitle}
-        eyebrow={heroEyebrow}
         image={heroImage}
         titleId="contact-hero-title"
         priority
