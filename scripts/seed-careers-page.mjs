@@ -1,11 +1,17 @@
 import fs from "node:fs";
-import { getCliClient } from "sanity/cli";
+import { createClient } from "@sanity/client";
 
-const client = getCliClient({
+const client = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "uwffig4f",
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
   apiVersion: "2023-01-01",
   token: process.env.SANITY_AUTH_TOKEN,
   useCdn: false,
 });
+
+if (!process.env.SANITY_AUTH_TOKEN) {
+  throw new Error("SANITY_AUTH_TOKEN is required to seed the Careers page.");
+}
 
 function block(_key, text) {
   return {
