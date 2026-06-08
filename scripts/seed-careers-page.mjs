@@ -1,7 +1,11 @@
 import fs from "node:fs";
 import { getCliClient } from "sanity/cli";
 
-const client = getCliClient({ apiVersion: "2023-01-01" });
+const client = getCliClient({
+  apiVersion: "2023-01-01",
+  token: process.env.SANITY_AUTH_TOKEN,
+  useCdn: false,
+});
 
 function block(_key, text) {
   return {

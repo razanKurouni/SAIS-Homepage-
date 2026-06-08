@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "seed:careers": "node scripts/seed-careers-page.mjs",
     "lint": "eslint"
   },
   "dependencies": {
