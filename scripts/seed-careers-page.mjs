@@ -71,6 +71,12 @@ const editorialImage = await uploadImage(
   "SAIS Dubai teacher supporting a student in a learning space"
 );
 
+const professionalCareImage = await uploadImage(
+  "public/careers-professional-care.jpg",
+  "careers-professional-care.jpg",
+  "SAIS Dubai teacher supporting students during a classroom activity"
+);
+
 await client.createOrReplace({
   _id: "careers-page",
   _type: "careersPage",
@@ -135,6 +141,58 @@ await client.createOrReplace({
     theme: "light",
     ctas: [],
   },
+  careSection: {
+    _type: "object",
+    heading: {
+      _type: "sectionHeading",
+      title: "Professional Care,\nEvery School Day",
+      description: [
+        block(
+          "professional-care-body-1",
+          "We are committed to safeguarding and promoting the welfare of children and young people, and we expect all employees and volunteers to share this commitment. As our institution continues to grow, we seek qualified, talented, and dedicated professionals to join our team."
+        ),
+      ],
+    },
+    image: professionalCareImage,
+    imagePosition: "center",
+    panelColor: "#00a5b2",
+    waveColor: "#d97252",
+    textColor: "#ffffff",
+  },
+  requirementsSection: {
+    _type: "object",
+    columns: [
+      {
+        _key: "our-commitment",
+        _type: "object",
+        title: "Our Commitment",
+        intro: "Successful candidates will receive an excellent remuneration package including:",
+        items: [
+          "Competitive tax-free salary",
+          "Medical insurance",
+          "UAE working permit",
+          "Residence visa",
+          "Annual flight allowance",
+          "Tuition fee concession",
+          "Additional benefits in accordance with UAE Labour Law",
+        ],
+      },
+      {
+        _key: "qualifications-requirements",
+        _type: "object",
+        title: "Qualifications & Requirements",
+        items: [
+          "Certified professional teaching qualification at degree level (B.Ed., PGCE, PGDE, or equivalent in Primary Education for KG and Primary positions)",
+          "Subject teachers must hold a Bachelor's or Master's degree in the relevant subject",
+          "Minimum of 2 years of varied and demonstrable teaching experience at various school levels",
+          "Experience in American curriculum schools is advantageous but not mandatory",
+          "Proven ability to motivate and inspire students",
+          "Commitment to providing outstanding teaching and learning",
+          "Desire to work in a challenging environment with genuine career advancement opportunities",
+        ],
+      },
+    ],
+  },
 });
 
-console.log("Seeded careers-page with editable hero, Work For SAIS, and text/image content.");
+console.log("Seeded careers-page with editable hero, Work For SAIS, care, and requirements content.");

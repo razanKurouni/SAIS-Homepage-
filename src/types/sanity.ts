@@ -118,11 +118,24 @@ export type CareersIntroSection = {
   ctas?: Cta[];
 };
 
+export type CareersRequirementColumn = {
+  _key?: string;
+  title?: string;
+  intro?: string;
+  items?: string[];
+};
+
+export type CareersRequirementsSection = {
+  columns?: CareersRequirementColumn[];
+};
+
 export type CareersPageData = {
   seo?: Seo;
   hero?: PageHeroContent;
   intro?: CareersIntroSection;
   editorialSection?: ImageTextSection;
+  careSection?: ContactInfoSection;
+  requirementsSection?: CareersRequirementsSection;
 };
 
 export type LogoItem = {

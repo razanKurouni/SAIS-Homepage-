@@ -3,18 +3,26 @@ import type { CSSProperties } from "react";
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { ImageCurvedPanel } from "@/components/ui/image-curved-panel";
+import { RichText } from "@/components/ui/rich-text";
 import type { ContactInfoItem, ContactInfoSection as ContactInfoSectionData } from "@/types/sanity";
 
 type ContactInfoSectionProps = {
   section?: ContactInfoSectionData;
+  fallbackSection?: ContactInfoSectionData;
+  className?: string;
+  titleId?: string;
+  ariaLabel?: string;
 };
 
 type ContactInfoStyle = CSSProperties & {
   "--contact-info-image-position"?: string;
   "--contact-info-text-color"?: string;
+  "--contact-info-panel-color"?: string;
+  "--contact-info-wave-color"?: string;
 };
 
-const fallbackSection: Required<Pick<ContactInfoSectionData, "heading" | "image" | "items">> = {
+const fallbackSection: ContactInfoSectionData &
+  Required<Pick<ContactInfoSectionData, "heading" | "image" | "items">> = {
   heading: {
     title: "Investing in Continuous Professional Growth",
   },
@@ -94,18 +102,36 @@ function ContactInfoText({ item }: { item: ContactInfoItem }) {
   return <p className="contact-info-section__item-text">{content}</p>;
 }
 
-export function ContactInfoSection({ section }: ContactInfoSectionProps) {
-  const heading = section?.heading?.title || fallbackSection.heading.title;
-  const image = section?.image?.url ? section.image : fallbackSection.image;
-  const rawItems = section?.items?.length ? section.items : fallbackSection.items;
+export function ContactInfoSection({
+  section,
+  fallbackSection: customFallback,
+  className = "",
+  titleId = "contact-info-title",
+  ariaLabel,
+}: ContactInfoSectionProps) {
+  const baseFallback: ContactInfoSectionData = customFallback || fallbackSection;
+  const heading = section?.heading?.title || baseFallback.heading?.title || fallbackSection.heading.title;
+  const description = section?.heading?.description?.length
+    ? section.heading.description
+    : baseFallback.heading?.description;
+  const image = section?.image?.url ? section.image : baseFallback.image?.url ? baseFallback.image : fallbackSection.image;
+  const rawItems = section?.items?.length
+    ? section.items
+    : customFallback
+      ? customFallback.items || []
+      : fallbackSection.items;
   // Ensure location items always have the campus map link if none is set in CMS
   const MAP_HREF = "https://maps.app.goo.gl/jpHenWCshYQesNd69";
   const items = rawItems.map((item) =>
     item.icon === "location" && !item.href ? { ...item, href: MAP_HREF } : item
   );
+  const panelColor = section?.panelColor || baseFallback.panelColor || "var(--sais-primary)";
+  const waveColor = section?.waveColor || baseFallback.waveColor || "#d97252";
   const style: ContactInfoStyle = {
-    "--contact-info-image-position": section?.imagePosition || "center",
-    "--contact-info-text-color": section?.textColor || "#ffffff",
+    "--contact-info-image-position": section?.imagePosition || baseFallback.imagePosition || "center",
+    "--contact-info-text-color": section?.textColor || baseFallback.textColor || "#ffffff",
+    "--contact-info-panel-color": panelColor,
+    "--contact-info-wave-color": waveColor,
   };
 
   const mediaSlot = (
@@ -126,30 +152,41 @@ export function ContactInfoSection({ section }: ContactInfoSectionProps) {
   );
 
   return (
-    <section className="contact-info-section" aria-labelledby="contact-info-title" style={style}>
+    <section
+      className={`contact-info-section ${className}`.trim()}
+      aria-labelledby={ariaLabel ? undefined : titleId}
+      aria-label={ariaLabel}
+      style={style}
+    >
       <ImageCurvedPanel
         mediaSlot={mediaSlot}
         innerClassName="contact-info-section__inner"
-        fillColor={section?.panelColor || "var(--sais-primary)"}
-        accentColor={section?.waveColor || "#d97252"}
+        fillColor={panelColor}
+        accentColor={waveColor}
         strokeWidth={88}
         flipped
         panelClassName="contact-info-section__panel"
         panelContentClassName="contact-info-section__panel-content"
       >
         <div className="contact-info-section__body">
-          <h2 id="contact-info-title" className="contact-info-section__title">
+          <h2 id={titleId} className="contact-info-section__title">
             {heading}
           </h2>
 
-          <div className="contact-info-section__items">
-            {items.map((item, index) => (
-              <div className="contact-info-section__item" key={item._key || `${item.label}-${index}`}>
-                <ContactInfoIcon icon={item.icon} />
-                <ContactInfoText item={item} />
-              </div>
-            ))}
-          </div>
+          {description?.length ? (
+            <RichText blocks={description} className="contact-info-section__description" />
+          ) : null}
+
+          {items.length ? (
+            <div className="contact-info-section__items">
+              {items.map((item, index) => (
+                <div className="contact-info-section__item" key={item._key || `${item.label}-${index}`}>
+                  <ContactInfoIcon icon={item.icon} />
+                  <ContactInfoText item={item} />
+                </div>
+              ))}
+            </div>
+          ) : null}
         </div>
 
         {/* mobile wave divider between panel and image */}

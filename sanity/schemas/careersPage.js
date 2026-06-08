@@ -72,6 +72,74 @@ export const careersPage = {
       type: "imageTextSection",
       description: "Editable text and image section shown below the Work For SAIS section.",
     },
+    {
+      name: "careSection",
+      title: "Professional Care Section",
+      type: "object",
+      description: "Editable curved image panel shown below the careers intro content.",
+      fields: [
+        { name: "heading", title: "Text Content", type: "sectionHeading" },
+        { name: "image", title: "Image", type: "imageWithAlt" },
+        {
+          name: "imagePosition",
+          title: "Image Position",
+          type: "string",
+          description: "Optional CSS object-position value, for example center or 45% center.",
+        },
+        {
+          name: "panelColor",
+          title: "Panel Background Color",
+          type: "string",
+          description: "Optional CSS color, for example #00A5B2.",
+        },
+        {
+          name: "waveColor",
+          title: "Curved Line Color",
+          type: "string",
+          description: "Optional CSS color, for example #d97252.",
+        },
+        {
+          name: "textColor",
+          title: "Text Color",
+          type: "string",
+          description: "Optional CSS color, for example #ffffff.",
+        },
+      ],
+    },
+    {
+      name: "requirementsSection",
+      title: "Commitment & Requirements Section",
+      type: "object",
+      description: "Editable two-column list section shown below the Professional Care panel.",
+      fields: [
+        {
+          name: "columns",
+          title: "Columns",
+          type: "array",
+          of: [
+            {
+              type: "object",
+              fields: [
+                { name: "title", title: "Title", type: "string" },
+                { name: "intro", title: "Intro Text", type: "text", rows: 2 },
+                {
+                  name: "items",
+                  title: "List Items",
+                  type: "array",
+                  of: [{ type: "string" }],
+                },
+              ],
+              preview: {
+                select: {
+                  title: "title",
+                  subtitle: "intro",
+                },
+              },
+            },
+          ],
+        },
+      ],
+    },
   ],
   preview: {
     select: {

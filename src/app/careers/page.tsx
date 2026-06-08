@@ -1,12 +1,19 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import { SitePageShell } from "@/components/layout/site-page-shell";
+import { CareersRequirementsSection } from "@/components/sections/careers-requirements-section";
+import { ContactInfoSection } from "@/components/sections/contact-info-section";
 import { EditorialSplitSection } from "@/components/sections/editorial-split-section";
 import { InnerPageNav } from "@/components/sections/inner-page-nav";
 import { PageHero } from "@/components/sections/page-hero";
 import { RichText } from "@/components/ui/rich-text";
 import { getCareersPage, getHomepage } from "@/lib/sanity";
-import type { ImageTextSection, PortableTextBlock } from "@/types/sanity";
+import type {
+  CareersRequirementsSection as CareersRequirementsSectionData,
+  ContactInfoSection as ContactInfoSectionData,
+  ImageTextSection,
+  PortableTextBlock,
+} from "@/types/sanity";
 
 const fallbackMetadata: Metadata = {
   title: "Careers | SAIS Dubai",
@@ -68,6 +75,68 @@ const fallbackEditorialParagraphs = [
   "The SAIS journey began with the establishment of our flagship Sharjah campus in 1997. The Dubai campus, opened in 2005, represents the second institution in our expanding network. Initially launched as a comprehensive KG-Grade 12 American curriculum school, we began with 60 students and a dedicated core faculty. The school experienced consistent enrollment growth and evolved into a vibrant, innovative learning environment delivering premier American education while honoring local customs and traditions.",
   "The administrative leadership across all SAIS campuses maintains close professional collaboration, forming a cohesive professional learning network that supports the development of each institution and its leadership team.",
 ];
+
+const fallbackCareDescription: PortableTextBlock[] = [
+  {
+    _key: "careers-care-body-1",
+    _type: "block",
+    children: [
+      {
+        _key: "careers-care-body-1-text",
+        _type: "span",
+        text:
+          "We are committed to safeguarding and promoting the welfare of children and young people, and we expect all employees and volunteers to share this commitment. As our institution continues to grow, we seek qualified, talented, and dedicated professionals to join our team.",
+      },
+    ],
+  },
+];
+
+const fallbackCareSection: ContactInfoSectionData = {
+  heading: {
+    title: "Professional Care,\nEvery School Day",
+    description: fallbackCareDescription,
+  },
+  image: {
+    url: "/careers-professional-care.jpg",
+    alt: "SAIS Dubai teacher supporting students during a classroom activity",
+  },
+  imagePosition: "center",
+  panelColor: "#00a5b2",
+  waveColor: "#d97252",
+  textColor: "#ffffff",
+};
+
+const fallbackRequirementsSection: CareersRequirementsSectionData = {
+  columns: [
+    {
+      _key: "our-commitment",
+      title: "Our Commitment",
+      intro: "Successful candidates will receive an excellent remuneration package including:",
+      items: [
+        "Competitive tax-free salary",
+        "Medical insurance",
+        "UAE working permit",
+        "Residence visa",
+        "Annual flight allowance",
+        "Tuition fee concession",
+        "Additional benefits in accordance with UAE Labour Law",
+      ],
+    },
+    {
+      _key: "qualifications-requirements",
+      title: "Qualifications & Requirements",
+      items: [
+        "Certified professional teaching qualification at degree level (B.Ed., PGCE, PGDE, or equivalent in Primary Education for KG and Primary positions)",
+        "Subject teachers must hold a Bachelor's or Master's degree in the relevant subject",
+        "Minimum of 2 years of varied and demonstrable teaching experience at various school levels",
+        "Experience in American curriculum schools is advantageous but not mandatory",
+        "Proven ability to motivate and inspire students",
+        "Commitment to providing outstanding teaching and learning",
+        "Desire to work in a challenging environment with genuine career advancement opportunities",
+      ],
+    },
+  ],
+};
 
 const careersInnerNavItems = [
   { label: "Latest News", href: "/#latest-news" },
@@ -159,6 +228,18 @@ export default async function CareersPage() {
         fallbackParagraphs={fallbackEditorialParagraphs}
         className="careers-editorial"
         imageSizes="(max-width: 767px) calc(100vw - 32px), 42vw"
+      />
+
+      <ContactInfoSection
+        section={careersPage?.careSection}
+        fallbackSection={fallbackCareSection}
+        className="careers-care-section"
+        titleId="careers-care-title"
+      />
+
+      <CareersRequirementsSection
+        section={careersPage?.requirementsSection}
+        fallbackSection={fallbackRequirementsSection}
       />
     </SitePageShell>
   );

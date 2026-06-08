@@ -46,5 +46,21 @@ export const careersPageQuery = `*[_type == "careersPage" && _id == "careers-pag
     ctas[] ${ctaProjection},
     imagePosition,
     theme
+  },
+  careSection {
+    heading ${headingProjection},
+    image ${imageWithAltProjection},
+    imagePosition,
+    panelColor,
+    waveColor,
+    textColor
+  },
+  requirementsSection {
+    columns[] {
+      _key,
+      title,
+      intro,
+      items
+    }
   }
 }`;

@@ -688,6 +688,98 @@ button[aria-label="Open Next.js Dev Tools"] {
   border-radius: 18px;
 }
 
+.careers-care-section {
+  padding: clamp(30px, 4vw, 54px) 0 clamp(18px, 3vw, 32px);
+}
+
+.careers-care-section .contact-info-section__inner {
+  width: min(85%, 1180px);
+}
+
+.careers-care-section .contact-info-section__media {
+  width: 38%;
+  padding: clamp(38px, 4.6vw, 64px) 0;
+}
+
+.careers-care-section .contact-info-section__image-shell {
+  width: 132%;
+  border-radius: 18px;
+  box-shadow: none;
+}
+
+.careers-care-section .contact-info-section__panel {
+  width: 62%;
+  min-height: clamp(330px, 31vw, 470px);
+  border-radius: 16px;
+}
+
+.careers-care-section .contact-info-section__body {
+  padding: clamp(46px, 5vw, 72px) 9% clamp(46px, 5vw, 72px) 24%;
+}
+
+.contact-info-section__description {
+  display: grid;
+  gap: 0.85rem;
+  max-width: 520px;
+  margin-top: 26px;
+}
+
+.contact-info-section__description p {
+  margin: 0;
+  color: var(--contact-info-text-color, #ffffff);
+  font-size: var(--sais-body-text-size);
+  font-weight: 400;
+  letter-spacing: var(--sais-body-text-letter-spacing);
+  line-height: var(--sais-body-text-line-height);
+}
+
+.careers-requirements {
+  background: #ffffff;
+  padding: clamp(34px, 4.6vw, 64px) 0 clamp(66px, 7vw, 104px);
+}
+
+.careers-requirements__inner {
+  width: min(85%, 1120px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(54px, 9vw, 150px);
+}
+
+.careers-requirements__title {
+  margin: 0;
+  color: var(--sais-primary);
+  font-size: clamp(1.22rem, 1.55vw, 1.46rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+.careers-requirements__intro {
+  max-width: 440px;
+  margin: 22px 0 0;
+  color: #666b70;
+  font-size: var(--sais-body-text-size);
+  letter-spacing: var(--sais-body-text-letter-spacing);
+  line-height: var(--sais-body-text-line-height);
+}
+
+.careers-requirements__list {
+  display: grid;
+  gap: 6px;
+  margin: 22px 0 0;
+  padding-left: 1.15rem;
+  color: #666b70;
+  font-size: var(--sais-body-text-size);
+  letter-spacing: var(--sais-body-text-letter-spacing);
+  line-height: var(--sais-body-text-line-height);
+}
+
+.careers-requirements__list li::marker {
+  color: #777d82;
+  font-size: 0.72em;
+}
+
 .inner-page-nav {
   --inner-page-nav-count: 1;
   --inner-page-nav-active-bg: var(--sais-accent);
@@ -809,6 +901,7 @@ button[aria-label="Open Next.js Dev Tools"] {
   font-weight: 400;
   line-height: 1.18;
   letter-spacing: 0;
+  white-space: pre-line;
 }
 
 .contact-info-section__items {
@@ -5110,7 +5203,7 @@ a.contact-info-section__item-text:hover {
   }
 
   .contact-info-section__body {
-    background: var(--sais-primary);
+    background: var(--contact-info-panel-color, var(--sais-primary));
     padding: 42px 44px 72px;
   }
 
@@ -5138,13 +5231,13 @@ a.contact-info-section__item-text:hover {
   }
 
   .contact-info-section__curve-mask {
-    fill: var(--sais-primary);
+    fill: var(--contact-info-panel-color, var(--sais-primary));
     top: 62%;
   }
 
   .contact-info-section__wave {
     fill: none;
-    stroke: #d97252;
+    stroke: var(--contact-info-wave-color, #d97252);
     stroke-linecap: round;
     stroke-width: 20px;
     top: 71%;
@@ -5159,6 +5252,44 @@ a.contact-info-section__item-text:hover {
   .contact-info-section__item-text {
     font-size: var(--sais-body-text-size);
     line-height: var(--sais-body-text-line-height);
+  }
+
+  .careers-care-section {
+    padding: 30px 0 10px;
+  }
+
+  .careers-care-section .contact-info-section__inner {
+    width: calc(100% - 32px);
+  }
+
+  .careers-care-section .contact-info-section__media,
+  .careers-care-section .contact-info-section__panel {
+    width: 100%;
+  }
+
+  .careers-care-section .contact-info-section__image-shell {
+    width: 100%;
+    min-height: 360px;
+    border-radius: 0;
+  }
+
+  .careers-care-section .contact-info-section__body {
+    padding: 38px 28px 66px;
+  }
+
+  .contact-info-section__description {
+    max-width: none;
+    margin-top: 22px;
+  }
+
+  .careers-requirements {
+    padding: 38px 0 64px;
+  }
+
+  .careers-requirements__inner {
+    width: calc(100% - 44px);
+    grid-template-columns: 1fr;
+    gap: 34px;
   }
 
   .contact-map {
