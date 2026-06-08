@@ -60,7 +60,7 @@
   --primary: var(--sais-primary);
   --accent: var(--sais-accent);
   --sais-button-width: clamp(155px, 11vw, 158px);
-  --sais-body-text-size: .88rem;
+  --sais-body-text-size: 1rem;
   --sais-body-text-line-height: 1.6;
   --sais-body-text-color-on-dark: #fffffff5;
   --sais-body-text-letter-spacing: .02rem;
@@ -594,6 +594,10 @@ button[aria-label="Open Next.js Dev Tools"] {
   stroke: var(--page-hero-wave-color);
 }
 
+.page-hero__mobile-divider {
+  display: none;
+}
+
 .page-hero__copy {
   position: relative;
   z-index: 2;
@@ -622,6 +626,66 @@ button[aria-label="Open Next.js Dev Tools"] {
   font-weight: 400;
   letter-spacing: 0;
   line-height: 1.34;
+  white-space: pre-line;
+}
+
+.careers-work {
+  background:
+    linear-gradient(var(--sais-primary) 0 calc(85% - clamp(82px, 9vw, 132px)), #ffffff 0);
+  color: #ffffff;
+  padding: clamp(48px, 5.4vw, 70px) 0 0;
+}
+
+.careers-work__inner {
+  width: 85%;
+  margin: 0 auto;
+}
+
+.careers-work__copy {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.careers-work__title {
+  color: var(--sais-accent);
+}
+
+.careers-work__body {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 26px;
+}
+
+.careers-work__body p {
+  margin: 0;
+  color: #ffffff;
+  font-size: var(--sais-body-text-size);
+  font-weight: 700;
+  letter-spacing: var(--sais-body-text-letter-spacing);
+  line-height: var(--sais-body-text-line-height);
+}
+
+.careers-work__image-wrap {
+  position: relative;
+  min-height: 85vh;
+  margin-top: 40px;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #d8e7ef;
+}
+
+.careers-work__image {
+  object-fit: cover;
+  object-position: center;
+}
+
+.careers-editorial .editorial-split-section__inner {
+  width: 85%;
+}
+
+.careers-editorial .editorial-split-section__media {
+  border-radius: 18px;
 }
 
 .inner-page-nav {
@@ -757,13 +821,13 @@ button[aria-label="Open Next.js Dev Tools"] {
   display: grid;
   grid-template-columns: 20px minmax(0, 1fr);
   align-items: start;
-  gap: 12px;
+  gap: 20px;
 }
 
 .contact-info-section__item-icon {
   display: inline-flex;
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   align-items: center;
   justify-content: center;
   border: 1px solid rgba(255, 255, 255, 0.82);
@@ -774,7 +838,7 @@ button[aria-label="Open Next.js Dev Tools"] {
 .contact-info-section__item-text {
   margin: 0;
   color: var(--contact-info-text-color, #ffffff);
-  font-size: 0.82rem;
+  font-size: 1rem;
   font-weight: 400;
   line-height: 1.36;
   text-decoration: none;
@@ -4364,6 +4428,7 @@ a.contact-info-section__item-text:hover {
 
 @media (max-width: 540px) {
   .site-header__inner,
+  .careers-work__inner,
   .hero-contact-band__inner,
   .why-dubai__image-wrap,
   .accreditations-section__inner,
@@ -4492,6 +4557,26 @@ a.contact-info-section__item-text:hover {
 
   .hero-contact-band {
     padding: 24px 0;
+  }
+
+  .careers-work {
+    background:
+      linear-gradient(var(--sais-primary) 0 calc(90% - 58px), #ffffff 0);
+    padding-top: 42px;
+  }
+
+  .careers-work__copy {
+    max-width: 100%;
+  }
+
+  .careers-work__body {
+    margin-top: 20px;
+  }
+
+  .careers-work__image-wrap {
+    min-height: 175px;
+    margin-top: 34px;
+    border-radius: 14px;
   }
 
   .hero-contact-band__inner {
@@ -4798,8 +4883,43 @@ a.contact-info-section__item-text:hover {
     display: none;
   }
 
-  .page-hero__media {
+  .page-hero__mobile-divider {
+    position: relative;
     order: 2;
+    z-index: 3;
+    display: block;
+    height: 112px;
+    margin: -1px 0 -56px;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .page-hero__mobile-curve-mask,
+  .page-hero__mobile-wave {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 96px;
+    height: calc(100vw + 140px);
+    transform: translate(-50%, -50%) rotate(90deg);
+    transform-origin: center;
+  }
+
+  .page-hero__mobile-curve-mask {
+    top: 62%;
+    fill: var(--page-hero-panel-bg);
+  }
+
+  .page-hero__mobile-wave {
+    top: 70%;
+    fill: none;
+    stroke: var(--page-hero-wave-color);
+    stroke-linecap: round;
+    stroke-width: 20px;
+  }
+
+  .page-hero__media {
+    order: 3;
     position: relative;
     inset: auto;
     width: 100%;
@@ -5037,7 +5157,8 @@ a.contact-info-section__item-text:hover {
   }
 
   .contact-info-section__item-text {
-    font-size: 0.8rem;
+    font-size: var(--sais-body-text-size);
+    line-height: var(--sais-body-text-line-height);
   }
 
   .contact-map {
@@ -5208,5 +5329,49 @@ a.contact-info-section__item-text:hover {
   .approach-section--governance .approach-section__paragraphs p {
     font-size: 0.88rem;
     line-height: 1.58;
+  }
+}
+
+@media (max-width: 767px) {
+  body .home-hero h1,
+  body .page-hero h1 {
+    font-size: clamp(1.5rem, 5.8vw, 1.42rem);
+    line-height: 1.22;
+  }
+
+  body .preview-page h2,
+  body .site-page h2 {
+    font-size: 1.4rem;
+    line-height: 1.24;
+  }
+
+  body .preview-page p,
+  body .site-page p {
+    font-size: var(--sais-body-text-size);
+    line-height: var(--sais-body-text-line-height);
+  }
+}
+
+@media (min-width: 768px) {
+  body .home-hero h1,
+  body .page-hero h1 {
+    font-size: clamp(1.22rem, 2.75vw, 2rem);
+    line-height: 1.25;
+  }
+
+  body .preview-page h2,
+  body .site-page h2 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1.16;
+  }
+
+  body .preview-page p,
+  body .site-page p {
+    font-size: var(--sais-body-text-size);
+    line-height: var(--sais-body-text-line-height);
+    letter-spacing: var(--sais-body-text-letter-spacing);
   }
 }

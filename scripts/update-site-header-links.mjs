@@ -22,6 +22,10 @@ const navigation = (header?.navigation?.length ? header.navigation : fallbackNav
     return { ...link, href: "/contact-us" };
   }
 
+  if (label?.includes("career")) {
+    return { ...link, href: "/careers" };
+  }
+
   return link;
 });
 
@@ -40,6 +44,10 @@ const columns = footer?.columns?.map((column) => ({
       return { ...link, href: "/contact-us" };
     }
 
+    if (link.label?.trim().toLowerCase().includes("career")) {
+      return { ...link, href: "/careers" };
+    }
+
     return link;
   }),
 }));
@@ -53,4 +61,4 @@ if (columns?.length) {
     .commit();
 }
 
-console.log("Updated site-header-main and site-footer links for About and Contact Us.");
+console.log("Updated site-header-main and site-footer links for About, Careers, and Contact Us.");

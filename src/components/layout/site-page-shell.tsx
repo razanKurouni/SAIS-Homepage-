@@ -30,6 +30,10 @@ function normalizeInnerNavigation(links?: LinkField[]) {
       return { ...link, href: "/contact-us" };
     }
 
+    if (label.includes("career")) {
+      return { ...link, href: "/careers" };
+    }
+
     return { ...link, href: toHomeAnchor(link.href) };
   });
 }

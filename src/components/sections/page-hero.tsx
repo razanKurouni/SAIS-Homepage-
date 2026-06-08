@@ -93,6 +93,15 @@ export function PageHero({
           {title}
         </h1>
       </div>
+
+      <div className="page-hero__mobile-divider" aria-hidden="true">
+        <svg className="page-hero__mobile-curve-mask" viewBox="0 0 96 320" preserveAspectRatio="none">
+          <path d="M0 -32 H52 C16 42 16 92 42 154 C70 220 70 274 38 352 H0 Z" />
+        </svg>
+        <svg className="page-hero__mobile-wave" viewBox="0 0 96 320" preserveAspectRatio="none">
+          <path d="M52 -24 C16 42 16 92 42 154 C70 220 70 274 38 344" />
+        </svg>
+      </div>
     </section>
   );
 }

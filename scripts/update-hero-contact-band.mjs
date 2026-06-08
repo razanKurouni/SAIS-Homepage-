@@ -29,7 +29,7 @@ await client
           _type: "cta",
           _key: "careers",
           label: "Careers",
-          href: "#careers",
+          href: "/careers",
           variant: "ghost",
           openInNewTab: false,
         },

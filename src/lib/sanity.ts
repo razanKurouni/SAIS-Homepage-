@@ -1,5 +1,6 @@
 import { createClient } from "@sanity/client";
 import { aboutPageQuery } from "@/sanity/queries/about-page";
+import { careersPageQuery } from "@/sanity/queries/careers-page";
 import { contactPageQuery } from "@/sanity/queries/contact-page";
 import {
   homepageQuery,
@@ -10,6 +11,7 @@ import {
 import { mapLegacySectionsToHomepage } from "@/lib/content";
 import type {
   AboutPageData,
+  CareersPageData,
   ContactPageData,
   HomepageData,
   LegacyHomeSection,
@@ -59,6 +61,15 @@ export async function getAboutPage(): Promise<AboutPageData | null> {
   try {
     const client = getSanityClient();
     return await client.fetch<AboutPageData | null>(aboutPageQuery);
+  } catch {
+    return null;
+  }
+}
+
+export async function getCareersPage(): Promise<CareersPageData | null> {
+  try {
+    const client = getSanityClient();
+    return await client.fetch<CareersPageData | null>(careersPageQuery);
   } catch {
     return null;
   }

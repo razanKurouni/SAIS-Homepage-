@@ -81,7 +81,7 @@ const homepage = {
     ctas: [
       { _type: "cta", _key: "book-tour", label: "Book a Tour", href: "#tour", variant: "primary", openInNewTab: false },
       { _type: "cta", _key: "apply-now", label: "Apply Now", href: "#apply", variant: "secondary", openInNewTab: false },
-      { _type: "cta", _key: "careers", label: "Careers", href: "#careers", variant: "ghost", openInNewTab: false },
+      { _type: "cta", _key: "careers", label: "Careers", href: "/careers", variant: "ghost", openInNewTab: false },
     ],
   },
   accreditations: {

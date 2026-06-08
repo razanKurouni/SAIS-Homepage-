@@ -29,7 +29,7 @@ const defaultColumns: FooterColumn[] = [
     links: [
       { label: "News & Events", href: "#news" },
       { label: "Contact Us", href: "/contact-us" },
-      { label: "Careers", href: "#careers" },
+      { label: "Careers", href: "/careers" },
     ],
   },
 ];
@@ -75,6 +75,10 @@ function findSocialLink(links: LinkField[], label: string, fallback: LinkField) 
 function normalizeFooterHref(link: LinkField) {
   if (link.label?.trim().toLowerCase().includes("contact")) {
     return "/contact-us";
+  }
+
+  if (link.label?.trim().toLowerCase().includes("career")) {
+    return "/careers";
   }
 
   return link.href || "#";

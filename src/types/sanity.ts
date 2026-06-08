@@ -112,6 +112,19 @@ export type ContactPageData = {
   contactInfo?: ContactInfoSection;
 };
 
+export type CareersIntroSection = {
+  heading?: SectionHeading;
+  image?: SanityImage;
+  ctas?: Cta[];
+};
+
+export type CareersPageData = {
+  seo?: Seo;
+  hero?: PageHeroContent;
+  intro?: CareersIntroSection;
+  editorialSection?: ImageTextSection;
+};
+
 export type LogoItem = {
   name: string;
   image?: SanityImage;

@@ -12,7 +12,7 @@ const fallbackSection: NonNullable<HomepageData["heroContactBand"]> = {
   ctas: [
     { label: "Book a Tour", href: "#tour", variant: "primary" },
     { label: "Apply Now", href: "#apply", variant: "secondary" },
-    { label: "Careers", href: "#careers", variant: "ghost" },
+    { label: "Careers", href: "/careers", variant: "ghost" },
   ],
 };
 
@@ -43,7 +43,7 @@ export function HeroContactBand({ section }: HeroContactBandProps) {
               return (
                 <Link
                   key={`${action.label}-${action.href}`}
-                  href={action.href || "#"}
+                  href={getActionHref(action)}
                   target={action.openInNewTab ? "_blank" : undefined}
                   rel={action.openInNewTab ? "noreferrer" : undefined}
                   className={`hero-contact-band__button hero-contact-band__button--${tone}`}
@@ -60,4 +60,12 @@ export function HeroContactBand({ section }: HeroContactBandProps) {
       </SectionReveal>
     </section>
   );
+}
+
+function getActionHref(action: Cta) {
+  if (action.label?.trim().toLowerCase().includes("career")) {
+    return "/careers";
+  }
+
+  return action.href || "#";
 }

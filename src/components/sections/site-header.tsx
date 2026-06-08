@@ -336,7 +336,7 @@ function buildMenuSections(links: LinkField[]): MenuSection[] {
     },
     { title: "News & Events", href: "#news" },
     { title: "Contact Us", href: mapHref("Contact", "/contact-us") },
-    { title: "Careers", href: "#careers" },
+    { title: "Careers", href: "/careers" },
   ];
 }
 

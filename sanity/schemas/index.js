@@ -1,4 +1,5 @@
 import { aboutPage } from "./aboutPage";
+import { careersPage } from "./careersPage";
 import { contactPage } from "./contactPage";
 import { homepage } from "./homepage";
 import { siteFooter } from "./siteFooter";
@@ -26,5 +27,6 @@ export const schemaTypes = [
   siteFooter,
   homepage,
   aboutPage,
+  careersPage,
   contactPage,
 ];
