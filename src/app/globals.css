@@ -745,8 +745,8 @@ button[aria-label="Open Next.js Dev Tools"] {
 
 .contact-info-section__inner {
   position: relative;
-  width: 80%;
-  max-width: 100%;
+  width: 85%;
+  max-width:1400px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -782,7 +782,7 @@ button[aria-label="Open Next.js Dev Tools"] {
 .contact-info-section__panel {
   position: relative;
   width: 70%;
-  min-height: clamp(420px, 44vw, 660px);
+  min-height: clamp(420px, 40vw, 660px);
   overflow: hidden;
   border-radius: 20px;
   color: var(--contact-info-text-color, #ffffff);
@@ -1021,8 +1021,8 @@ a.contact-info-section__item-text:hover {
 
 .intro-feature__layout {
   position: relative;
-  width: 80%;
-  max-width: 100%;
+  width: 85%;
+  max-width: 1400px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -1108,7 +1108,7 @@ a.contact-info-section__item-text:hover {
 }
 
 .hero-contact-band__inner {
-  width: 80%;
+  width: 85%;
   max-width: 100%;
   min-height: 185px;
   margin: 0 auto;
@@ -1232,7 +1232,7 @@ a.contact-info-section__item-text:hover {
 }
 
 .why-dubai__inner {
-  width: 80%;
+  width: 85%;
   margin: 0 auto;
   text-align: center;
 }
@@ -1331,7 +1331,7 @@ a.contact-info-section__item-text:hover {
 }
 
 .accreditations-section__inner {
-  width: 80%;
+  width: 85%;
   max-width: 100%;
   margin: 0 auto;
 }
@@ -1424,7 +1424,7 @@ a.contact-info-section__item-text:hover {
 }
 
 .facts-section__inner {
-  width: 80%;
+  width: 85%;
   max-width: 100%;
   margin: 0 auto;
   background: #ffffff;
@@ -1473,8 +1473,8 @@ a.contact-info-section__item-text:hover {
 .facts-section__value {
   margin: 0;
   color: var(--sais-primary);
-  font-size: clamp(2.65rem, 4.5vw, 3.45rem);
-  font-weight: 400;
+  font-size: clamp(2.65rem, 4.5vw, 3.45rem) !important;
+  font-weight: 400 !important;
   line-height: 1;
   letter-spacing: -0.035em;
   transition: color 320ms ease;
@@ -1496,7 +1496,7 @@ a.contact-info-section__item-text:hover {
 }
 
 .quick-links__inner {
-  width: 80%;
+  width: 85%;
   max-width: 100%;
   margin: 0 auto;
 }
@@ -1699,7 +1699,7 @@ a.contact-info-section__item-text:hover {
 }
 
 .learning-phases__inner {
-  width: 80%;
+  width: 85%;
   max-width: 100%;
   margin: 0 auto;
 }
@@ -1922,7 +1922,7 @@ a.contact-info-section__item-text:hover {
 }
 
 .tour-actions__inner {
-  width: 80%;
+  width: 85%;
   max-width: 1420px;
   margin: 0 auto;
 }
@@ -2089,7 +2089,7 @@ a.contact-info-section__item-text:hover {
   z-index: 1;
   width: 55vw;
   min-width: 760px;
-  left:10%;
+  left: 2%;
 }
 
 .approach-section__shape {
@@ -2205,7 +2205,7 @@ a.contact-info-section__item-text:hover {
 }
 
 .latest-news__inner {
-  width: 80%;
+  width: 85%;
   max-width: 100%;
   margin: 0 auto;
 }
@@ -2363,7 +2363,7 @@ a.contact-info-section__item-text:hover {
 }
 
 .social-feed__inner {
-  width: 80%;
+  width: 85%;
   max-width: 100%;
   margin: 0 auto;
 }
@@ -2542,7 +2542,7 @@ a.contact-info-section__item-text:hover {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 38px 34px 42px 20%;
+  padding: 38px 34px 42px 15%;
 }
 
 .site-footer__logo {
@@ -2600,7 +2600,7 @@ a.contact-info-section__item-text:hover {
   display: grid;
   align-content: start;
   gap: 50px;
-  padding: 58px 20% 56px clamp(34px, 5vw, 78px);
+  padding: 58px 20% 56px 15%;
 }
 
 .site-footer__social {
@@ -2721,7 +2721,7 @@ a.contact-info-section__item-text:hover {
   gap: 10px 24px;
   width: 100%;
   min-height: 56px;
-  padding: 0 10%;
+  padding: 0 7%;
   font-size: .86rem;
   line-height: 1.45;
   display: flex;
