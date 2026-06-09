@@ -102,7 +102,6 @@ await client.createOrReplace({
     _type: "object",
     heading: {
       _type: "sectionHeading",
-      eyebrow: "Careers",
       title: "Work At\nOur School",
     },
     image: heroImage,
