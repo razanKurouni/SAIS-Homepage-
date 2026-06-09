@@ -27,5 +27,27 @@ export const academicsPageQuery = `*[_type == "academicsPage" && _id == "academi
     textColor,
     imagePosition,
     imageWidth
+  },
+  curriculumSection {
+    heading ${headingProjection},
+    image ${imageWithAltProjection},
+    imagePosition,
+    panelColor,
+    waveColor,
+    textColor
+  },
+  skillsSection {
+    heading ${headingProjection},
+    groups[] {
+      _key,
+      title,
+      items[] {
+        _key,
+        title,
+        icon ${imageWithAltProjection},
+        iconType,
+        theme
+      }
+    }
   }
 }`;

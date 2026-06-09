@@ -928,9 +928,72 @@ a.careers-join-team__card:hover {
   background: var(--inner-page-nav-active-bg);
 }
 
+.inner-page-nav__dropdown {
+  display: none;
+}
+
+.inner-page-nav__dropdown-trigger {
+  position: relative;
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 22px;
+  background: var(--inner-page-nav-active-bg);
+  color: var(--inner-page-nav-text-color);
+  cursor: pointer;
+  font-size: 0.98rem;
+  font-weight: 500;
+  line-height: 1.2;
+  list-style: none;
+}
+
+.inner-page-nav__dropdown-trigger::-webkit-details-marker {
+  display: none;
+}
+
+.inner-page-nav__dropdown-trigger::after {
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  content: "";
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform 0.2s ease;
+}
+
+.inner-page-nav__dropdown[open] .inner-page-nav__dropdown-trigger::after {
+  transform: rotate(225deg) translate(-2px, -1px);
+}
+
+.inner-page-nav__dropdown-list {
+  display: grid;
+  gap: 3px;
+  margin: 0;
+  padding: 4px 0 0;
+  list-style: none;
+  background: var(--inner-page-nav-divider-color);
+}
+
+.inner-page-nav__dropdown-link {
+  display: block;
+  padding: 14px 22px;
+  background: var(--inner-page-nav-inactive-bg);
+  color: var(--inner-page-nav-text-color);
+  font-size: 0.94rem;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.inner-page-nav__dropdown-link--active,
+.inner-page-nav__dropdown-link[aria-current="page"],
+.inner-page-nav__dropdown-link:hover {
+  background: var(--inner-page-nav-active-bg);
+}
+
 .academics-inner-nav {
-  overflow-x: auto;
-  scrollbar-width: thin;
+  overflow: visible;
 }
 
 .academics-inner-nav .inner-page-nav__list {
@@ -1050,6 +1113,139 @@ a.contact-info-section__item-text:hover {
 
 .contact-info-section__mobile-divider {
   display: none;
+}
+
+.academics-curriculum-section {
+  background: linear-gradient(to bottom, #ffffff 0 54%, var(--sais-primary) 54% 100%);
+  padding: clamp(44px, 5vw, 70px) 0 clamp(28px, 4vw, 48px);
+}
+
+.academics-curriculum-section .contact-info-section__inner {
+  width: min(85%, 1180px);
+}
+
+.academics-curriculum-section .contact-info-section__media {
+  width: 34%;
+  padding: clamp(44px, 4.6vw, 64px) 0;
+}
+
+.academics-curriculum-section .contact-info-section__image-shell {
+  width: 140%;
+  aspect-ratio: 780 / 650;
+  border-radius: 16px;
+  box-shadow: none;
+}
+
+.academics-curriculum-section .contact-info-section__panel {
+  width: 66%;
+  min-height: clamp(430px, 39vw, 560px);
+  border-radius: 16px;
+}
+
+.academics-curriculum-section .contact-info-section__body {
+  padding: clamp(44px, 5vw, 70px) 9% clamp(44px, 5vw, 70px) 25%;
+}
+
+.academics-curriculum-section .contact-info-section__title {
+  max-width: 350px;
+}
+
+.academics-curriculum-section .contact-info-section__description {
+  max-width: 510px;
+}
+
+.academics-skills {
+  background: var(--sais-primary);
+  color: #ffffff;
+  padding: clamp(8px, 1vw, 16px) 0 clamp(62px, 7vw, 92px);
+}
+
+.academics-skills__inner {
+  width: min(85%, 1180px);
+  margin: 0 auto;
+}
+
+.academics-skills__intro {
+  max-width: 800px;
+  margin: 0 auto clamp(34px, 4vw, 54px);
+  text-align: center;
+}
+
+.academics-skills__intro p {
+  margin: 0;
+  color: #ffffff;
+  font-size: var(--sais-body-text-size);
+  font-weight: 400;
+  letter-spacing: var(--sais-body-text-letter-spacing);
+  line-height: var(--sais-body-text-line-height);
+}
+
+.academics-skills__group {
+  margin-top: clamp(26px, 4vw, 46px);
+}
+
+.academics-skills__group-title {
+  margin: 0 0 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.72);
+  color: #ffffff;
+  font-size: clamp(1.18rem, 1.45vw, 1.38rem);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.academics-skills__cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(18px, 2.4vw, 30px);
+}
+
+.academics-skills__card {
+  min-height: 182px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 22px 18px 18px;
+  border: 2px solid var(--academics-card-accent, var(--sais-accent));
+  border-radius: 12px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.academics-skills__card--teal {
+  --academics-card-accent: var(--sais-accent);
+}
+
+.academics-skills__card--orange {
+  --academics-card-accent: #d97252;
+}
+
+.academics-skills__icon {
+  position: relative;
+  width: 78px;
+  height: 78px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--academics-card-accent, var(--sais-accent));
+}
+
+.academics-skills__icon-image {
+  object-fit: contain;
+}
+
+.academics-skills__card-title {
+  max-width: 170px;
+  min-height: 32px;
+  margin: 0;
+  color: var(--sais-primary);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.18;
+  white-space: pre-line;
 }
 
 .about-highlights {
@@ -5158,6 +5354,31 @@ a.contact-info-section__item-text:hover {
     max-width: 460px;
   }
 
+  .academics-curriculum-section .contact-info-section__inner {
+    width: 92%;
+  }
+
+  .academics-curriculum-section .contact-info-section__media {
+    width: 36%;
+    padding: 0;
+  }
+
+  .academics-curriculum-section .contact-info-section__image-shell {
+    width: 142%;
+  }
+
+  .academics-curriculum-section .contact-info-section__panel {
+    width: 64%;
+  }
+
+  .academics-curriculum-section .contact-info-section__body {
+    padding-left: 25%;
+  }
+
+  .academics-skills__cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .about-highlights__inner {
     grid-template-columns: 1fr;
   }
@@ -5259,16 +5480,12 @@ a.contact-info-section__item-text:hover {
     min-height: 320px;
   }
 
-  .inner-page-nav__link {
-    min-height: 50px;
-    padding: 8px 10px;
-    font-size: 0.86rem;
+  .inner-page-nav__dropdown {
+    display: block;
   }
 
-  .academics-inner-nav .inner-page-nav__list {
-    width: max-content;
-    min-width: 100%;
-    grid-template-columns: repeat(5, minmax(132px, 1fr));
+  .inner-page-nav__list {
+    display: none;
   }
 
   .contact-info-section {
@@ -5398,6 +5615,66 @@ a.contact-info-section__item-text:hover {
     margin-top: 22px;
   }
 
+  .academics-curriculum-section {
+    background: linear-gradient(to bottom, #ffffff 0 58%, var(--sais-primary) 58% 100%);
+    padding: 32px 0 24px;
+  }
+
+  .academics-curriculum-section .contact-info-section__inner {
+    width: calc(100% - 32px);
+  }
+
+  .academics-curriculum-section .contact-info-section__media,
+  .academics-curriculum-section .contact-info-section__panel {
+    width: 100%;
+  }
+
+  .academics-curriculum-section .contact-info-section__image-shell {
+    width: 100%;
+    min-height: 320px;
+    border-radius: 0;
+  }
+
+  .academics-curriculum-section .contact-info-section__body {
+    padding: 38px 28px 66px;
+  }
+
+  .academics-curriculum-section .contact-info-section__description p {
+    font-size: var(--sais-body-text-size);
+    line-height: var(--sais-body-text-line-height);
+  }
+
+  .academics-skills {
+    padding: 18px 0 58px;
+  }
+
+  .academics-skills__inner {
+    width: calc(100% - 32px);
+  }
+
+  .academics-skills__intro {
+    margin-bottom: 36px;
+  }
+
+  .academics-skills__cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .academics-skills__card {
+    min-height: 164px;
+    padding: 18px 14px 16px;
+  }
+
+  .academics-skills__icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .academics-skills__card-title {
+    font-size: 0.72rem;
+  }
+
   .careers-requirements {
     padding: 38px 0 64px;
   }
@@ -5485,6 +5762,24 @@ a.contact-info-section__item-text:hover {
   .about-highlight-card {
     min-height: 0;
     padding: 24px 20px;
+  }
+
+  .inner-page-nav__dropdown-trigger,
+  .inner-page-nav__dropdown-link {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .academics-curriculum-section .contact-info-section__image-shell {
+    min-height: 270px;
+  }
+
+  .academics-skills__cards {
+    grid-template-columns: 1fr;
+  }
+
+  .academics-skills__card {
+    min-height: 156px;
   }
 }
 

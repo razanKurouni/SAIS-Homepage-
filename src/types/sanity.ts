@@ -91,6 +91,27 @@ export type AboutPageData = {
 export type AcademicsPageData = {
   seo?: Seo;
   hero?: PageHeroContent;
+  curriculumSection?: ContactInfoSection;
+  skillsSection?: AcademicsSkillsSection;
+};
+
+export type AcademicsSkillItem = {
+  _key?: string;
+  title?: string;
+  icon?: SanityImage;
+  iconType?: "critical" | "communication" | "organization" | "research" | "resilience" | "empathy" | "curiosity" | "growth";
+  theme?: "teal" | "orange";
+};
+
+export type AcademicsSkillGroup = {
+  _key?: string;
+  title?: string;
+  items?: AcademicsSkillItem[];
+};
+
+export type AcademicsSkillsSection = {
+  heading?: SectionHeading;
+  groups?: AcademicsSkillGroup[];
 };
 
 export type ContactInfoItem = {

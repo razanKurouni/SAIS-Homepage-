@@ -62,9 +62,37 @@ export function InnerPageNav({
     "--inner-page-nav-divider-color": dividerColor,
     "--inner-page-nav-top-line-color": topLineColor,
   };
+  const activeItem = items.find((item) => isActiveItem(item, activeHref, activeLabel)) || items[0];
 
   return (
     <nav className={`inner-page-nav ${className}`.trim()} aria-label={ariaLabel} style={style}>
+      <details className="inner-page-nav__dropdown">
+        <summary className="inner-page-nav__dropdown-trigger">
+          <span>{activeItem.label}</span>
+        </summary>
+        <ul className="inner-page-nav__dropdown-list">
+          {items.map((item) => {
+            const isActive = isActiveItem(item, activeHref, activeLabel);
+
+            return (
+              <li key={`mobile-${item.label}-${item.href}`} className="inner-page-nav__dropdown-item">
+                <Link
+                  href={item.href}
+                  target={item.openInNewTab ? "_blank" : undefined}
+                  rel={item.openInNewTab ? "noreferrer" : undefined}
+                  aria-current={isActive ? "page" : undefined}
+                  className={`inner-page-nav__dropdown-link ${
+                    isActive ? "inner-page-nav__dropdown-link--active" : ""
+                  }`.trim()}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </details>
+
       <ul className="inner-page-nav__list">
         {items.map((item) => {
           const isActive = isActiveItem(item, activeHref, activeLabel);

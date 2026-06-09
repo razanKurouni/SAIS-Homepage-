@@ -50,6 +50,119 @@ export const academicsPage = {
         },
       ],
     },
+    {
+      name: "curriculumSection",
+      title: "Curriculum Philosophy Section",
+      type: "object",
+      description: "Editable curved image panel shown below the Academics navigation.",
+      fields: [
+        { name: "heading", title: "Text Content", type: "sectionHeading" },
+        { name: "image", title: "Image", type: "imageWithAlt" },
+        {
+          name: "imagePosition",
+          title: "Image Position",
+          type: "string",
+          description: "Optional CSS object-position value, for example center or 45% center.",
+        },
+        {
+          name: "panelColor",
+          title: "Panel Background Color",
+          type: "string",
+          description: "Optional CSS color, for example #00A5B2.",
+        },
+        {
+          name: "waveColor",
+          title: "Curved Line Color",
+          type: "string",
+          description: "Optional CSS color, for example #d97252.",
+        },
+        {
+          name: "textColor",
+          title: "Text Color",
+          type: "string",
+          description: "Optional CSS color, for example #ffffff.",
+        },
+      ],
+    },
+    {
+      name: "skillsSection",
+      title: "Key Skills & Dispositions Section",
+      type: "object",
+      description: "Editable intro text and icon cards shown below the curriculum panel.",
+      fields: [
+        { name: "heading", title: "Intro Text", type: "sectionHeading" },
+        {
+          name: "groups",
+          title: "Groups",
+          type: "array",
+          of: [
+            {
+              type: "object",
+              fields: [
+                { name: "title", title: "Group Title", type: "string" },
+                {
+                  name: "items",
+                  title: "Cards",
+                  type: "array",
+                  of: [
+                    {
+                      type: "object",
+                      fields: [
+                        { name: "title", title: "Card Title", type: "string" },
+                        { name: "icon", title: "Optional Icon Image", type: "imageWithAlt" },
+                        {
+                          name: "iconType",
+                          title: "Fallback Icon Type",
+                          type: "string",
+                          options: {
+                            list: [
+                              { title: "Critical / Thinking", value: "critical" },
+                              { title: "Communication", value: "communication" },
+                              { title: "Organization", value: "organization" },
+                              { title: "Research", value: "research" },
+                              { title: "Resilience", value: "resilience" },
+                              { title: "Empathy", value: "empathy" },
+                              { title: "Curiosity", value: "curiosity" },
+                              { title: "Growth Mindset", value: "growth" },
+                            ],
+                            layout: "dropdown",
+                          },
+                        },
+                        {
+                          name: "theme",
+                          title: "Card Accent Color",
+                          type: "string",
+                          options: {
+                            list: [
+                              { title: "Teal", value: "teal" },
+                              { title: "Orange", value: "orange" },
+                            ],
+                            layout: "radio",
+                          },
+                          initialValue: "teal",
+                        },
+                      ],
+                      preview: {
+                        select: {
+                          title: "title",
+                          subtitle: "iconType",
+                          media: "icon.image",
+                        },
+                      },
+                    },
+                  ],
+                },
+              ],
+              preview: {
+                select: {
+                  title: "title",
+                },
+              },
+            },
+          ],
+        },
+      ],
+    },
   ],
   preview: {
     select: {
