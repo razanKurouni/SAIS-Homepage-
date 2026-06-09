@@ -227,6 +227,73 @@ export const academicsPage = {
         },
       ],
     },
+    {
+      name: "learningSliderSection",
+      title: "Understanding Student Learning Slider",
+      type: "object",
+      description: "Editable four-card slider for assessments and testing information.",
+      fields: [
+        { name: "heading", title: "Section Heading", type: "sectionHeading" },
+        {
+          name: "slides",
+          title: "Slides",
+          type: "array",
+          of: [
+            {
+              type: "object",
+              fields: [
+                { name: "title", title: "Slide Title", type: "string" },
+                {
+                  name: "body",
+                  title: "Slide Body",
+                  type: "text",
+                  rows: 10,
+                  description: "Use blank lines between paragraphs. Start lines with - for bullet lists.",
+                },
+                { name: "image", title: "Slide Image", type: "imageWithAlt" },
+                {
+                  name: "backgroundColor",
+                  title: "Main Background Color",
+                  type: "string",
+                  description: "Optional CSS color, for example #d97252 or #216B97.",
+                },
+                {
+                  name: "sideColor",
+                  title: "Side Background Color",
+                  type: "string",
+                  description: "Optional CSS color for the left curved panel, for example #00A5B2.",
+                },
+                {
+                  name: "ringColor",
+                  title: "Curved Ring Color",
+                  type: "string",
+                  description: "Optional CSS color for the curved stripe, for example #216B97.",
+                },
+                {
+                  name: "textColor",
+                  title: "Text Color",
+                  type: "string",
+                  description: "Optional CSS color for slide text, for example #ffffff.",
+                },
+                {
+                  name: "imagePosition",
+                  title: "Image Position",
+                  type: "string",
+                  description: "Optional CSS object-position value, for example center or 45% center.",
+                },
+              ],
+              preview: {
+                select: {
+                  title: "title",
+                  subtitle: "body",
+                  media: "image.image",
+                },
+              },
+            },
+          ],
+        },
+      ],
+    },
   ],
   preview: {
     select: {

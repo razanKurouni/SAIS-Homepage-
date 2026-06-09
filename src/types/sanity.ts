@@ -95,6 +95,7 @@ export type AcademicsPageData = {
   skillsSection?: AcademicsSkillsSection;
   curriculumOverviewSection?: AcademicsCurriculumOverviewSection;
   teachingCommitmentsSection?: AcademicsTeachingCommitmentsSection;
+  learningSliderSection?: AcademicsLearningSliderSection;
 };
 
 export type AcademicsSkillItem = {
@@ -132,6 +133,23 @@ export type AcademicsTeachingCommitmentCard = {
 export type AcademicsTeachingCommitmentsSection = {
   heading?: SectionHeading;
   cards?: AcademicsTeachingCommitmentCard[];
+};
+
+export type AcademicsLearningSlide = {
+  _key?: string;
+  title?: string;
+  body?: string;
+  image?: SanityImage;
+  backgroundColor?: string;
+  sideColor?: string;
+  ringColor?: string;
+  textColor?: string;
+  imagePosition?: string;
+};
+
+export type AcademicsLearningSliderSection = {
+  heading?: SectionHeading;
+  slides?: AcademicsLearningSlide[];
 };
 
 export type ContactInfoItem = {

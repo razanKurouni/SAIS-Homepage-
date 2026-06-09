@@ -55,6 +55,10 @@ const [
   empathyIcon,
   curiosityIcon,
   growthMindsetIcon,
+  cat4AssessmentImage,
+  mapTestingImage,
+  ibtArabicImage,
+  ngrtTestingImage,
 ] = await Promise.all([
   uploadImage(
     "public/academics-hero.jpg",
@@ -105,6 +109,26 @@ const [
     "public/academics-icon-growth-mindset.png",
     "academics-icon-growth-mindset.png",
     "Growth mindset icon"
+  ),
+  uploadImage(
+    "public/academics-learning-cat4.png",
+    "academics-learning-cat4.png",
+    "SAIS Dubai student during CAT4 assessment"
+  ),
+  uploadImage(
+    "public/academics-learning-map.png",
+    "academics-learning-map.png",
+    "SAIS Dubai students participating in MAP testing"
+  ),
+  uploadImage(
+    "public/academics-learning-ibt.png",
+    "academics-learning-ibt.png",
+    "SAIS Dubai students reading during Arabic testing"
+  ),
+  uploadImage(
+    "public/academics-learning-ngrt.png",
+    "academics-learning-ngrt.png",
+    "SAIS Dubai students reading during NGRT testing"
   ),
 ]);
 
@@ -319,6 +343,67 @@ await client.createOrReplace({
       },
     ],
   },
+  learningSliderSection: {
+    _type: "object",
+    heading: {
+      _type: "sectionHeading",
+      title: "Understanding Student Learning",
+    },
+    slides: [
+      {
+        _key: "cat4-assessment",
+        _type: "object",
+        title: "CAT4 Assessment",
+        body:
+          "The Cognitive Abilities Test (CAT4) helps us understand how students learn and their academic potential. Students in Grades 3-9 take this assessment upon enrollment to identify their learning styles, enabling teachers to:\n\n- Adapt teaching approaches and materials\n- Adjust instructional pace and emphasis\n- Implement differentiated instruction\n\nCAT4 measures four types of reasoning:\n\n- Verbal Reasoning - Understanding and reasoning through words\n- Quantitative Reasoning - Using numerical skills for problem-solving\n- Non-verbal Reasoning - Problem-solving using visual information\n- Spatial Ability - Thinking and drawing conclusions in three dimensions",
+        image: cat4AssessmentImage,
+        backgroundColor: "#d97252",
+        sideColor: "#00A5B2",
+        ringColor: "#216B97",
+        textColor: "#ffffff",
+        imagePosition: "center",
+      },
+      {
+        _key: "nwea-map-testing",
+        _type: "object",
+        title: "NWEA MAP Testing",
+        body:
+          "Students in Grades 3-9 participate in MAP testing three times throughout the academic year. These computer-adaptive assessments:\n\n- Produce accurate data about each student's learning level\n- Identify areas of strength and opportunity\n- Measure overall performance in core subjects",
+        image: mapTestingImage,
+        backgroundColor: "#216B97",
+        sideColor: "#00A5B2",
+        ringColor: "#d97252",
+        textColor: "#ffffff",
+        imagePosition: "center",
+      },
+      {
+        _key: "ibt-arabic-testing",
+        _type: "object",
+        title: "IBT Arabic Testing",
+        body:
+          "To benchmark Arabic language proficiency against international standards, our students participate in IBT Arabic examinations conducted by ACER. This assessment provides valuable comparative data on student performance relative to peers in the region and worldwide.",
+        image: ibtArabicImage,
+        backgroundColor: "#d97252",
+        sideColor: "#00A5B2",
+        ringColor: "#216B97",
+        textColor: "#ffffff",
+        imagePosition: "center",
+      },
+      {
+        _key: "ngrt-testing",
+        _type: "object",
+        title: "NGRT Testing",
+        body:
+          "The New Group Reading Test (NGRT) measures reading skills against national averages. This standardized assessment evaluates:\n\n- Phonics knowledge\n- Reading comprehension\n- Decoding ability\n- Vocabulary development\n- Grammatical understanding\n- Deduction and inference skills\n- Understanding of figurative and idiomatic language",
+        image: ngrtTestingImage,
+        backgroundColor: "#216B97",
+        sideColor: "#00A5B2",
+        ringColor: "#d97252",
+        textColor: "#ffffff",
+        imagePosition: "center",
+      },
+    ],
+  },
 });
 
-console.log("Seeded academics-page with editable hero, curriculum, skills, overview, and teaching commitment content.");
+console.log("Seeded academics-page with editable hero, curriculum, skills, overview, teaching commitment, and learning slider content.");

@@ -73,5 +73,19 @@ export const academicsPageQuery = `*[_type == "academicsPage" && _id == "academi
       icon ${imageWithAltProjection},
       iconType
     }
+  },
+  learningSliderSection {
+    heading ${headingProjection},
+    slides[] {
+      _key,
+      title,
+      body,
+      image ${imageWithAltProjection},
+      backgroundColor,
+      sideColor,
+      ringColor,
+      textColor,
+      imagePosition
+    }
   }
 }`;

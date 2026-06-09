@@ -1299,7 +1299,7 @@ a.contact-info-section__item-text:hover {
 }
 
 .academics-curriculum-overview__row .editorial-split-section__inner {
-  width: min(85%, 1120px);
+  width:85%;
   grid-template-columns: minmax(280px, 0.92fr) minmax(0, 1fr);
   gap: clamp(42px, 7vw, 82px);
 }
@@ -1308,6 +1308,11 @@ a.contact-info-section__item-text:hover {
   aspect-ratio: 780 / 650;
   border-radius: 14px;
   box-shadow: none;
+  justify-self: stretch;
+}
+
+.academics-curriculum-overview__row .editorial-split-section__image {
+  object-position: center;
 }
 
 .academics-curriculum-overview__row .editorial-split-section__body {
@@ -1320,11 +1325,11 @@ a.contact-info-section__item-text:hover {
 
 .academics-teaching {
   background: #ffffff;
-  padding: 0 0 clamp(62px, 7vw, 92px);
+  padding: 20px 0 30px;
 }
 
 .academics-teaching__inner {
-  width: min(85%, 1120px);
+  width:85%;
   margin: 0 auto;
 }
 
@@ -1363,7 +1368,7 @@ a.contact-info-section__item-text:hover {
 }
 
 .academics-teaching__card .hover-icon-card__title {
-  color: var(--sais-primary);
+  color: #00A5B2;
   font-size: 0.86rem;
   font-weight: 700;
   line-height: 1.18;
@@ -1375,6 +1380,231 @@ a.contact-info-section__item-text:hover {
   font-size: var(--sais-body-text-size);
   letter-spacing: var(--sais-body-text-letter-spacing);
   line-height: var(--sais-body-text-line-height);
+}
+
+.academics-learning-slider {
+  background: #ffffff;
+  padding: clamp(18px, 3vw, 38px) 0 20px;
+}
+
+.academics-learning-slider__header {
+  width:85%;
+  margin: 0 auto clamp(30px, 3.4vw, 44px);
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--sais-primary);
+}
+
+.academics-learning-slider__title {
+  margin: 0;
+  color: #00A5B2;
+  font-size: clamp(1.5rem, 2vw, 1.88rem);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.18;
+}
+
+.academics-learning-slider__stage {
+  position: relative;
+  overflow: hidden;
+  height: clamp(520px, 43vw, 560px);
+  background: var(--learning-slide-bg);
+  color: var(--learning-slide-text);
+}
+
+.academics-learning-slider__curve {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -8%;
+  z-index: 0;
+  width: min(58%, 760px);
+  height: 100%;
+  pointer-events: none;
+}
+
+.academics-learning-slider__curve-fill {
+  fill: var(--learning-slide-side);
+}
+
+.academics-learning-slider__curve-line {
+  stroke: var(--learning-slide-ring);
+}
+
+.academics-learning-slider__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(42px, 6vw, 78px);
+  width: min(80%, 1420px);
+  height: 100%;
+  min-height: 0;
+  margin: 0 auto;
+  padding: clamp(38px, 4vw, 52px) 0;
+  animation: academics-learning-slide-in 560ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.academics-learning-slider__media {
+  position: relative;
+  height: clamp(320px, 31vw, 430px);
+  aspect-ratio: 1.16 / 1;
+  overflow: hidden;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.academics-learning-slider__image {
+  object-fit: cover;
+  object-position: var(--learning-slide-image-position, center);
+}
+
+.academics-learning-slider__content {
+  display: grid;
+  gap: 16px;
+  max-width: 560px;
+  max-height: 100%;
+  overflow: auto;
+  padding: 4px 6px 4px 0;
+  color: var(--learning-slide-text);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.55) transparent;
+}
+
+.academics-learning-slider__content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.academics-learning-slider__content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.academics-learning-slider__content::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.46);
+}
+
+.academics-learning-slider__content h3 {
+  margin: 0;
+  color: var(--learning-slide-text);
+  font-size: clamp(1.38rem, 2vw, 1.78rem);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.18;
+}
+
+.academics-learning-slider__body {
+  display: grid;
+  gap: 0.9rem;
+  font-size: clamp(0.88rem, 0.98vw, 0.98rem);
+  font-weight: 400;
+  line-height: 1.52;
+}
+
+.academics-learning-slider__body p,
+.academics-learning-slider__list {
+  margin: 0;
+}
+
+.academics-learning-slider__list {
+  display: grid;
+  gap: 0.22rem;
+  padding-left: 1.15rem;
+}
+
+.academics-learning-slider__arrows {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.academics-learning-slider__arrow {
+  position: absolute;
+  top: 50%;
+  display: grid;
+  width: clamp(42px, 4vw, 54px);
+  height: clamp(42px, 4vw, 54px);
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.54);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.92);
+  cursor: pointer;
+  pointer-events: auto;
+  transform: translateY(-50%);
+  transition:
+    background 220ms ease,
+    border-color 220ms ease,
+    color 220ms ease,
+    transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.academics-learning-slider__arrow svg {
+  width: 68%;
+  height: 68%;
+}
+
+.academics-learning-slider__arrow:hover {
+  border-color: rgba(255, 255, 255, 0.84);
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+}
+
+.academics-learning-slider__arrow--prev {
+  left: clamp(18px, 3.5vw, 54px);
+}
+
+.academics-learning-slider__arrow--prev:hover {
+  transform: translate(-4px, -50%);
+}
+
+.academics-learning-slider__arrow--next {
+  right: clamp(18px, 3.5vw, 54px);
+}
+
+.academics-learning-slider__arrow--next:hover {
+  transform: translate(4px, -50%);
+}
+
+.academics-learning-slider__dots {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.academics-learning-slider__dot {
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid var(--sais-primary);
+  border-radius: 999px;
+  background: #ffffff;
+  padding: 0;
+  cursor: pointer;
+  transition:
+    background 220ms ease,
+    box-shadow 220ms ease,
+    transform 220ms ease;
+}
+
+.academics-learning-slider__dot:hover,
+.academics-learning-slider__dot.is-active {
+  background: #d97252;
+  box-shadow: inset 0 0 0 4px #ffffff;
+  transform: scale(1.05);
+}
+
+@keyframes academics-learning-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .about-highlights {
@@ -3861,6 +4091,10 @@ a.contact-info-section__item-text:hover {
   display: flex;
   gap: 10px;
 }
+.academics-page .accreditations-section {
+      padding: 20px 0 clamp(42px, 6vw, 70px);
+}
+
 
 .sais-menu-social {
   display: grid;
@@ -5521,6 +5755,22 @@ a.contact-info-section__item-text:hover {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .academics-learning-slider__stage {
+    height: clamp(760px, 92vw, 860px);
+  }
+
+  .academics-learning-slider__inner {
+    width: min(88%, 760px);
+    height: 100%;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .academics-learning-slider__curve {
+    left: -28%;
+    width: 84%;
+  }
+
   .about-highlights__inner {
     grid-template-columns: 1fr;
   }
@@ -5840,6 +6090,71 @@ a.contact-info-section__item-text:hover {
     margin-top: 30px;
   }
 
+  .academics-learning-slider {
+    padding: 36px 0 62px;
+  }
+
+  .academics-learning-slider__header {
+    width: calc(100% - 32px);
+    margin-bottom: 26px;
+    padding-bottom: 16px;
+  }
+
+  .academics-learning-slider__stage {
+    width: 100%;
+    height: clamp(820px, 150vw, 900px);
+  }
+
+  .academics-learning-slider__inner {
+    width: calc(100% - 48px);
+    height: 100%;
+    padding: 34px 0 42px;
+  }
+
+  .academics-learning-slider__media {
+    aspect-ratio: 1.18 / 1;
+    border-radius: 14px;
+  }
+
+  .academics-learning-slider__content {
+    gap: 16px;
+    max-height: min(390px, 46%);
+  }
+
+  .academics-learning-slider__body {
+    font-size: var(--sais-body-text-size);
+    line-height: var(--sais-body-text-line-height);
+  }
+
+  .academics-learning-slider__dots {
+    gap: 16px;
+    margin-top: 34px;
+  }
+
+  .academics-learning-slider__arrow {
+    top: auto;
+    bottom: 18px;
+    width: 42px;
+    height: 42px;
+    transform: none;
+  }
+
+  .academics-learning-slider__arrow--prev {
+    left: 20px;
+  }
+
+  .academics-learning-slider__arrow--prev:hover {
+    transform: translateX(-3px);
+  }
+
+  .academics-learning-slider__arrow--next {
+    right: 20px;
+  }
+
+  .academics-learning-slider__arrow--next:hover {
+    transform: translateX(3px);
+  }
+
   .careers-requirements {
     padding: 38px 0 64px;
   }
@@ -5945,6 +6260,20 @@ a.contact-info-section__item-text:hover {
 
   .academics-skills__card {
     min-height: 156px;
+  }
+
+  .academics-learning-slider__inner {
+    width: calc(100% - 32px);
+  }
+
+  .academics-learning-slider__curve {
+    left: -50%;
+    width: 112%;
+  }
+
+  .academics-learning-slider__dot {
+    width: 20px;
+    height: 20px;
   }
 }
 

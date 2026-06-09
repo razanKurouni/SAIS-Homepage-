@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SitePageShell } from "@/components/layout/site-page-shell";
 import { AcademicsCurriculumOverviewSection } from "@/components/sections/academics-curriculum-overview-section";
+import { AcademicsLearningSliderSection } from "@/components/sections/academics-learning-slider-section";
 import { AcademicsSkillsSection } from "@/components/sections/academics-skills-section";
 import { AcademicsTeachingCommitmentsSection } from "@/components/sections/academics-teaching-commitments-section";
 import { ContactInfoSection } from "@/components/sections/contact-info-section";
@@ -9,11 +10,16 @@ import { PageHero } from "@/components/sections/page-hero";
 import { getAcademicsPage, getHomepage } from "@/lib/sanity";
 import type {
   AcademicsCurriculumOverviewSection as AcademicsCurriculumOverviewSectionData,
+  AcademicsLearningSliderSection as AcademicsLearningSliderSectionData,
   AcademicsSkillsSection as AcademicsSkillsSectionData,
   AcademicsTeachingCommitmentsSection as AcademicsTeachingCommitmentsSectionData,
   ContactInfoSection as ContactInfoSectionData,
   PortableTextBlock,
 } from "@/types/sanity";
+import { LearningPhasesSection } from "@/components/sections/learning-phases-section";
+import { AccreditationsSection } from "@/components/sections/accreditations-section";
+import { TourIntroSection } from "@/components/sections/tour-intro-section";
+import { TourSection } from "@/components/sections/tour-section";
 
 const fallbackMetadata: Metadata = {
   title: "Academics | SAIS Dubai",
@@ -237,6 +243,74 @@ const fallbackTeachingCommitmentsSection: AcademicsTeachingCommitmentsSectionDat
   ],
 };
 
+const fallbackLearningSliderSection: AcademicsLearningSliderSectionData = {
+  heading: {
+    title: "Understanding Student Learning",
+  },
+  slides: [
+    {
+      _key: "cat4-assessment",
+      title: "CAT4 Assessment",
+      body:
+        "The Cognitive Abilities Test (CAT4) helps us understand how students learn and their academic potential. Students in Grades 3-9 take this assessment upon enrollment to identify their learning styles, enabling teachers to:\n\n- Adapt teaching approaches and materials\n- Adjust instructional pace and emphasis\n- Implement differentiated instruction\n\nCAT4 measures four types of reasoning:\n\n- Verbal Reasoning - Understanding and reasoning through words\n- Quantitative Reasoning - Using numerical skills for problem-solving\n- Non-verbal Reasoning - Problem-solving using visual information\n- Spatial Ability - Thinking and drawing conclusions in three dimensions",
+      image: {
+        url: "/academics-learning-cat4.png",
+        alt: "SAIS Dubai student during CAT4 assessment",
+      },
+      backgroundColor: "#d97252",
+      sideColor: "#00A5B2",
+      ringColor: "var(--sais-primary)",
+      textColor: "#ffffff",
+      imagePosition: "center",
+    },
+    {
+      _key: "nwea-map-testing",
+      title: "NWEA MAP Testing",
+      body:
+        "Students in Grades 3-9 participate in MAP testing three times throughout the academic year. These computer-adaptive assessments:\n\n- Produce accurate data about each student's learning level\n- Identify areas of strength and opportunity\n- Measure overall performance in core subjects",
+      image: {
+        url: "/academics-learning-map.png",
+        alt: "SAIS Dubai students working with a teacher in a science lab",
+      },
+      backgroundColor: "var(--sais-primary)",
+      sideColor: "#00A5B2",
+      ringColor: "#d97252",
+      textColor: "#ffffff",
+      imagePosition: "center",
+    },
+    {
+      _key: "ibt-arabic-testing",
+      title: "IBT Arabic Testing",
+      body:
+        "To benchmark Arabic language proficiency against international standards, our students participate in IBT Arabic examinations conducted by ACER. This assessment provides valuable comparative data on student performance relative to peers in the region and worldwide.",
+      image: {
+        url: "/academics-learning-ibt.png",
+        alt: "SAIS Dubai students reading together",
+      },
+      backgroundColor: "#d97252",
+      sideColor: "#00A5B2",
+      ringColor: "var(--sais-primary)",
+      textColor: "#ffffff",
+      imagePosition: "center",
+    },
+    {
+      _key: "ngrt-testing",
+      title: "NGRT Testing",
+      body:
+        "The New Group Reading Test (NGRT) measures reading skills against national averages. This standardized assessment evaluates:\n\n- Phonics knowledge\n- Reading comprehension\n- Decoding ability\n- Vocabulary development\n- Grammatical understanding\n- Deduction and inference skills\n- Understanding of figurative and idiomatic language",
+      image: {
+        url: "/academics-learning-ngrt.png",
+        alt: "SAIS Dubai students reading a book",
+      },
+      backgroundColor: "var(--sais-primary)",
+      sideColor: "#00A5B2",
+      ringColor: "#d97252",
+      textColor: "#ffffff",
+      imagePosition: "center",
+    },
+  ],
+};
+
 export default async function AcademicsPage() {
   const [data, academicsPage] = await Promise.all([getHomepage(), getAcademicsPage()]);
   const academicsHero = academicsPage?.hero;
@@ -297,6 +371,16 @@ export default async function AcademicsPage() {
         section={academicsPage?.teachingCommitmentsSection}
         fallbackSection={fallbackTeachingCommitmentsSection}
       />
+
+      <AcademicsLearningSliderSection
+        section={academicsPage?.learningSliderSection}
+        fallbackSection={fallbackLearningSliderSection}
+      />
+      <LearningPhasesSection section={data?.learningPhases} />
+      <AccreditationsSection section={data?.accreditations} />
+      <TourIntroSection section={data?.tour} />
+      <TourSection section={data?.tour} />
     </SitePageShell>
+    
   );
 }
