@@ -77,6 +77,18 @@ const professionalCareImage = await uploadImage(
   "SAIS Dubai teacher supporting students during a classroom activity"
 );
 
+const emailApplicationIcon = await uploadImage(
+  "public/careers-apply-email.png",
+  "careers-apply-email.png",
+  "Email application icon"
+);
+
+const webApplicationIcon = await uploadImage(
+  "public/careers-apply-web.png",
+  "careers-apply-web.png",
+  "Online application icon"
+);
+
 await client.createOrReplace({
   _id: "careers-page",
   _type: "careersPage",
@@ -193,6 +205,45 @@ await client.createOrReplace({
       },
     ],
   },
+  joinTeamSection: {
+    _type: "object",
+    heading: {
+      _type: "sectionHeading",
+      title: "Join Our Team",
+      description: [
+        block(
+          "join-team-body-1",
+          "If you possess the ideal combination of skills and attitude with a drive to excel in your career, we invite you to apply by:"
+        ),
+      ],
+    },
+    cards: [
+      {
+        _key: "email-cv",
+        _type: "object",
+        icon: emailApplicationIcon,
+        label: "Emailing your CV to",
+        text: "hrrecruitment@saisdubai.com\n(specify position in the subject line)",
+        href: "mailto:hrrecruitment@saisdubai.com",
+      },
+      {
+        _key: "teach-away",
+        _type: "object",
+        icon: webApplicationIcon,
+        label: "Applying through",
+        text: "www.teachaway.com",
+        href: "https://www.teachaway.com",
+      },
+      {
+        _key: "schrole",
+        _type: "object",
+        icon: webApplicationIcon,
+        label: "Applying through",
+        text: "www.schrole.edu.au",
+        href: "https://www.schrole.edu.au",
+      },
+    ],
+  },
 });
 
-console.log("Seeded careers-page with editable hero, Work For SAIS, care, and requirements content.");
+console.log("Seeded careers-page with editable hero, Work For SAIS, care, requirements, and join team content.");

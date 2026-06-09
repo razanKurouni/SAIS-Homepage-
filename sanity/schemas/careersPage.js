@@ -140,6 +140,43 @@ export const careersPage = {
         },
       ],
     },
+    {
+      name: "joinTeamSection",
+      title: "Join Our Team Section",
+      type: "object",
+      description: "Editable application cards shown at the bottom of the Careers page.",
+      fields: [
+        { name: "heading", title: "Heading & Intro", type: "sectionHeading" },
+        {
+          name: "cards",
+          title: "Application Cards",
+          type: "array",
+          of: [
+            {
+              type: "object",
+              fields: [
+                { name: "icon", title: "Icon", type: "imageWithAlt" },
+                { name: "label", title: "Card Label", type: "string" },
+                { name: "text", title: "Visible Link Text", type: "string" },
+                {
+                  name: "href",
+                  title: "Card Link",
+                  type: "string",
+                  description: "Use mailto: for email cards, or a full URL for website links.",
+                },
+              ],
+              preview: {
+                select: {
+                  title: "label",
+                  subtitle: "text",
+                  media: "icon.image",
+                },
+              },
+            },
+          ],
+        },
+      ],
+    },
   ],
   preview: {
     select: {

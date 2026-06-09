@@ -129,6 +129,19 @@ export type CareersRequirementsSection = {
   columns?: CareersRequirementColumn[];
 };
 
+export type CareersJoinTeamCard = {
+  _key?: string;
+  icon?: SanityImage;
+  label?: string;
+  text?: string;
+  href?: string;
+};
+
+export type CareersJoinTeamSection = {
+  heading?: SectionHeading;
+  cards?: CareersJoinTeamCard[];
+};
+
 export type CareersPageData = {
   seo?: Seo;
   hero?: PageHeroContent;
@@ -136,6 +149,7 @@ export type CareersPageData = {
   editorialSection?: ImageTextSection;
   careSection?: ContactInfoSection;
   requirementsSection?: CareersRequirementsSection;
+  joinTeamSection?: CareersJoinTeamSection;
 };
 
 export type LogoItem = {

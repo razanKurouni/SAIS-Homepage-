@@ -709,7 +709,6 @@ button[aria-label="Open Next.js Dev Tools"] {
 
 .careers-care-section .contact-info-section__panel {
   width: 62%;
-  min-height: clamp(330px, 31vw, 470px);
   border-radius: 16px;
 }
 
@@ -735,7 +734,7 @@ button[aria-label="Open Next.js Dev Tools"] {
 
 .careers-requirements {
   background: #ffffff;
-  padding: clamp(34px, 4.6vw, 64px) 0 clamp(66px, 7vw, 104px);
+  padding:0 0 60px;
 }
 
 .careers-requirements__inner {
@@ -778,6 +777,105 @@ button[aria-label="Open Next.js Dev Tools"] {
 .careers-requirements__list li::marker {
   color: #777d82;
   font-size: 0.72em;
+}
+
+.careers-join-team {
+  background: #707174;
+  color: #ffffff;
+  padding: clamp(46px, 6vw, 82px) 0 60px;
+}
+
+.careers-join-team__inner {
+  width: min(85%, 1120px);
+  margin: 0 auto;
+}
+
+.careers-join-team__header {
+  max-width: 540px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.careers-join-team__title {
+  margin: 0;
+  color: var(--sais-accent);
+  font-size: clamp(1.22rem, 1.55vw, 1.42rem);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.22;
+}
+
+.careers-join-team__body {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 24px;
+}
+
+.careers-join-team__body p {
+  margin: 0;
+  color: #ffffff;
+  font-size: var(--sais-body-text-size);
+  font-weight: 700;
+  letter-spacing: var(--sais-body-text-letter-spacing);
+  line-height: var(--sais-body-text-line-height);
+}
+
+.careers-join-team__cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(24px, 2.5vw, 32px);
+  margin-top:40px;
+}
+
+.careers-join-team__card {
+  min-height: clamp(260px, 21vw, 320px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(30px, 3.2vw, 46px) 24px 28px;
+  border: 3px solid var(--sais-accent);
+  border-radius: 16px;
+  background: #ffffff;
+  color: var(--sais-primary);
+  text-align: center;
+  text-decoration: none;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease;
+}
+
+a.careers-join-team__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.18);
+}
+
+.careers-join-team__icon {
+  position: relative;
+  display: block;
+  width: clamp(72px, 7vw, 104px);
+  aspect-ratio: 1;
+  margin-bottom: clamp(36px, 4.5vw, 64px);
+}
+
+.careers-join-team__icon-image {
+  object-fit: contain;
+}
+
+.careers-join-team__card-label,
+.careers-join-team__card-text {
+  display: block;
+  max-width: 250px;
+  font-size: var(--sais-body-text-size);
+  font-weight: 700;
+  letter-spacing: var(--sais-body-text-letter-spacing);
+  line-height: var(--sais-body-text-line-height);
+}
+
+.careers-join-team__card-text {
+  margin-top: 8px;
+  color: var(--sais-accent);
+  white-space: pre-line;
 }
 
 .inner-page-nav {
@@ -4114,6 +4212,9 @@ a.contact-info-section__item-text:hover {
   .quick-links-card__button {
     margin-top: 28px;
   }
+  .careers-care-section .contact-info-section__media {
+    padding: 0;
+  }
 
   .quick-links-card__wave {
     top: 71px;
@@ -5255,7 +5356,7 @@ a.contact-info-section__item-text:hover {
   }
 
   .careers-care-section {
-    padding: 30px 0 10px;
+    padding: 0 0 10px;
   }
 
   .careers-care-section .contact-info-section__inner {
@@ -5290,6 +5391,28 @@ a.contact-info-section__item-text:hover {
     width: calc(100% - 44px);
     grid-template-columns: 1fr;
     gap: 34px;
+  }
+
+  .careers-join-team {
+    padding: 42px 0 58px;
+  }
+
+  .careers-join-team__inner {
+    width: calc(100% - 32px);
+  }
+
+  .careers-join-team__cards {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    margin-top: 36px;
+  }
+
+  .careers-join-team__card {
+    min-height: 248px;
+  }
+
+  .careers-join-team__icon {
+    margin-bottom: 32px;
   }
 
   .contact-map {

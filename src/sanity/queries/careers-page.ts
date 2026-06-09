@@ -62,5 +62,15 @@ export const careersPageQuery = `*[_type == "careersPage" && _id == "careers-pag
       intro,
       items
     }
+  },
+  joinTeamSection {
+    heading ${headingProjection},
+    cards[] {
+      _key,
+      icon ${imageWithAltProjection},
+      label,
+      text,
+      href
+    }
   }
 }`;

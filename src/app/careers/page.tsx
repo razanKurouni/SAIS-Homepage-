@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import { SitePageShell } from "@/components/layout/site-page-shell";
+import { CareersJoinTeamSection } from "@/components/sections/careers-join-team-section";
 import { CareersRequirementsSection } from "@/components/sections/careers-requirements-section";
 import { ContactInfoSection } from "@/components/sections/contact-info-section";
 import { EditorialSplitSection } from "@/components/sections/editorial-split-section";
@@ -9,6 +10,7 @@ import { PageHero } from "@/components/sections/page-hero";
 import { RichText } from "@/components/ui/rich-text";
 import { getCareersPage, getHomepage } from "@/lib/sanity";
 import type {
+  CareersJoinTeamSection as CareersJoinTeamSectionData,
   CareersRequirementsSection as CareersRequirementsSectionData,
   ContactInfoSection as ContactInfoSectionData,
   ImageTextSection,
@@ -138,6 +140,60 @@ const fallbackRequirementsSection: CareersRequirementsSectionData = {
   ],
 };
 
+const fallbackJoinTeamDescription: PortableTextBlock[] = [
+  {
+    _key: "careers-join-team-body-1",
+    _type: "block",
+    children: [
+      {
+        _key: "careers-join-team-body-1-text",
+        _type: "span",
+        text:
+          "If you possess the ideal combination of skills and attitude with a drive to excel in your career, we invite you to apply by:",
+      },
+    ],
+  },
+];
+
+const fallbackJoinTeamSection: CareersJoinTeamSectionData = {
+  heading: {
+    title: "Join Our Team",
+    description: fallbackJoinTeamDescription,
+  },
+  cards: [
+    {
+      _key: "email-cv",
+      icon: {
+        url: "/careers-apply-email.png",
+        alt: "Email application icon",
+      },
+      label: "Emailing your CV to",
+      text: "hrrecruitment@saisdubai.com\n(specify position in the subject line)",
+      href: "mailto:hrrecruitment@saisdubai.com",
+    },
+    {
+      _key: "teach-away",
+      icon: {
+        url: "/careers-apply-web.png",
+        alt: "Online application icon",
+      },
+      label: "Applying through",
+      text: "www.teachaway.com",
+      href: "https://www.teachaway.com",
+    },
+    {
+      _key: "schrole",
+      icon: {
+        url: "/careers-apply-web.png",
+        alt: "Online application icon",
+      },
+      label: "Applying through",
+      text: "www.schrole.edu.au",
+      href: "https://www.schrole.edu.au",
+    },
+  ],
+};
+
 const careersInnerNavItems = [
   { label: "Latest News", href: "/#latest-news" },
   { label: "Contact Us", href: "/contact-us" },
@@ -240,6 +296,11 @@ export default async function CareersPage() {
       <CareersRequirementsSection
         section={careersPage?.requirementsSection}
         fallbackSection={fallbackRequirementsSection}
+      />
+
+      <CareersJoinTeamSection
+        section={careersPage?.joinTeamSection}
+        fallbackSection={fallbackJoinTeamSection}
       />
     </SitePageShell>
   );
