@@ -1199,9 +1199,11 @@ a.contact-info-section__item-text:hover {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(18px, 2.4vw, 30px);
   padding-top: 25px;
+  perspective: 1200px;
 }
 
 .academics-skills__card {
+  position: relative;
   min-height: 182px;
   display: flex;
   flex-direction: column;
@@ -1212,7 +1214,22 @@ a.contact-info-section__item-text:hover {
   border: 2px solid var(--academics-card-accent, var(--sais-accent));
   border-radius: 12px;
   background: #ffffff;
+  box-shadow: 0 14px 28px rgba(8, 48, 65, 0.08);
+  overflow: hidden;
   text-align: center;
+  transform-origin: center bottom;
+  transition:
+    border-color 320ms ease,
+    box-shadow 360ms ease,
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.academics-skills__card:hover {
+  border-color: color-mix(in srgb, var(--academics-card-accent, var(--sais-accent)) 82%, #ffffff 18%);
+  box-shadow:
+    0 24px 54px rgba(8, 48, 65, 0.18),
+    0 0 34px color-mix(in srgb, var(--academics-card-accent, var(--sais-accent)) 34%, transparent);
+  transform: translateY(-8px) scale(1.025);
 }
 
 .academics-skills__card--teal {
@@ -1231,10 +1248,54 @@ a.contact-info-section__item-text:hover {
   align-items: center;
   justify-content: center;
   color: var(--academics-card-accent, var(--sais-accent));
+  transition:
+    filter 360ms ease,
+    transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.academics-skills__icon::before {
+  position: absolute;
+  inset: -18px;
+  z-index: 0;
+  border-radius: 999px;
+  background:
+    radial-gradient(
+      circle,
+      color-mix(in srgb, var(--academics-card-accent, var(--sais-accent)) 42%, transparent) 0%,
+      color-mix(in srgb, var(--academics-card-accent, var(--sais-accent)) 18%, transparent) 42%,
+      transparent 70%
+    );
+  content: "";
+  opacity: 0;
+  transform: scale(0.72);
+  transition:
+    opacity 360ms ease,
+    transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.academics-skills__card:hover .academics-skills__icon {
+  filter: drop-shadow(0 0 16px color-mix(in srgb, var(--academics-card-accent, var(--sais-accent)) 62%, transparent));
+  transform: scale(1.12);
+}
+
+.academics-skills__card:hover .academics-skills__icon::before {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .academics-skills__icon-image {
+  z-index: 1;
   object-fit: contain;
+  transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.academics-skills__icon svg {
+  position: relative;
+  z-index: 1;
+}
+
+.academics-skills__card:hover .academics-skills__icon-image {
+  transform: scale(1.04);
 }
 
 .academics-skills__card-title {
