@@ -738,7 +738,7 @@ button[aria-label="Open Next.js Dev Tools"] {
 }
 
 .careers-requirements__inner {
-  width: min(85%, 1120px);
+  width: 85%;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -928,9 +928,18 @@ a.careers-join-team__card:hover {
   background: var(--inner-page-nav-active-bg);
 }
 
+.academics-inner-nav {
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.academics-inner-nav .inner-page-nav__list {
+  min-width: min(100%, 760px);
+}
+
 .contact-info-section {
   background: #ffffff;
-  padding: clamp(44px, 6vw, 72px) 0 clamp(34px, 5vw, 56px);
+  padding: 0 0 clamp(34px, 5vw, 56px);
 }
 
 .contact-info-section__inner {
@@ -4768,7 +4777,7 @@ a.contact-info-section__item-text:hover {
   }
 
   .careers-work__image-wrap {
-    min-height: 175px;
+    min-height: 190px;
     margin-top: 34px;
     border-radius: 14px;
   }
@@ -5254,6 +5263,12 @@ a.contact-info-section__item-text:hover {
     min-height: 50px;
     padding: 8px 10px;
     font-size: 0.86rem;
+  }
+
+  .academics-inner-nav .inner-page-nav__list {
+    width: max-content;
+    min-width: 100%;
+    grid-template-columns: repeat(5, minmax(132px, 1fr));
   }
 
   .contact-info-section {

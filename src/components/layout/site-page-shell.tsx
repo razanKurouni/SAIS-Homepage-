@@ -26,6 +26,10 @@ function normalizeInnerNavigation(links?: LinkField[]) {
       return { ...link, href: "/about-us#about" };
     }
 
+    if (label.includes("academic")) {
+      return { ...link, href: "/academics" };
+    }
+
     if (label.includes("contact")) {
       return { ...link, href: "/contact-us" };
     }

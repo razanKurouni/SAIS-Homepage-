@@ -5,7 +5,15 @@ import { schemaTypes } from "./sanity/schemas";
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "uwffig4f";
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
-const singletonTypes = ["siteHeader", "homepage", "aboutPage", "careersPage", "contactPage", "siteFooter"];
+const singletonTypes = [
+  "siteHeader",
+  "homepage",
+  "academicsPage",
+  "aboutPage",
+  "careersPage",
+  "contactPage",
+  "siteFooter",
+];
 
 export default defineConfig({
   name: "saisDubai",
@@ -27,6 +35,10 @@ export default defineConfig({
               .title("Homepage")
               .schemaType("homepage")
               .child(S.document().schemaType("homepage").documentId("homepage-main")),
+            S.listItem()
+              .title("Academics Introduction")
+              .schemaType("academicsPage")
+              .child(S.document().schemaType("academicsPage").documentId("academics-page")),
             S.listItem()
               .title("About Us")
               .schemaType("aboutPage")

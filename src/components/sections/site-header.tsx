@@ -286,6 +286,10 @@ function buildMenuSections(links: LinkField[]): MenuSection[] {
       return "/about-us#about";
     }
 
+    if (label === "Academics" && (!href || href === "#academics")) {
+      return "/academics";
+    }
+
     if (label === "Contact" && (!href || href === "#contact")) {
       return "/contact-us";
     }
@@ -301,12 +305,13 @@ function buildMenuSections(links: LinkField[]): MenuSection[] {
     },
     {
       title: "Academics",
-      href: mapHref("Academics", "#academics"),
+      href: mapHref("Academics", "/academics"),
       items: [
-        { label: "Kindergarten", href: "#kindergarten" },
-        { label: "Elementary", href: "#elementary" },
-        { label: "Middle School", href: "#middle-school" },
-        { label: "High School", href: "#high-school" },
+        { label: "Overview", href: "/academics" },
+        { label: "Kindergarten", href: "/academics/kindergarten" },
+        { label: "Elementary", href: "/academics/elementary" },
+        { label: "Middle School", href: "/academics/middle-school" },
+        { label: "High School", href: "/academics/high-school" },
       ],
     },
     {

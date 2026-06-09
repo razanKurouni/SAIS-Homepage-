@@ -12,7 +12,7 @@ const defaultColumns: FooterColumn[] = [
   {
     links: [
       { label: "About", href: "#about" },
-      { label: "Academics", href: "#academics" },
+      { label: "Academics", href: "/academics" },
       { label: "Our Community", href: "#community" },
       { label: "Student Life", href: "#student-life" },
     ],
@@ -79,6 +79,10 @@ function normalizeFooterHref(link: LinkField) {
 
   if (link.label?.trim().toLowerCase().includes("career")) {
     return "/careers";
+  }
+
+  if (link.label?.trim().toLowerCase().includes("academic")) {
+    return "/academics";
   }
 
   return link.href || "#";

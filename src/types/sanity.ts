@@ -88,6 +88,11 @@ export type AboutPageData = {
   inspection?: ImageTextSection;
 };
 
+export type AcademicsPageData = {
+  seo?: Seo;
+  hero?: PageHeroContent;
+};
+
 export type ContactInfoItem = {
   _key?: string;
   icon?: "location" | "phone" | "email";
