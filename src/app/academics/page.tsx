@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
 import { SitePageShell } from "@/components/layout/site-page-shell";
+import { AcademicsCurriculumOverviewSection } from "@/components/sections/academics-curriculum-overview-section";
 import { AcademicsSkillsSection } from "@/components/sections/academics-skills-section";
+import { AcademicsTeachingCommitmentsSection } from "@/components/sections/academics-teaching-commitments-section";
 import { ContactInfoSection } from "@/components/sections/contact-info-section";
 import { InnerPageNav } from "@/components/sections/inner-page-nav";
 import { PageHero } from "@/components/sections/page-hero";
 import { getAcademicsPage, getHomepage } from "@/lib/sanity";
 import type {
+  AcademicsCurriculumOverviewSection as AcademicsCurriculumOverviewSectionData,
   AcademicsSkillsSection as AcademicsSkillsSectionData,
+  AcademicsTeachingCommitmentsSection as AcademicsTeachingCommitmentsSectionData,
   ContactInfoSection as ContactInfoSectionData,
   PortableTextBlock,
 } from "@/types/sanity";
@@ -164,6 +168,75 @@ const fallbackSkillsSection: AcademicsSkillsSectionData = {
   ],
 };
 
+const fallbackCurriculumOverviewSection: Required<AcademicsCurriculumOverviewSectionData> = {
+  firstBlock: {
+    heading: {
+      title: "Our Curriculum",
+      description: [
+        paragraph(
+          "overview-curriculum-1",
+          "Our Curriculum is designed to ensure students' experience is active and skills-focused, rigorous, and aligned with clearly defined outcomes. Our approach integrates 21st-century competencies, active and interactive learning, and real-world applications, encouraging students to become critical thinkers, creative problem-solvers, effective communicators, and compassionate global citizens."
+        ),
+        paragraph(
+          "overview-curriculum-2",
+          "With robust student support systems, differentiated instruction, and meaningful and varied assessment practices, we aim to meet each learner where they are while guiding them to where they need to be."
+        ),
+      ],
+    },
+    image: {
+      url: "/academics-hero.jpg",
+      alt: "SAIS Dubai students working on a STEM project",
+    },
+    imagePosition: "right",
+  },
+  secondBlock: {
+    heading: {
+      title: "Curriculum at SAIS-Dubai",
+      description: [
+        paragraph(
+          "overview-curriculum-3",
+          "Curriculum at SAIS-Dubai is not static - it is continuously reviewed and improved through collaborative, data-informed processes that ensure relevance, coherence, and excellence across all grade levels and disciplines. We believe that curriculum, instruction, and assessment are interdependent elements of an integrated learning ecosystem, and our educators are empowered to innovate, adapt, and lead meaningful change."
+        ),
+        paragraph(
+          "overview-curriculum-4",
+          "Ultimately, our vision is to provide a transformative education that inspires students to achieve their personal best, contribute positively to their communities, and succeed in a global society."
+        ),
+      ],
+    },
+    image: {
+      url: "/academics-curriculum.png",
+      alt: "SAIS Dubai students learning together",
+    },
+    imagePosition: "left",
+  },
+};
+
+const fallbackTeachingCommitmentsSection: AcademicsTeachingCommitmentsSectionData = {
+  heading: {
+    title: "Our Teaching Commitments",
+  },
+  cards: [
+    {
+      _key: "high-expectations",
+      title: "High Expectations",
+      description: "Maintain high expectations for every student",
+      iconType: "expectations",
+    },
+    {
+      _key: "engagement",
+      title: "Engagement",
+      description: "Understand that meaningful learning occurs when students engage in critical thinking",
+      iconType: "engagement",
+    },
+    {
+      _key: "achievement",
+      title: "Achievement",
+      description: "Emphasize the importance of effort and persistence in achievement",
+      iconType: "achievement",
+    },
+  ],
+};
+
 export default async function AcademicsPage() {
   const [data, academicsPage] = await Promise.all([getHomepage(), getAcademicsPage()]);
   const academicsHero = academicsPage?.hero;
@@ -213,6 +286,16 @@ export default async function AcademicsPage() {
       <AcademicsSkillsSection
         section={academicsPage?.skillsSection}
         fallbackSection={fallbackSkillsSection}
+      />
+
+      <AcademicsCurriculumOverviewSection
+        section={academicsPage?.curriculumOverviewSection}
+        fallbackSection={fallbackCurriculumOverviewSection}
+      />
+
+      <AcademicsTeachingCommitmentsSection
+        section={academicsPage?.teachingCommitmentsSection}
+        fallbackSection={fallbackTeachingCommitmentsSection}
       />
     </SitePageShell>
   );

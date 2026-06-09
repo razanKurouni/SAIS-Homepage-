@@ -93,6 +93,8 @@ export type AcademicsPageData = {
   hero?: PageHeroContent;
   curriculumSection?: ContactInfoSection;
   skillsSection?: AcademicsSkillsSection;
+  curriculumOverviewSection?: AcademicsCurriculumOverviewSection;
+  teachingCommitmentsSection?: AcademicsTeachingCommitmentsSection;
 };
 
 export type AcademicsSkillItem = {
@@ -112,6 +114,24 @@ export type AcademicsSkillGroup = {
 export type AcademicsSkillsSection = {
   heading?: SectionHeading;
   groups?: AcademicsSkillGroup[];
+};
+
+export type AcademicsCurriculumOverviewSection = {
+  firstBlock?: ImageTextSection;
+  secondBlock?: ImageTextSection;
+};
+
+export type AcademicsTeachingCommitmentCard = {
+  _key?: string;
+  title?: string;
+  description?: string;
+  icon?: SanityImage;
+  iconType?: "expectations" | "engagement" | "achievement";
+};
+
+export type AcademicsTeachingCommitmentsSection = {
+  heading?: SectionHeading;
+  cards?: AcademicsTeachingCommitmentCard[];
 };
 
 export type ContactInfoItem = {

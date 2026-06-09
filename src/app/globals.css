@@ -828,43 +828,25 @@ button[aria-label="Open Next.js Dev Tools"] {
 }
 
 .careers-join-team__card {
+  --hover-icon-card-accent: var(--sais-accent);
+  --hover-icon-card-border: var(--sais-accent);
+  --hover-icon-card-hover-border: #d97252;
+
   min-height: clamp(260px, 21vw, 320px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   padding: clamp(30px, 3.2vw, 46px) 24px 28px;
-  border: 3px solid var(--sais-accent);
+  border-width: 3px;
   border-radius: 16px;
-  background: #ffffff;
-  color: var(--sais-primary);
-  text-align: center;
-  text-decoration: none;
-  transition:
-    transform 220ms ease,
-    box-shadow 220ms ease;
+  gap: 0;
 }
 
-a.careers-join-team__card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.18);
-}
-
-.careers-join-team__icon {
-  position: relative;
-  display: block;
+.careers-join-team__card .hover-icon-card__icon {
   width: clamp(72px, 7vw, 104px);
   aspect-ratio: 1;
   margin-bottom: clamp(36px, 4.5vw, 64px);
 }
 
-.careers-join-team__icon-image {
-  object-fit: contain;
-}
-
-.careers-join-team__card-label,
-.careers-join-team__card-text {
-  display: block;
+.careers-join-team__card .hover-icon-card__title,
+.careers-join-team__card .hover-icon-card__description {
   max-width: 250px;
   font-size: var(--sais-body-text-size);
   font-weight: 700;
@@ -872,10 +854,65 @@ a.careers-join-team__card:hover {
   line-height: var(--sais-body-text-line-height);
 }
 
-.careers-join-team__card-text {
+.careers-join-team__card .hover-icon-card__description {
   margin-top: 8px;
   color: var(--sais-accent);
+}
+
+.hover-icon-card {
+  --hover-icon-card-accent: var(--sais-accent);
+  --hover-icon-card-border: var(--hover-icon-card-accent);
+  --hover-icon-card-hover-border: var(--hover-icon-card-accent);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--hover-icon-card-border);
+  background: #ffffff;
+  color: var(--sais-primary);
+  text-align: center;
+  text-decoration: none;
+  transform-origin: center bottom;
+  transition:
+    border-color 320ms ease,
+    transform 360ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-icon-card:hover {
+  border-color: var(--hover-icon-card-hover-border);
+  transform: translateY(-6px) scale(1.015);
+}
+
+.hover-icon-card__icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--hover-icon-card-accent);
+  transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-icon-card:hover .hover-icon-card__icon {
+  transform: scale(1.12);
+}
+
+.hover-icon-card__icon-image {
+  object-fit: contain;
+}
+
+.hover-icon-card__title,
+.hover-icon-card__description {
+  display: block;
+}
+
+.hover-icon-card__description {
   white-space: pre-line;
+}
+
+.careers-join-team__card {
+  border-width: 3px;
 }
 
 .inner-page-nav {
@@ -1096,6 +1133,16 @@ a.careers-join-team__card:hover {
   border: 1px solid rgba(255, 255, 255, 0.82);
   border-radius: 999px;
   color: var(--contact-info-text-color, #ffffff);
+  transition:
+    border-color 260ms ease,
+    color 260ms ease,
+    transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contact-info-section__item:hover .contact-info-section__item-icon {
+  border-color: var(--sais-accent);
+  color: var(--sais-accent);
+  transform: translateY(-2px) scale(1.08);
 }
 
 .contact-info-section__item-text {
@@ -1199,106 +1246,34 @@ a.contact-info-section__item-text:hover {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(18px, 2.4vw, 30px);
   padding-top: 25px;
-  perspective: 1200px;
 }
 
 .academics-skills__card {
-  position: relative;
+  --hover-icon-card-border: var(--academics-card-accent, var(--sais-accent));
+  --hover-icon-card-hover-border: #d97252;
+
   min-height: 182px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   gap: 18px;
   padding: 22px 18px 18px;
-  border: 2px solid var(--academics-card-accent, var(--sais-accent));
   border-radius: 12px;
-  background: #ffffff;
-  box-shadow: 0 14px 28px rgba(8, 48, 65, 0.08);
-  overflow: hidden;
-  text-align: center;
-  transform-origin: center bottom;
-  transition:
-    border-color 320ms ease,
-    box-shadow 360ms ease,
-    transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.academics-skills__card:hover {
-  border-color: color-mix(in srgb, var(--academics-card-accent, var(--sais-accent)) 82%, #ffffff 18%);
-  box-shadow:
-    0 24px 54px rgba(8, 48, 65, 0.18),
-    0 0 34px color-mix(in srgb, var(--academics-card-accent, var(--sais-accent)) 34%, transparent);
-  transform: translateY(-8px) scale(1.025);
 }
 
 .academics-skills__card--teal {
   --academics-card-accent: var(--sais-accent);
+  --hover-icon-card-accent: var(--sais-accent);
 }
 
 .academics-skills__card--orange {
   --academics-card-accent: #d97252;
+  --hover-icon-card-accent: #d97252;
 }
 
-.academics-skills__icon {
-  position: relative;
+.academics-skills__card .hover-icon-card__icon {
   width: 78px;
   height: 78px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--academics-card-accent, var(--sais-accent));
-  transition:
-    filter 360ms ease,
-    transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.academics-skills__icon::before {
-  position: absolute;
-  inset: -18px;
-  z-index: 0;
-  border-radius: 999px;
-  background:
-    radial-gradient(
-      circle,
-      color-mix(in srgb, var(--academics-card-accent, var(--sais-accent)) 42%, transparent) 0%,
-      color-mix(in srgb, var(--academics-card-accent, var(--sais-accent)) 18%, transparent) 42%,
-      transparent 70%
-    );
-  content: "";
-  opacity: 0;
-  transform: scale(0.72);
-  transition:
-    opacity 360ms ease,
-    transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.academics-skills__card:hover .academics-skills__icon {
-  filter: drop-shadow(0 0 16px color-mix(in srgb, var(--academics-card-accent, var(--sais-accent)) 62%, transparent));
-  transform: scale(1.12);
-}
-
-.academics-skills__card:hover .academics-skills__icon::before {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.academics-skills__icon-image {
-  z-index: 1;
-  object-fit: contain;
-  transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.academics-skills__icon svg {
-  position: relative;
-  z-index: 1;
-}
-
-.academics-skills__card:hover .academics-skills__icon-image {
-  transform: scale(1.04);
-}
-
-.academics-skills__card-title {
+.academics-skills__card .hover-icon-card__title {
   max-width: 170px;
   min-height: 32px;
   margin: 0;
@@ -1308,6 +1283,98 @@ a.contact-info-section__item-text:hover {
   letter-spacing: 0;
   line-height: 1.18;
   white-space: pre-line;
+}
+
+.academics-curriculum-overview {
+  background: #ffffff;
+  padding: clamp(56px, 7vw, 90px) 0 clamp(26px, 4vw, 46px);
+}
+
+.academics-curriculum-overview__row.editorial-split-section {
+  padding: 0;
+}
+
+.academics-curriculum-overview__row + .academics-curriculum-overview__row {
+  margin-top: clamp(42px, 5vw, 68px);
+}
+
+.academics-curriculum-overview__row .editorial-split-section__inner {
+  width: min(85%, 1120px);
+  grid-template-columns: minmax(280px, 0.92fr) minmax(0, 1fr);
+  gap: clamp(42px, 7vw, 82px);
+}
+
+.academics-curriculum-overview__row .editorial-split-section__media {
+  aspect-ratio: 780 / 650;
+  border-radius: 14px;
+  box-shadow: none;
+}
+
+.academics-curriculum-overview__row .editorial-split-section__body {
+  max-width: 520px;
+  color: #666b70;
+  font-size: var(--sais-body-text-size);
+  letter-spacing: var(--sais-body-text-letter-spacing);
+  line-height: var(--sais-body-text-line-height);
+}
+
+.academics-teaching {
+  background: #ffffff;
+  padding: 0 0 clamp(62px, 7vw, 92px);
+}
+
+.academics-teaching__inner {
+  width: min(85%, 1120px);
+  margin: 0 auto;
+}
+
+.academics-teaching__title {
+  margin: 0;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(var(--sais-primary-rgb), 0.55);
+  color: var(--sais-primary);
+  font-size: clamp(1.22rem, 1.55vw, 1.42rem);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.22;
+}
+
+.academics-teaching__cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(18px, 2.4vw, 30px);
+  margin-top: clamp(34px, 4vw, 46px);
+}
+
+.academics-teaching__card {
+  --hover-icon-card-accent: #d97252;
+  --hover-icon-card-border: var(--sais-primary);
+  --hover-icon-card-hover-border: #d97252;
+
+  min-height: clamp(200px, 18vw, 250px);
+  gap: 18px;
+  padding: clamp(28px, 3vw, 40px) 22px 26px;
+  border-radius: 12px;
+}
+
+.academics-teaching__card .hover-icon-card__icon {
+  width: clamp(70px, 7vw, 96px);
+  height: clamp(70px, 7vw, 96px);
+}
+
+.academics-teaching__card .hover-icon-card__title {
+  color: var(--sais-primary);
+  font-size: 0.86rem;
+  font-weight: 700;
+  line-height: 1.18;
+}
+
+.academics-teaching__card .hover-icon-card__description {
+  max-width: 230px;
+  color: #666b70;
+  font-size: var(--sais-body-text-size);
+  letter-spacing: var(--sais-body-text-letter-spacing);
+  line-height: var(--sais-body-text-line-height);
 }
 
 .about-highlights {
@@ -1427,6 +1494,15 @@ a.contact-info-section__item-text:hover {
   font-weight: 400;
   line-height: 1.56;
   letter-spacing: 0.01em;
+}
+
+.editorial-split-section__title {
+  margin: 0 0 4px;
+  color: var(--sais-primary);
+  font-size: clamp(1.22rem, 1.55vw, 1.42rem);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.22;
 }
 
 .editorial-split-section__body p {
@@ -5441,6 +5517,10 @@ a.contact-info-section__item-text:hover {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .academics-teaching__cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .about-highlights__inner {
     grid-template-columns: 1fr;
   }
@@ -5728,13 +5808,36 @@ a.contact-info-section__item-text:hover {
     padding: 18px 14px 16px;
   }
 
-  .academics-skills__icon {
+  .academics-skills__card .hover-icon-card__icon {
     width: 64px;
     height: 64px;
   }
 
-  .academics-skills__card-title {
+  .academics-skills__card .hover-icon-card__title {
     font-size: 0.72rem;
+  }
+
+  .academics-curriculum-overview {
+    padding: 42px 0 26px;
+  }
+
+  .academics-curriculum-overview__row + .academics-curriculum-overview__row {
+    margin-top: 34px;
+  }
+
+  .academics-curriculum-overview__row .editorial-split-section__inner,
+  .academics-teaching__inner {
+    width: calc(100% - 32px);
+  }
+
+  .academics-teaching {
+    padding-bottom: 58px;
+  }
+
+  .academics-teaching__cards {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-top: 30px;
   }
 
   .careers-requirements {
@@ -5765,7 +5868,7 @@ a.contact-info-section__item-text:hover {
     min-height: 248px;
   }
 
-  .careers-join-team__icon {
+  .careers-join-team__card .hover-icon-card__icon {
     margin-bottom: 32px;
   }
 
@@ -5837,7 +5940,7 @@ a.contact-info-section__item-text:hover {
   }
 
   .academics-skills__cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .academics-skills__card {

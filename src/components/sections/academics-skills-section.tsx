@@ -1,4 +1,3 @@
-import Image from "next/image";
 import {
   BrainCircuit,
   HeartHandshake,
@@ -10,6 +9,7 @@ import {
   UserRoundCheck,
 } from "lucide-react";
 import type { ComponentType } from "react";
+import { HoverIconCard } from "@/components/ui/hover-icon-card";
 import { RichText } from "@/components/ui/rich-text";
 import type { AcademicsSkillsSection as AcademicsSkillsSectionData } from "@/types/sanity";
 
@@ -59,25 +59,14 @@ export function AcademicsSkillsSection({
                   const Icon = iconMap[item.iconType || "critical"] || BrainCircuit;
 
                   return (
-                    <article
+                    <HoverIconCard
                       className={`academics-skills__card academics-skills__card--${item.theme || "teal"}`}
                       key={item._key || `${item.title}-${index}`}
-                    >
-                      <span className="academics-skills__icon" aria-hidden="true">
-                        {item.icon?.url ? (
-                          <Image
-                            src={item.icon.url}
-                            alt=""
-                            fill
-                            sizes="86px"
-                            className="academics-skills__icon-image"
-                          />
-                        ) : (
-                          <Icon size={70} strokeWidth={1.8} />
-                        )}
-                      </span>
-                      {item.title ? <h3 className="academics-skills__card-title">{item.title}</h3> : null}
-                    </article>
+                      icon={item.icon}
+                      fallbackIcon={Icon}
+                      title={item.title}
+                      iconSizes="86px"
+                    />
                   );
                 })}
               </div>

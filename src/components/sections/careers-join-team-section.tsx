@@ -1,5 +1,4 @@
-import Image from "next/image";
-import Link from "next/link";
+import { HoverIconCard } from "@/components/ui/hover-icon-card";
 import { RichText } from "@/components/ui/rich-text";
 import type { CareersJoinTeamSection as CareersJoinTeamSectionData } from "@/types/sanity";
 
@@ -33,46 +32,17 @@ export function CareersJoinTeamSection({
 
         {cards.length ? (
           <div className="careers-join-team__cards">
-            {cards.map((card, index) => {
-              const content = (
-                <>
-                  {card.icon?.url ? (
-                    <span className="careers-join-team__icon">
-                      <Image
-                        src={card.icon.url}
-                        alt={card.icon.alt || ""}
-                        fill
-                        sizes="96px"
-                        className="careers-join-team__icon-image"
-                      />
-                    </span>
-                  ) : null}
-                  {card.label ? <span className="careers-join-team__card-label">{card.label}</span> : null}
-                  {card.text ? <span className="careers-join-team__card-text">{card.text}</span> : null}
-                </>
-              );
-
-              if (card.href) {
-                const isExternal = card.href.startsWith("http");
-                return (
-                  <Link
-                    href={card.href}
-                    className="careers-join-team__card"
-                    target={isExternal ? "_blank" : undefined}
-                    rel={isExternal ? "noopener noreferrer" : undefined}
-                    key={card._key || `${card.label}-${index}`}
-                  >
-                    {content}
-                  </Link>
-                );
-              }
-
-              return (
-                <article className="careers-join-team__card" key={card._key || `${card.label}-${index}`}>
-                  {content}
-                </article>
-              );
-            })}
+            {cards.map((card, index) => (
+              <HoverIconCard
+                key={card._key || `${card.label}-${index}`}
+                href={card.href}
+                icon={card.icon}
+                title={card.label}
+                description={card.text}
+                className="careers-join-team__card"
+                iconSizes="96px"
+              />
+            ))}
           </div>
         ) : null}
       </div>

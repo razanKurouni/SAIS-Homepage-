@@ -246,6 +246,79 @@ await client.createOrReplace({
       },
     ],
   },
+  curriculumOverviewSection: {
+    _type: "object",
+    firstBlock: {
+      _type: "imageTextSection",
+      heading: {
+        _type: "sectionHeading",
+        title: "Our Curriculum",
+        description: [
+          block(
+            "overview-curriculum-1",
+            "Our Curriculum is designed to ensure students' experience is active and skills-focused, rigorous, and aligned with clearly defined outcomes. Our approach integrates 21st-century competencies, active and interactive learning, and real-world applications, encouraging students to become critical thinkers, creative problem-solvers, effective communicators, and compassionate global citizens."
+          ),
+          block(
+            "overview-curriculum-2",
+            "With robust student support systems, differentiated instruction, and meaningful and varied assessment practices, we aim to meet each learner where they are while guiding them to where they need to be."
+          ),
+        ],
+      },
+      image: heroImage,
+      imagePosition: "right",
+      theme: "light",
+    },
+    secondBlock: {
+      _type: "imageTextSection",
+      heading: {
+        _type: "sectionHeading",
+        title: "Curriculum at SAIS-Dubai",
+        description: [
+          block(
+            "overview-curriculum-3",
+            "Curriculum at SAIS-Dubai is not static - it is continuously reviewed and improved through collaborative, data-informed processes that ensure relevance, coherence, and excellence across all grade levels and disciplines. We believe that curriculum, instruction, and assessment are interdependent elements of an integrated learning ecosystem, and our educators are empowered to innovate, adapt, and lead meaningful change."
+          ),
+          block(
+            "overview-curriculum-4",
+            "Ultimately, our vision is to provide a transformative education that inspires students to achieve their personal best, contribute positively to their communities, and succeed in a global society."
+          ),
+        ],
+      },
+      image: curriculumImage,
+      imagePosition: "left",
+      theme: "light",
+    },
+  },
+  teachingCommitmentsSection: {
+    _type: "object",
+    heading: {
+      _type: "sectionHeading",
+      title: "Our Teaching Commitments",
+    },
+    cards: [
+      {
+        _key: "high-expectations",
+        _type: "object",
+        title: "High Expectations",
+        description: "Maintain high expectations for every student",
+        iconType: "expectations",
+      },
+      {
+        _key: "engagement",
+        _type: "object",
+        title: "Engagement",
+        description: "Understand that meaningful learning occurs when students engage in critical thinking",
+        iconType: "engagement",
+      },
+      {
+        _key: "achievement",
+        _type: "object",
+        title: "Achievement",
+        description: "Emphasize the importance of effort and persistence in achievement",
+        iconType: "achievement",
+      },
+    ],
+  },
 });
 
-console.log("Seeded academics-page with editable hero, curriculum, and skills content.");
+console.log("Seeded academics-page with editable hero, curriculum, skills, overview, and teaching commitment content.");

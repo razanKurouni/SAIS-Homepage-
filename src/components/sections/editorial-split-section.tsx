@@ -11,6 +11,7 @@ type EditorialSplitSectionProps = {
   fallbackParagraphs: string[];
   className?: string;
   imageSizes?: string;
+  showTitle?: boolean;
 };
 
 type EditorialSplitStyle = CSSProperties & {
@@ -25,11 +26,13 @@ export function EditorialSplitSection({
   fallbackParagraphs,
   className = "",
   imageSizes = "(max-width: 767px) calc(100vw - 32px), 42vw",
+  showTitle = false,
 }: EditorialSplitSectionProps) {
   const image = section?.image || fallbackImage;
   const paragraphs = richTextToParagraphs(section?.heading?.description);
   const body = paragraphs.length > 0 ? paragraphs : fallbackParagraphs;
   const imageFirst = section?.imagePosition !== "right";
+  const resolvedTitle = section?.heading?.title || title;
   const style: EditorialSplitStyle = {
     "--editorial-split-image-position": "center",
   };
@@ -46,9 +49,11 @@ export function EditorialSplitSection({
       style={style}
     >
       <div className="editorial-split-section__inner">
-        <h2 id={id ? `${id}-title` : undefined} className="sr-only">
-          {section?.heading?.title || title}
-        </h2>
+        {!showTitle ? (
+          <h2 id={id ? `${id}-title` : undefined} className="sr-only">
+            {resolvedTitle}
+          </h2>
+        ) : null}
 
         {image?.url ? (
           <div className="editorial-split-section__media">
@@ -64,6 +69,11 @@ export function EditorialSplitSection({
         ) : null}
 
         <div className="editorial-split-section__body">
+          {showTitle ? (
+            <h2 id={id ? `${id}-title` : undefined} className="editorial-split-section__title">
+              {resolvedTitle}
+            </h2>
+          ) : null}
           {body.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}

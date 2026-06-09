@@ -49,5 +49,29 @@ export const academicsPageQuery = `*[_type == "academicsPage" && _id == "academi
         theme
       }
     }
+  },
+  curriculumOverviewSection {
+    firstBlock {
+      heading ${headingProjection},
+      image ${imageWithAltProjection},
+      imagePosition,
+      theme
+    },
+    secondBlock {
+      heading ${headingProjection},
+      image ${imageWithAltProjection},
+      imagePosition,
+      theme
+    }
+  },
+  teachingCommitmentsSection {
+    heading ${headingProjection},
+    cards[] {
+      _key,
+      title,
+      description,
+      icon ${imageWithAltProjection},
+      iconType
+    }
   }
 }`;

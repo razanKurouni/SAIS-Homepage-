@@ -163,6 +163,70 @@ export const academicsPage = {
         },
       ],
     },
+    {
+      name: "curriculumOverviewSection",
+      title: "Our Curriculum Overview Section",
+      type: "object",
+      description: "Editable two-row curriculum section with alternating text and images.",
+      fields: [
+        {
+          name: "firstBlock",
+          title: "First Row",
+          type: "imageTextSection",
+          description: "Shown as text on the left and image on the right.",
+        },
+        {
+          name: "secondBlock",
+          title: "Second Row",
+          type: "imageTextSection",
+          description: "Shown as image on the left and text on the right.",
+        },
+      ],
+    },
+    {
+      name: "teachingCommitmentsSection",
+      title: "Teaching Commitments Section",
+      type: "object",
+      description: "Editable commitment cards with icons and hover animation.",
+      fields: [
+        { name: "heading", title: "Heading", type: "sectionHeading" },
+        {
+          name: "cards",
+          title: "Cards",
+          type: "array",
+          of: [
+            {
+              type: "object",
+              fields: [
+                { name: "title", title: "Card Title", type: "string" },
+                { name: "description", title: "Card Description", type: "text", rows: 3 },
+                { name: "icon", title: "Icon Image", type: "imageWithAlt" },
+                {
+                  name: "iconType",
+                  title: "Fallback Icon Type",
+                  type: "string",
+                  options: {
+                    list: [
+                      { title: "High Expectations", value: "expectations" },
+                      { title: "Engagement", value: "engagement" },
+                      { title: "Achievement", value: "achievement" },
+                    ],
+                    layout: "dropdown",
+                  },
+                },
+              ],
+              preview: {
+                select: {
+                  title: "title",
+                  subtitle: "description",
+                  media: "icon.image",
+                },
+              },
+            },
+          ],
+        },
+      ],
+    },
   ],
   preview: {
     select: {
