@@ -1161,7 +1161,7 @@ a.contact-info-section__item-text:hover {
 }
 
 .academics-skills__inner {
-  width: min(85%, 1180px);
+  width: 85%;
   margin: 0 auto;
 }
 
@@ -1198,6 +1198,7 @@ a.contact-info-section__item-text:hover {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(18px, 2.4vw, 30px);
+  padding-top: 25px;
 }
 
 .academics-skills__card {
