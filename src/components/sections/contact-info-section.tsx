@@ -36,7 +36,7 @@ const fallbackSection: ContactInfoSectionData &
       _key: "address",
       icon: "location",
       label: "Campus Address",
-      text: "Sharjah American International School - Dubai Campus\nP.O. Box 47755 , Al Warqa 1,\nDubai, UAE.",
+      text: "Sharjah American International School Dubai Campus\nP.O. Box 47755 , Al Warqa 1,\nDubai, UAE.",
       href: "https://maps.app.goo.gl/jpHenWCshYQesNd69",
     },
     {

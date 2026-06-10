@@ -163,7 +163,7 @@ await client.createOrReplace({
       description: [
         block(
           "curriculum-overview",
-          "At SAIS-Dubai, our curriculum is driven by a commitment to academic excellence, holistic development, and global readiness. Grounded in internationally recognized American standards - including AERO Common Core and the Next Generation Science Standards - our curriculum ensures that students acquire the knowledge, skills, and dispositions necessary for lifelong learning and success in a rapidly evolving world."
+          "At SAIS Dubai, our curriculum is driven by a commitment to academic excellence, holistic development, and global readiness. Grounded in internationally recognized American standards - including AERO Common Core and the Next Generation Science Standards - our curriculum ensures that students acquire the knowledge, skills, and dispositions necessary for lifelong learning and success in a rapidly evolving world."
         ),
         block(
           "curriculum-vision",
@@ -296,11 +296,11 @@ await client.createOrReplace({
       _type: "imageTextSection",
       heading: {
         _type: "sectionHeading",
-        title: "Curriculum at SAIS-Dubai",
+        title: "Curriculum at SAIS Dubai",
         description: [
           block(
             "overview-curriculum-3",
-            "Curriculum at SAIS-Dubai is not static - it is continuously reviewed and improved through collaborative, data-informed processes that ensure relevance, coherence, and excellence across all grade levels and disciplines. We believe that curriculum, instruction, and assessment are interdependent elements of an integrated learning ecosystem, and our educators are empowered to innovate, adapt, and lead meaningful change."
+            "Curriculum at SAIS Dubai is not static - it is continuously reviewed and improved through collaborative, data-informed processes that ensure relevance, coherence, and excellence across all grade levels and disciplines. We believe that curriculum, instruction, and assessment are interdependent elements of an integrated learning ecosystem, and our educators are empowered to innovate, adapt, and lead meaningful change."
           ),
           block(
             "overview-curriculum-4",

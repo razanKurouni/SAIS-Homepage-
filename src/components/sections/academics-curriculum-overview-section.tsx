@@ -28,7 +28,7 @@ export function AcademicsCurriculumOverviewSection({
 
       <EditorialSplitSection
         id="academics-curriculum-continuum"
-        title="Curriculum at SAIS-Dubai"
+        title="Curriculum at SAIS Dubai"
         section={{ ...secondBlock, imagePosition: "left" }}
         fallbackImage={fallbackSection.secondBlock.image || {}}
         fallbackParagraphs={[]}
