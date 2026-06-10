@@ -1,3 +1,5 @@
+import { Reveal } from "@/components/ui/reveal";
+import { SectionReveal } from "@/components/ui/section-reveal";
 import type { CareersRequirementsSection as CareersRequirementsSectionData } from "@/types/sanity";
 
 type CareersRequirementsSectionProps = {
@@ -17,9 +19,14 @@ export function CareersRequirementsSection({
 
   return (
     <section className="careers-requirements" aria-label="Careers commitments and requirements">
-      <div className="careers-requirements__inner">
+      <SectionReveal className="careers-requirements__inner">
         {columns.map((column, index) => (
-          <article className="careers-requirements__column" key={column._key || `${column.title}-${index}`}>
+          <Reveal
+            as="article"
+            className="careers-requirements__column"
+            delay={index * 90}
+            key={column._key || `${column.title}-${index}`}
+          >
             {column.title ? <h2 className="careers-requirements__title">{column.title}</h2> : null}
             {column.intro ? <p className="careers-requirements__intro">{column.intro}</p> : null}
             {column.items?.length ? (
@@ -29,9 +36,9 @@ export function CareersRequirementsSection({
                 ))}
               </ul>
             ) : null}
-          </article>
+          </Reveal>
         ))}
-      </div>
+      </SectionReveal>
     </section>
   );
 }

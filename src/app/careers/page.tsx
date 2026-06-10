@@ -8,6 +8,7 @@ import { EditorialSplitSection } from "@/components/sections/editorial-split-sec
 import { InnerPageNav } from "@/components/sections/inner-page-nav";
 import { PageHero } from "@/components/sections/page-hero";
 import { RichText } from "@/components/ui/rich-text";
+import { SectionReveal } from "@/components/ui/section-reveal";
 import { getCareersPage, getHomepage } from "@/lib/sanity";
 import type {
   CareersJoinTeamSection as CareersJoinTeamSectionData,
@@ -253,7 +254,7 @@ export default async function CareersPage() {
       />
 
       <section className="careers-work" aria-labelledby="careers-work-title">
-        <div className="careers-work__inner">
+        <SectionReveal className="careers-work__inner">
           <div className="careers-work__copy">
             <h2 id="careers-work-title" className="careers-work__title">
               {introTitle}
@@ -273,7 +274,7 @@ export default async function CareersPage() {
               />
             </div>
           ) : null}
-        </div>
+        </SectionReveal>
       </section>
 
       <EditorialSplitSection

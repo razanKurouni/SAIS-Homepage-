@@ -11,6 +11,7 @@ import {
 import type { ComponentType } from "react";
 import { HoverIconCard } from "@/components/ui/hover-icon-card";
 import { RichText } from "@/components/ui/rich-text";
+import { SectionReveal } from "@/components/ui/section-reveal";
 import type { AcademicsSkillsSection as AcademicsSkillsSectionData } from "@/types/sanity";
 
 type AcademicsSkillsSectionProps = {
@@ -47,7 +48,7 @@ export function AcademicsSkillsSection({
 
   return (
     <section className="academics-skills" aria-label="Academic skills and dispositions">
-      <div className="academics-skills__inner">
+      <SectionReveal className="academics-skills__inner">
         <RichText blocks={heading?.description} className="academics-skills__intro" />
 
         {groups.map((group) => (
@@ -73,7 +74,7 @@ export function AcademicsSkillsSection({
             ) : null}
           </section>
         ))}
-      </div>
+      </SectionReveal>
     </section>
   );
 }

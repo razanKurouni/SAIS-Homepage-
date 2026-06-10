@@ -4,6 +4,7 @@ import { ContactInfoSection } from "@/components/sections/contact-info-section";
 import { HeroContactBand } from "@/components/sections/hero-contact-band";
 import { InnerPageNav } from "@/components/sections/inner-page-nav";
 import { PageHero } from "@/components/sections/page-hero";
+import { SectionReveal } from "@/components/ui/section-reveal";
 import { getContactPage, getHomepage } from "@/lib/sanity";
 
 const fallbackMetadata: Metadata = {
@@ -82,14 +83,16 @@ export default async function ContactUsPage() {
       <HeroContactBand section={data?.heroContactBand} />
 
       <section className="contact-map" aria-label="Campus location map">
-        <iframe
-          src={MAP_EMBED_SRC}
-          className="contact-map__iframe"
-          allowFullScreen
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          title="Sharjah American International School Dubai — Campus Location"
-        />
+        <SectionReveal>
+          <iframe
+            src={MAP_EMBED_SRC}
+            className="contact-map__iframe"
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Sharjah American International School Dubai — Campus Location"
+          />
+        </SectionReveal>
       </section>
     </SitePageShell>
   );

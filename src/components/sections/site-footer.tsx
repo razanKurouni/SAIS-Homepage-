@@ -88,13 +88,19 @@ function normalizeFooterHref(link: LinkField) {
   return link.href || "#";
 }
 
+function isHighlightedFooterLink(label?: string) {
+  const normalizedLabel = label?.trim().toLowerCase();
+
+  return ["campus tours", "admissions process", "faq’s", "faq's", "fees"].includes(normalizedLabel || "");
+}
+
 function FooterLink({ link }: { link: LinkField }) {
   return (
     <Link
       href={normalizeFooterHref(link)}
       target={link.openInNewTab ? "_blank" : undefined}
       rel={link.openInNewTab ? "noreferrer" : undefined}
-      className="site-footer__link"
+      className={`site-footer__link ${isHighlightedFooterLink(link.label) ? "site-footer__link--blue" : ""}`.trim()}
     >
       {link.label}
     </Link>

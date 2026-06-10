@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
 import { richTextToParagraphs } from "@/lib/content";
+import { SectionReveal } from "@/components/ui/section-reveal";
 import type { ImageTextSection, SanityImage } from "@/types/sanity";
 
 type EditorialSplitSectionProps = {
@@ -48,37 +49,39 @@ export function EditorialSplitSection({
       aria-labelledby={id ? `${id}-title` : undefined}
       style={style}
     >
-      <div className="editorial-split-section__inner">
-        {!showTitle ? (
-          <h2 id={id ? `${id}-title` : undefined} className="sr-only">
-            {resolvedTitle}
-          </h2>
-        ) : null}
-
-        {image?.url ? (
-          <div className="editorial-split-section__media">
-            <Image
-              src={image.url}
-              alt={image.alt || title}
-              fill
-              sizes={imageSizes}
-              quality={84}
-              className="editorial-split-section__image"
-            />
-          </div>
-        ) : null}
-
-        <div className="editorial-split-section__body">
-          {showTitle ? (
-            <h2 id={id ? `${id}-title` : undefined} className="editorial-split-section__title">
+      <SectionReveal className="editorial-split-section__reveal">
+        <div className="editorial-split-section__inner">
+          {!showTitle ? (
+            <h2 id={id ? `${id}-title` : undefined} className="sr-only">
               {resolvedTitle}
             </h2>
           ) : null}
-          {body.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
+
+          {image?.url ? (
+            <div className="editorial-split-section__media">
+              <Image
+                src={image.url}
+                alt={image.alt || title}
+                fill
+                sizes={imageSizes}
+                quality={84}
+                className="editorial-split-section__image"
+              />
+            </div>
+          ) : null}
+
+          <div className="editorial-split-section__body">
+            {showTitle ? (
+              <h2 id={id ? `${id}-title` : undefined} className="editorial-split-section__title">
+                {resolvedTitle}
+              </h2>
+            ) : null}
+            {body.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
         </div>
-      </div>
+      </SectionReveal>
     </section>
   );
 }

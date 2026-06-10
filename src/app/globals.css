@@ -676,7 +676,7 @@ button[aria-label="Open Next.js Dev Tools"] {
 
 .careers-work__image {
   object-fit: cover;
-  object-position: center;
+  object-position: top;
 }
 
 .careers-editorial .editorial-split-section__inner {
@@ -1277,7 +1277,7 @@ a.contact-info-section__item-text:hover {
   min-height: 32px;
   margin: 0;
   color: var(--sais-primary);
-  font-size: 0.82rem;
+  font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0;
   line-height: 1.18;
@@ -1368,7 +1368,7 @@ a.contact-info-section__item-text:hover {
 
 .academics-teaching__card .hover-icon-card__title {
   color: #00A5B2;
-  font-size: 0.86rem;
+  font-size: 0.99rem;
   font-weight: 700;
   line-height: 1.18;
 }
@@ -1427,6 +1427,10 @@ a.contact-info-section__item-text:hover {
 
 .academics-learning-slider__curve-line {
   stroke: var(--learning-slide-ring);
+}
+
+.academics-learning-slider__mobile-curve {
+  display: none;
 }
 
 .academics-learning-slider__inner {
@@ -1525,29 +1529,33 @@ a.contact-info-section__item-text:hover {
   width: clamp(42px, 4vw, 54px);
   height: clamp(42px, 4vw, 54px);
   place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.54);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.92);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #ffffff;
   cursor: pointer;
+  opacity: 0;
   pointer-events: auto;
   transform: translateY(-50%);
   transition:
-    background 220ms ease,
-    border-color 220ms ease,
-    color 220ms ease,
+    opacity 220ms ease,
     transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .academics-learning-slider__arrow svg {
-  width: 68%;
-  height: 68%;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 8px 16px rgba(11, 47, 70, 0.22));
 }
 
-.academics-learning-slider__arrow:hover {
-  border-color: rgba(255, 255, 255, 0.84);
-  background: rgba(255, 255, 255, 0.18);
-  color: #ffffff;
+.academics-learning-slider:hover .academics-learning-slider__arrow,
+.academics-learning-slider:focus-within .academics-learning-slider__arrow {
+  opacity: 0.96;
+}
+
+.academics-learning-slider__arrow:hover,
+.academics-learning-slider__arrow:focus-visible {
+  opacity: 1;
 }
 
 .academics-learning-slider__arrow--prev {
@@ -1592,6 +1600,14 @@ a.contact-info-section__item-text:hover {
   background: #d97252;
   box-shadow: inset 0 0 0 4px #ffffff;
   transform: scale(1.05);
+}
+
+.careers-join-team__card-reveal {
+  min-width: 0;
+}
+
+.careers-join-team__card-reveal .careers-join-team__card {
+  height: 100%;
 }
 
 @keyframes academics-learning-slide-in {
@@ -2131,8 +2147,19 @@ a.contact-info-section__item-text:hover {
   display: flex;
   width: max-content;
   min-width: 200%;
+  gap: 0;
   animation: accreditations-scroll var(--accreditations-scroll-duration, 22s) linear infinite;
   will-change: transform;
+}
+
+.accreditations-rail__group {
+  display: flex;
+  min-width: 100vw;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-around;
+  gap: clamp(24px, 5vw, 76px);
+  padding-right: clamp(24px, 5vw, 76px);
 }
 
 .accreditations-rail__item {
@@ -3464,6 +3491,10 @@ a.contact-info-section__item-text:hover {
 
 .site-footer__column:nth-child(1) .site-footer__link {
   color: var(--sais-accent);
+}
+
+.site-footer__link.site-footer__link--blue {
+  color: #216B97;
 }
 
 .site-footer__link:hover {
@@ -5158,6 +5189,10 @@ a.contact-info-section__item-text:hover {
     color: var(--sais-primary);
   }
 
+  .site-footer__link.site-footer__link--blue {
+    color: #216B97;
+  }
+
   .site-footer__bottom-inner {
     width: calc(100% - 48px);
     min-height: auto;
@@ -5755,7 +5790,7 @@ a.contact-info-section__item-text:hover {
   }
 
   .academics-learning-slider__stage {
-    height: clamp(760px, 92vw, 860px);
+    height: clamp(720px, 88vw, 820px);
   }
 
   .academics-learning-slider__inner {
@@ -5768,6 +5803,10 @@ a.contact-info-section__item-text:hover {
   .academics-learning-slider__curve {
     left: -28%;
     width: 84%;
+  }
+
+  .academics-learning-slider__content {
+    max-width: none;
   }
 
   .about-highlights__inner {
@@ -6079,6 +6118,16 @@ a.contact-info-section__item-text:hover {
     width: calc(100% - 32px);
   }
 
+  .academics-curriculum-overview__row .editorial-split-section__inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .academics-curriculum-overview__row .editorial-split-section__media,
+  .academics-curriculum-overview__row .editorial-split-section__body {
+    order: initial;
+  }
+
   .academics-teaching {
     padding-bottom: 58px;
   }
@@ -6090,34 +6139,78 @@ a.contact-info-section__item-text:hover {
   }
 
   .academics-learning-slider {
-    padding: 36px 0 62px;
+    background: var(--learning-slide-bg);
+    padding: 36px 0 0;
   }
 
   .academics-learning-slider__header {
     width: calc(100% - 32px);
     margin-bottom: 26px;
     padding-bottom: 16px;
+    border-color: rgba(255, 255, 255, 0.58);
+  }
+
+  .academics-learning-slider__title {
+    color: #ffffff;
   }
 
   .academics-learning-slider__stage {
     width: 100%;
-    height: clamp(820px, 150vw, 900px);
+    height: auto;
+    min-height: 0;
   }
 
   .academics-learning-slider__inner {
-    width: calc(100% - 48px);
-    height: 100%;
-    padding: 34px 0 42px;
+    width: 100%;
+    height: auto;
+    gap: 0;
+    padding: 28px 0 34px;
+  }
+
+  .academics-learning-slider__curve {
+    display: none;
   }
 
   .academics-learning-slider__media {
+    width: calc(100% - 32px);
+    height: auto;
+    margin: 0 auto;
     aspect-ratio: 1.18 / 1;
     border-radius: 14px;
   }
 
+  .academics-learning-slider__mobile-curve {
+    position: relative;
+    z-index: 0;
+    display: block;
+    width: 100vw;
+    height: 94px;
+    margin: -16px calc(50% - 50vw) -14px;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .academics-learning-slider__mobile-curve svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .academics-learning-slider__mobile-curve-fill {
+    fill: var(--learning-slide-side);
+  }
+
+  .academics-learning-slider__mobile-curve-line {
+    stroke: var(--learning-slide-ring);
+  }
+
   .academics-learning-slider__content {
+    width: calc(100% - 48px);
     gap: 16px;
-    max-height: min(390px, 46%);
+    max-height: none;
+    margin: 0 auto;
+    overflow: visible;
+    padding: 6px 0 20px;
   }
 
   .academics-learning-slider__body {
@@ -6127,12 +6220,13 @@ a.contact-info-section__item-text:hover {
 
   .academics-learning-slider__dots {
     gap: 16px;
-    margin-top: 34px;
+    margin-top: 0;
+    padding: 8px 0 34px;
   }
 
   .academics-learning-slider__arrow {
     top: auto;
-    bottom: 18px;
+    bottom: 28px;
     width: 42px;
     height: 42px;
     transform: none;
@@ -6259,15 +6353,6 @@ a.contact-info-section__item-text:hover {
 
   .academics-skills__card {
     min-height: 156px;
-  }
-
-  .academics-learning-slider__inner {
-    width: calc(100% - 32px);
-  }
-
-  .academics-learning-slider__curve {
-    left: -50%;
-    width: 112%;
   }
 
   .academics-learning-slider__dot {

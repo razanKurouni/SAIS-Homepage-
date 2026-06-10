@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import type { CSSProperties } from "react";
+import { Reveal } from "@/components/ui/reveal";
 import type { AcademicsLearningSliderSection as AcademicsLearningSliderSectionData } from "@/types/sanity";
 
 type AcademicsLearningSliderSectionProps = {
@@ -103,17 +104,21 @@ export function AcademicsLearningSliderSection({
   };
 
   return (
-    <section className="academics-learning-slider" aria-labelledby="academics-learning-slider-title">
-      <div className="academics-learning-slider__header">
+    <section
+      className="academics-learning-slider"
+      aria-labelledby="academics-learning-slider-title"
+      style={style}
+    >
+      <Reveal className="academics-learning-slider__header">
         {heading?.title ? (
           <h2 id="academics-learning-slider-title" className="academics-learning-slider__title">
             {heading.title}
           </h2>
         ) : null}
-      </div>
+      </Reveal>
 
       {activeSlide ? (
-        <div className="academics-learning-slider__stage" style={style}>
+        <Reveal className="academics-learning-slider__stage">
           <svg
             className="academics-learning-slider__curve"
             viewBox="0 0 1647 928"
@@ -151,6 +156,22 @@ export function AcademicsLearningSliderSection({
               ) : null}
             </div>
 
+            <div className="academics-learning-slider__mobile-curve" aria-hidden="true">
+              <svg viewBox="0 0 1440 170" preserveAspectRatio="none">
+                <path
+                  className="academics-learning-slider__mobile-curve-fill"
+                  d="M0 0 H1440 V170 H0 V116 C190 70 390 72 560 108 C790 158 1004 152 1218 88 C1308 61 1384 54 1440 62 V0 H0 Z"
+                />
+                <path
+                  className="academics-learning-slider__mobile-curve-line"
+                  d="M0 116 C190 70 390 72 560 108 C790 158 1004 152 1218 88 C1308 61 1384 54 1440 62"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeWidth="34"
+                />
+              </svg>
+            </div>
+
             <div className="academics-learning-slider__content">
               {activeSlide.title ? <h3>{activeSlide.title}</h3> : null}
               <div className="academics-learning-slider__body">{renderBody(activeSlide.body)}</div>
@@ -177,7 +198,7 @@ export function AcademicsLearningSliderSection({
               </button>
             </div>
           ) : null}
-        </div>
+        </Reveal>
       ) : null}
 
       {slides.length > 1 ? (

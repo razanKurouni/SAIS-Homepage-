@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { ImageCurvedPanel } from "@/components/ui/image-curved-panel";
 import { RichText } from "@/components/ui/rich-text";
+import { SectionReveal } from "@/components/ui/section-reveal";
 import type { ContactInfoItem, ContactInfoSection as ContactInfoSectionData } from "@/types/sanity";
 
 type ContactInfoSectionProps = {
@@ -158,47 +159,49 @@ export function ContactInfoSection({
       aria-label={ariaLabel}
       style={style}
     >
-      <ImageCurvedPanel
-        mediaSlot={mediaSlot}
-        innerClassName="contact-info-section__inner"
-        fillColor={panelColor}
-        accentColor={waveColor}
-        strokeWidth={88}
-        flipped
-        panelClassName="contact-info-section__panel"
-        panelContentClassName="contact-info-section__panel-content"
-      >
-        <div className="contact-info-section__body">
-          <h2 id={titleId} className="contact-info-section__title">
-            {heading}
-          </h2>
+      <SectionReveal>
+        <ImageCurvedPanel
+          mediaSlot={mediaSlot}
+          innerClassName="contact-info-section__inner"
+          fillColor={panelColor}
+          accentColor={waveColor}
+          strokeWidth={88}
+          flipped
+          panelClassName="contact-info-section__panel"
+          panelContentClassName="contact-info-section__panel-content"
+        >
+          <div className="contact-info-section__body">
+            <h2 id={titleId} className="contact-info-section__title">
+              {heading}
+            </h2>
 
-          {description?.length ? (
-            <RichText blocks={description} className="contact-info-section__description" />
-          ) : null}
+            {description?.length ? (
+              <RichText blocks={description} className="contact-info-section__description" />
+            ) : null}
 
-          {items.length ? (
-            <div className="contact-info-section__items">
-              {items.map((item, index) => (
-                <div className="contact-info-section__item" key={item._key || `${item.label}-${index}`}>
-                  <ContactInfoIcon icon={item.icon} />
-                  <ContactInfoText item={item} />
-                </div>
-              ))}
-            </div>
-          ) : null}
-        </div>
+            {items.length ? (
+              <div className="contact-info-section__items">
+                {items.map((item, index) => (
+                  <div className="contact-info-section__item" key={item._key || `${item.label}-${index}`}>
+                    <ContactInfoIcon icon={item.icon} />
+                    <ContactInfoText item={item} />
+                  </div>
+                ))}
+              </div>
+            ) : null}
+          </div>
 
-        {/* mobile wave divider between panel and image */}
-        <div className="contact-info-section__mobile-divider" aria-hidden="true">
-          <svg className="contact-info-section__curve-mask" viewBox="0 0 96 320" preserveAspectRatio="none">
-            <path d="M0 -32 H52 C16 42 16 92 42 154 C70 220 70 274 38 352 H0 Z" />
-          </svg>
-          <svg className="contact-info-section__wave" viewBox="0 0 96 320" preserveAspectRatio="none">
-            <path d="M52 -24 C16 42 16 92 42 154 C70 220 70 274 38 344" />
-          </svg>
-        </div>
-      </ImageCurvedPanel>
+          {/* mobile wave divider between panel and image */}
+          <div className="contact-info-section__mobile-divider" aria-hidden="true">
+            <svg className="contact-info-section__curve-mask" viewBox="0 0 96 320" preserveAspectRatio="none">
+              <path d="M0 -32 H52 C16 42 16 92 42 154 C70 220 70 274 38 352 H0 Z" />
+            </svg>
+            <svg className="contact-info-section__wave" viewBox="0 0 96 320" preserveAspectRatio="none">
+              <path d="M52 -24 C16 42 16 92 42 154 C70 220 70 274 38 344" />
+            </svg>
+          </div>
+        </ImageCurvedPanel>
+      </SectionReveal>
     </section>
   );
 }

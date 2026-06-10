@@ -1,5 +1,7 @@
 import { HoverIconCard } from "@/components/ui/hover-icon-card";
+import { Reveal } from "@/components/ui/reveal";
 import { RichText } from "@/components/ui/rich-text";
+import { SectionReveal } from "@/components/ui/section-reveal";
 import type { CareersJoinTeamSection as CareersJoinTeamSectionData } from "@/types/sanity";
 
 type CareersJoinTeamSectionProps = {
@@ -20,7 +22,7 @@ export function CareersJoinTeamSection({
 
   return (
     <section className="careers-join-team" aria-labelledby="careers-join-team-title">
-      <div className="careers-join-team__inner">
+      <SectionReveal className="careers-join-team__inner">
         <div className="careers-join-team__header">
           {heading?.title ? (
             <h2 id="careers-join-team-title" className="careers-join-team__title">
@@ -33,19 +35,24 @@ export function CareersJoinTeamSection({
         {cards.length ? (
           <div className="careers-join-team__cards">
             {cards.map((card, index) => (
-              <HoverIconCard
+              <Reveal
                 key={card._key || `${card.label}-${index}`}
-                href={card.href}
-                icon={card.icon}
-                title={card.label}
-                description={card.text}
-                className="careers-join-team__card"
-                iconSizes="96px"
-              />
+                className="careers-join-team__card-reveal"
+                delay={index * 90}
+              >
+                <HoverIconCard
+                  href={card.href}
+                  icon={card.icon}
+                  title={card.label}
+                  description={card.text}
+                  className="careers-join-team__card"
+                  iconSizes="96px"
+                />
+              </Reveal>
             ))}
           </div>
         ) : null}
-      </div>
+      </SectionReveal>
     </section>
   );
 }

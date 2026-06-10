@@ -1,6 +1,7 @@
 import { Goal, Medal, UsersRound } from "lucide-react";
 import type { ComponentType } from "react";
 import { HoverIconCard } from "@/components/ui/hover-icon-card";
+import { SectionReveal } from "@/components/ui/section-reveal";
 import type { AcademicsTeachingCommitmentsSection as AcademicsTeachingCommitmentsSectionData } from "@/types/sanity";
 
 type AcademicsTeachingCommitmentsSectionProps = {
@@ -32,7 +33,7 @@ export function AcademicsTeachingCommitmentsSection({
 
   return (
     <section className="academics-teaching" aria-labelledby="academics-teaching-title">
-      <div className="academics-teaching__inner">
+      <SectionReveal className="academics-teaching__inner">
         {heading?.title ? (
           <h2 id="academics-teaching-title" className="academics-teaching__title">
             {heading.title}
@@ -58,7 +59,7 @@ export function AcademicsTeachingCommitmentsSection({
             })}
           </div>
         ) : null}
-      </div>
+      </SectionReveal>
     </section>
   );
 }
