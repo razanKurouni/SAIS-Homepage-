@@ -162,6 +162,21 @@ export type AcademicsKindergartenPageData = {
   assessmentSection?: AcademicsKindergartenAssessmentSection;
 };
 
+export type AcademicsElementaryIntroSection = {
+  heading?: SectionHeading;
+  titleColor?: string;
+  textColor?: string;
+  backgroundColor?: string;
+};
+
+export type AcademicsElementaryPageData = {
+  seo?: Seo;
+  hero?: PageHeroContent;
+  innerNavigation?: InnerNavigation;
+  intro?: AcademicsElementaryIntroSection;
+  curriculumSection?: AcademicsKindergartenFeatureSection;
+};
+
 export type AcademicsSkillItem = {
   _key?: string;
   title?: string;
@@ -231,6 +246,7 @@ export type ContactInfoSection = {
   imagePosition?: string;
   panelColor?: string;
   waveColor?: string;
+  titleColor?: string;
   textColor?: string;
   items?: ContactInfoItem[];
 };

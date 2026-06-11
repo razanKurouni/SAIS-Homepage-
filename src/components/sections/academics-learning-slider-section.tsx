@@ -113,13 +113,13 @@ export function AcademicsLearningSliderSection({
       aria-labelledby={heading?.title ? "academics-learning-slider-title" : undefined}
       style={style}
     >
-      <Reveal className="academics-learning-slider__header">
-        {heading?.title ? (
+      {heading?.title ? (
+        <Reveal className="academics-learning-slider__header">
           <h2 id="academics-learning-slider-title" className="academics-learning-slider__title">
             {heading.title}
           </h2>
-        ) : null}
-      </Reveal>
+        </Reveal>
+      ) : null}
 
       {activeSlide ? (
         <Reveal className="academics-learning-slider__stage">

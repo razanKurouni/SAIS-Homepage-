@@ -1063,6 +1063,33 @@ button[aria-label="Open Next.js Dev Tools"] {
   line-height: 1.15;
 }
 
+.academics-elementary-page__main {
+  overflow: hidden;
+}
+
+.academics-elementary-hero {
+  --page-hero-height: clamp(340px, 31vw, 470px);
+}
+
+.academics-elementary-hero .page-hero__copy {
+  justify-content: flex-end;
+  padding-bottom: clamp(56px, 7vw, 100px);
+}
+
+.academics-elementary-hero .page-hero__eyebrow {
+  margin-bottom: 8px;
+  color: var(--sais-primary);
+  font-size: clamp(1.42rem, 2vw, 2rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.12;
+}
+
+.academics-elementary-hero .page-hero__title {
+  font-size: clamp(1.72rem, 2.35vw, 2.55rem);
+  line-height: 1.15;
+}
+
 .academics-kg-intro {
   background: var(--academics-kg-intro-bg, #ffffff);
   color: var(--academics-kg-intro-text, var(--sais-primary));
@@ -1208,6 +1235,52 @@ button[aria-label="Open Next.js Dev Tools"] {
 
 .academics-kg-excellence-slider .academics-learning-slider__body {
   max-width: 620px;
+  font-size: var(--sais-body-text-size);
+  letter-spacing: var(--sais-body-text-letter-spacing);
+  line-height: var(--sais-body-text-line-height);
+}
+
+.academics-elementary-curriculum-slider.academics-learning-slider {
+  background: #ffffff;
+  padding: clamp(26px, 3.2vw, 48px) 0 clamp(72px, 7vw, 108px);
+}
+
+.academics-elementary-curriculum-slider .academics-learning-slider__stage {
+  width: min(85%, 1180px);
+  height: clamp(440px, 42vw, 560px);
+  margin: 0 auto;
+  border-radius: 16px;
+}
+
+.academics-elementary-curriculum-slider .academics-learning-slider__curve {
+  left: -22%;
+  width: min(48vw, 560px);
+}
+
+.academics-elementary-curriculum-slider .academics-learning-slider__inner {
+  width: 100%;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 56px);
+  padding: clamp(40px, 4.5vw, 58px) clamp(42px, 5vw, 72px);
+}
+
+.academics-elementary-curriculum-slider .academics-learning-slider__media {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1.17 / 1;
+  border-radius: 14px;
+}
+
+.academics-elementary-curriculum-slider .academics-learning-slider__content {
+  max-width: 520px;
+}
+
+.academics-elementary-curriculum-slider .academics-learning-slider__content h3 {
+  color: var(--learning-slide-title, var(--sais-accent));
+}
+
+.academics-elementary-curriculum-slider .academics-learning-slider__body {
+  max-width: 520px;
   font-size: var(--sais-body-text-size);
   letter-spacing: var(--sais-body-text-letter-spacing);
   line-height: var(--sais-body-text-line-height);
@@ -1387,7 +1460,7 @@ button[aria-label="Open Next.js Dev Tools"] {
 .contact-info-section__title {
   max-width: 360px;
   margin: 0;
-  color: var(--contact-info-text-color, #ffffff);
+  color: var(--contact-info-title-color, var(--contact-info-text-color, #ffffff));
   font-size: clamp(1.22rem, 1.55vw, 1.52rem);
   font-weight: 400;
   line-height: 1.18;
@@ -6264,6 +6337,19 @@ a.contact-info-section__item-text:hover {
     font-size: 1.48rem;
   }
 
+  .academics-elementary-hero .page-hero__copy {
+    justify-content: flex-end;
+    padding-bottom: 38px;
+  }
+
+  .academics-elementary-hero .page-hero__eyebrow {
+    font-size: 1.35rem;
+  }
+
+  .academics-elementary-hero .page-hero__title {
+    font-size: 1.48rem;
+  }
+
   .inner-page-nav__dropdown {
     display: block;
   }
@@ -6525,6 +6611,39 @@ a.contact-info-section__item-text:hover {
   }
 
   .academics-kg-excellence-slider .academics-learning-slider__content {
+    width: calc(100% - 48px);
+    max-width: none;
+    margin: 0 auto;
+    padding: 34px 0 20px;
+  }
+
+  .academics-elementary-curriculum-slider.academics-learning-slider {
+    background: var(--learning-slide-bg);
+    padding: 0;
+  }
+
+  .academics-elementary-curriculum-slider .academics-learning-slider__stage {
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+  }
+
+  .academics-elementary-curriculum-slider .academics-learning-slider__inner {
+    width: 100%;
+    height: auto;
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 28px 0 34px;
+  }
+
+  .academics-elementary-curriculum-slider .academics-learning-slider__media {
+    width: calc(100% - 32px);
+    height: auto;
+    margin: 0 auto;
+    aspect-ratio: 1.18 / 1;
+  }
+
+  .academics-elementary-curriculum-slider .academics-learning-slider__content {
     width: calc(100% - 48px);
     max-width: none;
     margin: 0 auto;

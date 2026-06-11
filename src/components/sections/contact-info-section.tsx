@@ -18,6 +18,7 @@ type ContactInfoSectionProps = {
 type ContactInfoStyle = CSSProperties & {
   "--contact-info-image-position"?: string;
   "--contact-info-text-color"?: string;
+  "--contact-info-title-color"?: string;
   "--contact-info-panel-color"?: string;
   "--contact-info-wave-color"?: string;
 };
@@ -131,6 +132,8 @@ export function ContactInfoSection({
   const style: ContactInfoStyle = {
     "--contact-info-image-position": section?.imagePosition || baseFallback.imagePosition || "center",
     "--contact-info-text-color": section?.textColor || baseFallback.textColor || "#ffffff",
+    "--contact-info-title-color":
+      section?.titleColor || baseFallback.titleColor || section?.textColor || baseFallback.textColor || "#ffffff",
     "--contact-info-panel-color": panelColor,
     "--contact-info-wave-color": waveColor,
   };

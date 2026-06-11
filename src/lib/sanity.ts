@@ -1,5 +1,6 @@
 import { createClient } from "@sanity/client";
 import { aboutPageQuery } from "@/sanity/queries/about-page";
+import { academicsElementaryPageQuery } from "@/sanity/queries/academics-elementary-page";
 import { academicsKindergartenPageQuery } from "@/sanity/queries/academics-kindergarten-page";
 import { academicsPageQuery } from "@/sanity/queries/academics-page";
 import { careersPageQuery } from "@/sanity/queries/careers-page";
@@ -13,6 +14,7 @@ import {
 import { mapLegacySectionsToHomepage } from "@/lib/content";
 import type {
   AboutPageData,
+  AcademicsElementaryPageData,
   AcademicsKindergartenPageData,
   AcademicsPageData,
   CareersPageData,
@@ -83,6 +85,15 @@ export async function getAcademicsKindergartenPage(): Promise<AcademicsKindergar
   try {
     const client = getSanityClient();
     return await client.fetch<AcademicsKindergartenPageData | null>(academicsKindergartenPageQuery);
+  } catch {
+    return null;
+  }
+}
+
+export async function getAcademicsElementaryPage(): Promise<AcademicsElementaryPageData | null> {
+  try {
+    const client = getSanityClient();
+    return await client.fetch<AcademicsElementaryPageData | null>(academicsElementaryPageQuery);
   } catch {
     return null;
   }

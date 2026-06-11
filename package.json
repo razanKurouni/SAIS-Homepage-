@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "seed:academics": "node scripts/seed-academics-page.mjs",
+    "seed:academics:elementary": "node --env-file=.env.local scripts/seed-academics-elementary-page.mjs",
     "seed:academics:kindergarten": "node --env-file=.env.local scripts/seed-academics-kindergarten-page.mjs",
     "seed:careers": "node scripts/seed-careers-page.mjs",
     "lint": "eslint"
