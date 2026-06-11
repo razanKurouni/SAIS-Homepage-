@@ -1036,6 +1036,145 @@ button[aria-label="Open Next.js Dev Tools"] {
   min-width: min(100%, 760px);
 }
 
+.academics-kindergarten-page__main {
+  overflow: hidden;
+}
+
+.academics-kindergarten-hero {
+  --page-hero-height: clamp(340px, 31vw, 470px);
+}
+
+.academics-kindergarten-hero .page-hero__copy {
+  justify-content: flex-end;
+  padding-bottom: clamp(56px, 7vw, 100px);
+}
+
+.academics-kindergarten-hero .page-hero__eyebrow {
+  margin-bottom: 8px;
+  color: var(--sais-accent);
+  font-size: clamp(1.42rem, 2vw, 2rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.12;
+}
+
+.academics-kindergarten-hero .page-hero__title {
+  font-size: clamp(1.72rem, 2.35vw, 2.55rem);
+  line-height: 1.15;
+}
+
+.academics-kg-intro {
+  background: var(--academics-kg-intro-bg, #ffffff);
+  color: var(--academics-kg-intro-text, var(--sais-primary));
+  padding: clamp(48px, 5vw, 72px) 0 clamp(54px, 6vw, 82px);
+}
+
+.academics-kg-intro__inner {
+  width: min(85%, 980px);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.academics-kg-intro__title {
+  margin: 0;
+  color: var(--academics-kg-intro-title, var(--sais-accent));
+  font-size: clamp(1.28rem, 1.7vw, 1.62rem);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.22;
+}
+
+.academics-kg-intro__body {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 720px;
+  margin: clamp(24px, 2.8vw, 34px) auto 0;
+}
+
+.academics-kg-intro__body p {
+  margin: 0;
+  color: var(--academics-kg-intro-text, var(--sais-primary));
+  font-size: var(--sais-body-text-size);
+  font-weight: 700;
+  letter-spacing: var(--sais-body-text-letter-spacing);
+  line-height: var(--sais-body-text-line-height);
+}
+
+.academics-kg-excellence-section.contact-info-section {
+  background: var(--academics-kg-feature-bg, var(--sais-accent));
+  padding: clamp(56px, 6vw, 84px) 0;
+}
+
+.academics-kg-excellence-section .contact-info-section__inner {
+  width: min(85%, 1400px);
+}
+
+.academics-kg-excellence-section .contact-info-section__media {
+  width: 40%;
+  padding: 0;
+}
+
+.academics-kg-excellence-section .contact-info-section__image-shell {
+  width: 124%;
+  aspect-ratio: 1566 / 1312;
+  border-radius: 16px;
+  box-shadow: none;
+}
+
+.academics-kg-excellence-section .contact-info-section__panel {
+  width: 60%;
+  min-height: clamp(420px, 36vw, 560px);
+  border-radius: 0;
+}
+
+.academics-kg-excellence-section .contact-info-section__body {
+  padding: clamp(50px, 5.2vw, 74px) 8% clamp(50px, 5.2vw, 74px) 22%;
+}
+
+.academics-kg-excellence-section .contact-info-section__title {
+  max-width: 420px;
+  color: var(--academics-kg-feature-title, var(--sais-accent));
+  font-size: clamp(1.38rem, 1.75vw, 1.72rem);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.academics-kg-excellence-section .contact-info-section__description {
+  max-width: 610px;
+  margin-top: clamp(28px, 3vw, 40px);
+}
+
+.academics-kg-curriculum-section.editorial-split-section {
+  background: #ffffff;
+  padding: clamp(70px, 7.2vw, 110px) 0 clamp(72px, 7vw, 112px);
+}
+
+.academics-kg-curriculum-section .editorial-split-section__inner {
+  width: min(85%, 1400px);
+  grid-template-columns: minmax(0, 0.9fr) minmax(340px, 1fr);
+  gap: clamp(48px, 8vw, 120px);
+}
+
+.academics-kg-curriculum-section .editorial-split-section__media {
+  aspect-ratio: 1556 / 1252;
+  border-radius: 16px;
+  box-shadow: none;
+}
+
+.academics-kg-curriculum-section .editorial-split-section__body {
+  max-width: 530px;
+}
+
+.academics-kg-curriculum-section .editorial-split-section__title {
+  color: var(--sais-primary);
+  font-size: clamp(1.34rem, 1.75vw, 1.72rem);
+  line-height: 1.2;
+}
+
+.academics-kg-curriculum-section .editorial-split-section__body p {
+  color: #666b70;
+}
+
 .contact-info-section {
   background: #ffffff;
   padding: 59px 0 clamp(34px, 5vw, 56px);
@@ -5781,6 +5920,39 @@ a.contact-info-section__item-text:hover {
     padding-left: 25%;
   }
 
+  .academics-kg-excellence-section .contact-info-section__inner {
+    width: 92%;
+  }
+
+  .academics-kg-excellence-section .contact-info-section__media {
+    width: 40%;
+  }
+
+  .academics-kg-excellence-section .contact-info-section__image-shell {
+    width: 128%;
+  }
+
+  .academics-kg-excellence-section .contact-info-section__panel {
+    width: 60%;
+  }
+
+  .academics-kg-excellence-section .contact-info-section__body {
+    padding-left: 24%;
+  }
+
+  .academics-kg-curriculum-section .editorial-split-section__inner {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .academics-kg-curriculum-section.is-image-right .editorial-split-section__body {
+    order: 1;
+  }
+
+  .academics-kg-curriculum-section.is-image-right .editorial-split-section__media {
+    order: 2;
+  }
+
   .academics-skills__cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -5908,6 +6080,19 @@ a.contact-info-section__item-text:hover {
 
   .page-hero__media {
     min-height: 320px;
+  }
+
+  .academics-kindergarten-hero .page-hero__copy {
+    justify-content: flex-end;
+    padding-bottom: 38px;
+  }
+
+  .academics-kindergarten-hero .page-hero__eyebrow {
+    font-size: 1.35rem;
+  }
+
+  .academics-kindergarten-hero .page-hero__title {
+    font-size: 1.48rem;
   }
 
   .inner-page-nav__dropdown {
@@ -6072,6 +6257,83 @@ a.contact-info-section__item-text:hover {
   .academics-curriculum-section .contact-info-section__description p {
     font-size: var(--sais-body-text-size);
     line-height: var(--sais-body-text-line-height);
+  }
+
+  .academics-kg-intro {
+    padding: 38px 0 44px;
+  }
+
+  .academics-kg-intro__inner {
+    width: calc(100% - 32px);
+  }
+
+  .academics-kg-intro__title {
+    font-size: 1.28rem;
+  }
+
+  .academics-kg-intro__body {
+    margin-top: 20px;
+  }
+
+  .academics-kg-excellence-section.contact-info-section {
+    padding: 0;
+  }
+
+  .academics-kg-excellence-section .contact-info-section__inner {
+    width: 100%;
+    flex-direction: column;
+    border-radius: 0;
+    background: var(--academics-kg-feature-bg, var(--sais-accent));
+  }
+
+  .academics-kg-excellence-section .contact-info-section__media,
+  .academics-kg-excellence-section .contact-info-section__panel {
+    width: 100%;
+  }
+
+  .academics-kg-excellence-section .contact-info-section__image-shell {
+    width: 100%;
+    min-height: 330px;
+    border-radius: 0;
+  }
+
+  .academics-kg-excellence-section .contact-info-section__body {
+    background: var(--contact-info-panel-color, var(--sais-primary));
+    padding: 38px 28px 48px;
+  }
+
+  .academics-kg-excellence-section .contact-info-section__title {
+    font-size: 1.4rem;
+  }
+
+  .academics-kg-excellence-section .contact-info-section__description {
+    margin-top: 22px;
+  }
+
+  .academics-kg-excellence-section .contact-info-section__mobile-divider {
+    display: none;
+  }
+
+  .academics-kg-curriculum-section.editorial-split-section {
+    padding: 44px 0 58px;
+  }
+
+  .academics-kg-curriculum-section .editorial-split-section__inner {
+    width: calc(100% - 32px);
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .academics-kg-curriculum-section.is-image-right .editorial-split-section__body {
+    order: 1;
+  }
+
+  .academics-kg-curriculum-section.is-image-right .editorial-split-section__media {
+    order: 2;
+  }
+
+  .academics-kg-curriculum-section .editorial-split-section__media {
+    border-radius: 14px;
   }
 
   .academics-skills {

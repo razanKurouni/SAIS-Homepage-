@@ -1,0 +1,234 @@
+import type { CSSProperties } from "react";
+import type { Metadata } from "next";
+import { SitePageShell } from "@/components/layout/site-page-shell";
+import { ContactInfoSection } from "@/components/sections/contact-info-section";
+import { EditorialSplitSection } from "@/components/sections/editorial-split-section";
+import { InnerPageNav } from "@/components/sections/inner-page-nav";
+import { PageHero } from "@/components/sections/page-hero";
+import { RichText } from "@/components/ui/rich-text";
+import { SectionReveal } from "@/components/ui/section-reveal";
+import { getAcademicsKindergartenPage, getHomepage } from "@/lib/sanity";
+import type {
+  AcademicsKindergartenFeatureSection,
+  AcademicsKindergartenIntroSection,
+  ContactInfoSection as ContactInfoSectionData,
+  ImageTextSection,
+  PortableTextBlock,
+} from "@/types/sanity";
+
+const fallbackMetadata: Metadata = {
+  title: "Kindergarten | Academics | SAIS Dubai",
+  description: "Explore Kindergarten academics at Sharjah American International School Dubai.",
+};
+
+export async function generateMetadata(): Promise<Metadata> {
+  const kindergartenPage = await getAcademicsKindergartenPage();
+
+  return {
+    title: kindergartenPage?.seo?.title || fallbackMetadata.title,
+    description: kindergartenPage?.seo?.description || fallbackMetadata.description,
+  };
+}
+
+export const dynamic = "force-dynamic";
+
+const academicsInnerNavItems = [
+  { label: "Overview", href: "/academics" },
+  { label: "Kindergarten", href: "/academics/kindergarten" },
+  { label: "Elementary", href: "/academics/elementary" },
+  { label: "Middle School", href: "/academics/middle-school" },
+  { label: "High School", href: "/academics/high-school" },
+];
+
+type IntroStyle = CSSProperties & {
+  "--academics-kg-intro-bg"?: string;
+  "--academics-kg-intro-title"?: string;
+  "--academics-kg-intro-text"?: string;
+};
+
+type FeatureStyle = CSSProperties & {
+  "--academics-kg-feature-bg"?: string;
+  "--academics-kg-feature-title"?: string;
+};
+
+function paragraph(_key: string, text: string): PortableTextBlock {
+  return {
+    _key,
+    _type: "block",
+    children: [{ _key: `${_key}-span`, _type: "span", text }],
+  };
+}
+
+const fallbackHero = {
+  eyebrow: "Academics",
+  title: "Kindergarten",
+  image: {
+    url: "/academics-kg-hero.png",
+    alt: "SAIS Dubai kindergarten students learning through play",
+  },
+  topLineColor: "#d97252",
+  panelColor: "var(--sais-primary)",
+  waveColor: "var(--sais-accent)",
+  textColor: "#ffffff",
+  imagePosition: "center",
+  imageWidth: "60%",
+};
+
+const fallbackIntro: Required<AcademicsKindergartenIntroSection> = {
+  heading: {
+    title: "Building Success Through Collaboration",
+    description: [
+      paragraph(
+        "kg-intro",
+        "In the early years at SAIS Dubai, our teaching and learning approaches prioritize play-based learning, exploration, and hands-on experiences to foster holistic development."
+      ),
+    ],
+  },
+  titleColor: "var(--sais-accent)",
+  textColor: "var(--sais-primary)",
+  backgroundColor: "#ffffff",
+};
+
+const fallbackExcellenceSection: Required<AcademicsKindergartenFeatureSection> = {
+  heading: {
+    title: "Driving Excellence\nThrough Continuous Review",
+    description: [
+      paragraph(
+        "kg-excellence",
+        "Teachers utilize a combination of structured activities and child-directed learning opportunities to cater to individual learning styles and needs. Our curriculum emphasizes foundational skills such as literacy, numeracy, and social-emotional development, integrating them into engaging and developmentally appropriate learning experiences. Through a blend of structured lessons, interactive activities, and creative expression, students in KG-Grade 2 develop essential skills, knowledge, and attitudes that form the building blocks for future learning success."
+      ),
+    ],
+  },
+  image: {
+    url: "/academics-kg-excellence.png",
+    alt: "SAIS Dubai kindergarten students playing music together",
+  },
+  imagePosition: "center",
+  backgroundColor: "var(--sais-accent)",
+  panelColor: "var(--sais-primary)",
+  waveColor: "#d97252",
+  titleColor: "var(--sais-accent)",
+  textColor: "#ffffff",
+};
+
+const fallbackCurriculumSection: ImageTextSection = {
+  heading: {
+    title: "The Curriculum",
+    description: [
+      paragraph(
+        "kg-curriculum",
+        "Early Years (KG-Grade 2): The curriculum provides hands-on, inquiry-based learning through thematic units and play-based exploration. Integrated with AERO and NGSS standards, the program emphasizes foundational literacy, numeracy, science, and social-emotional development."
+      ),
+    ],
+  },
+  image: {
+    url: "/academics-kg-curriculum.png",
+    alt: "SAIS Dubai teacher guiding a kindergarten student during outdoor learning",
+  },
+  imagePosition: "right",
+};
+
+function toFeatureContactInfoSection(
+  section: AcademicsKindergartenFeatureSection | undefined,
+  fallbackSection: Required<AcademicsKindergartenFeatureSection>,
+): ContactInfoSectionData {
+  return {
+    heading: section?.heading || fallbackSection.heading,
+    image: section?.image || fallbackSection.image,
+    imagePosition: section?.imagePosition || fallbackSection.imagePosition,
+    panelColor: section?.panelColor || fallbackSection.panelColor,
+    waveColor: section?.waveColor || fallbackSection.waveColor,
+    textColor: section?.textColor || fallbackSection.textColor,
+    items: [],
+  };
+}
+
+export default async function AcademicsKindergartenPage() {
+  const [data, kindergartenPage] = await Promise.all([getHomepage(), getAcademicsKindergartenPage()]);
+  const hero = kindergartenPage?.hero;
+  const intro = kindergartenPage?.intro || fallbackIntro;
+  const excellenceSection = kindergartenPage?.excellenceSection || fallbackExcellenceSection;
+  const curriculumSection = kindergartenPage?.curriculumSection || fallbackCurriculumSection;
+  const heroTitle = hero?.heading?.title || fallbackHero.title;
+  const heroEyebrow = hero?.heading?.eyebrow || fallbackHero.eyebrow;
+  const heroImage = hero?.image || fallbackHero.image;
+  const introStyle: IntroStyle = {
+    "--academics-kg-intro-bg": intro.backgroundColor || fallbackIntro.backgroundColor,
+    "--academics-kg-intro-title": intro.titleColor || fallbackIntro.titleColor,
+    "--academics-kg-intro-text": intro.textColor || fallbackIntro.textColor,
+  };
+  const excellenceStyle: FeatureStyle = {
+    "--academics-kg-feature-bg": excellenceSection.backgroundColor || fallbackExcellenceSection.backgroundColor,
+    "--academics-kg-feature-title": excellenceSection.titleColor || fallbackExcellenceSection.titleColor,
+  };
+
+  return (
+    <SitePageShell
+      data={data}
+      mainClassName="site-page__main academics-kindergarten-page__main"
+      pageClassName="academics-kindergarten-page"
+    >
+      <PageHero
+        className="academics-kindergarten-hero"
+        title={heroTitle}
+        image={heroImage}
+        eyebrow={heroEyebrow}
+        titleId="academics-kindergarten-hero-title"
+        priority
+        topLineColor={hero?.topLineColor || fallbackHero.topLineColor}
+        panelColor={hero?.panelColor || fallbackHero.panelColor}
+        waveColor={hero?.waveColor || fallbackHero.waveColor}
+        textColor={hero?.textColor || fallbackHero.textColor}
+        imagePosition={hero?.imagePosition || fallbackHero.imagePosition}
+        imageWidth={hero?.imageWidth || fallbackHero.imageWidth}
+      />
+
+      <InnerPageNav
+        items={academicsInnerNavItems}
+        activeHref="/academics/kindergarten"
+        activeColor="#00A5B2"
+        inactiveColor="var(--sais-primary)"
+        textColor="#ffffff"
+        dividerColor="#ffffff"
+        topLineColor="#ffffff"
+        className="academics-inner-nav"
+        ariaLabel="Academics page navigation"
+      />
+
+      <section
+        className="academics-kg-intro"
+        aria-labelledby="academics-kg-intro-title"
+        style={introStyle}
+      >
+        <SectionReveal className="academics-kg-intro__inner">
+          {intro.heading?.title ? (
+            <h2 id="academics-kg-intro-title" className="academics-kg-intro__title">
+              {intro.heading.title}
+            </h2>
+          ) : null}
+          <RichText blocks={intro.heading?.description} className="academics-kg-intro__body" />
+        </SectionReveal>
+      </section>
+
+      <div className="academics-kg-excellence-wrap" style={excellenceStyle}>
+        <ContactInfoSection
+          className="academics-kg-excellence-section"
+          section={toFeatureContactInfoSection(excellenceSection, fallbackExcellenceSection)}
+          fallbackSection={toFeatureContactInfoSection(undefined, fallbackExcellenceSection)}
+          titleId="academics-kg-excellence-title"
+        />
+      </div>
+
+      <EditorialSplitSection
+        id="academics-kg-curriculum"
+        title="The Curriculum"
+        section={{ ...curriculumSection, imagePosition: "right" }}
+        fallbackImage={fallbackCurriculumSection.image || {}}
+        fallbackParagraphs={[]}
+        className="academics-kg-curriculum-section"
+        imageSizes="(max-width: 767px) calc(100vw - 32px), 42vw"
+        showTitle
+      />
+    </SitePageShell>
+  );
+}

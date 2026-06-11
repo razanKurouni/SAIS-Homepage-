@@ -98,6 +98,32 @@ export type AcademicsPageData = {
   learningSliderSection?: AcademicsLearningSliderSection;
 };
 
+export type AcademicsKindergartenIntroSection = {
+  heading?: SectionHeading;
+  titleColor?: string;
+  textColor?: string;
+  backgroundColor?: string;
+};
+
+export type AcademicsKindergartenFeatureSection = {
+  heading?: SectionHeading;
+  image?: SanityImage;
+  imagePosition?: string;
+  backgroundColor?: string;
+  panelColor?: string;
+  waveColor?: string;
+  titleColor?: string;
+  textColor?: string;
+};
+
+export type AcademicsKindergartenPageData = {
+  seo?: Seo;
+  hero?: PageHeroContent;
+  intro?: AcademicsKindergartenIntroSection;
+  excellenceSection?: AcademicsKindergartenFeatureSection;
+  curriculumSection?: ImageTextSection;
+};
+
 export type AcademicsSkillItem = {
   _key?: string;
   title?: string;
