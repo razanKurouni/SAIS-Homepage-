@@ -188,6 +188,7 @@ export type AcademicsLearningSlide = {
   backgroundColor?: string;
   sideColor?: string;
   ringColor?: string;
+  titleColor?: string;
   textColor?: string;
   imagePosition?: string;
 };

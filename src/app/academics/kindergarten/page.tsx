@@ -2,7 +2,7 @@ import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { SitePageShell } from "@/components/layout/site-page-shell";
 import { AcademicsKindergartenAssessmentSection } from "@/components/sections/academics-kindergarten-assessment-section";
-import { ContactInfoSection } from "@/components/sections/contact-info-section";
+import { AcademicsLearningSliderSection } from "@/components/sections/academics-learning-slider-section";
 import { EditorialSplitSection } from "@/components/sections/editorial-split-section";
 import { InnerPageNav } from "@/components/sections/inner-page-nav";
 import { PageHero } from "@/components/sections/page-hero";
@@ -13,10 +13,13 @@ import type {
   AcademicsKindergartenAssessmentSection as AcademicsKindergartenAssessmentSectionData,
   AcademicsKindergartenFeatureSection,
   AcademicsKindergartenIntroSection,
-  ContactInfoSection as ContactInfoSectionData,
+  AcademicsLearningSliderSection as AcademicsLearningSliderSectionData,
   ImageTextSection,
   PortableTextBlock,
 } from "@/types/sanity";
+import { LearningPhasesSection } from "@/components/sections/learning-phases-section";
+import { TourIntroSection } from "@/components/sections/tour-intro-section";
+import { TourSection } from "@/components/sections/tour-section";
 
 const fallbackMetadata: Metadata = {
   title: "Kindergarten | Academics | SAIS Dubai",
@@ -46,11 +49,6 @@ type IntroStyle = CSSProperties & {
   "--academics-kg-intro-bg"?: string;
   "--academics-kg-intro-title"?: string;
   "--academics-kg-intro-text"?: string;
-};
-
-type FeatureStyle = CSSProperties & {
-  "--academics-kg-feature-bg"?: string;
-  "--academics-kg-feature-title"?: string;
 };
 
 function paragraph(_key: string, text: string): PortableTextBlock {
@@ -198,18 +196,36 @@ const fallbackAssessmentSection: AcademicsKindergartenAssessmentSectionData = {
   cardHoverBorderColor: "#d97252",
 };
 
-function toFeatureContactInfoSection(
+function blocksToPlainText(blocks?: PortableTextBlock[]) {
+  return (
+    blocks
+      ?.map((block) => block.children?.map((child) => child.text || "").join("") || "")
+      .filter(Boolean)
+      .join("\n\n") || ""
+  );
+}
+
+function toExcellenceSliderSection(
   section: AcademicsKindergartenFeatureSection | undefined,
   fallbackSection: Required<AcademicsKindergartenFeatureSection>,
-): ContactInfoSectionData {
+): AcademicsLearningSliderSectionData {
+  const heading = section?.heading || fallbackSection.heading;
+
   return {
-    heading: section?.heading || fallbackSection.heading,
-    image: section?.image || fallbackSection.image,
-    imagePosition: section?.imagePosition || fallbackSection.imagePosition,
-    panelColor: section?.panelColor || fallbackSection.panelColor,
-    waveColor: section?.waveColor || fallbackSection.waveColor,
-    textColor: section?.textColor || fallbackSection.textColor,
-    items: [],
+    slides: [
+      {
+        _key: "kindergarten-excellence",
+        title: heading?.title,
+        body: blocksToPlainText(heading?.description),
+        image: section?.image || fallbackSection.image,
+        backgroundColor: section?.panelColor || fallbackSection.panelColor,
+        sideColor: section?.backgroundColor || fallbackSection.backgroundColor,
+        ringColor: section?.waveColor || fallbackSection.waveColor,
+        titleColor: section?.titleColor || fallbackSection.titleColor,
+        textColor: section?.textColor || fallbackSection.textColor,
+        imagePosition: section?.imagePosition || fallbackSection.imagePosition,
+      },
+    ],
   };
 }
 
@@ -228,10 +244,7 @@ export default async function AcademicsKindergartenPage() {
     "--academics-kg-intro-title": intro.titleColor || fallbackIntro.titleColor,
     "--academics-kg-intro-text": intro.textColor || fallbackIntro.textColor,
   };
-  const excellenceStyle: FeatureStyle = {
-    "--academics-kg-feature-bg": excellenceSection.backgroundColor || fallbackExcellenceSection.backgroundColor,
-    "--academics-kg-feature-title": excellenceSection.titleColor || fallbackExcellenceSection.titleColor,
-  };
+  const excellenceSliderSection = toExcellenceSliderSection(excellenceSection, fallbackExcellenceSection);
 
   return (
     <SitePageShell
@@ -281,14 +294,11 @@ export default async function AcademicsKindergartenPage() {
         </SectionReveal>
       </section>
 
-      <div className="academics-kg-excellence-wrap" style={excellenceStyle}>
-        <ContactInfoSection
-          className="academics-kg-excellence-section"
-          section={toFeatureContactInfoSection(excellenceSection, fallbackExcellenceSection)}
-          fallbackSection={toFeatureContactInfoSection(undefined, fallbackExcellenceSection)}
-          titleId="academics-kg-excellence-title"
-        />
-      </div>
+      <AcademicsLearningSliderSection
+        className="academics-kg-excellence-slider"
+        section={excellenceSliderSection}
+        fallbackSection={toExcellenceSliderSection(undefined, fallbackExcellenceSection)}
+      />
 
       <EditorialSplitSection
         id="academics-kg-curriculum"
@@ -305,6 +315,9 @@ export default async function AcademicsKindergartenPage() {
         section={assessmentSection}
         fallbackSection={fallbackAssessmentSection}
       />
+      <LearningPhasesSection section={data?.learningPhases} />
+      <TourIntroSection section={data?.tour} />
+      <TourSection section={data?.tour} />
     </SitePageShell>
   );
 }

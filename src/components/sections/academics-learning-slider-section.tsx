@@ -10,12 +10,14 @@ import type { AcademicsLearningSliderSection as AcademicsLearningSliderSectionDa
 type AcademicsLearningSliderSectionProps = {
   section?: AcademicsLearningSliderSectionData;
   fallbackSection: AcademicsLearningSliderSectionData;
+  className?: string;
 };
 
 type LearningSliderStyle = CSSProperties & {
   "--learning-slide-bg"?: string;
   "--learning-slide-side"?: string;
   "--learning-slide-ring"?: string;
+  "--learning-slide-title"?: string;
   "--learning-slide-text"?: string;
   "--learning-slide-image-position"?: string;
 };
@@ -53,6 +55,7 @@ function renderBody(body?: string) {
 export function AcademicsLearningSliderSection({
   section,
   fallbackSection,
+  className = "",
 }: AcademicsLearningSliderSectionProps) {
   const heading = section?.heading || fallbackSection.heading;
   const slides = section?.slides?.length ? section.slides : fallbackSection.slides || [];
@@ -99,14 +102,15 @@ export function AcademicsLearningSliderSection({
     "--learning-slide-bg": activeSlide?.backgroundColor || "#d97252",
     "--learning-slide-side": activeSlide?.sideColor || "#00A5B2",
     "--learning-slide-ring": activeSlide?.ringColor || "var(--sais-primary)",
+    "--learning-slide-title": activeSlide?.titleColor || activeSlide?.textColor || "#ffffff",
     "--learning-slide-text": activeSlide?.textColor || "#ffffff",
     "--learning-slide-image-position": activeSlide?.imagePosition || "center",
   };
 
   return (
     <section
-      className="academics-learning-slider"
-      aria-labelledby="academics-learning-slider-title"
+      className={`academics-learning-slider ${className}`.trim()}
+      aria-labelledby={heading?.title ? "academics-learning-slider-title" : undefined}
       style={style}
     >
       <Reveal className="academics-learning-slider__header">

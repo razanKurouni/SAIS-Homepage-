@@ -1175,6 +1175,44 @@ button[aria-label="Open Next.js Dev Tools"] {
   color: #666b70;
 }
 
+.academics-kg-excellence-slider.academics-learning-slider {
+  background: #ffffff;
+  padding: 0;
+}
+
+.academics-kg-excellence-slider .academics-learning-slider__stage {
+  height: clamp(430px, 43vw, 560px);
+}
+
+.academics-kg-excellence-slider .academics-learning-slider__inner {
+  width: min(85%, 1400px);
+  grid-template-columns: minmax(300px, 1.02fr) minmax(0, 1fr);
+  gap: clamp(28px, 3vw, 48px);
+}
+
+.academics-kg-excellence-slider .academics-learning-slider__media {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1.22 / 1;
+  border-radius: 14px;
+}
+
+.academics-kg-excellence-slider .academics-learning-slider__content {
+  max-width: 620px;
+}
+
+.academics-kg-excellence-slider .academics-learning-slider__content h3 {
+  max-width: 520px;
+  white-space: pre-line;
+}
+
+.academics-kg-excellence-slider .academics-learning-slider__body {
+  max-width: 620px;
+  font-size: var(--sais-body-text-size);
+  letter-spacing: var(--sais-body-text-letter-spacing);
+  line-height: var(--sais-body-text-line-height);
+}
+
 .academics-kg-assessment {
   background: var(--academics-kg-assessment-bg, var(--sais-primary));
   color: var(--academics-kg-assessment-text, #ffffff);
@@ -1736,7 +1774,7 @@ a.contact-info-section__item-text:hover {
 
 .academics-learning-slider__content h3 {
   margin: 0;
-  color: var(--learning-slide-text);
+  color: var(--learning-slide-title, var(--learning-slide-text));
   font-size: clamp(1.38rem, 2vw, 1.78rem);
   font-weight: 500;
   letter-spacing: 0;
@@ -6061,6 +6099,21 @@ a.contact-info-section__item-text:hover {
     order: 2;
   }
 
+  .academics-kg-excellence-slider .academics-learning-slider__stage {
+    height: clamp(640px, 86vw, 780px);
+  }
+
+  .academics-kg-excellence-slider .academics-learning-slider__inner {
+    width: min(88%, 760px);
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .academics-kg-excellence-slider .academics-learning-slider__media {
+    height: auto;
+    aspect-ratio: 1.18 / 1;
+  }
+
   .academics-kg-assessment__inner {
     width: min(90%, 860px);
   }
@@ -6450,6 +6503,32 @@ a.contact-info-section__item-text:hover {
 
   .academics-kg-curriculum-section .editorial-split-section__media {
     border-radius: 14px;
+  }
+
+  .academics-kg-excellence-slider .academics-learning-slider__stage {
+    height: auto;
+  }
+
+  .academics-kg-excellence-slider .academics-learning-slider__inner {
+    width: 100%;
+    height: auto;
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 28px 0 34px;
+  }
+
+  .academics-kg-excellence-slider .academics-learning-slider__media {
+    width: calc(100% - 32px);
+    height: auto;
+    margin: 0 auto;
+    aspect-ratio: 1.18 / 1;
+  }
+
+  .academics-kg-excellence-slider .academics-learning-slider__content {
+    width: calc(100% - 48px);
+    max-width: none;
+    margin: 0 auto;
+    padding: 34px 0 20px;
   }
 
   .academics-kg-assessment {
