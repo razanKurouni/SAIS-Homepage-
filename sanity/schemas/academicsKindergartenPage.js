@@ -51,6 +51,77 @@ export const academicsKindergartenPage = {
       ],
     },
     {
+      name: "innerNavigation",
+      title: "Inner Navigation",
+      type: "object",
+      description: "Editable navigation bar shown below the Kindergarten hero.",
+      fields: [
+        {
+          name: "items",
+          title: "Navigation Items",
+          type: "array",
+          of: [
+            {
+              type: "object",
+              fields: [
+                { name: "label", title: "Label", type: "string" },
+                { name: "href", title: "Link", type: "string" },
+                { name: "openInNewTab", title: "Open in New Tab", type: "boolean", initialValue: false },
+              ],
+              preview: {
+                select: {
+                  title: "label",
+                  subtitle: "href",
+                },
+              },
+            },
+          ],
+        },
+        {
+          name: "activeHref",
+          title: "Active Link",
+          type: "string",
+          description: "The href that should be highlighted, for example /academics/kindergarten.",
+        },
+        {
+          name: "activeColor",
+          title: "Active Background Color",
+          type: "string",
+          description: "Optional CSS color for the active item, for example #00A5B2.",
+        },
+        {
+          name: "inactiveColor",
+          title: "Inactive Background Color",
+          type: "string",
+          description: "Optional CSS color for inactive items, for example #216B97.",
+        },
+        {
+          name: "textColor",
+          title: "Text Color",
+          type: "string",
+          description: "Optional CSS color, for example #ffffff.",
+        },
+        {
+          name: "dividerColor",
+          title: "Divider Color",
+          type: "string",
+          description: "Optional CSS color for item dividers, for example #ffffff.",
+        },
+        {
+          name: "topLineColor",
+          title: "Top Line Color",
+          type: "string",
+          description: "Optional CSS color for the top border, for example #ffffff.",
+        },
+        {
+          name: "ariaLabel",
+          title: "Accessibility Label",
+          type: "string",
+          description: "Optional label for screen readers.",
+        },
+      ],
+    },
+    {
       name: "intro",
       title: "Intro Text",
       type: "object",

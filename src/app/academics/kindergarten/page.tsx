@@ -4,7 +4,7 @@ import { SitePageShell } from "@/components/layout/site-page-shell";
 import { AcademicsKindergartenAssessmentSection } from "@/components/sections/academics-kindergarten-assessment-section";
 import { AcademicsLearningSliderSection } from "@/components/sections/academics-learning-slider-section";
 import { EditorialSplitSection } from "@/components/sections/editorial-split-section";
-import { InnerPageNav } from "@/components/sections/inner-page-nav";
+import { InnerPageNav, type InnerPageNavItem } from "@/components/sections/inner-page-nav";
 import { PageHero } from "@/components/sections/page-hero";
 import { RichText } from "@/components/ui/rich-text";
 import { SectionReveal } from "@/components/ui/section-reveal";
@@ -15,6 +15,7 @@ import type {
   AcademicsKindergartenIntroSection,
   AcademicsLearningSliderSection as AcademicsLearningSliderSectionData,
   ImageTextSection,
+  InnerNavigationItem,
   PortableTextBlock,
 } from "@/types/sanity";
 import { LearningPhasesSection } from "@/components/sections/learning-phases-section";
@@ -37,13 +38,31 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export const dynamic = "force-dynamic";
 
-const academicsInnerNavItems = [
-  { label: "Overview", href: "/academics" },
-  { label: "Kindergarten", href: "/academics/kindergarten" },
-  { label: "Elementary", href: "/academics/elementary" },
-  { label: "Middle School", href: "/academics/middle-school" },
-  { label: "High School", href: "/academics/high-school" },
-];
+const fallbackInnerNavigation = {
+  items: [
+    { label: "Overview", href: "/academics" },
+    { label: "Kindergarten", href: "/academics/kindergarten" },
+    { label: "Elementary", href: "/academics/elementary" },
+    { label: "Middle School", href: "/academics/middle-school" },
+    { label: "High School", href: "/academics/high-school" },
+  ],
+  activeHref: "/academics/kindergarten",
+  activeColor: "#00A5B2",
+  inactiveColor: "var(--sais-primary)",
+  textColor: "#ffffff",
+  dividerColor: "#ffffff",
+  topLineColor: "#ffffff",
+  ariaLabel: "Academics page navigation",
+} satisfies {
+  items: InnerPageNavItem[];
+  activeHref: string;
+  activeColor: string;
+  inactiveColor: string;
+  textColor: string;
+  dividerColor: string;
+  topLineColor: string;
+  ariaLabel: string;
+};
 
 type IntroStyle = CSSProperties & {
   "--academics-kg-intro-bg"?: string;
@@ -205,6 +224,26 @@ function blocksToPlainText(blocks?: PortableTextBlock[]) {
   );
 }
 
+function resolveInnerNavItems(items?: InnerNavigationItem[]): InnerPageNavItem[] {
+  return (
+    items
+      ?.flatMap((item) => {
+        if (!item.label || !item.href) {
+          return [];
+        }
+
+        return [
+          {
+            label: item.label,
+            href: item.href,
+            openInNewTab: item.openInNewTab,
+          },
+        ];
+      })
+      || []
+  );
+}
+
 function toExcellenceSliderSection(
   section: AcademicsKindergartenFeatureSection | undefined,
   fallbackSection: Required<AcademicsKindergartenFeatureSection>,
@@ -236,6 +275,8 @@ export default async function AcademicsKindergartenPage() {
   const excellenceSection = kindergartenPage?.excellenceSection || fallbackExcellenceSection;
   const curriculumSection = kindergartenPage?.curriculumSection || fallbackCurriculumSection;
   const assessmentSection = kindergartenPage?.assessmentSection || fallbackAssessmentSection;
+  const innerNavigation = kindergartenPage?.innerNavigation;
+  const innerNavItems = resolveInnerNavItems(innerNavigation?.items);
   const heroTitle = hero?.heading?.title || fallbackHero.title;
   const heroEyebrow = hero?.heading?.eyebrow || fallbackHero.eyebrow;
   const heroImage = hero?.image || fallbackHero.image;
@@ -268,15 +309,15 @@ export default async function AcademicsKindergartenPage() {
       />
 
       <InnerPageNav
-        items={academicsInnerNavItems}
-        activeHref="/academics/kindergarten"
-        activeColor="#00A5B2"
-        inactiveColor="var(--sais-primary)"
-        textColor="#ffffff"
-        dividerColor="#ffffff"
-        topLineColor="#ffffff"
+        items={innerNavItems.length ? innerNavItems : fallbackInnerNavigation.items}
+        activeHref={innerNavigation?.activeHref || fallbackInnerNavigation.activeHref}
+        activeColor={innerNavigation?.activeColor || fallbackInnerNavigation.activeColor}
+        inactiveColor={innerNavigation?.inactiveColor || fallbackInnerNavigation.inactiveColor}
+        textColor={innerNavigation?.textColor || fallbackInnerNavigation.textColor}
+        dividerColor={innerNavigation?.dividerColor || fallbackInnerNavigation.dividerColor}
+        topLineColor={innerNavigation?.topLineColor || fallbackInnerNavigation.topLineColor}
         className="academics-inner-nav"
-        ariaLabel="Academics page navigation"
+        ariaLabel={innerNavigation?.ariaLabel || fallbackInnerNavigation.ariaLabel}
       />
 
       <section

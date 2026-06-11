@@ -73,6 +73,24 @@ export type PageHeroContent = {
   imageWidth?: string;
 };
 
+export type InnerNavigationItem = {
+  _key?: string;
+  label?: string;
+  href?: string;
+  openInNewTab?: boolean;
+};
+
+export type InnerNavigation = {
+  items?: InnerNavigationItem[];
+  activeHref?: string;
+  activeColor?: string;
+  inactiveColor?: string;
+  textColor?: string;
+  dividerColor?: string;
+  topLineColor?: string;
+  ariaLabel?: string;
+};
+
 export type AboutIntroSection = {
   heading?: SectionHeading;
   image?: SanityImage;
@@ -137,6 +155,7 @@ export type AcademicsKindergartenAssessmentSection = {
 export type AcademicsKindergartenPageData = {
   seo?: Seo;
   hero?: PageHeroContent;
+  innerNavigation?: InnerNavigation;
   intro?: AcademicsKindergartenIntroSection;
   excellenceSection?: AcademicsKindergartenFeatureSection;
   curriculumSection?: ImageTextSection;

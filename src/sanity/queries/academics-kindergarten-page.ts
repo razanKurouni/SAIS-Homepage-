@@ -28,6 +28,21 @@ export const academicsKindergartenPageQuery = `*[_type == "academicsKindergarten
     imagePosition,
     imageWidth
   },
+  innerNavigation {
+    items[] {
+      _key,
+      label,
+      href,
+      openInNewTab
+    },
+    activeHref,
+    activeColor,
+    inactiveColor,
+    textColor,
+    dividerColor,
+    topLineColor,
+    ariaLabel
+  },
   intro {
     heading ${headingProjection},
     titleColor,

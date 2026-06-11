@@ -126,6 +126,53 @@ await client.createOrReplace({
     imagePosition: "center",
     imageWidth: "60%",
   },
+  innerNavigation: {
+    _type: "object",
+    items: [
+      {
+        _key: "overview",
+        _type: "object",
+        label: "Overview",
+        href: "/academics",
+        openInNewTab: false,
+      },
+      {
+        _key: "kindergarten",
+        _type: "object",
+        label: "Kindergarten",
+        href: "/academics/kindergarten",
+        openInNewTab: false,
+      },
+      {
+        _key: "elementary",
+        _type: "object",
+        label: "Elementary",
+        href: "/academics/elementary",
+        openInNewTab: false,
+      },
+      {
+        _key: "middle-school",
+        _type: "object",
+        label: "Middle School",
+        href: "/academics/middle-school",
+        openInNewTab: false,
+      },
+      {
+        _key: "high-school",
+        _type: "object",
+        label: "High School",
+        href: "/academics/high-school",
+        openInNewTab: false,
+      },
+    ],
+    activeHref: "/academics/kindergarten",
+    activeColor: "#00A5B2",
+    inactiveColor: "#216B97",
+    textColor: "#ffffff",
+    dividerColor: "#ffffff",
+    topLineColor: "#ffffff",
+    ariaLabel: "Academics page navigation",
+  },
   intro: {
     _type: "object",
     heading: {
@@ -237,7 +284,9 @@ await client.createOrReplace({
   },
 });
 
-console.log("Seeded academics-kindergarten-page with editable hero, intro, excellence, curriculum, and assessment content.");
+console.log(
+  "Seeded academics-kindergarten-page with editable hero, inner navigation, intro, excellence, curriculum, and assessment content."
+);
 }
 
 function formatSeedError(error) {
