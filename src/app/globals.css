@@ -1218,6 +1218,36 @@ button[aria-label="Open Next.js Dev Tools"] {
   margin-top: clamp(56px, 6vw, 78px);
 }
 
+.academics-kg-assessment__card-reveal {
+  min-width: 0;
+}
+
+.academics-kg-assessment__card-reveal.reveal-item {
+  filter: blur(8px);
+  transform: translate3d(0, 34px, 0) scale(0.96);
+  transition:
+    opacity 680ms ease var(--reveal-delay, 0ms),
+    filter 760ms ease var(--reveal-delay, 0ms),
+    transform 760ms cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms);
+}
+
+.academics-kg-assessment__card-reveal.reveal-item.is-visible {
+  filter: blur(0);
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.academics-kg-assessment__card-reveal .academics-kg-assessment__card {
+  height: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .academics-kg-assessment__card-reveal.reveal-item {
+    filter: none;
+    transform: none;
+    transition: none;
+  }
+}
+
 .academics-kg-assessment__card {
   --hover-icon-card-accent: var(--sais-accent);
   --hover-icon-card-border: var(--academics-kg-assessment-card-border, var(--sais-accent));
@@ -6457,6 +6487,10 @@ a.contact-info-section__item-text:hover {
 
   .academics-kg-assessment__card .hover-icon-card__title {
     font-size: 0.98rem;
+  }
+
+  .academics-kg-assessment__card-reveal.reveal-item {
+    transform: translate3d(0, 24px, 0) scale(0.97);
   }
 
   .academics-skills {

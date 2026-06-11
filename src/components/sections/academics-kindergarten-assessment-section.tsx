@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import { HoverIconCard } from "@/components/ui/hover-icon-card";
+import { Reveal } from "@/components/ui/reveal";
 import { RichText } from "@/components/ui/rich-text";
 import { SectionReveal } from "@/components/ui/section-reveal";
 import type { AcademicsKindergartenAssessmentSection as AssessmentSection } from "@/types/sanity";
@@ -57,14 +58,19 @@ export function AcademicsKindergartenAssessmentSection({
         {cards.length ? (
           <div className="academics-kg-assessment__cards">
             {cards.map((card, index) => (
-              <HoverIconCard
+              <Reveal
                 key={card._key || `${card.title}-${index}`}
-                icon={card.icon}
-                title={card.title}
-                description={card.description}
-                className="academics-kg-assessment__card"
-                iconSizes="132px"
-              />
+                className="academics-kg-assessment__card-reveal"
+                delay={120 + index * 110}
+              >
+                <HoverIconCard
+                  icon={card.icon}
+                  title={card.title}
+                  description={card.description}
+                  className="academics-kg-assessment__card"
+                  iconSizes="132px"
+                />
+              </Reveal>
             ))}
           </div>
         ) : null}
