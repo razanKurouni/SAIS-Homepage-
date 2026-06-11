@@ -175,6 +175,7 @@ export type AcademicsElementaryPageData = {
   innerNavigation?: InnerNavigation;
   intro?: AcademicsElementaryIntroSection;
   curriculumSection?: AcademicsKindergartenFeatureSection;
+  assessmentSection?: AcademicsKindergartenFeatureSection;
 };
 
 export type AcademicsSkillItem = {

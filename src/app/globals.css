@@ -1240,50 +1240,114 @@ button[aria-label="Open Next.js Dev Tools"] {
   line-height: var(--sais-body-text-line-height);
 }
 
-.academics-elementary-curriculum-slider.academics-learning-slider {
-  background: #ffffff;
-  padding: clamp(26px, 3.2vw, 48px) 0 clamp(72px, 7vw, 108px);
+.academics-elementary-curriculum-feature.intro-feature {
+  padding: clamp(40px, 4.8vw, 70px) 0 clamp(70px, 7vw, 108px);
 }
 
-.academics-elementary-curriculum-slider .academics-learning-slider__stage {
+.academics-elementary-curriculum-feature .intro-feature__layout {
   width: min(85%, 1180px);
-  height: clamp(440px, 42vw, 560px);
-  margin: 0 auto;
+}
+
+.academics-elementary-curriculum-feature .intro-feature__media {
+  width: 34%;
+  padding: clamp(44px, 4.6vw, 64px) 0;
+}
+
+.academics-elementary-curriculum-feature .intro-feature__image-shell {
+  width: 140%;
+  aspect-ratio: 1560 / 1312;
+  border-radius: 16px;
+  box-shadow: none;
+}
+
+.academics-elementary-curriculum-feature .intro-feature__shape {
+  width: 66%;
+  min-height: clamp(430px, 39vw, 560px);
   border-radius: 16px;
 }
 
-.academics-elementary-curriculum-slider .academics-learning-slider__curve {
-  left: -22%;
-  width: min(48vw, 560px);
+.academics-elementary-curriculum-feature .intro-feature__content {
+  padding: clamp(44px, 5vw, 70px) 9% clamp(44px, 5vw, 70px) 25%;
 }
 
-.academics-elementary-curriculum-slider .academics-learning-slider__inner {
-  width: 100%;
-  grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1fr);
-  gap: clamp(28px, 4vw, 56px);
-  padding: clamp(40px, 4.5vw, 58px) clamp(42px, 5vw, 72px);
+.academics-elementary-curriculum-feature .intro-feature__title {
+  max-width: 360px;
+  font-size: clamp(1.34rem, 1.75vw, 1.72rem);
+  line-height: 1.2;
 }
 
-.academics-elementary-curriculum-slider .academics-learning-slider__media {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1.17 / 1;
-  border-radius: 14px;
-}
-
-.academics-elementary-curriculum-slider .academics-learning-slider__content {
+.academics-elementary-curriculum-feature .intro-feature__description {
   max-width: 520px;
 }
 
-.academics-elementary-curriculum-slider .academics-learning-slider__content h3 {
-  color: var(--learning-slide-title, var(--sais-accent));
+.academics-elementary-assessment {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: clamp(500px, 44vw, 640px);
+  background: var(--academics-elementary-assessment-bg, var(--sais-accent));
+  color: var(--academics-elementary-assessment-text, #ffffff);
 }
 
-.academics-elementary-curriculum-slider .academics-learning-slider__body {
-  max-width: 520px;
-  font-size: var(--sais-body-text-size);
+.academics-elementary-assessment__media {
+  position: absolute;
+  inset: 0 0 0 auto;
+  z-index: 0;
+  width: 46%;
+  overflow: hidden;
+  background: #d8e7ef;
+}
+
+.academics-elementary-assessment__image {
+  object-fit: cover;
+  object-position: var(--academics-elementary-assessment-image-position, center);
+}
+
+.academics-elementary-assessment__panel {
+  position: relative;
+  z-index: 1;
+  width: 68%;
+  min-height: clamp(500px, 44vw, 640px);
+  overflow: visible;
+}
+
+.academics-elementary-assessment__panel .sais-curved-panel__svg {
+  border-radius: 0;
+}
+
+.academics-elementary-assessment__panel-content {
+  min-height: inherit;
+  display: flex;
+  align-items: center;
+}
+
+.academics-elementary-assessment__content {
+  width: min(78%, 760px);
+  margin-left: clamp(54px, 8vw, 150px);
+  padding: clamp(54px, 6vw, 90px) 0;
+}
+
+.academics-elementary-assessment__title {
+  margin: 0;
+  color: var(--academics-elementary-assessment-title, var(--sais-primary));
+  font-size: clamp(1.46rem, 1.95vw, 1.88rem);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.18;
+}
+
+.academics-elementary-assessment__body {
+  display: grid;
+  gap: 1.55rem;
+  margin-top: clamp(28px, 3.2vw, 42px);
+}
+
+.academics-elementary-assessment__body p {
+  margin: 0;
+  color: var(--academics-elementary-assessment-text, #ffffff);
+  font-size: clamp(0.98rem, 1.07vw, 1.08rem);
   letter-spacing: var(--sais-body-text-letter-spacing);
-  line-height: var(--sais-body-text-line-height);
+  line-height: 1.62;
 }
 
 .academics-kg-assessment {
@@ -2152,6 +2216,12 @@ a.contact-info-section__item-text:hover {
 }
 
 .intro-feature {
+  --intro-feature-panel-color: var(--sais-primary);
+  --intro-feature-accent-color: var(--sais-accent);
+  --intro-feature-title-color: var(--sais-accent);
+  --intro-feature-text-color: var(--sais-body-text-color-on-dark);
+  --intro-feature-image-position: center;
+
   background: #ffffff;
   padding: clamp(44px, 6vw, 72px) 0 clamp(34px, 5vw, 56px);
 }
@@ -2203,7 +2273,7 @@ a.contact-info-section__item-text:hover {
 .intro-feature__content {
   position: relative;
   z-index: 1;
-  color: #ffffff;
+  color: var(--intro-feature-text-color);
   padding: clamp(54px, 6vw, 78px) 10% clamp(54px, 6vw, 78px) 25%;
   width: 100%;
 }
@@ -2211,7 +2281,7 @@ a.contact-info-section__item-text:hover {
 .intro-feature__title {
   max-width: 80%;
   margin: 0;
-  color: var(--sais-accent);
+  color: var(--intro-feature-title-color);
   font-size: 28px;
   font-weight: 500;
   line-height: 1.16;
@@ -2220,7 +2290,7 @@ a.contact-info-section__item-text:hover {
 
 .intro-feature__description {
   margin-top: 22px;
-  color: var(--sais-body-text-color-on-dark);
+  color: var(--intro-feature-text-color);
   font-size: var(--sais-body-text-size);
   line-height: var(--sais-body-text-line-height);
   letter-spacing: var(--sais-body-text-letter-spacing);
@@ -2236,7 +2306,7 @@ a.contact-info-section__item-text:hover {
 
 .intro-feature__image {
   object-fit: cover;
-  object-position: center;
+  object-position: var(--intro-feature-image-position);
   transition: transform 840ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -4958,7 +5028,7 @@ a.contact-info-section__item-text:hover {
   }
 
   .intro-feature__content {
-    background: var(--sais-primary);
+    background: var(--intro-feature-panel-color, var(--sais-primary));
     padding: 42px 44px 72px;
   }
 
@@ -6617,37 +6687,73 @@ a.contact-info-section__item-text:hover {
     padding: 34px 0 20px;
   }
 
-  .academics-elementary-curriculum-slider.academics-learning-slider {
-    background: var(--learning-slide-bg);
-    padding: 0;
+  .academics-elementary-curriculum-feature.intro-feature {
+    padding: 44px 0 58px;
   }
 
-  .academics-elementary-curriculum-slider .academics-learning-slider__stage {
-    width: 100%;
-    height: auto;
+  .academics-elementary-curriculum-feature .intro-feature__layout {
+    width: calc(100% - 32px);
+  }
+
+  .academics-elementary-curriculum-feature .intro-feature__image-shell {
+    min-height: 330px;
     border-radius: 0;
   }
 
-  .academics-elementary-curriculum-slider .academics-learning-slider__inner {
+  .academics-elementary-curriculum-feature .intro-feature__shape {
     width: 100%;
-    height: auto;
-    grid-template-columns: 1fr;
-    gap: 0;
-    padding: 28px 0 34px;
+    min-height: 0;
+    border-radius: 0;
   }
 
-  .academics-elementary-curriculum-slider .academics-learning-slider__media {
-    width: calc(100% - 32px);
-    height: auto;
-    margin: 0 auto;
-    aspect-ratio: 1.18 / 1;
+  .academics-elementary-curriculum-feature .intro-feature__content {
+    padding: 38px 28px 68px;
   }
 
-  .academics-elementary-curriculum-slider .academics-learning-slider__content {
+  .academics-elementary-assessment {
+    min-height: 0;
+    background: var(--academics-elementary-assessment-bg, var(--sais-accent));
+  }
+
+  .academics-elementary-assessment__media {
+    position: relative;
+    width: 100%;
+    min-height: 330px;
+  }
+
+  .academics-elementary-assessment__panel {
+    width: 100%;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .academics-elementary-assessment__panel .sais-curved-panel__svg {
+    display: none;
+  }
+
+  .academics-elementary-assessment__panel-content {
+    min-height: 0;
+  }
+
+  .academics-elementary-assessment__content {
     width: calc(100% - 48px);
-    max-width: none;
     margin: 0 auto;
-    padding: 34px 0 20px;
+    padding: 40px 0 52px;
+  }
+
+  .academics-elementary-assessment__title {
+    font-size: 1.4rem;
+    line-height: 1.24;
+  }
+
+  .academics-elementary-assessment__body {
+    gap: 1.2rem;
+    margin-top: 24px;
+  }
+
+  .academics-elementary-assessment__body p {
+    font-size: var(--sais-body-text-size);
+    line-height: var(--sais-body-text-line-height);
   }
 
   .academics-kg-assessment {

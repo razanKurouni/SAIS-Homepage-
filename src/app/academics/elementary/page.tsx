@@ -1,19 +1,23 @@
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { SitePageShell } from "@/components/layout/site-page-shell";
-import { AcademicsLearningSliderSection } from "@/components/sections/academics-learning-slider-section";
+import { AcademicsElementaryAssessmentSection } from "@/components/sections/academics-elementary-assessment-section";
 import { InnerPageNav, type InnerPageNavItem } from "@/components/sections/inner-page-nav";
+import { IntroFeatureSection } from "@/components/sections/intro-feature-section";
 import { PageHero } from "@/components/sections/page-hero";
 import { RichText } from "@/components/ui/rich-text";
 import { SectionReveal } from "@/components/ui/section-reveal";
 import { getAcademicsElementaryPage, getHomepage } from "@/lib/sanity";
 import type {
   AcademicsKindergartenFeatureSection,
-  AcademicsLearningSliderSection as AcademicsLearningSliderSectionData,
   AcademicsElementaryIntroSection,
+  ImageTextSection,
   InnerNavigationItem,
   PortableTextBlock,
 } from "@/types/sanity";
+import { TourIntroSection } from "@/components/sections/tour-intro-section";
+import { LearningPhasesSection } from "@/components/sections/learning-phases-section";
+import { TourSection } from "@/components/sections/tour-section";
 
 const fallbackMetadata: Metadata = {
   title: "Elementary | Academics | SAIS Dubai",
@@ -89,15 +93,6 @@ function resolveInnerNavItems(items?: InnerNavigationItem[]): InnerPageNavItem[]
   );
 }
 
-function blocksToPlainText(blocks?: PortableTextBlock[]) {
-  return (
-    blocks
-      ?.map((block) => block.children?.map((child) => child.text || "").join("") || "")
-      .filter(Boolean)
-      .join("\n\n") || ""
-  );
-}
-
 const fallbackHero = {
   eyebrow: "Academics",
   title: "Elementary",
@@ -154,35 +149,38 @@ const fallbackCurriculumSection: Required<AcademicsKindergartenFeatureSection> =
   textColor: "#ffffff",
 };
 
-function toCurriculumSliderSection(
-  section: AcademicsKindergartenFeatureSection | undefined,
-  fallbackSection: Required<AcademicsKindergartenFeatureSection>,
-): AcademicsLearningSliderSectionData {
-  const heading = section?.heading || fallbackSection.heading;
-
-  return {
-    slides: [
-      {
-        _key: "elementary-curriculum",
-        title: heading?.title,
-        body: blocksToPlainText(heading?.description),
-        image: section?.image || fallbackSection.image,
-        backgroundColor: section?.panelColor || fallbackSection.panelColor,
-        sideColor: section?.backgroundColor || fallbackSection.backgroundColor,
-        ringColor: section?.waveColor || fallbackSection.waveColor,
-        titleColor: section?.titleColor || fallbackSection.titleColor,
-        textColor: section?.textColor || fallbackSection.textColor,
-        imagePosition: section?.imagePosition || fallbackSection.imagePosition,
-      },
+const fallbackAssessmentSection: Required<AcademicsKindergartenFeatureSection> = {
+  heading: {
+    title: "Continuous Assessment",
+    description: [
+      paragraph(
+        "elementary-assessment-primary",
+        "In Grades 1 and 2, SAIS Dubai is implementing an ongoing assessment model designed to provide a comprehensive and holistic view of each student's progress. This shift moves away from solely relying on periodic tests and instead focuses on continuous evaluation through observations, classwork, homework, projects, discussions, and quizzes. This approach enables teachers to better understand and support students' development throughout the year in a relaxed and stress-free environment. While multiple formative and summative assessments will take place across subjects, parents will not be informed prior to their administration, to ensure assessments reflect authentic learning and reduce performance anxiety. However, in response to parent feedback and to support home preparation, schedules will be shared in advance for Arabic and Islamic Studies assessments only."
+      ),
+      paragraph(
+        "elementary-assessment-scale",
+        "We continue using our proficiency scale for grades 1 and 2 to better reflect the progress and achievements of our students. We do convert these proficiency scales into percentages for our internal data analyses."
+      ),
     ],
-  };
-}
+  },
+  image: {
+    url: "/academics-elementary-assessment.png",
+    alt: "SAIS Dubai elementary student writing in class",
+  },
+  imagePosition: "center",
+  backgroundColor: "var(--sais-accent)",
+  panelColor: "var(--sais-accent)",
+  waveColor: "var(--sais-primary)",
+  titleColor: "var(--sais-primary)",
+  textColor: "#ffffff",
+};
 
 export default async function AcademicsElementaryPage() {
   const [data, elementaryPage] = await Promise.all([getHomepage(), getAcademicsElementaryPage()]);
   const hero = elementaryPage?.hero;
   const intro = elementaryPage?.intro || fallbackIntro;
   const curriculumSection = elementaryPage?.curriculumSection || fallbackCurriculumSection;
+  const assessmentSection = elementaryPage?.assessmentSection || fallbackAssessmentSection;
   const innerNavigation = elementaryPage?.innerNavigation;
   const innerNavItems = resolveInnerNavItems(innerNavigation?.items);
   const introStyle: IntroStyle = {
@@ -190,7 +188,18 @@ export default async function AcademicsElementaryPage() {
     "--academics-kg-intro-title": intro.titleColor || fallbackIntro.titleColor,
     "--academics-kg-intro-text": intro.textColor || fallbackIntro.textColor,
   };
-  const curriculumSliderSection = toCurriculumSliderSection(curriculumSection, fallbackCurriculumSection);
+  const curriculumIntroSection: ImageTextSection = {
+    heading: curriculumSection.heading || fallbackCurriculumSection.heading,
+    image: curriculumSection.image || fallbackCurriculumSection.image,
+    imagePosition: "left",
+    theme: "blue",
+  };
+  const fallbackCurriculumIntroSection: ImageTextSection = {
+    heading: fallbackCurriculumSection.heading,
+    image: fallbackCurriculumSection.image,
+    imagePosition: "left",
+    theme: "blue",
+  };
 
   return (
     <SitePageShell
@@ -240,11 +249,25 @@ export default async function AcademicsElementaryPage() {
         </SectionReveal>
       </section>
 
-      <AcademicsLearningSliderSection
-        className="academics-elementary-curriculum-slider"
-        section={curriculumSliderSection}
-        fallbackSection={toCurriculumSliderSection(undefined, fallbackCurriculumSection)}
+      <IntroFeatureSection
+        className="academics-elementary-curriculum-feature"
+        titleId="academics-elementary-curriculum-title"
+        section={curriculumIntroSection}
+        fallbackSection={fallbackCurriculumIntroSection}
+        panelColor={curriculumSection.panelColor || fallbackCurriculumSection.panelColor}
+        accentColor={curriculumSection.waveColor || fallbackCurriculumSection.waveColor}
+        titleColor={curriculumSection.titleColor || fallbackCurriculumSection.titleColor}
+        textColor={curriculumSection.textColor || fallbackCurriculumSection.textColor}
+        imagePosition={curriculumSection.imagePosition || fallbackCurriculumSection.imagePosition}
       />
+
+      <AcademicsElementaryAssessmentSection
+        section={assessmentSection}
+        fallbackSection={fallbackAssessmentSection}
+      />
+      <LearningPhasesSection section={data?.learningPhases} />
+      <TourIntroSection section={data?.tour} />
+      <TourSection section={data?.tour} />
     </SitePageShell>
   );
 }

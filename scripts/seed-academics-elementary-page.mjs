@@ -45,7 +45,7 @@ function block(_key, text) {
 }
 
 async function main() {
-  const [heroImage, curriculumImage] = await Promise.all([
+  const [heroImage, curriculumImage, assessmentImage] = await Promise.all([
     uploadImage(
       "public/academics-elementary-hero.png",
       "academics-elementary-hero.png",
@@ -55,6 +55,11 @@ async function main() {
       "public/academics-elementary-curriculum.png",
       "academics-elementary-curriculum.png",
       "SAIS Dubai elementary students playing chess"
+    ),
+    uploadImage(
+      "public/academics-elementary-assessment.png",
+      "academics-elementary-assessment.png",
+      "SAIS Dubai elementary student writing in class"
     ),
   ]);
 
@@ -164,14 +169,37 @@ async function main() {
       imagePosition: "center",
       backgroundColor: "#00A5B2",
       panelColor: "#216B97",
-      waveColor: "#d97252",
+      waveColor: "#00A5B2",
       titleColor: "#00A5B2",
+      textColor: "#ffffff",
+    },
+    assessmentSection: {
+      _type: "object",
+      heading: {
+        _type: "sectionHeading",
+        title: "Continuous Assessment",
+        description: [
+          block(
+            "elementary-assessment-primary",
+            "In Grades 1 and 2, SAIS Dubai is implementing an ongoing assessment model designed to provide a comprehensive and holistic view of each student's progress. This shift moves away from solely relying on periodic tests and instead focuses on continuous evaluation through observations, classwork, homework, projects, discussions, and quizzes. This approach enables teachers to better understand and support students' development throughout the year in a relaxed and stress-free environment. While multiple formative and summative assessments will take place across subjects, parents will not be informed prior to their administration, to ensure assessments reflect authentic learning and reduce performance anxiety. However, in response to parent feedback and to support home preparation, schedules will be shared in advance for Arabic and Islamic Studies assessments only."
+          ),
+          block(
+            "elementary-assessment-scale",
+            "We continue using our proficiency scale for grades 1 and 2 to better reflect the progress and achievements of our students. We do convert these proficiency scales into percentages for our internal data analyses."
+          ),
+        ],
+      },
+      image: assessmentImage,
+      imagePosition: "center",
+      panelColor: "#00A5B2",
+      waveColor: "#216B97",
+      titleColor: "#216B97",
       textColor: "#ffffff",
     },
   });
 
   console.log(
-    "Seeded academics-elementary-page with editable hero, inner navigation, intro, and curriculum content."
+    "Seeded academics-elementary-page with editable hero, inner navigation, intro, curriculum, and assessment content."
   );
 }
 

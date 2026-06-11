@@ -194,6 +194,46 @@ export const academicsElementaryPage = {
         },
       ],
     },
+    {
+      name: "assessmentSection",
+      title: "Continuous Assessment Section",
+      type: "object",
+      description: "Editable text, image, and colors for the continuous assessment section.",
+      fields: [
+        { name: "heading", title: "Text Content", type: "sectionHeading" },
+        { name: "image", title: "Image", type: "imageWithAlt" },
+        {
+          name: "imagePosition",
+          title: "Image Position",
+          type: "string",
+          description: "Optional CSS object-position value, for example center or 58% center.",
+        },
+        {
+          name: "panelColor",
+          title: "Panel Background Color",
+          type: "string",
+          description: "Optional CSS color, for example #00A5B2.",
+        },
+        {
+          name: "waveColor",
+          title: "Curved Line Color",
+          type: "string",
+          description: "Optional CSS color, for example #216B97.",
+        },
+        {
+          name: "titleColor",
+          title: "Title Color",
+          type: "string",
+          description: "Optional CSS color for the section title, for example #216B97.",
+        },
+        {
+          name: "textColor",
+          title: "Body Text Color",
+          type: "string",
+          description: "Optional CSS color for the body text, for example #ffffff.",
+        },
+      ],
+    },
   ],
   preview: {
     select: {

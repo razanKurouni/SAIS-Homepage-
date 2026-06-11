@@ -1,11 +1,28 @@
 import Image from "next/image";
+import type { CSSProperties } from "react";
 import { RichText } from "@/components/ui/rich-text";
 import { Reveal } from "@/components/ui/reveal";
 import { SaisCurvedPanel } from "@/components/ui/sais-curved-panel";
-import type { HomepageData, PortableTextBlock } from "@/types/sanity";
+import type { ImageTextSection, PortableTextBlock } from "@/types/sanity";
 
 type IntroFeatureSectionProps = {
-  section?: HomepageData["intro"];
+  section?: ImageTextSection;
+  fallbackSection?: ImageTextSection;
+  className?: string;
+  titleId?: string;
+  panelColor?: string;
+  accentColor?: string;
+  titleColor?: string;
+  textColor?: string;
+  imagePosition?: string;
+};
+
+type IntroFeatureStyle = CSSProperties & {
+  "--intro-feature-panel-color"?: string;
+  "--intro-feature-accent-color"?: string;
+  "--intro-feature-title-color"?: string;
+  "--intro-feature-text-color"?: string;
+  "--intro-feature-image-position"?: string;
 };
 
 const fallbackDescription: PortableTextBlock[] = [
@@ -35,7 +52,7 @@ const fallbackDescription: PortableTextBlock[] = [
   },
 ];
 
-const fallbackSection: NonNullable<HomepageData["intro"]> = {
+const fallbackSection: ImageTextSection = {
   heading: {
     title: "Building Bright Futures with Purpose and Principle",
     description: fallbackDescription,
@@ -49,16 +66,34 @@ const fallbackSection: NonNullable<HomepageData["intro"]> = {
   ctas: [],
 };
 
-export function IntroFeatureSection({ section }: IntroFeatureSectionProps) {
-  const title = section?.heading?.title || fallbackSection.heading.title;
+export function IntroFeatureSection({
+  section,
+  fallbackSection: customFallback,
+  className = "",
+  titleId = "intro-feature-title",
+  panelColor = "var(--sais-primary)",
+  accentColor = "var(--sais-accent)",
+  titleColor = "var(--sais-accent)",
+  textColor = "var(--sais-body-text-color-on-dark)",
+  imagePosition = "center",
+}: IntroFeatureSectionProps) {
+  const baseFallback = customFallback || fallbackSection;
+  const title = section?.heading?.title || baseFallback.heading.title;
   const description = section?.heading?.description?.length
     ? section.heading.description
-    : fallbackSection.heading.description;
-  const imageUrl = section?.image?.url || fallbackSection.image?.url;
-  const imageAlt = section?.image?.alt || fallbackSection.image?.alt || title;
+    : baseFallback.heading.description;
+  const imageUrl = section?.image?.url || baseFallback.image?.url;
+  const imageAlt = section?.image?.alt || baseFallback.image?.alt || title;
+  const style: IntroFeatureStyle = {
+    "--intro-feature-panel-color": panelColor,
+    "--intro-feature-accent-color": accentColor,
+    "--intro-feature-title-color": titleColor,
+    "--intro-feature-text-color": textColor,
+    "--intro-feature-image-position": imagePosition,
+  };
 
   return (
-    <section className="intro-feature" aria-labelledby="intro-feature-title">
+    <section className={`intro-feature ${className}`.trim()} aria-labelledby={titleId} style={style}>
       <Reveal
         className="intro-feature__layout"
         threshold={0.18}
@@ -66,7 +101,7 @@ export function IntroFeatureSection({ section }: IntroFeatureSectionProps) {
         <div className="intro-feature__media">
           <div className="intro-feature__image-shell">
             <Image
-              src={imageUrl || fallbackSection.image?.url || "/sais-building-futures.png"}
+              src={imageUrl || baseFallback.image?.url || "/sais-building-futures.png"}
               alt={imageAlt}
               fill
               priority={false}
@@ -79,13 +114,13 @@ export function IntroFeatureSection({ section }: IntroFeatureSectionProps) {
         <SaisCurvedPanel
           className="intro-feature__shape"
           contentClassName="intro-feature__shape-content"
-          fillColor="var(--sais-primary)"
-          accentColor="var(--sais-accent)"
+          fillColor={panelColor}
+          accentColor={accentColor}
           strokeWidth={88}
           flipped
         >
           <div className="intro-feature__content">
-            <h2 id="intro-feature-title" className="intro-feature__title">
+            <h2 id={titleId} className="intro-feature__title">
               {title}
             </h2>
             <RichText blocks={description} className="intro-feature__description" />

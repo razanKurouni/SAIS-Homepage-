@@ -58,5 +58,14 @@ export const academicsElementaryPageQuery = `*[_type == "academicsElementaryPage
     waveColor,
     titleColor,
     textColor
+  },
+  assessmentSection {
+    heading ${headingProjection},
+    image ${imageWithAltProjection},
+    imagePosition,
+    panelColor,
+    waveColor,
+    titleColor,
+    textColor
   }
 }`;
