@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { SitePageShell } from "@/components/layout/site-page-shell";
+import { AcademicsKindergartenAssessmentSection } from "@/components/sections/academics-kindergarten-assessment-section";
 import { ContactInfoSection } from "@/components/sections/contact-info-section";
 import { EditorialSplitSection } from "@/components/sections/editorial-split-section";
 import { InnerPageNav } from "@/components/sections/inner-page-nav";
@@ -9,6 +10,7 @@ import { RichText } from "@/components/ui/rich-text";
 import { SectionReveal } from "@/components/ui/section-reveal";
 import { getAcademicsKindergartenPage, getHomepage } from "@/lib/sanity";
 import type {
+  AcademicsKindergartenAssessmentSection as AcademicsKindergartenAssessmentSectionData,
   AcademicsKindergartenFeatureSection,
   AcademicsKindergartenIntroSection,
   ContactInfoSection as ContactInfoSectionData,
@@ -128,6 +130,74 @@ const fallbackCurriculumSection: ImageTextSection = {
   imagePosition: "right",
 };
 
+const fallbackAssessmentSection: AcademicsKindergartenAssessmentSectionData = {
+  heading: {
+    title: "Assessment",
+    description: [
+      paragraph(
+        "kg-assessment",
+        "We use the DRDP (Desired Results Developmental Profile) assessment which is an observational and portfolio-based assessment that measures young children's learning and development. More specifically, it measures progress on the following six desired results."
+      ),
+    ],
+  },
+  cards: [
+    {
+      _key: "personally-socially-competent",
+      title: "Children Are Personally\nand Socially Competent",
+      icon: {
+        url: "/academics-kg-assessment-social.png",
+        alt: "Children are personally and socially competent icon",
+      },
+    },
+    {
+      _key: "effective-learners",
+      title: "Children Are\nEffective Learners",
+      icon: {
+        url: "/academics-kg-assessment-effective-learners.png",
+        alt: "Children are effective learners icon",
+      },
+    },
+    {
+      _key: "physical-motor-competence",
+      title: "Children Show Physical\nand Motor Competence",
+      icon: {
+        url: "/academics-kg-assessment-physical.png",
+        alt: "Children show physical and motor competence icon",
+      },
+    },
+    {
+      _key: "safe-healthy",
+      title: "Children Are Safe\nand Healthy",
+      icon: {
+        url: "/academics-kg-assessment-safe-healthy.png",
+        alt: "Children are safe and healthy icon",
+      },
+    },
+    {
+      _key: "families-support-learning",
+      title: "Families Support their Child's\nLearning and Development",
+      icon: {
+        url: "/academics-kg-assessment-family-support.png",
+        alt: "Families support their child's learning and development icon",
+      },
+    },
+    {
+      _key: "families-achieve-goals",
+      title: "Families Achieve Their Goals",
+      icon: {
+        url: "/academics-kg-assessment-goals.png",
+        alt: "Families achieve their goals icon",
+      },
+    },
+  ],
+  backgroundColor: "var(--sais-primary)",
+  titleColor: "var(--sais-accent)",
+  textColor: "#ffffff",
+  cardTextColor: "var(--sais-primary)",
+  cardBorderColor: "var(--sais-accent)",
+  cardHoverBorderColor: "#d97252",
+};
+
 function toFeatureContactInfoSection(
   section: AcademicsKindergartenFeatureSection | undefined,
   fallbackSection: Required<AcademicsKindergartenFeatureSection>,
@@ -149,6 +219,7 @@ export default async function AcademicsKindergartenPage() {
   const intro = kindergartenPage?.intro || fallbackIntro;
   const excellenceSection = kindergartenPage?.excellenceSection || fallbackExcellenceSection;
   const curriculumSection = kindergartenPage?.curriculumSection || fallbackCurriculumSection;
+  const assessmentSection = kindergartenPage?.assessmentSection || fallbackAssessmentSection;
   const heroTitle = hero?.heading?.title || fallbackHero.title;
   const heroEyebrow = hero?.heading?.eyebrow || fallbackHero.eyebrow;
   const heroImage = hero?.image || fallbackHero.image;
@@ -228,6 +299,11 @@ export default async function AcademicsKindergartenPage() {
         className="academics-kg-curriculum-section"
         imageSizes="(max-width: 767px) calc(100vw - 32px), 42vw"
         showTitle
+      />
+
+      <AcademicsKindergartenAssessmentSection
+        section={assessmentSection}
+        fallbackSection={fallbackAssessmentSection}
       />
     </SitePageShell>
   );

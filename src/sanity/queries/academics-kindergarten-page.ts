@@ -49,5 +49,20 @@ export const academicsKindergartenPageQuery = `*[_type == "academicsKindergarten
     image ${imageWithAltProjection},
     imagePosition,
     theme
+  },
+  assessmentSection {
+    heading ${headingProjection},
+    cards[] {
+      _key,
+      title,
+      description,
+      icon ${imageWithAltProjection}
+    },
+    backgroundColor,
+    titleColor,
+    textColor,
+    cardTextColor,
+    cardBorderColor,
+    cardHoverBorderColor
   }
 }`;

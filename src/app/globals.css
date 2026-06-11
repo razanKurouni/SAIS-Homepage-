@@ -1175,6 +1175,84 @@ button[aria-label="Open Next.js Dev Tools"] {
   color: #666b70;
 }
 
+.academics-kg-assessment {
+  background: var(--academics-kg-assessment-bg, var(--sais-primary));
+  color: var(--academics-kg-assessment-text, #ffffff);
+  padding: clamp(76px, 8vw, 116px) 0 clamp(82px, 8.5vw, 124px);
+}
+
+.academics-kg-assessment__inner {
+  width: min(85%, 1400px);
+  margin: 0 auto;
+}
+
+.academics-kg-assessment__title {
+  margin: 0;
+  color: var(--academics-kg-assessment-title, var(--sais-accent));
+  font-size: clamp(1.38rem, 1.9vw, 1.82rem);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.22;
+  text-align: center;
+}
+
+.academics-kg-assessment__intro {
+  max-width: 790px;
+  margin: clamp(28px, 3.2vw, 42px) auto 0;
+  text-align: center;
+}
+
+.academics-kg-assessment__intro p {
+  margin: 0;
+  color: var(--academics-kg-assessment-text, #ffffff);
+  font-size: var(--sais-body-text-size);
+  font-weight: 400;
+  letter-spacing: var(--sais-body-text-letter-spacing);
+  line-height: var(--sais-body-text-line-height);
+}
+
+.academics-kg-assessment__cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(26px, 3vw, 34px);
+  margin-top: clamp(56px, 6vw, 78px);
+}
+
+.academics-kg-assessment__card {
+  --hover-icon-card-accent: var(--sais-accent);
+  --hover-icon-card-border: var(--academics-kg-assessment-card-border, var(--sais-accent));
+  --hover-icon-card-hover-border: var(--academics-kg-assessment-card-hover-border, #d97252);
+
+  min-height: clamp(286px, 23.5vw, 348px);
+  gap: clamp(32px, 3.4vw, 48px);
+  padding: clamp(34px, 3.8vw, 52px) 28px clamp(34px, 3.2vw, 46px);
+  border-width: 3px;
+  border-radius: 16px;
+}
+
+.academics-kg-assessment__card .hover-icon-card__icon {
+  width: clamp(102px, 9vw, 142px);
+  height: clamp(102px, 9vw, 142px);
+}
+
+.academics-kg-assessment__card .hover-icon-card__title {
+  max-width: 265px;
+  color: var(--academics-kg-assessment-card-text, var(--sais-primary));
+  font-size: clamp(0.98rem, 1vw, 1.08rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.42;
+  white-space: pre-line;
+}
+
+.academics-kg-assessment__card .hover-icon-card__description {
+  max-width: 260px;
+  color: #666b70;
+  font-size: var(--sais-body-text-size);
+  letter-spacing: var(--sais-body-text-letter-spacing);
+  line-height: var(--sais-body-text-line-height);
+}
+
 .contact-info-section {
   background: #ffffff;
   padding: 59px 0 clamp(34px, 5vw, 56px);
@@ -5953,6 +6031,14 @@ a.contact-info-section__item-text:hover {
     order: 2;
   }
 
+  .academics-kg-assessment__inner {
+    width: min(90%, 860px);
+  }
+
+  .academics-kg-assessment__cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .academics-skills__cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -6334,6 +6420,43 @@ a.contact-info-section__item-text:hover {
 
   .academics-kg-curriculum-section .editorial-split-section__media {
     border-radius: 14px;
+  }
+
+  .academics-kg-assessment {
+    padding: 50px 0 60px;
+  }
+
+  .academics-kg-assessment__inner {
+    width: calc(100% - 32px);
+  }
+
+  .academics-kg-assessment__title {
+    font-size: 1.4rem;
+  }
+
+  .academics-kg-assessment__intro {
+    margin-top: 22px;
+  }
+
+  .academics-kg-assessment__cards {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    margin-top: 36px;
+  }
+
+  .academics-kg-assessment__card {
+    min-height: 260px;
+    gap: 28px;
+    padding: 32px 22px 30px;
+  }
+
+  .academics-kg-assessment__card .hover-icon-card__icon {
+    width: 108px;
+    height: 108px;
+  }
+
+  .academics-kg-assessment__card .hover-icon-card__title {
+    font-size: 0.98rem;
   }
 
   .academics-skills {

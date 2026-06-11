@@ -116,12 +116,31 @@ export type AcademicsKindergartenFeatureSection = {
   textColor?: string;
 };
 
+export type AcademicsKindergartenAssessmentCard = {
+  _key?: string;
+  title?: string;
+  description?: string;
+  icon?: SanityImage;
+};
+
+export type AcademicsKindergartenAssessmentSection = {
+  heading?: SectionHeading;
+  cards?: AcademicsKindergartenAssessmentCard[];
+  backgroundColor?: string;
+  titleColor?: string;
+  textColor?: string;
+  cardTextColor?: string;
+  cardBorderColor?: string;
+  cardHoverBorderColor?: string;
+};
+
 export type AcademicsKindergartenPageData = {
   seo?: Seo;
   hero?: PageHeroContent;
   intro?: AcademicsKindergartenIntroSection;
   excellenceSection?: AcademicsKindergartenFeatureSection;
   curriculumSection?: ImageTextSection;
+  assessmentSection?: AcademicsKindergartenAssessmentSection;
 };
 
 export type AcademicsSkillItem = {

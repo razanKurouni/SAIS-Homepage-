@@ -129,6 +129,73 @@ export const academicsKindergartenPage = {
       type: "imageTextSection",
       description: "Editable text and image section shown below the curved panel.",
     },
+    {
+      name: "assessmentSection",
+      title: "Assessment Section",
+      type: "object",
+      description: "Editable assessment title, intro text, colors, and icon cards.",
+      fields: [
+        { name: "heading", title: "Text Content", type: "sectionHeading" },
+        {
+          name: "cards",
+          title: "Assessment Cards",
+          type: "array",
+          of: [
+            {
+              type: "object",
+              fields: [
+                { name: "title", title: "Title", type: "string" },
+                { name: "description", title: "Description", type: "text", rows: 2 },
+                { name: "icon", title: "Icon", type: "imageWithAlt" },
+              ],
+              preview: {
+                select: {
+                  title: "title",
+                  subtitle: "description",
+                  media: "icon.image",
+                },
+              },
+            },
+          ],
+        },
+        {
+          name: "backgroundColor",
+          title: "Background Color",
+          type: "string",
+          description: "Optional CSS color for the full section, for example #216B97.",
+        },
+        {
+          name: "titleColor",
+          title: "Title Color",
+          type: "string",
+          description: "Optional CSS color, for example #00A5B2.",
+        },
+        {
+          name: "textColor",
+          title: "Intro Text Color",
+          type: "string",
+          description: "Optional CSS color, for example #ffffff.",
+        },
+        {
+          name: "cardTextColor",
+          title: "Card Text Color",
+          type: "string",
+          description: "Optional CSS color, for example #216B97.",
+        },
+        {
+          name: "cardBorderColor",
+          title: "Card Border Color",
+          type: "string",
+          description: "Optional CSS color, for example #00A5B2.",
+        },
+        {
+          name: "cardHoverBorderColor",
+          title: "Card Hover Border Color",
+          type: "string",
+          description: "Optional CSS color, for example #d97252.",
+        },
+      ],
+    },
   ],
   preview: {
     select: {

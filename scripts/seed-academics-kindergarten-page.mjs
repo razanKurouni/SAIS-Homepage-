@@ -45,7 +45,17 @@ function block(_key, text) {
 }
 
 async function main() {
-const [heroImage, excellenceImage, curriculumImage] = await Promise.all([
+const [
+  heroImage,
+  excellenceImage,
+  curriculumImage,
+  socialIcon,
+  effectiveLearnersIcon,
+  physicalIcon,
+  safeHealthyIcon,
+  familySupportIcon,
+  goalsIcon,
+] = await Promise.all([
   uploadImage(
     "public/academics-kg-hero.png",
     "academics-kg-hero.png",
@@ -60,6 +70,36 @@ const [heroImage, excellenceImage, curriculumImage] = await Promise.all([
     "public/academics-kg-curriculum.png",
     "academics-kg-curriculum.png",
     "SAIS Dubai teacher guiding a kindergarten student during outdoor learning"
+  ),
+  uploadImage(
+    "public/academics-kg-assessment-social.png",
+    "academics-kg-assessment-social.png",
+    "Children are personally and socially competent icon"
+  ),
+  uploadImage(
+    "public/academics-kg-assessment-effective-learners.png",
+    "academics-kg-assessment-effective-learners.png",
+    "Children are effective learners icon"
+  ),
+  uploadImage(
+    "public/academics-kg-assessment-physical.png",
+    "academics-kg-assessment-physical.png",
+    "Children show physical and motor competence icon"
+  ),
+  uploadImage(
+    "public/academics-kg-assessment-safe-healthy.png",
+    "academics-kg-assessment-safe-healthy.png",
+    "Children are safe and healthy icon"
+  ),
+  uploadImage(
+    "public/academics-kg-assessment-family-support.png",
+    "academics-kg-assessment-family-support.png",
+    "Families support their child's learning and development icon"
+  ),
+  uploadImage(
+    "public/academics-kg-assessment-goals.png",
+    "academics-kg-assessment-goals.png",
+    "Families achieve their goals icon"
   ),
 ]);
 
@@ -138,9 +178,66 @@ await client.createOrReplace({
     imagePosition: "right",
     theme: "light",
   },
+  assessmentSection: {
+    _type: "object",
+    heading: {
+      _type: "sectionHeading",
+      title: "Assessment",
+      description: [
+        block(
+          "kg-assessment",
+          "We use the DRDP (Desired Results Developmental Profile) assessment which is an observational and portfolio-based assessment that measures young children's learning and development. More specifically, it measures progress on the following six desired results."
+        ),
+      ],
+    },
+    cards: [
+      {
+        _key: "personally-socially-competent",
+        _type: "object",
+        title: "Children Are Personally\nand Socially Competent",
+        icon: socialIcon,
+      },
+      {
+        _key: "effective-learners",
+        _type: "object",
+        title: "Children Are\nEffective Learners",
+        icon: effectiveLearnersIcon,
+      },
+      {
+        _key: "physical-motor-competence",
+        _type: "object",
+        title: "Children Show Physical\nand Motor Competence",
+        icon: physicalIcon,
+      },
+      {
+        _key: "safe-healthy",
+        _type: "object",
+        title: "Children Are Safe\nand Healthy",
+        icon: safeHealthyIcon,
+      },
+      {
+        _key: "families-support-learning",
+        _type: "object",
+        title: "Families Support their Child's\nLearning and Development",
+        icon: familySupportIcon,
+      },
+      {
+        _key: "families-achieve-goals",
+        _type: "object",
+        title: "Families Achieve Their Goals",
+        icon: goalsIcon,
+      },
+    ],
+    backgroundColor: "#216B97",
+    titleColor: "#00A5B2",
+    textColor: "#ffffff",
+    cardTextColor: "#216B97",
+    cardBorderColor: "#00A5B2",
+    cardHoverBorderColor: "#d97252",
+  },
 });
 
-console.log("Seeded academics-kindergarten-page with editable hero, intro, excellence, and curriculum content.");
+console.log("Seeded academics-kindergarten-page with editable hero, intro, excellence, curriculum, and assessment content.");
 }
 
 function formatSeedError(error) {
