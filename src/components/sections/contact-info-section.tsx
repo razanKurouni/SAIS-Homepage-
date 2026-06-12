@@ -13,6 +13,7 @@ type ContactInfoSectionProps = {
   className?: string;
   titleId?: string;
   ariaLabel?: string;
+  flipped?: boolean;
 };
 
 type ContactInfoStyle = CSSProperties & {
@@ -110,6 +111,7 @@ export function ContactInfoSection({
   className = "",
   titleId = "contact-info-title",
   ariaLabel,
+  flipped = true,
 }: ContactInfoSectionProps) {
   const baseFallback: ContactInfoSectionData = customFallback || fallbackSection;
   const heading = section?.heading?.title || baseFallback.heading?.title || fallbackSection.heading.title;
@@ -169,7 +171,7 @@ export function ContactInfoSection({
           fillColor={panelColor}
           accentColor={waveColor}
           strokeWidth={88}
-          flipped
+          flipped={flipped}
           panelClassName="contact-info-section__panel"
           panelContentClassName="contact-info-section__panel-content"
         >

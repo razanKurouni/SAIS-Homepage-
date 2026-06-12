@@ -1865,44 +1865,40 @@ a.contact-info-section__item-text:hover {
 }
 
 .academics-middle-school-assessment-section.contact-info-section {
-  padding: clamp(54px, 6vw, 82px) 0 clamp(56px, 6vw, 84px);
+  background: #ffffff;
+  padding: clamp(44px, 5vw, 70px) 0 clamp(28px, 4vw, 48px);
 }
 
 .academics-middle-school-assessment-section .contact-info-section__inner {
-  display: block;
-  width: min(85%, 980px);
-  min-height: clamp(330px, 31vw, 430px);
-  overflow: visible;
-  border-radius: 16px;
+  width: min(85%, 1180px);
+  flex-direction: row-reverse;
 }
 
 .academics-middle-school-assessment-section .contact-info-section__media {
-  position: absolute;
-  top: 50%;
-  right: clamp(38px, 5vw, 72px);
+  position: relative;
   z-index: 3;
-  width: min(48%, 470px);
-  padding: 0;
-  transform: translateY(-50%);
+  width: 34%;
+  padding: clamp(44px, 4.6vw, 64px) 0;
+  transform: none;
 }
 
 .academics-middle-school-assessment-section .contact-info-section__image-shell {
-  width: 100%;
+  width: 140%;
   aspect-ratio: 1528 / 1312;
   border-radius: 14px;
   box-shadow: none;
+  transform: translateX(-28%);
 }
 
 .academics-middle-school-assessment-section .contact-info-section__panel {
-  width: 100%;
-  min-height: inherit;
+  width: 66%;
+  min-height: clamp(430px, 39vw, 560px);
   overflow: hidden;
   border-radius: 16px;
 }
 
-.academics-middle-school-assessment-section .contact-info-section__panel.sais-curved-panel.is-flipped .sais-curved-panel__svg {
+.academics-middle-school-assessment-section .contact-info-section__panel .sais-curved-panel__svg {
   border-radius: 16px;
-  transform: none;
 }
 
 .academics-middle-school-assessment-section .contact-info-section__panel-content {
@@ -1910,23 +1906,126 @@ a.contact-info-section__item-text:hover {
 }
 
 .academics-middle-school-assessment-section .contact-info-section__body {
-  width: min(42%, 390px);
-  padding: clamp(48px, 5vw, 72px) 0 clamp(48px, 5vw, 72px) clamp(46px, 5.5vw, 78px);
+  padding: clamp(44px, 5vw, 70px) 25% clamp(44px, 5vw, 70px) 9%;
 }
 
 .academics-middle-school-assessment-section .contact-info-section__title {
-  max-width: none;
-  font-size: clamp(1.22rem, 1.55vw, 1.48rem);
+  max-width: 350px;
 }
 
 .academics-middle-school-assessment-section .contact-info-section__description {
-  max-width: none;
-  margin-top: clamp(20px, 2.2vw, 28px);
+  max-width: 510px;
 }
 
 .academics-middle-school-assessment-section .contact-info-section__description p {
-  font-size: clamp(0.78rem, 0.85vw, 0.9rem);
-  line-height: 1.55;
+  font-size: var(--sais-body-text-size);
+  line-height: var(--sais-body-text-line-height);
+}
+
+.academics-support-programs {
+  --support-programs-bg: #ffffff;
+  --support-programs-title: var(--sais-accent);
+  --support-card-border: var(--sais-primary);
+  --support-card-hover-border: var(--sais-accent);
+  --support-card-text: var(--sais-primary);
+  --support-slider-gap: clamp(22px, 2.2vw, 30px);
+
+  overflow: hidden;
+  background: var(--support-programs-bg);
+  padding: clamp(28px, 4vw, 54px) 0 clamp(54px, 6vw, 78px);
+}
+
+.academics-support-programs__inner {
+  width: min(85%, 1180px);
+  margin: 0 auto;
+}
+
+.academics-support-programs__title {
+  margin: 0;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(var(--sais-primary-rgb), 0.62);
+  color: var(--support-programs-title);
+  font-size: clamp(1.22rem, 1.55vw, 1.42rem);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.22;
+}
+
+.academics-support-programs__viewport {
+  overflow: hidden;
+  margin-top: clamp(34px, 4vw, 46px);
+}
+
+.academics-support-programs__track {
+  display: flex;
+  gap: var(--support-slider-gap);
+  transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.academics-support-programs__card.hover-icon-card {
+  --hover-icon-card-accent: var(--sais-accent);
+  --hover-icon-card-border: var(--support-card-border);
+  --hover-icon-card-hover-border: var(--support-card-hover-border);
+
+  flex: 0 0 calc((100% - ((var(--support-visible-count) - 1) * var(--support-slider-gap))) / var(--support-visible-count));
+  min-height: clamp(244px, 19vw, 288px);
+  gap: 18px;
+  padding: clamp(30px, 3vw, 42px) 22px 26px;
+  border-radius: 12px;
+}
+
+.academics-support-programs__card .hover-icon-card__icon {
+  width: clamp(82px, 7vw, 108px);
+  height: clamp(82px, 7vw, 108px);
+  color: var(--sais-accent);
+}
+
+.academics-support-programs__card .hover-icon-card__title {
+  max-width: 220px;
+  color: var(--support-card-text);
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.18;
+}
+
+.academics-support-programs__card .hover-icon-card__description {
+  max-width: 270px;
+  color: #666b70;
+  font-size: clamp(0.76rem, 0.8vw, 0.86rem);
+  letter-spacing: var(--sais-body-text-letter-spacing);
+  line-height: 1.28;
+}
+
+.academics-support-programs__dots {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: clamp(34px, 4vw, 46px);
+}
+
+.academics-support-programs__dot {
+  width: 14px;
+  height: 14px;
+  padding: 0;
+  border: 1px solid var(--sais-primary);
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+  transition:
+    background-color 220ms ease,
+    border-color 220ms ease,
+    transform 220ms ease;
+}
+
+.academics-support-programs__dot.is-active {
+  border-color: var(--sais-accent);
+  background: #d97252;
+}
+
+.academics-support-programs__dot:hover {
+  transform: scale(1.12);
 }
 
 .academics-teaching {
@@ -7100,37 +7199,37 @@ a.contact-info-section__item-text:hover {
   }
 
   .academics-middle-school-assessment-section.contact-info-section {
-    padding: 42px 0 54px;
+    padding: 28px 0 24px;
   }
 
   .academics-middle-school-assessment-section .contact-info-section__inner {
-    display: flex;
-    width: calc(100% - 32px);
-    min-height: 0;
-    flex-direction: column;
+    width: calc(100% - 14px);
+    flex-direction: column-reverse;
+    align-items: stretch;
     overflow: hidden;
-    background: var(--contact-info-panel-color, #d97252);
-    border-radius: 16px;
+    background: #ffffff;
+    border-radius: 18px;
   }
 
   .academics-middle-school-assessment-section .contact-info-section__media {
-    position: relative;
-    inset: auto;
     width: 100%;
     padding: 0;
-    transform: none;
+    z-index: 1;
   }
 
   .academics-middle-school-assessment-section .contact-info-section__image-shell {
     width: 100%;
-    min-height: 300px;
+    min-height: 410px;
     border-radius: 0;
+    transform: none;
+    box-shadow: none;
   }
 
   .academics-middle-school-assessment-section .contact-info-section__panel {
     width: 100%;
     min-height: 0;
     border-radius: 0;
+    overflow: visible;
   }
 
   .academics-middle-school-assessment-section .contact-info-section__panel .sais-curved-panel__svg,
@@ -7143,13 +7242,46 @@ a.contact-info-section__item-text:hover {
   }
 
   .academics-middle-school-assessment-section .contact-info-section__body {
-    width: auto;
-    padding: 38px 24px 44px;
+    padding: 42px 44px 72px;
   }
 
   .academics-middle-school-assessment-section .contact-info-section__description p {
     font-size: var(--sais-body-text-size);
     line-height: var(--sais-body-text-line-height);
+  }
+
+  .academics-support-programs {
+    padding: 34px 0 54px;
+  }
+
+  .academics-support-programs__inner {
+    width: calc(100% - 32px);
+  }
+
+  .academics-support-programs__viewport {
+    margin-top: 28px;
+  }
+
+  .academics-support-programs__card.hover-icon-card {
+    min-height: 238px;
+    padding: 28px 18px 24px;
+  }
+
+  .academics-support-programs__card .hover-icon-card__icon {
+    width: 82px;
+    height: 82px;
+  }
+
+  .academics-support-programs__card .hover-icon-card__title {
+    font-size: 0.78rem;
+  }
+
+  .academics-support-programs__card .hover-icon-card__description {
+    font-size: 0.76rem;
+  }
+
+  .academics-support-programs__dots {
+    margin-top: 30px;
   }
 
   .academics-teaching {

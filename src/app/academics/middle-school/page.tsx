@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SitePageShell } from "@/components/layout/site-page-shell";
 import { AcademicsCurriculumOverviewSection } from "@/components/sections/academics-curriculum-overview-section";
 import { AcademicsElementaryAssessmentSection } from "@/components/sections/academics-elementary-assessment-section";
+import { AcademicsSupportProgramsSliderSection } from "@/components/sections/academics-support-programs-slider-section";
 import { ContactInfoSection } from "@/components/sections/contact-info-section";
 import { EditorialSplitSection } from "@/components/sections/editorial-split-section";
 import { InnerPageNav, type InnerPageNavItem } from "@/components/sections/inner-page-nav";
@@ -10,6 +11,7 @@ import { getAcademicsMiddleSchoolPage, getHomepage } from "@/lib/sanity";
 import type {
   AcademicsCurriculumOverviewSection as AcademicsCurriculumOverviewSectionData,
   AcademicsKindergartenFeatureSection,
+  AcademicsSupportProgramsSection as AcademicsSupportProgramsSectionData,
   ContactInfoSection as ContactInfoSectionData,
   ImageTextSection,
   InnerNavigationItem,
@@ -232,6 +234,54 @@ const fallbackAssessmentSection: ContactInfoSectionData = {
   textColor: "#ffffff",
 };
 
+const fallbackSupportProgramsSection: AcademicsSupportProgramsSectionData = {
+  heading: {
+    title: "Inclusion & Support Programs",
+  },
+  backgroundColor: "#ffffff",
+  titleColor: "#00A5B2",
+  cardBorderColor: "#216B97",
+  cardHoverBorderColor: "#00A5B2",
+  cardTextColor: "#216B97",
+  cards: [
+    {
+      _key: "students-of-determination",
+      title: "Students of Determination",
+      description:
+        "Students with special educational needs and/or disabilities (SEND/SOD) are supported through individualized education plans (IEPs), push-in/pull-out support services, and tailored curriculum, instruction, and assessments.",
+      iconType: "determination",
+    },
+    {
+      _key: "gifted-and-talented",
+      title: "Gifted and Talented Students",
+      description:
+        "Students with identified gifts and/or talents are provided with enrichment and accelerated programs as comprehensively stated and elaborated on in their advanced learning plans (ALPs).",
+      iconType: "gifted",
+    },
+    {
+      _key: "eal-learners",
+      title: "EAL Learners",
+      description:
+        "Students with additional English language needs are identified through WIDA screener and supported with tiered interventions.",
+      iconType: "eal",
+    },
+    {
+      _key: "academic-counseling",
+      title: "Academic Counseling",
+      description:
+        "Students in all phases are provided with integrated support through counseling, pastoral care, and academic planning.",
+      iconType: "counseling",
+    },
+    {
+      _key: "differentiation",
+      title: "Differentiation",
+      description:
+        "Internal and external assessment data as well as observational feedback are used to design targeted interventions and personalized instruction.",
+      iconType: "differentiation",
+    },
+  ],
+};
+
 export default async function AcademicsMiddleSchoolPage() {
   const [data, middleSchoolPage] = await Promise.all([getHomepage(), getAcademicsMiddleSchoolPage()]);
   const hero = middleSchoolPage?.hero;
@@ -249,6 +299,8 @@ export default async function AcademicsMiddleSchoolPage() {
   const curriculumOverviewSection =
     middleSchoolPage?.curriculumOverviewSection || fallbackCurriculumOverviewSection;
   const assessmentSection = middleSchoolPage?.assessmentSection || fallbackAssessmentSection;
+  const supportProgramsSection =
+    middleSchoolPage?.supportProgramsSection || fallbackSupportProgramsSection;
 
   return (
     <SitePageShell
@@ -320,6 +372,13 @@ export default async function AcademicsMiddleSchoolPage() {
         section={assessmentSection}
         fallbackSection={fallbackAssessmentSection}
         ariaLabel="Middle School assessment"
+        flipped={false}
+      />
+
+      <AcademicsSupportProgramsSliderSection
+        section={supportProgramsSection}
+        fallbackSection={fallbackSupportProgramsSection}
+        className="academics-middle-school-support-programs"
       />
     </SitePageShell>
   );

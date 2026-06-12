@@ -95,5 +95,20 @@ export const academicsMiddleSchoolPageQuery = `*[_type == "academicsMiddleSchool
     waveColor,
     titleColor,
     textColor
+  },
+  supportProgramsSection {
+    heading ${headingProjection},
+    backgroundColor,
+    titleColor,
+    cardBorderColor,
+    cardHoverBorderColor,
+    cardTextColor,
+    cards[] {
+      _key,
+      title,
+      description,
+      icon ${imageWithAltProjection},
+      iconType
+    }
   }
 }`;

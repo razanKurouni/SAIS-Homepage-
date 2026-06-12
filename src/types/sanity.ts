@@ -190,6 +190,7 @@ export type AcademicsMiddleSchoolPageData = {
   tailoredInstructionSection?: AcademicsKindergartenFeatureSection;
   curriculumOverviewSection?: AcademicsCurriculumOverviewSection;
   assessmentSection?: ContactInfoSection;
+  supportProgramsSection?: AcademicsSupportProgramsSection;
 };
 
 export type AcademicsSkillItem = {
@@ -218,6 +219,24 @@ export type AcademicsCurriculumOverviewSection = {
   textColor?: string;
   firstBlock?: ImageTextSection;
   secondBlock?: ImageTextSection;
+};
+
+export type AcademicsSupportProgramCard = {
+  _key?: string;
+  title?: string;
+  description?: string;
+  icon?: SanityImage;
+  iconType?: "determination" | "gifted" | "eal" | "counseling" | "differentiation";
+};
+
+export type AcademicsSupportProgramsSection = {
+  heading?: SectionHeading;
+  cards?: AcademicsSupportProgramCard[];
+  backgroundColor?: string;
+  titleColor?: string;
+  cardBorderColor?: string;
+  cardHoverBorderColor?: string;
+  cardTextColor?: string;
 };
 
 export type AcademicsTeachingCommitmentCard = {

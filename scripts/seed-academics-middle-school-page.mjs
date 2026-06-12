@@ -252,6 +252,60 @@ async function main() {
       titleColor: "#ffffff",
       textColor: "#ffffff",
     },
+    supportProgramsSection: {
+      _type: "object",
+      heading: {
+        _type: "sectionHeading",
+        title: "Inclusion & Support Programs",
+      },
+      backgroundColor: "#ffffff",
+      titleColor: "#00A5B2",
+      cardBorderColor: "#216B97",
+      cardHoverBorderColor: "#00A5B2",
+      cardTextColor: "#216B97",
+      cards: [
+        {
+          _key: "students-of-determination",
+          _type: "object",
+          title: "Students of Determination",
+          description:
+            "Students with special educational needs and/or disabilities (SEND/SOD) are supported through individualized education plans (IEPs), push-in/pull-out support services, and tailored curriculum, instruction, and assessments.",
+          iconType: "determination",
+        },
+        {
+          _key: "gifted-and-talented",
+          _type: "object",
+          title: "Gifted and Talented Students",
+          description:
+            "Students with identified gifts and/or talents are provided with enrichment and accelerated programs as comprehensively stated and elaborated on in their advanced learning plans (ALPs).",
+          iconType: "gifted",
+        },
+        {
+          _key: "eal-learners",
+          _type: "object",
+          title: "EAL Learners",
+          description:
+            "Students with additional English language needs are identified through WIDA screener and supported with tiered interventions.",
+          iconType: "eal",
+        },
+        {
+          _key: "academic-counseling",
+          _type: "object",
+          title: "Academic Counseling",
+          description:
+            "Students in all phases are provided with integrated support through counseling, pastoral care, and academic planning.",
+          iconType: "counseling",
+        },
+        {
+          _key: "differentiation",
+          _type: "object",
+          title: "Differentiation",
+          description:
+            "Internal and external assessment data as well as observational feedback are used to design targeted interventions and personalized instruction.",
+          iconType: "differentiation",
+        },
+      ],
+    },
   });
 
   console.log("Seeded academics-middle-school-page with editable Sanity content.");
