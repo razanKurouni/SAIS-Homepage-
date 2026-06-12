@@ -60,6 +60,9 @@ export type ImageTextSection = {
   ctas?: Cta[];
   imagePosition?: "left" | "right";
   theme?: "blue" | "teal" | "light";
+  backgroundColor?: string;
+  titleColor?: string;
+  textColor?: string;
 };
 
 export type PageHeroContent = {
@@ -126,6 +129,7 @@ export type AcademicsKindergartenIntroSection = {
 export type AcademicsKindergartenFeatureSection = {
   heading?: SectionHeading;
   image?: SanityImage;
+  imageSide?: "left" | "right";
   imagePosition?: string;
   backgroundColor?: string;
   panelColor?: string;
@@ -178,6 +182,15 @@ export type AcademicsElementaryPageData = {
   assessmentSection?: AcademicsKindergartenFeatureSection;
 };
 
+export type AcademicsMiddleSchoolPageData = {
+  seo?: Seo;
+  hero?: PageHeroContent;
+  innerNavigation?: InnerNavigation;
+  overviewSection?: ImageTextSection;
+  tailoredInstructionSection?: AcademicsKindergartenFeatureSection;
+  curriculumOverviewSection?: AcademicsCurriculumOverviewSection;
+};
+
 export type AcademicsSkillItem = {
   _key?: string;
   title?: string;
@@ -198,6 +211,10 @@ export type AcademicsSkillsSection = {
 };
 
 export type AcademicsCurriculumOverviewSection = {
+  heading?: SectionHeading;
+  backgroundColor?: string;
+  titleColor?: string;
+  textColor?: string;
   firstBlock?: ImageTextSection;
   secondBlock?: ImageTextSection;
 };

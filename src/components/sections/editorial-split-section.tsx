@@ -17,6 +17,9 @@ type EditorialSplitSectionProps = {
 
 type EditorialSplitStyle = CSSProperties & {
   "--editorial-split-image-position"?: string;
+  "--editorial-split-bg"?: string;
+  "--editorial-split-title-color"?: string;
+  "--editorial-split-text-color"?: string;
 };
 
 export function EditorialSplitSection({
@@ -36,6 +39,9 @@ export function EditorialSplitSection({
   const resolvedTitle = section?.heading?.title || title;
   const style: EditorialSplitStyle = {
     "--editorial-split-image-position": "center",
+    "--editorial-split-bg": section?.backgroundColor,
+    "--editorial-split-title-color": section?.titleColor,
+    "--editorial-split-text-color": section?.textColor,
   };
 
   if (!image?.url && body.length === 0) {

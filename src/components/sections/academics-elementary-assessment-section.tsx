@@ -8,6 +8,9 @@ import type { AcademicsKindergartenFeatureSection } from "@/types/sanity";
 type AcademicsElementaryAssessmentSectionProps = {
   section?: AcademicsKindergartenFeatureSection;
   fallbackSection: Required<AcademicsKindergartenFeatureSection>;
+  className?: string;
+  imageSide?: "left" | "right";
+  titleId?: string;
 };
 
 type ElementaryAssessmentStyle = CSSProperties & {
@@ -21,11 +24,15 @@ type ElementaryAssessmentStyle = CSSProperties & {
 export function AcademicsElementaryAssessmentSection({
   section,
   fallbackSection,
+  className = "",
+  imageSide,
+  titleId = "academics-elementary-assessment-title",
 }: AcademicsElementaryAssessmentSectionProps) {
   const heading = section?.heading || fallbackSection.heading;
   const image = section?.image || fallbackSection.image;
   const panelColor = section?.panelColor || fallbackSection.panelColor;
   const waveColor = section?.waveColor || fallbackSection.waveColor;
+  const resolvedImageSide = imageSide || section?.imageSide || fallbackSection.imageSide || "right";
   const style: ElementaryAssessmentStyle = {
     "--academics-elementary-assessment-bg": panelColor,
     "--academics-elementary-assessment-wave": waveColor,
@@ -40,8 +47,8 @@ export function AcademicsElementaryAssessmentSection({
 
   return (
     <section
-      className="academics-elementary-assessment"
-      aria-labelledby="academics-elementary-assessment-title"
+      className={`academics-elementary-assessment is-image-${resolvedImageSide} ${className}`.trim()}
+      aria-labelledby={titleId}
       style={style}
     >
       {image?.url ? (
@@ -63,10 +70,11 @@ export function AcademicsElementaryAssessmentSection({
         fillColor={panelColor}
         accentColor={waveColor}
         strokeWidth={82}
+        flipped={resolvedImageSide === "left"}
       >
         <SectionReveal className="academics-elementary-assessment__content">
           {heading?.title ? (
-            <h2 id="academics-elementary-assessment-title" className="academics-elementary-assessment__title">
+            <h2 id={titleId} className="academics-elementary-assessment__title">
               {heading.title}
             </h2>
           ) : null}

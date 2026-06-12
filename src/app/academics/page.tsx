@@ -175,6 +175,12 @@ const fallbackSkillsSection: AcademicsSkillsSectionData = {
 };
 
 const fallbackCurriculumOverviewSection: Required<AcademicsCurriculumOverviewSectionData> = {
+  heading: {
+    title: "",
+  },
+  backgroundColor: "#ffffff",
+  titleColor: "var(--sais-primary)",
+  textColor: "#666b70",
   firstBlock: {
     heading: {
       title: "Our Curriculum",

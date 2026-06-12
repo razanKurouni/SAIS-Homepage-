@@ -122,6 +122,7 @@ const fallbackExcellenceSection: Required<AcademicsKindergartenFeatureSection> =
     url: "/academics-kg-excellence.png",
     alt: "SAIS Dubai kindergarten students playing music together",
   },
+  imageSide: "right",
   imagePosition: "center",
   backgroundColor: "var(--sais-accent)",
   panelColor: "var(--sais-primary)",

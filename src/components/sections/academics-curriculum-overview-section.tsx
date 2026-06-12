@@ -1,40 +1,113 @@
+import type { CSSProperties } from "react";
 import { EditorialSplitSection } from "@/components/sections/editorial-split-section";
-import type { AcademicsCurriculumOverviewSection as AcademicsCurriculumOverviewSectionData, ImageTextSection } from "@/types/sanity";
+import { richTextToParagraphs } from "@/lib/content";
+import type {
+  AcademicsCurriculumOverviewSection as AcademicsCurriculumOverviewSectionData,
+  ImageTextSection,
+} from "@/types/sanity";
+
+type AcademicsCurriculumOverviewFallback = AcademicsCurriculumOverviewSectionData & {
+  firstBlock: ImageTextSection;
+  secondBlock: ImageTextSection;
+};
 
 type AcademicsCurriculumOverviewSectionProps = {
   section?: AcademicsCurriculumOverviewSectionData;
-  fallbackSection: Required<AcademicsCurriculumOverviewSectionData>;
+  fallbackSection: AcademicsCurriculumOverviewFallback;
+  className?: string;
+  titleId?: string;
+  idPrefix?: string;
+  firstImagePosition?: "left" | "right";
+  secondImagePosition?: "left" | "right";
+  showFirstBlockTitle?: boolean;
+  showSecondBlockTitle?: boolean;
+};
+
+type AcademicsCurriculumOverviewStyle = CSSProperties & {
+  "--academics-curriculum-overview-bg"?: string;
+  "--academics-curriculum-overview-heading-color"?: string;
+  "--academics-curriculum-overview-text-color"?: string;
 };
 
 export function AcademicsCurriculumOverviewSection({
   section,
   fallbackSection,
+  className = "",
+  titleId = "academics-curriculum-overview-title",
+  idPrefix = "academics-curriculum",
+  firstImagePosition = "right",
+  secondImagePosition = "left",
+  showFirstBlockTitle = true,
+  showSecondBlockTitle = false,
 }: AcademicsCurriculumOverviewSectionProps) {
   const firstBlock: ImageTextSection = section?.firstBlock || fallbackSection.firstBlock;
   const secondBlock: ImageTextSection = section?.secondBlock || fallbackSection.secondBlock;
+  const heading = section?.heading || fallbackSection.heading;
+  const headingDescription = richTextToParagraphs(heading?.description);
+  const hasHeading = Boolean(heading?.title || headingDescription.length);
+  const backgroundColor = section?.backgroundColor || fallbackSection.backgroundColor;
+  const titleColor = section?.titleColor || fallbackSection.titleColor;
+  const textColor = section?.textColor || fallbackSection.textColor;
+  const style: AcademicsCurriculumOverviewStyle = {
+    "--academics-curriculum-overview-bg": backgroundColor,
+    "--academics-curriculum-overview-heading-color": titleColor,
+    "--academics-curriculum-overview-text-color": textColor,
+  };
 
   return (
-    <div className="academics-curriculum-overview">
+    <section
+      className={`academics-curriculum-overview ${className}`.trim()}
+      style={style}
+      aria-labelledby={hasHeading ? titleId : undefined}
+    >
+      {hasHeading ? (
+        <div className="academics-curriculum-overview__heading">
+          {heading?.title ? (
+            <h2 id={titleId} className="academics-curriculum-overview__title">
+              {heading.title}
+            </h2>
+          ) : null}
+          {headingDescription.length ? (
+            <div className="academics-curriculum-overview__intro">
+              {headingDescription.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          ) : null}
+        </div>
+      ) : null}
+
       <EditorialSplitSection
-        id="academics-curriculum-overview"
+        id={`${idPrefix}-overview`}
         title="Our Curriculum"
-        section={{ ...firstBlock, imagePosition: "right" }}
+        section={{
+          ...firstBlock,
+          imagePosition: firstImagePosition,
+          textColor: firstBlock.textColor || textColor,
+          titleColor: firstBlock.titleColor || titleColor,
+        }}
         fallbackImage={fallbackSection.firstBlock.image || {}}
         fallbackParagraphs={[]}
         className="academics-curriculum-overview__row academics-curriculum-overview__row--top"
         imageSizes="(max-width: 767px) calc(100vw - 32px), 38vw"
-        showTitle
+        showTitle={showFirstBlockTitle}
       />
 
       <EditorialSplitSection
-        id="academics-curriculum-continuum"
+        id={`${idPrefix}-continuum`}
         title="Curriculum at SAIS Dubai"
-        section={{ ...secondBlock, imagePosition: "left" }}
+        section={{
+          ...secondBlock,
+          imagePosition: secondImagePosition,
+          textColor: secondBlock.textColor || textColor,
+          titleColor: secondBlock.titleColor || titleColor,
+        }}
         fallbackImage={fallbackSection.secondBlock.image || {}}
         fallbackParagraphs={[]}
         className="academics-curriculum-overview__row academics-curriculum-overview__row--bottom"
         imageSizes="(max-width: 767px) calc(100vw - 32px), 38vw"
+        showTitle={showSecondBlockTitle}
       />
-    </div>
+    </section>
   );
 }

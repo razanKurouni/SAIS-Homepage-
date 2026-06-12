@@ -1063,20 +1063,24 @@ button[aria-label="Open Next.js Dev Tools"] {
   line-height: 1.15;
 }
 
-.academics-elementary-page__main {
+.academics-elementary-page__main,
+.academics-middle-school-page__main {
   overflow: hidden;
 }
 
-.academics-elementary-hero {
+.academics-elementary-hero,
+.academics-middle-school-hero {
   --page-hero-height: clamp(340px, 31vw, 470px);
 }
 
-.academics-elementary-hero .page-hero__copy {
+.academics-elementary-hero .page-hero__copy,
+.academics-middle-school-hero .page-hero__copy {
   justify-content: flex-end;
   padding-bottom: clamp(56px, 7vw, 100px);
 }
 
-.academics-elementary-hero .page-hero__eyebrow {
+.academics-elementary-hero .page-hero__eyebrow,
+.academics-middle-school-hero .page-hero__eyebrow {
   margin-bottom: 8px;
   color: var(--sais-primary);
   font-size: clamp(1.42rem, 2vw, 2rem);
@@ -1085,9 +1089,40 @@ button[aria-label="Open Next.js Dev Tools"] {
   line-height: 1.12;
 }
 
-.academics-elementary-hero .page-hero__title {
+.academics-elementary-hero .page-hero__title,
+.academics-middle-school-hero .page-hero__title {
   font-size: clamp(1.72rem, 2.35vw, 2.55rem);
   line-height: 1.15;
+}
+
+.academics-middle-school-overview-section.editorial-split-section {
+  padding: clamp(62px, 7vw, 94px) 0 clamp(72px, 7vw, 102px);
+  border-bottom: 4px solid #d97252;
+}
+
+.academics-middle-school-overview-section .editorial-split-section__inner {
+  width: min(88%, 1320px);
+  grid-template-columns: minmax(0, 0.9fr) minmax(340px, 1fr);
+  gap: clamp(54px, 8vw, 118px);
+}
+
+.academics-middle-school-overview-section .editorial-split-section__media {
+  aspect-ratio: 1556 / 1252;
+  border-radius: 16px;
+  box-shadow: none;
+}
+
+.academics-middle-school-overview-section .editorial-split-section__body {
+  max-width: 520px;
+  gap: 1.2rem;
+  font-size: var(--sais-body-text-size);
+  letter-spacing: var(--sais-body-text-letter-spacing);
+  line-height: var(--sais-body-text-line-height);
+}
+
+.academics-middle-school-overview-section .editorial-split-section__title {
+  font-size: clamp(1.34rem, 1.75vw, 1.72rem);
+  line-height: 1.2;
 }
 
 .academics-kg-intro {
@@ -1298,6 +1333,10 @@ button[aria-label="Open Next.js Dev Tools"] {
   background: #d8e7ef;
 }
 
+.academics-elementary-assessment.is-image-left .academics-elementary-assessment__media {
+  inset: 0 auto 0 0;
+}
+
 .academics-elementary-assessment__image {
   object-fit: cover;
   object-position: var(--academics-elementary-assessment-image-position, center);
@@ -1309,6 +1348,10 @@ button[aria-label="Open Next.js Dev Tools"] {
   width: 68%;
   min-height: clamp(500px, 44vw, 640px);
   overflow: visible;
+}
+
+.academics-elementary-assessment.is-image-left .academics-elementary-assessment__panel {
+  margin-left: auto;
 }
 
 .academics-elementary-assessment__panel .sais-curved-panel__svg {
@@ -1325,6 +1368,11 @@ button[aria-label="Open Next.js Dev Tools"] {
   width: min(78%, 760px);
   margin-left: clamp(54px, 8vw, 150px);
   padding: clamp(54px, 6vw, 90px) 0;
+}
+
+.academics-elementary-assessment.is-image-left .academics-elementary-assessment__content {
+  margin-right: clamp(54px, 8vw, 150px);
+  margin-left: auto;
 }
 
 .academics-elementary-assessment__title {
@@ -1707,8 +1755,39 @@ a.contact-info-section__item-text:hover {
 }
 
 .academics-curriculum-overview {
-  background: #ffffff;
+  background: var(--academics-curriculum-overview-bg, #ffffff);
+  color: var(--academics-curriculum-overview-text-color, #666b70);
   padding: clamp(56px, 7vw, 90px) 0 clamp(26px, 4vw, 46px);
+}
+
+.academics-curriculum-overview__heading {
+  width: min(85%, 980px);
+  margin: 0 auto clamp(46px, 6vw, 76px);
+  text-align: center;
+}
+
+.academics-curriculum-overview__title {
+  margin: 0;
+  color: var(--academics-curriculum-overview-heading-color, var(--sais-primary));
+  font-size: clamp(1.22rem, 2vw, 1.7rem);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.22;
+}
+
+.academics-curriculum-overview__intro {
+  display: grid;
+  gap: 1rem;
+  max-width: 780px;
+  margin: clamp(22px, 3vw, 30px) auto 0;
+  color: var(--academics-curriculum-overview-text-color, #666b70);
+  font-size: var(--sais-body-text-size);
+  letter-spacing: var(--sais-body-text-letter-spacing);
+  line-height: var(--sais-body-text-line-height);
+}
+
+.academics-curriculum-overview__intro p {
+  margin: 0;
 }
 
 .academics-curriculum-overview__row.editorial-split-section {
@@ -1738,10 +1817,46 @@ a.contact-info-section__item-text:hover {
 
 .academics-curriculum-overview__row .editorial-split-section__body {
   max-width: 520px;
-  color: #666b70;
+  color: var(--academics-curriculum-overview-text-color, #666b70);
   font-size: var(--sais-body-text-size);
   letter-spacing: var(--sais-body-text-letter-spacing);
   line-height: var(--sais-body-text-line-height);
+}
+
+.academics-middle-school-curriculum-overview {
+  --academics-curriculum-overview-bg: var(--sais-accent);
+  --academics-curriculum-overview-heading-color: var(--sais-primary);
+  --academics-curriculum-overview-text-color: #ffffff;
+
+  padding: clamp(66px, 7vw, 96px) 0 clamp(78px, 8vw, 112px);
+}
+
+.academics-middle-school-curriculum-overview .academics-curriculum-overview__heading {
+  margin-bottom: clamp(54px, 6vw, 86px);
+}
+
+.academics-middle-school-curriculum-overview .academics-curriculum-overview__row + .academics-curriculum-overview__row {
+  margin-top: clamp(56px, 7vw, 88px);
+}
+
+.academics-middle-school-curriculum-overview .academics-curriculum-overview__row .editorial-split-section__inner {
+  width: min(84%, 1180px);
+  grid-template-columns: minmax(320px, 0.98fr) minmax(0, 1fr);
+  gap: clamp(46px, 7vw, 92px);
+}
+
+.academics-middle-school-curriculum-overview .academics-curriculum-overview__row .editorial-split-section__media {
+  aspect-ratio: 1528 / 1252;
+  border-radius: 14px;
+}
+
+.academics-middle-school-curriculum-overview .academics-curriculum-overview__row .editorial-split-section__body {
+  max-width: 520px;
+  color: #ffffff;
+}
+
+.academics-middle-school-curriculum-overview .academics-curriculum-overview__row .editorial-split-section__body p {
+  color: #ffffff;
 }
 
 .academics-teaching {
@@ -2117,8 +2232,8 @@ a.contact-info-section__item-text:hover {
 }
 
 .editorial-split-section {
-  background: #ffffff;
-  color: #707278;
+  background: var(--editorial-split-bg, #ffffff);
+  color: var(--editorial-split-text-color, #707278);
   padding: clamp(54px, 7.2vw, 78px) 0 30px;
 }
 
@@ -2156,7 +2271,7 @@ a.contact-info-section__item-text:hover {
   display: grid;
   gap: 1.45rem;
   max-width: 530px;
-  color: #707278;
+  color: var(--editorial-split-text-color, #707278);
   font-size: 0.94rem;
   font-weight: 400;
   line-height: 1.56;
@@ -2165,7 +2280,7 @@ a.contact-info-section__item-text:hover {
 
 .editorial-split-section__title {
   margin: 0 0 4px;
-  color: var(--sais-primary);
+  color: var(--editorial-split-title-color, var(--sais-primary));
   font-size: clamp(1.22rem, 1.55vw, 1.42rem);
   font-weight: 500;
   letter-spacing: 0;
@@ -2174,6 +2289,7 @@ a.contact-info-section__item-text:hover {
 
 .editorial-split-section__body p {
   margin: 0;
+  color: var(--editorial-split-text-color, #707278);
 }
 
 .about-highlights__inner {
@@ -6407,16 +6523,19 @@ a.contact-info-section__item-text:hover {
     font-size: 1.48rem;
   }
 
-  .academics-elementary-hero .page-hero__copy {
+  .academics-elementary-hero .page-hero__copy,
+  .academics-middle-school-hero .page-hero__copy {
     justify-content: flex-end;
     padding-bottom: 38px;
   }
 
-  .academics-elementary-hero .page-hero__eyebrow {
+  .academics-elementary-hero .page-hero__eyebrow,
+  .academics-middle-school-hero .page-hero__eyebrow {
     font-size: 1.35rem;
   }
 
-  .academics-elementary-hero .page-hero__title {
+  .academics-elementary-hero .page-hero__title,
+  .academics-middle-school-hero .page-hero__title {
     font-size: 1.48rem;
   }
 
@@ -6661,6 +6780,29 @@ a.contact-info-section__item-text:hover {
     border-radius: 14px;
   }
 
+  .academics-middle-school-overview-section.editorial-split-section {
+    padding: 44px 0 58px;
+    border-bottom-width: 3px;
+  }
+
+  .academics-middle-school-overview-section .editorial-split-section__inner {
+    width: calc(100% - 32px);
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .academics-middle-school-overview-section.is-image-right .editorial-split-section__body {
+    order: 1;
+  }
+
+  .academics-middle-school-overview-section.is-image-right .editorial-split-section__media {
+    order: 2;
+  }
+
+  .academics-middle-school-overview-section .editorial-split-section__media {
+    border-radius: 14px;
+  }
+
   .academics-kg-excellence-slider .academics-learning-slider__stage {
     height: auto;
   }
@@ -6717,6 +6859,7 @@ a.contact-info-section__item-text:hover {
 
   .academics-elementary-assessment__media {
     position: relative;
+    inset: auto;
     width: 100%;
     min-height: 330px;
   }
@@ -6739,6 +6882,10 @@ a.contact-info-section__item-text:hover {
     width: calc(100% - 48px);
     margin: 0 auto;
     padding: 40px 0 52px;
+  }
+
+  .academics-elementary-assessment.is-image-left .academics-elementary-assessment__content {
+    margin: 0 auto;
   }
 
   .academics-elementary-assessment__title {
@@ -6832,6 +6979,15 @@ a.contact-info-section__item-text:hover {
     padding: 42px 0 26px;
   }
 
+  .academics-curriculum-overview__heading {
+    width: calc(100% - 32px);
+    margin-bottom: 34px;
+  }
+
+  .academics-curriculum-overview__intro {
+    margin-top: 18px;
+  }
+
   .academics-curriculum-overview__row + .academics-curriculum-overview__row {
     margin-top: 34px;
   }
@@ -6849,6 +7005,28 @@ a.contact-info-section__item-text:hover {
   .academics-curriculum-overview__row .editorial-split-section__media,
   .academics-curriculum-overview__row .editorial-split-section__body {
     order: initial;
+  }
+
+  .academics-middle-school-curriculum-overview {
+    padding: 46px 0 58px;
+  }
+
+  .academics-middle-school-curriculum-overview .academics-curriculum-overview__heading {
+    margin-bottom: 38px;
+  }
+
+  .academics-middle-school-curriculum-overview .academics-curriculum-overview__row + .academics-curriculum-overview__row {
+    margin-top: 42px;
+  }
+
+  .academics-middle-school-curriculum-overview .academics-curriculum-overview__row .editorial-split-section__inner {
+    width: calc(100% - 32px);
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .academics-middle-school-curriculum-overview .academics-curriculum-overview__row .editorial-split-section__body {
+    max-width: none;
   }
 
   .academics-teaching {
