@@ -1130,6 +1130,9 @@ button[aria-label="Open Next.js Dev Tools"] {
 .academics-kg-intro {
   background: var(--academics-kg-intro-bg, #ffffff);
   color: var(--academics-kg-intro-text, var(--sais-primary));
+  padding: clamp(48px, 5vw, 72px) 0 clamp(54px, 6vw, 82px);
+}
+.academics-elementary-page .academics-kg-intro {
   padding: clamp(48px, 5vw, 72px) 0 0;
 }
 
@@ -1210,7 +1213,7 @@ button[aria-label="Open Next.js Dev Tools"] {
 
 .academics-kg-curriculum-section.editorial-split-section {
   background: #ffffff;
-  padding: clamp(70px, 7.2vw, 110px) 0 clamp(72px, 7vw, 112px);
+  padding: 70px 0 70px;
 }
 
 .academics-kg-curriculum-section .editorial-split-section__inner {
@@ -1278,7 +1281,7 @@ button[aria-label="Open Next.js Dev Tools"] {
 }
 
 .academics-elementary-curriculum-feature.intro-feature {
-  padding: clamp(40px, 4.8vw, 70px) 0 clamp(70px, 7vw, 108px);
+  padding: 50px 0 50px;
 }
 
 .academics-elementary-curriculum-feature .intro-feature__layout {
@@ -1403,7 +1406,7 @@ button[aria-label="Open Next.js Dev Tools"] {
 .academics-kg-assessment {
   background: var(--academics-kg-assessment-bg, var(--sais-primary));
   color: var(--academics-kg-assessment-text, #ffffff);
-  padding: clamp(76px, 8vw, 116px) 0 clamp(82px, 8.5vw, 124px);
+  padding: 70px 0 70px;
 }
 
 .academics-kg-assessment__inner {
@@ -1440,7 +1443,7 @@ button[aria-label="Open Next.js Dev Tools"] {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(26px, 3vw, 34px);
-  margin-top: clamp(56px, 6vw, 78px);
+  margin-top: 40px;
 }
 
 .academics-kg-assessment__card-reveal {
