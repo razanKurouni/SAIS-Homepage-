@@ -1952,7 +1952,6 @@ a.contact-info-section__item-text:hover {
 }
 
 .academics-support-programs__viewport {
-  overflow: hidden;
   margin-top: clamp(34px, 4vw, 46px);
 }
 
