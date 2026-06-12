@@ -57,7 +57,14 @@ const navItems = [
 }));
 
 async function main() {
-  const [heroImage, overviewImage, tailoredImage, curriculumClassroomImage, curriculumSupportImage] = await Promise.all([
+  const [
+    heroImage,
+    overviewImage,
+    tailoredImage,
+    curriculumClassroomImage,
+    curriculumSupportImage,
+    assessmentImage,
+  ] = await Promise.all([
     uploadImage(
       "public/academics-middle-school-hero.jpg",
       "academics-middle-school-hero.jpg",
@@ -82,6 +89,11 @@ async function main() {
       "public/academics-middle-school-curriculum-support.png",
       "academics-middle-school-curriculum-support.png",
       "SAIS Dubai teacher supporting a middle school student"
+    ),
+    uploadImage(
+      "public/academics-middle-school-assessment.png",
+      "academics-middle-school-assessment.png",
+      "SAIS Dubai middle school students reviewing a book together"
     ),
   ]);
 
@@ -220,6 +232,25 @@ async function main() {
         titleColor: "#216B97",
         textColor: "#ffffff",
       },
+    },
+    assessmentSection: {
+      _type: "object",
+      heading: {
+        _type: "sectionHeading",
+        title: "Assessment",
+        description: [
+          block(
+            "middle-school-assessment",
+            "Assessment in Middle School follows a balanced approach that integrates formative assessment, such as observations, classwork, and ongoing feedback, with summative assessment, including quizzes, projects, and exams to evaluate student understanding. This process is aligned with international standards and supported by global benchmarking tools such as MAP Growth (NWEA) and CAT4, as well as Arabic international assessments, ensuring data-driven instruction, continuous progress monitoring, and personalized learning that supports every student's academic growth and development across all subjects."
+          ),
+        ],
+      },
+      image: assessmentImage,
+      imagePosition: "center",
+      panelColor: "#d97252",
+      waveColor: "#216B97",
+      titleColor: "#ffffff",
+      textColor: "#ffffff",
     },
   });
 

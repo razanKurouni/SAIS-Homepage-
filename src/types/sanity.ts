@@ -189,6 +189,7 @@ export type AcademicsMiddleSchoolPageData = {
   overviewSection?: ImageTextSection;
   tailoredInstructionSection?: AcademicsKindergartenFeatureSection;
   curriculumOverviewSection?: AcademicsCurriculumOverviewSection;
+  assessmentSection?: ContactInfoSection;
 };
 
 export type AcademicsSkillItem = {

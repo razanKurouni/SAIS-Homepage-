@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SitePageShell } from "@/components/layout/site-page-shell";
 import { AcademicsCurriculumOverviewSection } from "@/components/sections/academics-curriculum-overview-section";
 import { AcademicsElementaryAssessmentSection } from "@/components/sections/academics-elementary-assessment-section";
+import { ContactInfoSection } from "@/components/sections/contact-info-section";
 import { EditorialSplitSection } from "@/components/sections/editorial-split-section";
 import { InnerPageNav, type InnerPageNavItem } from "@/components/sections/inner-page-nav";
 import { PageHero } from "@/components/sections/page-hero";
@@ -9,6 +10,7 @@ import { getAcademicsMiddleSchoolPage, getHomepage } from "@/lib/sanity";
 import type {
   AcademicsCurriculumOverviewSection as AcademicsCurriculumOverviewSectionData,
   AcademicsKindergartenFeatureSection,
+  ContactInfoSection as ContactInfoSectionData,
   ImageTextSection,
   InnerNavigationItem,
   PortableTextBlock,
@@ -209,6 +211,27 @@ const fallbackCurriculumOverviewSection: AcademicsCurriculumOverviewSectionData 
   },
 };
 
+const fallbackAssessmentSection: ContactInfoSectionData = {
+  heading: {
+    title: "Assessment",
+    description: [
+      paragraph(
+        "middle-school-assessment",
+        "Assessment in Middle School follows a balanced approach that integrates formative assessment, such as observations, classwork, and ongoing feedback, with summative assessment, including quizzes, projects, and exams to evaluate student understanding. This process is aligned with international standards and supported by global benchmarking tools such as MAP Growth (NWEA) and CAT4, as well as Arabic international assessments, ensuring data-driven instruction, continuous progress monitoring, and personalized learning that supports every student's academic growth and development across all subjects."
+      ),
+    ],
+  },
+  image: {
+    url: "/academics-middle-school-assessment.png",
+    alt: "SAIS Dubai middle school students reviewing a book together",
+  },
+  imagePosition: "center",
+  panelColor: "#d97252",
+  waveColor: "#216B97",
+  titleColor: "#ffffff",
+  textColor: "#ffffff",
+};
+
 export default async function AcademicsMiddleSchoolPage() {
   const [data, middleSchoolPage] = await Promise.all([getHomepage(), getAcademicsMiddleSchoolPage()]);
   const hero = middleSchoolPage?.hero;
@@ -225,6 +248,7 @@ export default async function AcademicsMiddleSchoolPage() {
     middleSchoolPage?.tailoredInstructionSection || fallbackTailoredInstructionSection;
   const curriculumOverviewSection =
     middleSchoolPage?.curriculumOverviewSection || fallbackCurriculumOverviewSection;
+  const assessmentSection = middleSchoolPage?.assessmentSection || fallbackAssessmentSection;
 
   return (
     <SitePageShell
@@ -288,6 +312,14 @@ export default async function AcademicsMiddleSchoolPage() {
         secondImagePosition="right"
         showFirstBlockTitle={false}
         showSecondBlockTitle={false}
+      />
+
+      <ContactInfoSection
+        className="academics-middle-school-assessment-section"
+        titleId="academics-middle-school-assessment-title"
+        section={assessmentSection}
+        fallbackSection={fallbackAssessmentSection}
+        ariaLabel="Middle School assessment"
       />
     </SitePageShell>
   );

@@ -254,6 +254,46 @@ export const academicsMiddleSchoolPage = {
         },
       ],
     },
+    {
+      name: "assessmentSection",
+      title: "Assessment Section",
+      type: "object",
+      description: "Editable curved assessment card for the Middle School page.",
+      fields: [
+        { name: "heading", title: "Text Content", type: "sectionHeading" },
+        { name: "image", title: "Image", type: "imageWithAlt" },
+        {
+          name: "imagePosition",
+          title: "Image Position",
+          type: "string",
+          description: "Optional CSS object-position value, for example center or 45% center.",
+        },
+        {
+          name: "panelColor",
+          title: "Panel Background Color",
+          type: "string",
+          description: "Optional CSS color, for example #d97252.",
+        },
+        {
+          name: "waveColor",
+          title: "Curved Line Color",
+          type: "string",
+          description: "Optional CSS color, for example #216B97.",
+        },
+        {
+          name: "titleColor",
+          title: "Title Color",
+          type: "string",
+          description: "Optional CSS color for the section title, for example #ffffff.",
+        },
+        {
+          name: "textColor",
+          title: "Body Text Color",
+          type: "string",
+          description: "Optional CSS color for the body text, for example #ffffff.",
+        },
+      ],
+    },
   ],
   preview: {
     select: {
