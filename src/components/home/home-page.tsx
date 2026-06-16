@@ -22,7 +22,7 @@ type HomePageProps = {
 export function HomePage({ data }: HomePageProps) {
   return (
     <div className="preview-page">
-      <SiteHeader settings={data?.header} links={data?.navigation} variant="solid" />
+      <SiteHeader settings={data?.header} links={data?.navigation} />
 
       <main id="home" className="preview-main">
         <HomeHero hero={data?.hero} />

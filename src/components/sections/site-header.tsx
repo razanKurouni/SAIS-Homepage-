@@ -76,7 +76,7 @@ export function SiteHeader({
       ? scrolledLogo?.url
         ? scrolledLogo
         : {
-            url: "/sais-logo-lockup-white.webp",
+            url: "/sais-logo-lockup-solid.png",
             alt: "Sharjah American International School Dubai",
           }
       : logo;
