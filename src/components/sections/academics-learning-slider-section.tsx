@@ -60,6 +60,7 @@ export function AcademicsLearningSliderSection({
   const heading = section?.heading || fallbackSection.heading;
   const slides = section?.slides?.length ? section.slides : fallbackSection.slides || [];
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
   const slideCount = slides.length;
   const safeActiveIndex = slideCount > 0 ? activeIndex % slideCount : 0;
   const activeSlide = slides[safeActiveIndex];
@@ -89,10 +90,12 @@ export function AcademicsLearningSliderSection({
       return;
     }
 
+    if (isHovered) return;
+
     const timer = window.setInterval(goToNext, 5600);
 
     return () => window.clearInterval(timer);
-  }, [goToNext, slideCount]);
+  }, [goToNext, slideCount, isHovered]);
 
   if (!heading?.title && !slides.length) {
     return null;
@@ -112,6 +115,8 @@ export function AcademicsLearningSliderSection({
       className={`academics-learning-slider ${className}`.trim()}
       aria-labelledby={heading?.title ? "academics-learning-slider-title" : undefined}
       style={style}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       {heading?.title ? (
         <Reveal className="academics-learning-slider__header">

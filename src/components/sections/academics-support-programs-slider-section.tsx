@@ -61,6 +61,7 @@ export function AcademicsSupportProgramsSliderSection({
   const cards = section?.cards?.length ? section.cards : fallbackSection.cards || [];
   const [visibleCount, setVisibleCount] = useState(3);
   const [activeStart, setActiveStart] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
   const maxStart = Math.max(0, cards.length - visibleCount);
   const safeActiveStart = Math.min(activeStart, maxStart);
   const dots = useMemo(() => Array.from({ length: maxStart + 1 }, (_, index) => index), [maxStart]);
@@ -69,10 +70,10 @@ export function AcademicsSupportProgramsSliderSection({
   const goToNext = useCallback(() => setActiveStart((s) => (s >= maxStart ? 0 : s + 1)), [maxStart]);
 
   useEffect(() => {
-    if (maxStart <= 0 || (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
+    if (maxStart <= 0 || isHovered || (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
     const timer = window.setInterval(goToNext, 5000);
     return () => window.clearInterval(timer);
-  }, [goToNext, maxStart]);
+  }, [goToNext, maxStart, isHovered]);
 
   useEffect(() => {
     const updateVisibleCount = () => {
@@ -106,6 +107,8 @@ export function AcademicsSupportProgramsSliderSection({
       className={`academics-support-programs ${className}`.trim()}
       aria-labelledby={heading?.title ? "academics-support-programs-title" : undefined}
       style={style}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <Reveal className="academics-support-programs__inner">
         {heading?.title ? (
