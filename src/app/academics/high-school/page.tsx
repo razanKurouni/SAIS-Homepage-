@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SitePageShell } from "@/components/layout/site-page-shell";
 import { AcademicsElementaryAssessmentSection } from "@/components/sections/academics-elementary-assessment-section";
+import { AcademicsLearningSliderSection } from "@/components/sections/academics-learning-slider-section";
 import { EditorialSplitSection } from "@/components/sections/editorial-split-section";
 import { IntroFeatureSection } from "@/components/sections/intro-feature-section";
 import { InnerPageNav, type InnerPageNavItem } from "@/components/sections/inner-page-nav";
@@ -11,6 +12,7 @@ import { TourSection } from "@/components/sections/tour-section";
 import { getAcademicsHighSchoolPage, getHomepage } from "@/lib/sanity";
 import type {
   AcademicsKindergartenFeatureSection,
+  AcademicsLearningSliderSection as AcademicsLearningSliderSectionData,
   ImageTextSection,
   InnerNavigationItem,
   PortableTextBlock,
@@ -182,6 +184,46 @@ const fallbackCurriculumSection: ImageTextSection = {
 };
 
 
+const fallbackPathwaysSection: ImageTextSection = {
+  heading: {
+    title: "High School Pathways",
+    description: [
+      paragraph(
+        "hs-pathways-1",
+        "High School Pathways function like college majors, but begin during the high school experience. Every student can benefit from selecting and following a sequence of career-related classes aligned with their interests."
+      ),
+      {
+        _key: "hs-pathways-bold",
+        _type: "block",
+        children: [{ _key: "hs-pathways-bold-span", _type: "span", text: "A Pathway:", marks: ["strong"] }],
+      },
+    ],
+  },
+  image: {
+    url: "/academics-high-school-pathways.jpg",
+    alt: "SAIS Dubai high school students raising hands in class",
+  },
+  imagePosition: "right",
+  backgroundColor: "#ffffff",
+  titleColor: "var(--sais-primary)",
+  textColor: "#666b70",
+};
+
+const fallbackPathwaysSlider: AcademicsLearningSliderSectionData = {
+  heading: { title: "Pathway Overview" },
+  slides: [
+    {
+      _key: "slide-science",
+      title: "Science and Engineering Pathway",
+      body: "Students in this pathway solve problems, develop new technologies, and drive innovation. This rigorous college preparatory curriculum focuses on advanced mathematics and science, preparing students for university-level work.\n\nParticipants apply essential math and science content in real-world contexts. Career possibilities range from science and math educators to laboratory technicians to NASA astronauts",
+      backgroundColor: "#00A5B2",
+      sideColor: "#216B97",
+      ringColor: "#d97252",
+      textColor: "#ffffff",
+    },
+  ],
+};
+
 export default async function AcademicsHighSchoolPage() {
   const [data, highSchoolPage] = await Promise.all([getHomepage(), getAcademicsHighSchoolPage()]);
 
@@ -214,6 +256,16 @@ export default async function AcademicsHighSchoolPage() {
   };
 
   const careerGuidanceSection = highSchoolPage?.careerGuidanceSection || fallbackCareerGuidanceSection;
+
+  const pathwaysSection: ImageTextSection = {
+    ...fallbackPathwaysSection,
+    ...highSchoolPage?.pathwaysSection,
+    heading: highSchoolPage?.pathwaysSection?.heading || fallbackPathwaysSection.heading,
+    image: highSchoolPage?.pathwaysSection?.image || fallbackPathwaysSection.image,
+    imagePosition: "right",
+  };
+
+  const pathwaysSlider = highSchoolPage?.pathwaysSliderSection || fallbackPathwaysSlider;
 
   return (
     <SitePageShell
@@ -292,6 +344,23 @@ export default async function AcademicsHighSchoolPage() {
         fallbackSection={fallbackCareerGuidanceSection}
         className="academics-high-school-career-guidance"
         titleId="academics-high-school-career-title"
+      />
+
+      <EditorialSplitSection
+        id="academics-high-school-pathways"
+        title="High School Pathways"
+        section={pathwaysSection}
+        fallbackImage={fallbackPathwaysSection.image || {}}
+        fallbackParagraphs={[]}
+        className="academics-high-school-pathways-section"
+        imageSizes="(max-width: 767px) calc(100vw - 32px), 44vw"
+        showTitle
+      />
+
+      <AcademicsLearningSliderSection
+        section={pathwaysSlider}
+        fallbackSection={fallbackPathwaysSlider}
+        className="academics-high-school-pathways-slider"
       />
 
       <LearningPhasesSection section={data?.learningPhases} excludeTitle="High School" />

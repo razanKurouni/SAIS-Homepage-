@@ -77,5 +77,28 @@ export const academicsHighSchoolPageQuery = `*[_type == "academicsHighSchoolPage
     waveColor,
     titleColor,
     textColor
+  },
+  pathwaysSection {
+    heading ${headingProjection},
+    image ${imageWithAltProjection},
+    imagePosition,
+    backgroundColor,
+    titleColor,
+    textColor
+  },
+  pathwaysSliderSection {
+    heading ${headingProjection},
+    slides[] {
+      _key,
+      title,
+      body,
+      image ${imageWithAltProjection},
+      backgroundColor,
+      sideColor,
+      ringColor,
+      titleColor,
+      textColor,
+      imagePosition
+    }
   }
 }`;

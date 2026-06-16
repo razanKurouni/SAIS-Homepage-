@@ -1405,6 +1405,21 @@ button[aria-label="Open Next.js Dev Tools"] {
   line-height: 1.62;
 }
 
+.academics-elementary-assessment__body ul,
+.academics-elementary-assessment__body ol {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.academics-elementary-assessment__body li {
+  color: var(--academics-elementary-assessment-text, #ffffff);
+  font-size: clamp(0.98rem, 1.07vw, 1.08rem);
+  letter-spacing: var(--sais-body-text-letter-spacing);
+  line-height: 1.62;
+}
+
 .academics-kg-assessment {
   background: var(--academics-kg-assessment-bg, var(--sais-primary));
   color: var(--academics-kg-assessment-text, #ffffff);
@@ -2411,7 +2426,7 @@ a.contact-info-section__item-text:hover {
   grid-template-columns: minmax(280px, 1.02fr) minmax(0, 1fr);
   align-items: center;
   gap: clamp(36px, 5vw, 60px);
-  width: min(80%, 1120px);
+  width: 85%;
   margin: 0 auto;
 }
 

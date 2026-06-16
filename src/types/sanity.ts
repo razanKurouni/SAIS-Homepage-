@@ -2,12 +2,15 @@ export type PortableTextSpan = {
   _key?: string;
   _type?: "span";
   text?: string;
+  marks?: string[];
 };
 
 export type PortableTextBlock = {
   _key?: string;
   _type?: "block";
   children?: PortableTextSpan[];
+  listItem?: "bullet" | "number";
+  level?: number;
 };
 
 export type SanityImage = {
@@ -201,6 +204,8 @@ export type AcademicsHighSchoolPageData = {
   excellenceSection?: AcademicsKindergartenFeatureSection;
   curriculumSection?: ImageTextSection;
   careerGuidanceSection?: AcademicsKindergartenFeatureSection;
+  pathwaysSection?: ImageTextSection;
+  pathwaysSliderSection?: AcademicsLearningSliderSection;
 };
 
 export type AcademicsSkillItem = {

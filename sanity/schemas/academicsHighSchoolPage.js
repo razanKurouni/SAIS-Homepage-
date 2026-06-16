@@ -264,6 +264,58 @@ export const academicsHighSchoolPage = {
         },
       ],
     },
+    {
+      name: "pathwaysSection",
+      title: "High School Pathways Section",
+      type: "object",
+      description: "Text and image section introducing High School Pathways.",
+      fields: [
+        { name: "heading", title: "Text Content", type: "sectionHeading" },
+        { name: "image", title: "Image", type: "imageWithAlt" },
+        { name: "backgroundColor", title: "Background Color", type: "string" },
+        { name: "titleColor", title: "Title Color", type: "string" },
+        { name: "textColor", title: "Body Text Color", type: "string" },
+      ],
+    },
+    {
+      name: "pathwaysSliderSection",
+      title: "Pathway Overview Slider",
+      type: "object",
+      description: "Slider showing each High School pathway with image and description.",
+      fields: [
+        { name: "heading", title: "Section Heading", type: "sectionHeading" },
+        {
+          name: "slides",
+          title: "Pathway Slides",
+          type: "array",
+          of: [
+            {
+              type: "object",
+              fields: [
+                { name: "title", title: "Pathway Title", type: "string" },
+                {
+                  name: "body",
+                  title: "Body",
+                  type: "text",
+                  rows: 8,
+                  description: "Use blank lines between paragraphs. Start lines with - for bullet lists.",
+                },
+                { name: "image", title: "Image", type: "imageWithAlt" },
+                { name: "backgroundColor", title: "Background Color", type: "string", description: "e.g. #00A5B2" },
+                { name: "sideColor", title: "Side Panel Color", type: "string", description: "e.g. #216B97" },
+                { name: "ringColor", title: "Ring/Curve Color", type: "string", description: "e.g. #d97252" },
+                { name: "titleColor", title: "Title Color", type: "string" },
+                { name: "textColor", title: "Text Color", type: "string", description: "e.g. #ffffff" },
+                { name: "imagePosition", title: "Image Position", type: "string", description: "e.g. center or 45% center" },
+              ],
+              preview: {
+                select: { title: "title", media: "image.image" },
+              },
+            },
+          ],
+        },
+      ],
+    },
   ],
   preview: {
     select: {
