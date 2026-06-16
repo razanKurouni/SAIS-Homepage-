@@ -1103,7 +1103,7 @@ button[aria-label="Open Next.js Dev Tools"] {
 }
 
 .academics-middle-school-overview-section .editorial-split-section__inner {
-  width: min(88%, 1320px);
+  width: 85%;
   grid-template-columns: minmax(0, 0.9fr) minmax(340px, 1fr);
   gap: clamp(54px, 8vw, 118px);
 }
@@ -1845,7 +1845,7 @@ a.contact-info-section__item-text:hover {
 }
 
 .academics-middle-school-curriculum-overview .academics-curriculum-overview__row .editorial-split-section__inner {
-  width: min(84%, 1180px);
+  width: 85%;
   grid-template-columns: minmax(320px, 0.98fr) minmax(0, 1fr);
   gap: clamp(46px, 7vw, 92px);
 }
@@ -1870,7 +1870,7 @@ a.contact-info-section__item-text:hover {
 }
 
 .academics-middle-school-assessment-section .contact-info-section__inner {
-  width: min(85%, 1180px);
+  width: 85%;
   flex-direction: row-reverse;
 }
 
@@ -1883,15 +1883,15 @@ a.contact-info-section__item-text:hover {
 }
 
 .academics-middle-school-assessment-section .contact-info-section__image-shell {
-  width: 140%;
+  width: 120%;
   aspect-ratio: 1528 / 1312;
   border-radius: 14px;
   box-shadow: none;
-  transform: translateX(-28%);
+  transform: translateX(-45%);
 }
 
 .academics-middle-school-assessment-section .contact-info-section__panel {
-  width: 66%;
+  width: 70%;
   min-height: clamp(430px, 39vw, 560px);
   overflow: hidden;
   border-radius: 16px;
@@ -1936,7 +1936,7 @@ a.contact-info-section__item-text:hover {
 }
 
 .academics-support-programs__inner {
-  width: min(85%, 1180px);
+  width: 85%;
   margin: 0 auto;
 }
 
