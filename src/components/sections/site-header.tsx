@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CircleUserRound, Instagram, Search, X } from "lucide-react";
 import { useMemo, useState, type CSSProperties } from "react";
+import { usePathname } from "next/navigation";
 import { FacebookBrandIcon, TwitterBrandIcon } from "@/components/ui/social-icons";
 import { SaisWaveMark } from "@/components/ui/sais-wave-mark";
 import { useBodyScrollLock } from "@/hooks/use-body-scroll-lock";
@@ -57,6 +58,7 @@ export function SiteHeader({
   const isSolid = variant === "solid";
   const isScrolled = useScrollThreshold(18);
   const isScrolledStyleActive = !isSolid && isScrolled;
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [expandedSections, setExpandedSections] = useState<ExpandedSections>(createInitialExpandedSections);
@@ -247,7 +249,8 @@ export function SiteHeader({
                             <Link
                               key={`${section.title}-${item.label}`}
                               href={item.href || "#"}
-                              className="sais-menu-subitem"
+                              className={`sais-menu-subitem${pathname === item.href ? " is-active" : ""}`}
+                              aria-current={pathname === item.href ? "page" : undefined}
                               onClick={closeMenu}
                             >
                               <MenuSubitemAccent />

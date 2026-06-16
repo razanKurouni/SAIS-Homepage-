@@ -4973,9 +4973,14 @@ a.contact-info-section__item-text:hover {
   color: #ffffff;
 }
 
-.sais-menu-subitem:hover {
+.sais-menu-subitem:hover,
+.sais-menu-subitem.is-active {
   color: #ffffff;
   transform: translateX(4px);
+}
+
+.sais-menu-subitem.is-active {
+  transform: none;
 }
 
 .sais-menu-drawer__footer {
