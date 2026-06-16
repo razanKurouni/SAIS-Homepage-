@@ -197,6 +197,9 @@ export type AcademicsHighSchoolPageData = {
   seo?: Seo;
   hero?: PageHeroContent;
   innerNavigation?: InnerNavigation;
+  overviewSection?: ImageTextSection;
+  excellenceSection?: AcademicsKindergartenFeatureSection;
+  curriculumSection?: ImageTextSection;
 };
 
 export type AcademicsSkillItem = {

@@ -42,5 +42,30 @@ export const academicsHighSchoolPageQuery = `*[_type == "academicsHighSchoolPage
     dividerColor,
     topLineColor,
     ariaLabel
+  },
+  overviewSection {
+    heading ${headingProjection},
+    image ${imageWithAltProjection},
+    imagePosition,
+    theme,
+    backgroundColor,
+    titleColor,
+    textColor
+  },
+  excellenceSection {
+    heading ${headingProjection},
+    image ${imageWithAltProjection},
+    imageSide,
+    imagePosition,
+    backgroundColor,
+    panelColor,
+    waveColor,
+    titleColor,
+    textColor
+  },
+  curriculumSection {
+    heading ${headingProjection},
+    image ${imageWithAltProjection},
+    imagePosition
   }
 }`;
