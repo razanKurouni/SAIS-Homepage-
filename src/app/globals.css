@@ -1219,7 +1219,7 @@ button[aria-label="Open Next.js Dev Tools"] {
 }
 
 .academics-kg-curriculum-section .editorial-split-section__inner {
-  width: min(85%, 1400px);
+  width:85%;
   grid-template-columns: minmax(0, 0.9fr) minmax(340px, 1fr);
   gap: clamp(48px, 8vw, 120px);
 }
