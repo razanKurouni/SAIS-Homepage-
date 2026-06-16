@@ -267,7 +267,7 @@ export default async function AcademicsElementaryPage() {
         section={assessmentSection}
         fallbackSection={fallbackAssessmentSection}
       />
-      <LearningPhasesSection section={data?.learningPhases} />
+      <LearningPhasesSection section={data?.learningPhases} excludeHref="/academics/elementary" />
       <TourIntroSection section={data?.tour} />
       <TourSection section={data?.tour} />
     </SitePageShell>

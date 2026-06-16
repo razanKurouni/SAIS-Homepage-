@@ -357,7 +357,7 @@ export default async function AcademicsKindergartenPage() {
         section={assessmentSection}
         fallbackSection={fallbackAssessmentSection}
       />
-      <LearningPhasesSection section={data?.learningPhases} />
+      <LearningPhasesSection section={data?.learningPhases} excludeHref="/academics/kindergarten" />
       <TourIntroSection section={data?.tour} />
       <TourSection section={data?.tour} />
     </SitePageShell>
