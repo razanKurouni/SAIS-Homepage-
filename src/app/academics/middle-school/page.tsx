@@ -8,6 +8,7 @@ import { EditorialSplitSection } from "@/components/sections/editorial-split-sec
 import { InnerPageNav, type InnerPageNavItem } from "@/components/sections/inner-page-nav";
 import { PageHero } from "@/components/sections/page-hero";
 import { getAcademicsMiddleSchoolPage, getHomepage } from "@/lib/sanity";
+import { LearningPhasesSection } from "@/components/sections/learning-phases-section";
 import type {
   AcademicsCurriculumOverviewSection as AcademicsCurriculumOverviewSectionData,
   AcademicsKindergartenFeatureSection,
@@ -380,6 +381,7 @@ export default async function AcademicsMiddleSchoolPage() {
         fallbackSection={fallbackSupportProgramsSection}
         className="academics-middle-school-support-programs"
       />
+      <LearningPhasesSection section={data?.learningPhases} excludeTitle="Middle School" />
     </SitePageShell>
   );
 }
