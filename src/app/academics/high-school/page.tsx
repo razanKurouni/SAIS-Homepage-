@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SitePageShell } from "@/components/layout/site-page-shell";
+import { AcademicsElementaryAssessmentSection } from "@/components/sections/academics-elementary-assessment-section";
 import { EditorialSplitSection } from "@/components/sections/editorial-split-section";
 import { IntroFeatureSection } from "@/components/sections/intro-feature-section";
 import { InnerPageNav, type InnerPageNavItem } from "@/components/sections/inner-page-nav";
@@ -136,6 +137,33 @@ const fallbackExcellenceSection: Required<AcademicsKindergartenFeatureSection> =
   textColor: "#ffffff",
 };
 
+const fallbackCareerGuidanceSection: Required<AcademicsKindergartenFeatureSection> = {
+  heading: {
+    title: "Career Guidance",
+    description: [
+      paragraph(
+        "hs-career-1",
+        "Career guidance empowers students to make informed, careful, and personalized choices for higher education and career readiness. Our program supports students in academic planning, course selection, goal setting, career exploration, soft-skills development and post-secondary transition, including admissions processes and financial responsibilities."
+      ),
+      paragraph(
+        "hs-career-2",
+        "Our Career Guidance curriculum develops higher education and career readiness through these key themes:"
+      ),
+    ],
+  },
+  image: {
+    url: "/academics-high-school-career.jpg",
+    alt: "SAIS Dubai high school student reading a college brochure",
+  },
+  imageSide: "right",
+  imagePosition: "center",
+  backgroundColor: "#6F7175",
+  panelColor: "#6F7175",
+  waveColor: "#216B97",
+  titleColor: "#00A5B2",
+  textColor: "#ffffff",
+};
+
 const fallbackCurriculumSection: ImageTextSection = {
   heading: {
     title: "The Curriculum",
@@ -184,6 +212,8 @@ export default async function AcademicsHighSchoolPage() {
     image: highSchoolPage?.curriculumSection?.image || fallbackCurriculumSection.image,
     imagePosition: "right",
   };
+
+  const careerGuidanceSection = highSchoolPage?.careerGuidanceSection || fallbackCareerGuidanceSection;
 
   return (
     <SitePageShell
@@ -255,6 +285,13 @@ export default async function AcademicsHighSchoolPage() {
         className="academics-high-school-curriculum-section"
         imageSizes="(max-width: 767px) calc(100vw - 32px), 42vw"
         showTitle
+      />
+
+      <AcademicsElementaryAssessmentSection
+        section={careerGuidanceSection}
+        fallbackSection={fallbackCareerGuidanceSection}
+        className="academics-high-school-career-guidance"
+        titleId="academics-high-school-career-title"
       />
 
       <LearningPhasesSection section={data?.learningPhases} excludeTitle="High School" />

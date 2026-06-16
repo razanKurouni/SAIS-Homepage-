@@ -212,6 +212,58 @@ export const academicsHighSchoolPage = {
         { name: "image", title: "Image", type: "imageWithAlt" },
       ],
     },
+    {
+      name: "careerGuidanceSection",
+      title: "Career Guidance Section",
+      type: "object",
+      description: "Curved image and text band for Career Guidance.",
+      fields: [
+        { name: "heading", title: "Text Content", type: "sectionHeading" },
+        { name: "image", title: "Image", type: "imageWithAlt" },
+        {
+          name: "imageSide",
+          title: "Image Side",
+          type: "string",
+          options: {
+            list: [
+              { title: "Left", value: "left" },
+              { title: "Right", value: "right" },
+            ],
+            layout: "radio",
+          },
+        },
+        {
+          name: "imagePosition",
+          title: "Image Position",
+          type: "string",
+          description: "Optional CSS object-position value, for example center or 45% center.",
+        },
+        {
+          name: "panelColor",
+          title: "Panel Background Color",
+          type: "string",
+          description: "Optional CSS color, for example #f5f5f5.",
+        },
+        {
+          name: "waveColor",
+          title: "Curved Line Color",
+          type: "string",
+          description: "Optional CSS color, for example #00A5B2.",
+        },
+        {
+          name: "titleColor",
+          title: "Title Color",
+          type: "string",
+          description: "Optional CSS color for the section title.",
+        },
+        {
+          name: "textColor",
+          title: "Body Text Color",
+          type: "string",
+          description: "Optional CSS color for the body text.",
+        },
+      ],
+    },
   ],
   preview: {
     select: {

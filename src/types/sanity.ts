@@ -200,6 +200,7 @@ export type AcademicsHighSchoolPageData = {
   overviewSection?: ImageTextSection;
   excellenceSection?: AcademicsKindergartenFeatureSection;
   curriculumSection?: ImageTextSection;
+  careerGuidanceSection?: AcademicsKindergartenFeatureSection;
 };
 
 export type AcademicsSkillItem = {

@@ -67,5 +67,15 @@ export const academicsHighSchoolPageQuery = `*[_type == "academicsHighSchoolPage
     heading ${headingProjection},
     image ${imageWithAltProjection},
     imagePosition
+  },
+  careerGuidanceSection {
+    heading ${headingProjection},
+    image ${imageWithAltProjection},
+    imageSide,
+    imagePosition,
+    panelColor,
+    waveColor,
+    titleColor,
+    textColor
   }
 }`;
