@@ -2,6 +2,7 @@ import { aboutPage } from "./aboutPage";
 import { academicsElementaryPage } from "./academicsElementaryPage";
 import { academicsKindergartenPage } from "./academicsKindergartenPage";
 import { academicsMiddleSchoolPage } from "./academicsMiddleSchoolPage";
+import { academicsHighSchoolPage } from "./academicsHighSchoolPage";
 import { academicsPage } from "./academicsPage";
 import { careersPage } from "./careersPage";
 import { contactPage } from "./contactPage";
@@ -34,6 +35,7 @@ export const schemaTypes = [
   academicsKindergartenPage,
   academicsElementaryPage,
   academicsMiddleSchoolPage,
+  academicsHighSchoolPage,
   aboutPage,
   careersPage,
   contactPage,
