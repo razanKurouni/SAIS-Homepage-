@@ -1284,6 +1284,10 @@ button[aria-label="Open Next.js Dev Tools"] {
   line-height: var(--sais-body-text-line-height);
 }
 
+.academics-high-school-excellence-feature.intro-feature {
+  background: var(--intro-feature-panel-color, #00A5B2);
+}
+
 .academics-elementary-curriculum-feature.intro-feature {
   padding: 50px 0 50px;
 }
