@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SitePageShell } from "@/components/layout/site-page-shell";
-import { AcademicsLearningSliderSection } from "@/components/sections/academics-learning-slider-section";
 import { EditorialSplitSection } from "@/components/sections/editorial-split-section";
+import { IntroFeatureSection } from "@/components/sections/intro-feature-section";
 import { InnerPageNav, type InnerPageNavItem } from "@/components/sections/inner-page-nav";
 import { LearningPhasesSection } from "@/components/sections/learning-phases-section";
 import { PageHero } from "@/components/sections/page-hero";
@@ -10,7 +10,6 @@ import { TourSection } from "@/components/sections/tour-section";
 import { getAcademicsHighSchoolPage, getHomepage } from "@/lib/sanity";
 import type {
   AcademicsKindergartenFeatureSection,
-  AcademicsLearningSliderSection as AcademicsLearningSliderSectionData,
   ImageTextSection,
   InnerNavigationItem,
   PortableTextBlock,
@@ -154,33 +153,6 @@ const fallbackCurriculumSection: ImageTextSection = {
   imagePosition: "right",
 };
 
-function toExcellenceSliderSection(
-  section: AcademicsKindergartenFeatureSection | undefined,
-  fallback: Required<AcademicsKindergartenFeatureSection>
-): AcademicsLearningSliderSectionData {
-  const heading = section?.heading || fallback.heading;
-  const body = heading?.description
-    ?.map((block) => block.children?.map((c) => c.text || "").join("") || "")
-    .filter(Boolean)
-    .join("\n\n") || "";
-
-  return {
-    slides: [
-      {
-        _key: "high-school-excellence",
-        title: heading?.title,
-        body,
-        image: section?.image || fallback.image,
-        backgroundColor: section?.panelColor || fallback.panelColor,
-        sideColor: section?.backgroundColor || fallback.backgroundColor,
-        ringColor: section?.waveColor || fallback.waveColor,
-        titleColor: section?.titleColor || fallback.titleColor,
-        textColor: section?.textColor || fallback.textColor,
-        imagePosition: section?.imagePosition || fallback.imagePosition,
-      },
-    ],
-  };
-}
 
 export default async function AcademicsHighSchoolPage() {
   const [data, highSchoolPage] = await Promise.all([getHomepage(), getAcademicsHighSchoolPage()]);
@@ -198,7 +170,12 @@ export default async function AcademicsHighSchoolPage() {
   };
 
   const excellenceSection = highSchoolPage?.excellenceSection || fallbackExcellenceSection;
-  const excellenceSliderSection = toExcellenceSliderSection(excellenceSection, fallbackExcellenceSection);
+  const excellenceIntroSection: ImageTextSection = {
+    heading: excellenceSection.heading || fallbackExcellenceSection.heading,
+    image: excellenceSection.image || fallbackExcellenceSection.image,
+    imagePosition: "left",
+    theme: "blue",
+  };
 
   const curriculumSection: ImageTextSection = {
     ...fallbackCurriculumSection,
@@ -252,10 +229,21 @@ export default async function AcademicsHighSchoolPage() {
         showTitle
       />
 
-      <AcademicsLearningSliderSection
-        className="academics-high-school-excellence-slider"
-        section={excellenceSliderSection}
-        fallbackSection={toExcellenceSliderSection(undefined, fallbackExcellenceSection)}
+      <IntroFeatureSection
+        className="academics-high-school-excellence-feature"
+        titleId="academics-high-school-excellence-title"
+        section={excellenceIntroSection}
+        fallbackSection={{
+          heading: fallbackExcellenceSection.heading,
+          image: fallbackExcellenceSection.image,
+          imagePosition: "left",
+          theme: "blue",
+        }}
+        panelColor={excellenceSection.panelColor || fallbackExcellenceSection.panelColor}
+        accentColor={excellenceSection.waveColor || fallbackExcellenceSection.waveColor}
+        titleColor={excellenceSection.titleColor || fallbackExcellenceSection.titleColor}
+        textColor={excellenceSection.textColor || fallbackExcellenceSection.textColor}
+        imagePosition={excellenceSection.imageSide || fallbackExcellenceSection.imageSide}
       />
 
       <EditorialSplitSection
