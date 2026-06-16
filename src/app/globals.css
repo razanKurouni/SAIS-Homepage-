@@ -962,10 +962,12 @@ button[aria-label="Open Next.js Dev Tools"] {
 .inner-page-nav__item--active .inner-page-nav__link,
 .inner-page-nav__link[aria-current="page"] {
   background: var(--inner-page-nav-active-bg);
+  color: #ffffff;
 }
 
 .inner-page-nav__link:hover {
   background: var(--inner-page-nav-active-bg);
+  color: #ffffff;
 }
 
 .inner-page-nav__dropdown {
