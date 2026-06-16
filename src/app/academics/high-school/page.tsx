@@ -31,7 +31,7 @@ const fallbackInnerNavigation = {
     { label: "High School", href: "/academics/high-school" },
   ],
   activeHref: "/academics/high-school",
-  activeColor: "#6f7175",
+  activeColor: "#00A5B2",
   inactiveColor: "var(--sais-primary)",
   textColor: "#ffffff",
   dividerColor: "#ffffff",
