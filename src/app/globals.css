@@ -1285,7 +1285,13 @@ button[aria-label="Open Next.js Dev Tools"] {
 }
 
 .academics-high-school-excellence-feature.intro-feature {
-  background: #216B97;
+  background: linear-gradient(
+    to top,
+    #ffffff 0%,
+    #ffffff 50%,
+    #216B97 50%,
+    #216B97 100%
+  );
 }
 
 .academics-elementary-curriculum-feature.intro-feature {
