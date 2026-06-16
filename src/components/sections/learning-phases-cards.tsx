@@ -10,6 +10,20 @@ type LearningPhasesCardsProps = {
 
 const fallbackThemes: NonNullable<FeatureCard["theme"]>[] = ["blue", "teal", "orange", "gray"];
 
+const titleToHref: Record<string, string> = {
+  "kindergarten": "/academics/kindergarten",
+  "elementary": "/academics/elementary",
+  "middle school": "/academics/middle-school",
+  "high school": "/academics/high-school",
+};
+
+function resolveHref(card: FeatureCard): string {
+  const href = card.cta?.href;
+  if (href && !href.startsWith("#")) return href;
+  const key = card.title?.toLowerCase().trim() || "";
+  return titleToHref[key] || href || "#";
+}
+
 function ArrowBadge() {
   return (
     <span className="learning-phases__arrow" aria-hidden="true">
@@ -20,10 +34,10 @@ function ArrowBadge() {
 
 export function LearningPhasesCards({ cards = [] }: LearningPhasesCardsProps) {
   return (
-    <div className="learning-phases__grid">
+    <div className="learning-phases__grid" data-count={cards.length}>
       {cards.map((card, index) => {
         const theme = card.theme || fallbackThemes[index % fallbackThemes.length];
-        const href = card.cta?.href || "#";
+        const href = resolveHref(card);
 
         return (
           <Reveal

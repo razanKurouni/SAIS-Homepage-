@@ -3286,6 +3286,10 @@ a.contact-info-section__item-text:hover {
   perspective: 1200px;
 }
 
+.learning-phases__grid[data-count="3"] {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .learning-phase-card {
   --learning-card-color: var(--sais-primary);
   --learning-button-color: var(--learning-card-color);
@@ -5578,6 +5582,10 @@ a.contact-info-section__item-text:hover {
   .learning-phases__grid {
     grid-template-columns: 1fr;
     margin-top: 28px;
+  }
+
+  .learning-phases__grid[data-count="3"] {
+    grid-template-columns: 1fr;
   }
 
   .learning-phase-card {
