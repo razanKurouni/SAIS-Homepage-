@@ -1253,7 +1253,7 @@ button[aria-label="Open Next.js Dev Tools"] {
 
 .academics-kg-excellence-slider .academics-learning-slider__inner {
   width: min(85%, 1400px);
-  grid-template-columns: minmax(300px, 1.02fr) minmax(0, 1fr);
+  grid-template-columns: minmax(300px, 0.6fr) minmax(0, 1fr);
   gap: clamp(28px, 3vw, 48px);
 }
 
@@ -6535,6 +6535,7 @@ a.contact-info-section__item-text:hover {
     grid-template-columns: 1fr;
     gap: 32px;
   }
+
 
   .academics-kg-excellence-slider .academics-learning-slider__media {
     height: auto;
