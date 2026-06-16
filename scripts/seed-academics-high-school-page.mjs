@@ -155,7 +155,7 @@ async function main() {
       imageSide: "left",
       imagePosition: "center",
       panelColor: "#00A5B2",
-      waveColor: "#216B97",
+      waveColor: "#d97252",
       titleColor: "#ffffff",
       textColor: "#ffffff",
     },
