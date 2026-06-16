@@ -53,6 +53,7 @@
   --sais-primary-rgb: 33, 107, 151;
   --sais-accent: #00a5b2;
   --sais-accent-rgb: 0, 165, 178;
+  --sais-gray: #6f7175;
   --sais-blue: var(--sais-primary);
   --sais-blue-rgb: var(--sais-primary-rgb);
   --sais-teal: var(--sais-accent);
