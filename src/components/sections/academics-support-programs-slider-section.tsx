@@ -1,7 +1,7 @@
 "use client";
 
 import { Accessibility, BrainCircuit, ChevronLeft, ChevronRight, Globe2, MessagesSquare, Sparkles } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import type { CSSProperties } from "react";
 import { HoverIconCard } from "@/components/ui/hover-icon-card";
 import { Reveal } from "@/components/ui/reveal";
@@ -65,8 +65,14 @@ export function AcademicsSupportProgramsSliderSection({
   const safeActiveStart = Math.min(activeStart, maxStart);
   const dots = useMemo(() => Array.from({ length: maxStart + 1 }, (_, index) => index), [maxStart]);
 
-  const goToPrev = () => setActiveStart((s) => Math.max(0, s - 1));
-  const goToNext = () => setActiveStart((s) => Math.min(maxStart, s + 1));
+  const goToPrev = useCallback(() => setActiveStart((s) => (s <= 0 ? maxStart : s - 1)), [maxStart]);
+  const goToNext = useCallback(() => setActiveStart((s) => (s >= maxStart ? 0 : s + 1)), [maxStart]);
+
+  useEffect(() => {
+    if (maxStart <= 0 || (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
+    const timer = window.setInterval(goToNext, 5000);
+    return () => window.clearInterval(timer);
+  }, [goToNext, maxStart]);
 
   useEffect(() => {
     const updateVisibleCount = () => {
@@ -117,7 +123,7 @@ export function AcademicsSupportProgramsSliderSection({
                   className="academics-support-programs__arrow academics-support-programs__arrow--prev"
                   aria-label="Previous"
                   onClick={goToPrev}
-                  disabled={safeActiveStart === 0}
+                  disabled={false}
                 >
                   <ChevronLeft aria-hidden="true" strokeWidth={1.8} />
                 </button>
@@ -126,7 +132,7 @@ export function AcademicsSupportProgramsSliderSection({
                   className="academics-support-programs__arrow academics-support-programs__arrow--next"
                   aria-label="Next"
                   onClick={goToNext}
-                  disabled={safeActiveStart === maxStart}
+                  disabled={false}
                 >
                   <ChevronRight aria-hidden="true" strokeWidth={1.8} />
                 </button>
