@@ -122,5 +122,20 @@ export const academicsHighSchoolPageQuery = `*[_type == "academicsHighSchoolPage
       description,
       icon ${imageWithAltProjection}
     }
+  },
+  apBenefitsSection {
+    heading ${headingProjection},
+    backgroundColor,
+    titleColor,
+    subtitleColor,
+    cardIconColor,
+    cardTitleColor,
+    cardTextColor,
+    cards[] {
+      _key,
+      title,
+      description,
+      icon ${imageWithAltProjection}
+    }
   }
 }`;

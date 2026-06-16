@@ -361,6 +361,37 @@ export const academicsHighSchoolPage = {
         },
       ],
     },
+    {
+      name: "apBenefitsSection",
+      title: "Benefits of AP Courses Section",
+      type: "object",
+      description: "Teal background grid of 6 benefit cards for AP Courses.",
+      fields: [
+        { name: "heading", title: "Section Heading", type: "sectionHeading" },
+        { name: "backgroundColor", title: "Background Color", type: "string", description: "e.g. #00A5B2" },
+        { name: "titleColor", title: "Title Color", type: "string" },
+        { name: "subtitleColor", title: "Subtitle Color", type: "string" },
+        { name: "cardIconColor", title: "Card Icon Color", type: "string", description: "e.g. #d97252" },
+        { name: "cardTitleColor", title: "Card Title Color", type: "string" },
+        { name: "cardTextColor", title: "Card Text Color", type: "string" },
+        {
+          name: "cards",
+          title: "Benefit Cards",
+          type: "array",
+          of: [
+            {
+              type: "object",
+              fields: [
+                { name: "title", title: "Card Title", type: "string" },
+                { name: "description", title: "Description", type: "text", rows: 3 },
+                { name: "icon", title: "Icon Image", type: "imageWithAlt" },
+              ],
+              preview: { select: { title: "title", media: "icon.image" } },
+            },
+          ],
+        },
+      ],
+    },
   ],
   preview: {
     select: {

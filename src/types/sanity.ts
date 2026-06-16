@@ -196,6 +196,24 @@ export type AcademicsMiddleSchoolPageData = {
   supportProgramsSection?: AcademicsSupportProgramsSection;
 };
 
+export type AcademicsApBenefitCard = {
+  _key?: string;
+  title?: string;
+  description?: string;
+  icon?: SanityImage;
+};
+
+export type AcademicsApBenefitsSection = {
+  heading?: SectionHeading;
+  cards?: AcademicsApBenefitCard[];
+  backgroundColor?: string;
+  titleColor?: string;
+  subtitleColor?: string;
+  cardIconColor?: string;
+  cardTitleColor?: string;
+  cardTextColor?: string;
+};
+
 export type AcademicsHighSchoolPageData = {
   seo?: Seo;
   hero?: PageHeroContent;
@@ -208,6 +226,7 @@ export type AcademicsHighSchoolPageData = {
   pathwaysSliderSection?: AcademicsLearningSliderSection;
   apDiplomaSection?: ImageTextSection;
   apCoursesSection?: AcademicsSupportProgramsSection;
+  apBenefitsSection?: AcademicsApBenefitsSection;
 };
 
 export type AcademicsSkillItem = {

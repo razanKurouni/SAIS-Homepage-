@@ -1938,6 +1938,96 @@ a.contact-info-section__item-text:hover {
   line-height: var(--sais-body-text-line-height);
 }
 
+.academics-ap-benefits {
+  --ap-benefits-bg: #00A5B2;
+  --ap-benefits-title: #ffffff;
+  --ap-benefits-subtitle: #ffffff;
+  --ap-benefits-card-icon: #d97252;
+  --ap-benefits-card-title: var(--sais-primary);
+  --ap-benefits-card-text: #666b70;
+
+  background: var(--ap-benefits-bg);
+  padding: clamp(52px, 6vw, 86px) clamp(20px, 4vw, 48px);
+}
+
+.academics-ap-benefits__inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.academics-ap-benefits__title {
+  margin: 0;
+  color: var(--ap-benefits-title);
+  font-size: clamp(1.35rem, 1.9vw, 1.75rem);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+.academics-ap-benefits__subtitle {
+  margin: clamp(14px, 1.5vw, 20px) auto 0;
+  max-width: 600px;
+  color: var(--ap-benefits-subtitle);
+  font-size: clamp(0.92rem, 1vw, 1rem);
+  font-weight: 600;
+  line-height: 1.55;
+  letter-spacing: var(--sais-body-text-letter-spacing);
+}
+
+.academics-ap-benefits__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2vw, 24px);
+  margin-top: clamp(36px, 4vw, 52px);
+}
+
+.academics-ap-benefits__card.hover-icon-card {
+  --hover-icon-card-accent: var(--ap-benefits-card-icon);
+  --hover-icon-card-border: transparent;
+  --hover-icon-card-hover-border: var(--ap-benefits-card-icon);
+
+  background: #ffffff;
+  border-radius: 16px;
+  padding: clamp(28px, 3vw, 42px) clamp(20px, 2.5vw, 32px) clamp(24px, 2.5vw, 36px);
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+}
+
+.academics-ap-benefits__card .hover-icon-card__icon {
+  width: clamp(72px, 6.5vw, 100px);
+  height: clamp(72px, 6.5vw, 100px);
+  color: var(--ap-benefits-card-icon);
+}
+
+.academics-ap-benefits__card .hover-icon-card__title {
+  color: var(--ap-benefits-card-title);
+  font-size: clamp(0.88rem, 1vw, 1rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.25;
+}
+
+.academics-ap-benefits__card .hover-icon-card__description {
+  color: var(--ap-benefits-card-text);
+  font-size: clamp(0.78rem, 0.85vw, 0.88rem);
+  letter-spacing: var(--sais-body-text-letter-spacing);
+  line-height: 1.5;
+}
+
+@media (max-width: 767px) {
+  .academics-ap-benefits__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+  .academics-ap-benefits__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .academics-support-programs {
   --support-programs-bg: #ffffff;
   --support-programs-title: var(--sais-accent);

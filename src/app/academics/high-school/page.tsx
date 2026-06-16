@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SitePageShell } from "@/components/layout/site-page-shell";
+import { AcademicsApBenefitsSection } from "@/components/sections/academics-ap-benefits-section";
 import { AcademicsElementaryAssessmentSection } from "@/components/sections/academics-elementary-assessment-section";
 import { AcademicsLearningSliderSection } from "@/components/sections/academics-learning-slider-section";
 import { AcademicsSupportProgramsSliderSection } from "@/components/sections/academics-support-programs-slider-section";
@@ -12,6 +13,7 @@ import { TourIntroSection } from "@/components/sections/tour-intro-section";
 import { TourSection } from "@/components/sections/tour-section";
 import { getAcademicsHighSchoolPage, getHomepage } from "@/lib/sanity";
 import type {
+  AcademicsApBenefitsSection as AcademicsApBenefitsSectionData,
   AcademicsKindergartenFeatureSection,
   AcademicsLearningSliderSection as AcademicsLearningSliderSectionData,
   AcademicsSupportProgramsSection,
@@ -241,6 +243,27 @@ const fallbackApDiplomaSection: ImageTextSection = {
   textColor: "#666b70",
 };
 
+const fallbackApBenefitsSection: AcademicsApBenefitsSectionData = {
+  heading: {
+    title: "Benefits of AP Courses",
+    subtitle: "SAIS-Dubai offers a range of AP courses to challenge and prepare students for higher education:",
+  },
+  backgroundColor: "#00A5B2",
+  titleColor: "#ffffff",
+  subtitleColor: "#ffffff",
+  cardIconColor: "#d97252",
+  cardTitleColor: "#216B97",
+  cardTextColor: "#666b70",
+  cards: [
+    { _key: "benefit-admission", title: "Stand Out In The Admission Process", description: "AP coursework signals to admissions officers that a student is capable of rigorous, college-level work, strengthening their application." },
+    { _key: "benefit-learning", title: "College-Level Learning", description: "Understand that meaningful learning occurs when students engage in critical thinking." },
+    { _key: "benefit-recognition", title: "Global Recognition", description: "Emphasize the importance of effort and persistence in achievement." },
+    { _key: "benefit-savings", title: "Cost Savings", description: "Most colleges and universities worldwide grant credit and/or placement for qualifying AP exam scores." },
+    { _key: "benefit-advantage", title: "Academic Advantage", description: "AP students typically achieve higher college GPAs." },
+    { _key: "benefit-scholarship", title: "Scholarship Opportunities", description: "AP participation may increase eligibility for certain scholarships." },
+  ],
+};
+
 const fallbackApCoursesSection: AcademicsSupportProgramsSection = {
   heading: {
     title: "Advanced Placement (AP) Courses",
@@ -318,6 +341,7 @@ export default async function AcademicsHighSchoolPage() {
   };
 
   const apCoursesSection = highSchoolPage?.apCoursesSection || fallbackApCoursesSection;
+  const apBenefitsSection = highSchoolPage?.apBenefitsSection || fallbackApBenefitsSection;
 
   return (
     <SitePageShell
@@ -430,6 +454,12 @@ export default async function AcademicsHighSchoolPage() {
         section={apCoursesSection}
         fallbackSection={fallbackApCoursesSection}
         className="academics-high-school-ap-courses"
+      />
+
+      <AcademicsApBenefitsSection
+        section={apBenefitsSection}
+        fallbackSection={fallbackApBenefitsSection}
+        className="academics-high-school-ap-benefits"
       />
 
       <LearningPhasesSection section={data?.learningPhases} excludeTitle="High School" />
