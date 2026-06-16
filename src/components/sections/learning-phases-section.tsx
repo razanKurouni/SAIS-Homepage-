@@ -11,6 +11,7 @@ const LearningPhasesCards = dynamic(
 type LearningPhasesSectionProps = {
   section?: HomepageData["learningPhases"];
   excludeHref?: string;
+  excludeTitle?: string;
 };
 
 function SectionArrow() {
@@ -21,16 +22,18 @@ function SectionArrow() {
   );
 }
 
-export function LearningPhasesSection({ section, excludeHref }: LearningPhasesSectionProps) {
+export function LearningPhasesSection({ section, excludeHref, excludeTitle }: LearningPhasesSectionProps) {
   if (!section?.cards?.length) {
     return null;
   }
 
   const title = section.heading?.title || "Our Learning Phases";
   const cta = section.cta;
-  const cards = excludeHref
-    ? section.cards.filter((card) => card.cta?.href !== excludeHref)
-    : section.cards;
+  const cards = section.cards.filter((card) => {
+    if (excludeTitle && card.title?.toLowerCase() === excludeTitle.toLowerCase()) return false;
+    if (excludeHref && card.cta?.href === excludeHref) return false;
+    return true;
+  });
 
   return (
     <section id="learning-phases" className="learning-phases" aria-labelledby="learning-phases-title">
