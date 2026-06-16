@@ -110,60 +110,64 @@ export function AcademicsSupportProgramsSliderSection({
 
         {cards.length ? (
           <>
-            <div className="academics-support-programs__viewport">
-              <div className="academics-support-programs__track" style={trackStyle}>
-                {cards.map((card, index) => {
-                  const FallbackIcon = card.iconType ? fallbackIconMap[card.iconType] : Accessibility;
+            <div className="academics-support-programs__slider-row">
+              {dots.length > 1 ? (
+                <button
+                  type="button"
+                  className="academics-support-programs__arrow academics-support-programs__arrow--prev"
+                  aria-label="Previous"
+                  onClick={goToPrev}
+                  disabled={safeActiveStart === 0}
+                >
+                  <ChevronLeft aria-hidden="true" strokeWidth={1.8} />
+                </button>
+              ) : null}
 
-                  return (
-                    <HoverIconCard
-                      key={card._key || `${card.title}-${index}`}
-                      className="academics-support-programs__card"
-                      icon={card.icon}
-                      fallbackIcon={FallbackIcon}
-                      title={card.title}
-                      description={card.description}
-                      iconSizes="96px"
-                    />
-                  );
-                })}
+              <div className="academics-support-programs__viewport">
+                <div className="academics-support-programs__track" style={trackStyle}>
+                  {cards.map((card, index) => {
+                    const FallbackIcon = card.iconType ? fallbackIconMap[card.iconType] : Accessibility;
+
+                    return (
+                      <HoverIconCard
+                        key={card._key || `${card.title}-${index}`}
+                        className="academics-support-programs__card"
+                        icon={card.icon}
+                        fallbackIcon={FallbackIcon}
+                        title={card.title}
+                        description={card.description}
+                        iconSizes="96px"
+                      />
+                    );
+                  })}
+                </div>
               </div>
+
+              {dots.length > 1 ? (
+                <button
+                  type="button"
+                  className="academics-support-programs__arrow academics-support-programs__arrow--next"
+                  aria-label="Next"
+                  onClick={goToNext}
+                  disabled={safeActiveStart === maxStart}
+                >
+                  <ChevronRight aria-hidden="true" strokeWidth={1.8} />
+                </button>
+              ) : null}
             </div>
 
             {dots.length > 1 ? (
-              <div className="academics-support-programs__controls">
-                <div className="academics-support-programs__arrows">
+              <div className="academics-support-programs__dots" aria-label="Support programs slider controls">
+                {dots.map((startIndex) => (
                   <button
+                    key={startIndex}
                     type="button"
-                    className="academics-support-programs__arrow academics-support-programs__arrow--prev"
-                    aria-label="Previous"
-                    onClick={goToPrev}
-                    disabled={safeActiveStart === 0}
-                  >
-                    <ChevronLeft aria-hidden="true" strokeWidth={1.8} />
-                  </button>
-                  <button
-                    type="button"
-                    className="academics-support-programs__arrow academics-support-programs__arrow--next"
-                    aria-label="Next"
-                    onClick={goToNext}
-                    disabled={safeActiveStart === maxStart}
-                  >
-                    <ChevronRight aria-hidden="true" strokeWidth={1.8} />
-                  </button>
-                </div>
-                <div className="academics-support-programs__dots" aria-label="Support programs slider controls">
-                  {dots.map((startIndex) => (
-                    <button
-                      key={startIndex}
-                      type="button"
-                      className={`academics-support-programs__dot ${safeActiveStart === startIndex ? "is-active" : ""}`.trim()}
-                      aria-label={`Show support programs ${startIndex + 1}`}
-                      aria-pressed={safeActiveStart === startIndex}
-                      onClick={() => setActiveStart(startIndex)}
-                    />
-                  ))}
-                </div>
+                    className={`academics-support-programs__dot ${safeActiveStart === startIndex ? "is-active" : ""}`.trim()}
+                    aria-label={`Show support programs ${startIndex + 1}`}
+                    aria-pressed={safeActiveStart === startIndex}
+                    onClick={() => setActiveStart(startIndex)}
+                  />
+                ))}
               </div>
             ) : null}
           </>

@@ -2013,20 +2013,21 @@ a.contact-info-section__item-text:hover {
   line-height: 1.28;
 }
 
-.academics-support-programs__controls {
+.academics-support-programs__slider-row {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 18px;
+  gap: 14px;
   margin-top: clamp(34px, 4vw, 46px);
 }
 
-.academics-support-programs__arrows {
-  display: flex;
-  gap: 12px;
+.academics-support-programs__slider-row .academics-support-programs__viewport {
+  flex: 1;
+  min-width: 0;
+  margin-top: 0;
 }
 
 .academics-support-programs__arrow {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2059,6 +2060,7 @@ a.contact-info-section__item-text:hover {
   display: flex;
   justify-content: center;
   gap: 14px;
+  margin-top: clamp(20px, 2.5vw, 30px);
 }
 
 .academics-support-programs__dot {
