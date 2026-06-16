@@ -1412,7 +1412,7 @@ button[aria-label="Open Next.js Dev Tools"] {
 }
 
 .academics-kg-assessment__inner {
-  width: min(85%, 1400px);
+  width: 85%;
   margin: 0 auto;
 }
 
@@ -1727,8 +1727,7 @@ a.contact-info-section__item-text:hover {
 .academics-skills__card {
   --hover-icon-card-border: var(--academics-card-accent, var(--sais-accent));
   --hover-icon-card-hover-border: #d97252;
-
-  min-height: 182px;
+  min-height: 250px;
   gap: 18px;
   padding: 22px 18px 18px;
   border-radius: 12px;

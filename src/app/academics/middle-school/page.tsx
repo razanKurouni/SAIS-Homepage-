@@ -9,6 +9,8 @@ import { InnerPageNav, type InnerPageNavItem } from "@/components/sections/inner
 import { PageHero } from "@/components/sections/page-hero";
 import { getAcademicsMiddleSchoolPage, getHomepage } from "@/lib/sanity";
 import { LearningPhasesSection } from "@/components/sections/learning-phases-section";
+import { TourIntroSection } from "@/components/sections/tour-intro-section";
+import { TourSection } from "@/components/sections/tour-section";
 import type {
   AcademicsCurriculumOverviewSection as AcademicsCurriculumOverviewSectionData,
   AcademicsKindergartenFeatureSection,
@@ -382,6 +384,8 @@ export default async function AcademicsMiddleSchoolPage() {
         className="academics-middle-school-support-programs"
       />
       <LearningPhasesSection section={data?.learningPhases} excludeTitle="Middle School" />
+      <TourIntroSection section={data?.tour} />
+      <TourSection section={data?.tour} />
     </SitePageShell>
   );
 }
