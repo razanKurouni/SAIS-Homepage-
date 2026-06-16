@@ -1084,7 +1084,8 @@ button[aria-label="Open Next.js Dev Tools"] {
 }
 
 .academics-elementary-hero .page-hero__eyebrow,
-.academics-middle-school-hero .page-hero__eyebrow {
+.academics-middle-school-hero .page-hero__eyebrow,
+.academics-high-school-hero .page-hero__eyebrow {
   margin-bottom: 8px;
   color: var(--sais-primary);
   font-size: clamp(1.42rem, 2vw, 2rem);
