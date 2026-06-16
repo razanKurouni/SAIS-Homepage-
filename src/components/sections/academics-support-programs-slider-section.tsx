@@ -110,8 +110,8 @@ export function AcademicsSupportProgramsSliderSection({
 
         {cards.length ? (
           <>
-            <div className="academics-support-programs__slider-row">
-              {dots.length > 1 ? (
+            {dots.length > 1 ? (
+              <div className="academics-support-programs__arrows">
                 <button
                   type="button"
                   className="academics-support-programs__arrow academics-support-programs__arrow--prev"
@@ -121,29 +121,6 @@ export function AcademicsSupportProgramsSliderSection({
                 >
                   <ChevronLeft aria-hidden="true" strokeWidth={1.8} />
                 </button>
-              ) : null}
-
-              <div className="academics-support-programs__viewport">
-                <div className="academics-support-programs__track" style={trackStyle}>
-                  {cards.map((card, index) => {
-                    const FallbackIcon = card.iconType ? fallbackIconMap[card.iconType] : Accessibility;
-
-                    return (
-                      <HoverIconCard
-                        key={card._key || `${card.title}-${index}`}
-                        className="academics-support-programs__card"
-                        icon={card.icon}
-                        fallbackIcon={FallbackIcon}
-                        title={card.title}
-                        description={card.description}
-                        iconSizes="96px"
-                      />
-                    );
-                  })}
-                </div>
-              </div>
-
-              {dots.length > 1 ? (
                 <button
                   type="button"
                   className="academics-support-programs__arrow academics-support-programs__arrow--next"
@@ -153,7 +130,27 @@ export function AcademicsSupportProgramsSliderSection({
                 >
                   <ChevronRight aria-hidden="true" strokeWidth={1.8} />
                 </button>
-              ) : null}
+              </div>
+            ) : null}
+
+            <div className="academics-support-programs__viewport">
+              <div className="academics-support-programs__track" style={trackStyle}>
+                {cards.map((card, index) => {
+                  const FallbackIcon = card.iconType ? fallbackIconMap[card.iconType] : Accessibility;
+
+                  return (
+                    <HoverIconCard
+                      key={card._key || `${card.title}-${index}`}
+                      className="academics-support-programs__card"
+                      icon={card.icon}
+                      fallbackIcon={FallbackIcon}
+                      title={card.title}
+                      description={card.description}
+                      iconSizes="96px"
+                    />
+                  );
+                })}
+              </div>
             </div>
 
             {dots.length > 1 ? (
