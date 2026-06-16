@@ -3,6 +3,7 @@ import { aboutPageQuery } from "@/sanity/queries/about-page";
 import { academicsElementaryPageQuery } from "@/sanity/queries/academics-elementary-page";
 import { academicsKindergartenPageQuery } from "@/sanity/queries/academics-kindergarten-page";
 import { academicsMiddleSchoolPageQuery } from "@/sanity/queries/academics-middle-school-page";
+import { academicsHighSchoolPageQuery } from "@/sanity/queries/academics-high-school-page";
 import { academicsPageQuery } from "@/sanity/queries/academics-page";
 import { careersPageQuery } from "@/sanity/queries/careers-page";
 import { contactPageQuery } from "@/sanity/queries/contact-page";
@@ -18,6 +19,7 @@ import type {
   AcademicsElementaryPageData,
   AcademicsKindergartenPageData,
   AcademicsMiddleSchoolPageData,
+  AcademicsHighSchoolPageData,
   AcademicsPageData,
   CareersPageData,
   ContactPageData,
@@ -105,6 +107,15 @@ export async function getAcademicsMiddleSchoolPage(): Promise<AcademicsMiddleSch
   try {
     const client = getSanityClient();
     return await client.fetch<AcademicsMiddleSchoolPageData | null>(academicsMiddleSchoolPageQuery);
+  } catch {
+    return null;
+  }
+}
+
+export async function getAcademicsHighSchoolPage(): Promise<AcademicsHighSchoolPageData | null> {
+  try {
+    const client = getSanityClient();
+    return await client.fetch<AcademicsHighSchoolPageData | null>(academicsHighSchoolPageQuery);
   } catch {
     return null;
   }

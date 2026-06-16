@@ -193,6 +193,12 @@ export type AcademicsMiddleSchoolPageData = {
   supportProgramsSection?: AcademicsSupportProgramsSection;
 };
 
+export type AcademicsHighSchoolPageData = {
+  seo?: Seo;
+  hero?: PageHeroContent;
+  innerNavigation?: InnerNavigation;
+};
+
 export type AcademicsSkillItem = {
   _key?: string;
   title?: string;
