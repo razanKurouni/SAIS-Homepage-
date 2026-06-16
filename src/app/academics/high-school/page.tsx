@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SitePageShell } from "@/components/layout/site-page-shell";
 import { AcademicsElementaryAssessmentSection } from "@/components/sections/academics-elementary-assessment-section";
 import { AcademicsLearningSliderSection } from "@/components/sections/academics-learning-slider-section";
+import { AcademicsSupportProgramsSliderSection } from "@/components/sections/academics-support-programs-slider-section";
 import { EditorialSplitSection } from "@/components/sections/editorial-split-section";
 import { IntroFeatureSection } from "@/components/sections/intro-feature-section";
 import { InnerPageNav, type InnerPageNavItem } from "@/components/sections/inner-page-nav";
@@ -13,6 +14,7 @@ import { getAcademicsHighSchoolPage, getHomepage } from "@/lib/sanity";
 import type {
   AcademicsKindergartenFeatureSection,
   AcademicsLearningSliderSection as AcademicsLearningSliderSectionData,
+  AcademicsSupportProgramsSection,
   ImageTextSection,
   InnerNavigationItem,
   PortableTextBlock,
@@ -224,6 +226,46 @@ const fallbackPathwaysSlider: AcademicsLearningSliderSectionData = {
   ],
 };
 
+const fallbackApDiplomaSection: ImageTextSection = {
+  heading: {
+    title: "Advanced Placement (AP) Diploma",
+    description: [
+      paragraph("hs-ap-1", "Advanced Placement (AP) is a College Board program that allows high school students to take courses that can earn college credits and/or qualify them for advanced university classes. AP courses are weighted (1.25) provided students achieve qualifying scores on the respective College Board Exam."),
+      paragraph("hs-ap-2", "AP classes are optional. All enrolled students must sit for the College Board AP exam and cover the cost of required resources and exams."),
+    ],
+  },
+  image: { url: "/academics-high-school-ap-diploma.jpg", alt: "SAIS Dubai high school students in AP class" },
+  imagePosition: "right",
+  backgroundColor: "#ffffff",
+  titleColor: "var(--sais-primary)",
+  textColor: "#666b70",
+};
+
+const fallbackApCoursesSection: AcademicsSupportProgramsSection = {
+  heading: {
+    title: "Advanced Placement (AP) Courses",
+    subtitle: "SAIS-Dubai offers a range of AP courses to challenge and prepare students for higher education:",
+  },
+  backgroundColor: "#f0f2f5",
+  titleColor: "var(--sais-primary)",
+  cardBorderColor: "var(--sais-primary)",
+  cardHoverBorderColor: "var(--sais-accent)",
+  cardTextColor: "var(--sais-primary)",
+  cards: [
+    { _key: "ap-english-lang", title: "AP English Language\nand Composition" },
+    { _key: "ap-english-lit", title: "AP English Literature\nand Composition" },
+    { _key: "ap-biology", title: "AP Biology" },
+    { _key: "ap-chemistry", title: "AP Chemistry" },
+    { _key: "ap-physics-1", title: "AP Physics 1\n(Algebra-Based)" },
+    { _key: "ap-physics-c-em", title: "AP Physics C:\nElectricity and Magnetism" },
+    { _key: "ap-physics-2", title: "AP Physics 2\n(Algebra-Based)" },
+    { _key: "ap-physics-c-m", title: "AP Physics C:\nMechanics" },
+    { _key: "ap-calculus", title: "AP Calculus AB" },
+    { _key: "ap-psychology", title: "AP Psychology" },
+    { _key: "ap-statistics", title: "AP Statistics" },
+  ],
+};
+
 export default async function AcademicsHighSchoolPage() {
   const [data, highSchoolPage] = await Promise.all([getHomepage(), getAcademicsHighSchoolPage()]);
 
@@ -266,6 +308,16 @@ export default async function AcademicsHighSchoolPage() {
   };
 
   const pathwaysSlider = highSchoolPage?.pathwaysSliderSection || fallbackPathwaysSlider;
+
+  const apDiplomaSection: ImageTextSection = {
+    ...fallbackApDiplomaSection,
+    ...highSchoolPage?.apDiplomaSection,
+    heading: highSchoolPage?.apDiplomaSection?.heading || fallbackApDiplomaSection.heading,
+    image: highSchoolPage?.apDiplomaSection?.image || fallbackApDiplomaSection.image,
+    imagePosition: "right",
+  };
+
+  const apCoursesSection = highSchoolPage?.apCoursesSection || fallbackApCoursesSection;
 
   return (
     <SitePageShell
@@ -361,6 +413,23 @@ export default async function AcademicsHighSchoolPage() {
         section={pathwaysSlider}
         fallbackSection={fallbackPathwaysSlider}
         className="academics-high-school-pathways-slider"
+      />
+
+      <EditorialSplitSection
+        id="academics-high-school-ap-diploma"
+        title="Advanced Placement (AP) Diploma"
+        section={apDiplomaSection}
+        fallbackImage={fallbackApDiplomaSection.image || {}}
+        fallbackParagraphs={[]}
+        className="academics-high-school-ap-diploma-section"
+        imageSizes="(max-width: 767px) calc(100vw - 32px), 44vw"
+        showTitle
+      />
+
+      <AcademicsSupportProgramsSliderSection
+        section={apCoursesSection}
+        fallbackSection={fallbackApCoursesSection}
+        className="academics-high-school-ap-courses"
       />
 
       <LearningPhasesSection section={data?.learningPhases} excludeTitle="High School" />

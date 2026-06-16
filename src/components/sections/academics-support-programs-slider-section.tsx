@@ -1,6 +1,6 @@
 "use client";
 
-import { Accessibility, BrainCircuit, Globe2, MessagesSquare, Sparkles } from "lucide-react";
+import { Accessibility, BrainCircuit, ChevronLeft, ChevronRight, Globe2, MessagesSquare, Sparkles } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import type { CSSProperties } from "react";
 import { HoverIconCard } from "@/components/ui/hover-icon-card";
@@ -65,6 +65,9 @@ export function AcademicsSupportProgramsSliderSection({
   const safeActiveStart = Math.min(activeStart, maxStart);
   const dots = useMemo(() => Array.from({ length: maxStart + 1 }, (_, index) => index), [maxStart]);
 
+  const goToPrev = () => setActiveStart((s) => Math.max(0, s - 1));
+  const goToNext = () => setActiveStart((s) => Math.min(maxStart, s + 1));
+
   useEffect(() => {
     const updateVisibleCount = () => {
       setVisibleCount(getVisibleCount());
@@ -128,17 +131,39 @@ export function AcademicsSupportProgramsSliderSection({
             </div>
 
             {dots.length > 1 ? (
-              <div className="academics-support-programs__dots" aria-label="Support programs slider controls">
-                {dots.map((startIndex) => (
+              <div className="academics-support-programs__controls">
+                <div className="academics-support-programs__arrows">
                   <button
-                    key={startIndex}
                     type="button"
-                    className={`academics-support-programs__dot ${safeActiveStart === startIndex ? "is-active" : ""}`.trim()}
-                    aria-label={`Show support programs ${startIndex + 1}`}
-                    aria-pressed={safeActiveStart === startIndex}
-                    onClick={() => setActiveStart(startIndex)}
-                  />
-                ))}
+                    className="academics-support-programs__arrow academics-support-programs__arrow--prev"
+                    aria-label="Previous"
+                    onClick={goToPrev}
+                    disabled={safeActiveStart === 0}
+                  >
+                    <ChevronLeft aria-hidden="true" strokeWidth={1.8} />
+                  </button>
+                  <button
+                    type="button"
+                    className="academics-support-programs__arrow academics-support-programs__arrow--next"
+                    aria-label="Next"
+                    onClick={goToNext}
+                    disabled={safeActiveStart === maxStart}
+                  >
+                    <ChevronRight aria-hidden="true" strokeWidth={1.8} />
+                  </button>
+                </div>
+                <div className="academics-support-programs__dots" aria-label="Support programs slider controls">
+                  {dots.map((startIndex) => (
+                    <button
+                      key={startIndex}
+                      type="button"
+                      className={`academics-support-programs__dot ${safeActiveStart === startIndex ? "is-active" : ""}`.trim()}
+                      aria-label={`Show support programs ${startIndex + 1}`}
+                      aria-pressed={safeActiveStart === startIndex}
+                      onClick={() => setActiveStart(startIndex)}
+                    />
+                  ))}
+                </div>
               </div>
             ) : null}
           </>

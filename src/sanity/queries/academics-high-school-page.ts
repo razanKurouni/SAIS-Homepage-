@@ -100,5 +100,27 @@ export const academicsHighSchoolPageQuery = `*[_type == "academicsHighSchoolPage
       textColor,
       imagePosition
     }
+  },
+  apDiplomaSection {
+    heading ${headingProjection},
+    image ${imageWithAltProjection},
+    imagePosition,
+    backgroundColor,
+    titleColor,
+    textColor
+  },
+  apCoursesSection {
+    heading ${headingProjection},
+    backgroundColor,
+    titleColor,
+    cardBorderColor,
+    cardHoverBorderColor,
+    cardTextColor,
+    cards[] {
+      _key,
+      title,
+      description,
+      icon ${imageWithAltProjection}
+    }
   }
 }`;

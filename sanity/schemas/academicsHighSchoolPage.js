@@ -316,6 +316,51 @@ export const academicsHighSchoolPage = {
         },
       ],
     },
+    {
+      name: "apDiplomaSection",
+      title: "Advanced Placement (AP) Diploma Section",
+      type: "object",
+      description: "Text and image section introducing the AP Diploma program.",
+      fields: [
+        { name: "heading", title: "Text Content", type: "sectionHeading" },
+        { name: "image", title: "Image", type: "imageWithAlt" },
+        { name: "backgroundColor", title: "Background Color", type: "string" },
+        { name: "titleColor", title: "Title Color", type: "string" },
+        { name: "textColor", title: "Body Text Color", type: "string" },
+      ],
+    },
+    {
+      name: "apCoursesSection",
+      title: "Advanced Placement (AP) Courses Slider",
+      type: "object",
+      description: "Icon card slider listing all AP courses offered.",
+      fields: [
+        { name: "heading", title: "Section Heading", type: "sectionHeading" },
+        { name: "backgroundColor", title: "Background Color", type: "string", description: "e.g. #f0f2f5" },
+        { name: "titleColor", title: "Title Color", type: "string" },
+        { name: "cardBorderColor", title: "Card Border Color", type: "string" },
+        { name: "cardHoverBorderColor", title: "Card Hover Border Color", type: "string" },
+        { name: "cardTextColor", title: "Card Text Color", type: "string" },
+        {
+          name: "cards",
+          title: "AP Course Cards",
+          type: "array",
+          of: [
+            {
+              type: "object",
+              fields: [
+                { name: "title", title: "Course Name", type: "string" },
+                { name: "description", title: "Description", type: "text", rows: 2 },
+                { name: "icon", title: "Icon Image", type: "imageWithAlt" },
+              ],
+              preview: {
+                select: { title: "title", media: "icon.image" },
+              },
+            },
+          ],
+        },
+      ],
+    },
   ],
   preview: {
     select: {

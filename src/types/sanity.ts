@@ -206,6 +206,8 @@ export type AcademicsHighSchoolPageData = {
   careerGuidanceSection?: AcademicsKindergartenFeatureSection;
   pathwaysSection?: ImageTextSection;
   pathwaysSliderSection?: AcademicsLearningSliderSection;
+  apDiplomaSection?: ImageTextSection;
+  apCoursesSection?: AcademicsSupportProgramsSection;
 };
 
 export type AcademicsSkillItem = {
